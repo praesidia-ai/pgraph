@@ -1,0 +1,26 @@
+name: Prepare release artifacts
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: npm run check
+      - run: npm run format:check
+      - run: xvfb-run -a npm run test:extension
+      - run: npm run package:extension
+      - run: npm run package:workspaces
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pgraph-0.1.0-candidate
+          path: artifacts/*
+# Publishing is deliberately a separate maintainer action after reviewing ROADMAP gates.

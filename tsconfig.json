@@ -1,0 +1,56 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "packages/shared"
+    },
+    {
+      "path": "packages/graph-ir"
+    },
+    {
+      "path": "packages/graph-store"
+    },
+    {
+      "path": "packages/graph-store-sqlite"
+    },
+    {
+      "path": "packages/graph-typescript"
+    },
+    {
+      "path": "packages/graph-git"
+    },
+    {
+      "path": "packages/graph-semantic"
+    },
+    {
+      "path": "packages/graph-indexer"
+    },
+    {
+      "path": "packages/graph-query"
+    },
+    {
+      "path": "packages/graph-ranking"
+    },
+    {
+      "path": "packages/graph-context"
+    },
+    {
+      "path": "packages/graph-core"
+    },
+    {
+      "path": "packages/graph-tools"
+    },
+    {
+      "path": "packages/graph-cli"
+    },
+    {
+      "path": "packages/graph-mcp"
+    },
+    {
+      "path": "packages/graph-benchmark"
+    },
+    {
+      "path": "apps/vscode-extension"
+    }
+  ]
+}

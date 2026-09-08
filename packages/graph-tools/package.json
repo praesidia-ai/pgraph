@@ -1,0 +1,33 @@
+{
+  "name": "@praesidia/pgraph-tools",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/**/*.map"
+  ],
+  "dependencies": {
+    "@praesidia/pgraph-core": "0.1.0",
+    "@praesidia/pgraph-ir": "0.1.0",
+    "@praesidia/pgraph-shared": "0.1.0",
+    "zod": "^3.25.76",
+    "zod-to-json-schema": "^3.25.1"
+  },
+  "description": "PGraph graph tools: local graph-native repository context infrastructure.",
+  "publishConfig": {
+    "access": "public"
+  }
+}

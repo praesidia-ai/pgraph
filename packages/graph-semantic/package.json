@@ -1,0 +1,31 @@
+{
+  "name": "@praesidia/pgraph-semantic",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/**/*.map"
+  ],
+  "dependencies": {
+    "@praesidia/pgraph-ir": "0.1.0",
+    "@praesidia/pgraph-store": "0.1.0",
+    "@praesidia/pgraph-shared": "0.1.0"
+  },
+  "description": "PGraph graph semantic: local graph-native repository context infrastructure.",
+  "publishConfig": {
+    "access": "public"
+  }
+}

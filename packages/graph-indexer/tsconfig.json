@@ -1,0 +1,29 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "tsBuildInfoFile": "dist/.tsbuildinfo"
+  },
+  "include": ["src/**/*.ts"],
+  "references": [
+    {
+      "path": "../graph-ir"
+    },
+    {
+      "path": "../graph-store"
+    },
+    {
+      "path": "../graph-typescript"
+    },
+    {
+      "path": "../graph-git"
+    },
+    {
+      "path": "../graph-semantic"
+    },
+    {
+      "path": "../shared"
+    }
+  ]
+}

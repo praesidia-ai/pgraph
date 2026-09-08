@@ -1,0 +1,27 @@
+{
+  "name": "@praesidia/pgraph-ir",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/**/*.map"
+  ],
+  "dependencies": {},
+  "description": "PGraph graph ir: local graph-native repository context infrastructure.",
+  "publishConfig": {
+    "access": "public"
+  }
+}

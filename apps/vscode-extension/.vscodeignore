@@ -1,0 +1,7 @@
+src/**
+tsconfig.json
+node_modules/**
+dist/types/**
+**/*.map
+dist/extension-tests.cjs
+dist/.tsbuildinfo

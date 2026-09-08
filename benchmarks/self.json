@@ -1,0 +1,153 @@
+[
+  {
+    "id": "locate",
+    "category": "Find where code lives",
+    "task": "Where does ContextEngine.context select relevant symbols?",
+    "requiredSymbols": ["ContextEngine.context"],
+    "baselineFiles": [
+      "packages/graph-core/src/index.ts",
+      "packages/graph-context/src/index.ts",
+      "packages/graph-context/src/budget.ts",
+      "packages/graph-ranking/src/index.ts"
+    ],
+    "baselineSearchCalls": 3,
+    "maxTokens": 1500
+  },
+  {
+    "id": "flow",
+    "category": "Explain feature flow",
+    "task": "Explain GraphIndexer.index TypeScriptAdapter.parse SqliteGraphStore.putEdge flow",
+    "requiredSymbols": [
+      "GraphIndexer.index",
+      "TypeScriptAdapter.parse",
+      "SqliteGraphStore.putEdge"
+    ],
+    "baselineFiles": [
+      "packages/graph-core/src/index.ts",
+      "packages/graph-indexer/src/index.ts",
+      "packages/graph-indexer/src/discovery.ts",
+      "packages/graph-typescript/src/index.ts",
+      "packages/graph-store-sqlite/src/index.ts"
+    ],
+    "baselineSearchCalls": 3,
+    "maxTokens": 2000
+  },
+  {
+    "id": "architecture",
+    "category": "Architecture question",
+    "task": "Explain PGraph.open GraphQuery and ContextEngine architecture",
+    "requiredSymbols": ["PGraph.open"],
+    "baselineFiles": [
+      "packages/graph-core/src/index.ts",
+      "packages/graph-query/src/index.ts",
+      "packages/graph-context/src/index.ts",
+      "packages/graph-indexer/src/index.ts",
+      "packages/graph-store-sqlite/src/index.ts",
+      "packages/graph-tools/src/index.ts",
+      "apps/vscode-extension/src/extension.ts"
+    ],
+    "baselineSearchCalls": 3,
+    "maxTokens": 1500
+  },
+  {
+    "id": "impact",
+    "category": "Impact analysis",
+    "task": "What is the impact of changing GraphQuery.symbol?",
+    "requiredSymbols": ["GraphQuery.symbol"],
+    "baselineFiles": [
+      "packages/graph-core/src/index.ts",
+      "packages/graph-query/src/index.ts",
+      "packages/graph-context/src/index.ts",
+      "packages/graph-tools/src/index.ts",
+      "apps/vscode-extension/src/extension.ts"
+    ],
+    "baselineSearchCalls": 3,
+    "maxTokens": 1500
+  },
+  {
+    "id": "debug",
+    "category": "Bug investigation",
+    "task": "Why does GraphQuery.slice reject stale source?",
+    "requiredSymbols": ["GraphQuery.slice", "GraphQuery.fileSlice"],
+    "baselineFiles": [
+      "packages/graph-core/src/index.ts",
+      "packages/graph-query/src/index.ts",
+      "packages/graph-context/src/index.ts",
+      "packages/graph-tools/src/index.ts"
+    ],
+    "baselineSearchCalls": 3,
+    "maxTokens": 1500
+  },
+  {
+    "id": "single",
+    "category": "Single-file change",
+    "task": "Change optimizeBudget to improve representation selection",
+    "requiredSymbols": ["optimizeBudget"],
+    "baselineFiles": [
+      "packages/graph-core/src/index.ts",
+      "packages/graph-context/src/index.ts",
+      "packages/graph-context/src/budget.ts",
+      "packages/graph-ranking/src/index.ts"
+    ],
+    "baselineSearchCalls": 3,
+    "maxTokens": 1500
+  },
+  {
+    "id": "multi",
+    "category": "Multi-file feature",
+    "task": "Add another query tool through dispatchTool and createServer",
+    "requiredSymbols": ["dispatchTool"],
+    "baselineFiles": [
+      "packages/graph-core/src/index.ts",
+      "packages/graph-query/src/index.ts",
+      "packages/graph-tools/src/index.ts",
+      "apps/vscode-extension/src/extension.ts"
+    ],
+    "baselineSearchCalls": 3,
+    "maxTokens": 1500
+  },
+  {
+    "id": "monorepo",
+    "category": "Large monorepo task",
+    "task": "How does TypeScriptAdapter.parse resolve workspace tsconfig aliases?",
+    "requiredSymbols": ["TypeScriptAdapter.parse"],
+    "baselineFiles": [
+      "packages/graph-core/src/index.ts",
+      "packages/graph-indexer/src/index.ts",
+      "packages/graph-indexer/src/discovery.ts",
+      "packages/graph-typescript/src/index.ts",
+      "packages/graph-store-sqlite/src/index.ts"
+    ],
+    "baselineSearchCalls": 3,
+    "maxTokens": 1500
+  },
+  {
+    "id": "tests",
+    "category": "Test discovery",
+    "task": "Find tests for GraphQuery.slice and ContextEngine.context",
+    "requiredSymbols": ["GraphQuery.slice", "ContextEngine.context"],
+    "baselineFiles": [
+      "packages/graph-core/src/index.ts",
+      "packages/graph-query/src/index.ts",
+      "packages/graph-context/src/index.ts",
+      "packages/graph-tools/src/index.ts"
+    ],
+    "baselineSearchCalls": 3,
+    "maxTokens": 1800
+  },
+  {
+    "id": "refactor",
+    "category": "Refactor",
+    "task": "Refactor SqliteGraphStore.neighbors and GraphQuery.path traversal",
+    "requiredSymbols": ["SqliteGraphStore.neighbors", "GraphQuery.path"],
+    "baselineFiles": [
+      "packages/graph-core/src/index.ts",
+      "packages/graph-query/src/index.ts",
+      "packages/graph-context/src/index.ts",
+      "packages/graph-indexer/src/index.ts",
+      "packages/graph-store-sqlite/src/index.ts"
+    ],
+    "baselineSearchCalls": 3,
+    "maxTokens": 1800
+  }
+]

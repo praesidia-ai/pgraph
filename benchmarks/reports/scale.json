@@ -1,0 +1,42 @@
+{
+  "kind": "synthetic-scale-not-correctness-evaluation",
+  "sourceFiles": 1000,
+  "initial": {
+    "files": 1001,
+    "parsed": 1001,
+    "skipped": 0,
+    "deleted": 0,
+    "nodes": 8002,
+    "edges": 30997,
+    "durationMs": 9405,
+    "revision": 1,
+    "diagnostics": []
+  },
+  "unchanged": {
+    "files": 1001,
+    "parsed": 0,
+    "skipped": 1001,
+    "deleted": 0,
+    "nodes": 8002,
+    "edges": 30997,
+    "durationMs": 127,
+    "revision": 1,
+    "diagnostics": []
+  },
+  "incremental": {
+    "files": 1001,
+    "parsed": 1,
+    "skipped": 1000,
+    "deleted": 0,
+    "nodes": 8002,
+    "edges": 30997,
+    "durationMs": 674,
+    "revision": 2,
+    "diagnostics": []
+  },
+  "queryP50Ms": 1.7161660000001575,
+  "queryP95Ms": 5.380583000000115,
+  "contextMs": 430,
+  "contextTokens": 677,
+  "rssBytes": 325697536
+}

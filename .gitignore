@@ -1,0 +1,10 @@
+node_modules/
+dist/
+coverage/
+.pgraph/
+.codegraph/
+*.vsix
+.vscode-test/
+benchmarks/results/
+.DS_Store
+artifacts/

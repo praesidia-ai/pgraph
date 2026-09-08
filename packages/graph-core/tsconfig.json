@@ -1,0 +1,35 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "tsBuildInfoFile": "dist/.tsbuildinfo"
+  },
+  "include": ["src/**/*.ts"],
+  "references": [
+    {
+      "path": "../graph-ir"
+    },
+    {
+      "path": "../graph-store"
+    },
+    {
+      "path": "../graph-store-sqlite"
+    },
+    {
+      "path": "../graph-indexer"
+    },
+    {
+      "path": "../graph-query"
+    },
+    {
+      "path": "../graph-context"
+    },
+    {
+      "path": "../graph-semantic"
+    },
+    {
+      "path": "../shared"
+    }
+  ]
+}

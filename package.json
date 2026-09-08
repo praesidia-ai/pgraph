@@ -1,0 +1,43 @@
+{
+  "name": "pgraph-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "tsc -b && node scripts/build-extension.mjs && npm rebuild --ignore-scripts @praesidia/pgraph-cli @praesidia/pgraph-mcp",
+    "typecheck": "tsc -b --pretty false",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run typecheck && npm run lint && npm test",
+    "benchmark": "node packages/graph-cli/dist/main.js benchmark --root . --suite benchmarks/self.json",
+    "test:extension": "node scripts/test-extension.mjs",
+    "benchmark:scale": "node scripts/scale-benchmark.mjs",
+    "package:extension": "node scripts/package-extension.mjs",
+    "package:workspaces": "node scripts/package-workspaces.mjs"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "@types/node": "^22.19.0",
+    "@types/picomatch": "^4.0.2",
+    "@types/vscode": "^1.100.0",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.7.1",
+    "vitest": "^3.2.4",
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^9.39.0",
+    "typescript-eslint": "^8.48.0",
+    "prettier": "^3.7.4",
+    "esbuild": "^0.25.12"
+  }
+}
