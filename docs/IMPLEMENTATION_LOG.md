@@ -52,6 +52,14 @@ an independent engine API before building editor UI.
     checks. The researched workspace relationship layer and interactive explorer
     remain planned in docs/V2_PLAN.md; cross-service links are not inferred yet.
 
+11. **V2 relationship explorer:** shipped the first local interactive service map
+    and bounded symbol neighborhood browser. Persisted HTTP/Azure declarations from
+    ES modules, CommonJS and v3 bindings, with explicit service/resource mappings,
+    source hashes, root namespacing and ambiguous/unresolved edges. Verified compiler,
+    matching and incremental regressions, actual VS Code webview/worker navigation,
+    and browser rendering/interactions including hostile labels. Cross-root context
+    packing, runtime delivery proof and complete framework coverage remain open.
+
 The production acceptance gates in ROADMAP.md remain visible. A functional local
 pre-release does not establish every framework pattern, representative task
 correctness, platform behavior or enterprise provider policy.

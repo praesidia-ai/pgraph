@@ -1,5 +1,11 @@
+import { hash, safePath } from "@praesidia/pgraph-shared";
 import {
   PGraph,
+  relationships,
+  topologySnapshot,
+  composeWorkspace,
+  type RepositoryTopology,
+  type RelationshipOptions,
   semanticPrompt,
   type SemanticInput,
 } from "@praesidia/pgraph-core";
@@ -33,6 +39,45 @@ process.on("message", (message: unknown) => {
           );
         result = dispatchTool(graph, String(m.args.name), m.args.input);
         break;
+      case "topology":
+        result = topologySnapshot(graph.store, graph.root);
+        break;
+      case "workspaceGraph":
+        result = composeWorkspace(m.args.snapshots as RepositoryTopology[]);
+        break;
+      case "relationships":
+        result = relationships(
+          graph.store,
+          hash(graph.root).slice(0, 24),
+          m.args as RelationshipOptions,
+        );
+        break;
+      case "sourceLocation": {
+        if (m.args.revision !== graph.status().revision)
+          throw new Error("Index changed. Refresh the relationship view.");
+        const node = graph.store.node(String(m.args.symbol));
+        if (!node?.location) throw new Error("Choose an indexed source symbol");
+        const line =
+          m.args.line === undefined
+            ? node.location.startLine
+            : Number(m.args.line);
+        if (
+          !Number.isSafeInteger(line) ||
+          line < node.location.startLine ||
+          line > node.location.endLine
+        )
+          throw new Error("Evidence line outside indexed symbol");
+        graph.fileSlice({
+          file: node.location.file,
+          startLine: node.location.startLine,
+          endLine: node.location.startLine,
+        });
+        result = {
+          path: safePath(graph.root, node.location.file),
+          line,
+        };
+        break;
+      }
       case "metrics":
         result = graph.lastContextMetrics ?? {
           message:

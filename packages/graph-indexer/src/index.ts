@@ -1,3 +1,4 @@
+import { azureConfiguration } from "./bindings.js";
 import { dirname, basename } from "node:path";
 import { appendFileSync, mkdirSync } from "node:fs";
 import type { GraphStore } from "@praesidia/pgraph-store";
@@ -44,7 +45,8 @@ export class GraphIndexer {
     );
     const deleted = old.filter((f) => !current.has(f.path)).map((f) => f.path);
     const configChanged =
-      this.store.getMeta<string>("configHash") !== discovery.configHash;
+      this.store.getMeta<string>("configHash") !== discovery.configHash ||
+      this.store.getMeta<number>("communicationVersion") !== 1;
     const added = records.some((f) => !this.store.file(f.path));
     const affected = new Set([...changed, ...deleted]);
     // Compute reverse transitive dependency closure against the old graph before mutation.
@@ -75,6 +77,19 @@ export class GraphIndexer {
     for (const manifest of discovery.manifests.filter((f) =>
       affected.has(f.path),
     )) {
+      if (basename(manifest.path) !== "package.json") {
+        parsed.push(
+          azureConfiguration(
+            manifest,
+            readLocal(
+              this.root,
+              manifest.path,
+              this.config.limits.maxFileBytes,
+            ),
+          ),
+        );
+        continue;
+      }
       const data: unknown = JSON.parse(readLocal(this.root, manifest.path));
       if (!data || typeof data !== "object" || Array.isArray(data))
         throw new Error(`Invalid manifest: ${manifest.path}`);
@@ -208,6 +223,8 @@ export class GraphIndexer {
         if (signals) this.store.setMeta("git", signals);
       }
       this.store.setMeta("configHash", discovery.configHash);
+      this.store.setMeta("topologyServices", this.config.topology.services);
+      this.store.setMeta("communicationVersion", 1);
       const stats = this.store.stats();
       const result: IndexResult = {
         files: records.length,
@@ -217,7 +234,9 @@ export class GraphIndexer {
         nodes: stats.nodes,
         edges: stats.edges,
         durationMs: Math.round(performance.now() - start),
-        revision: oldRevision + (parsed.length || deleted.length ? 1 : 0),
+        revision:
+          oldRevision +
+          (parsed.length || deleted.length || configChanged ? 1 : 0),
         diagnostics: [
           ...discovery.diagnostics,
           ...parsed.flatMap((p) => p.diagnostics),

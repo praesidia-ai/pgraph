@@ -83,6 +83,10 @@
       {
         "command": "pgraph.status",
         "title": "PGraph: Graph Status"
+      },
+      {
+        "command": "pgraph.explore",
+        "title": "PGraph: Explore Relationships"
       }
     ],
     "viewsContainers": {

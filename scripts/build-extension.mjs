@@ -68,3 +68,13 @@ await copyFile(
   new URL("../node_modules/typescript/LICENSE.txt", import.meta.url),
   new URL("dist/node_modules/typescript/LICENSE.txt", base),
 );
+
+await build({
+  entryPoints: ["apps/vscode-extension/src/webview.ts"],
+  outfile: "apps/vscode-extension/dist/explorer.js",
+  bundle: true,
+  platform: "browser",
+  target: "es2022",
+  format: "iife",
+  minify: true,
+});

@@ -83,6 +83,21 @@ export function readLocal(
   }
 }
 
+function isPublicEndpoint(value: string): boolean {
+  try {
+    const url = new URL(value);
+    return (
+      ["http:", "https:"].includes(url.protocol) &&
+      !url.username &&
+      !url.password &&
+      !url.search &&
+      !url.hash
+    );
+  } catch {
+    return false;
+  }
+}
+
 export const configSchema = z
   .object({
     include: z.array(z.string().max(500)).max(200).default(["**/*"]),
@@ -136,6 +151,68 @@ export const configSchema = z
         enabled: z.boolean().default(false),
         maxCommits: z.number().int().min(1).max(1000).default(100),
       })
+      .default({}),
+    topology: z
+      .object({
+        services: z
+          .array(
+            z
+              .object({
+                name: z.string().min(1).max(100),
+                path: z
+                  .string()
+                  .max(500)
+                  .refine(
+                    (p) =>
+                      p === "." ||
+                      (!p.startsWith("/") &&
+                        !p.includes("\\") &&
+                        p
+                          .split("/")
+                          .every(
+                            (part) => part && part !== "." && part !== "..",
+                          )),
+                    "Use a repository-relative service directory",
+                  )
+                  .default("."),
+                origins: z
+                  .array(
+                    z
+                      .string()
+                      .url()
+                      .max(500)
+                      .refine(
+                        isPublicEndpoint,
+                        "Use an HTTP(S) URL without credentials, query or fragment",
+                      ),
+                  )
+                  .max(30)
+                  .default([]),
+                urls: z
+                  .record(
+                    z.string().max(100),
+                    z.string().url().max(500).refine(isPublicEndpoint),
+                  )
+                  .default({}),
+                resources: z
+                  .record(
+                    z.string().max(100),
+                    z.string().regex(/^[a-zA-Z0-9._:/-]{1,200}$/),
+                  )
+                  .default({}),
+              })
+              .strict(),
+          )
+          .max(100)
+          .refine(
+            (services) =>
+              new Set(services.map((service) => service.path)).size ===
+              services.length,
+            "Service paths must be unique within a repository",
+          )
+          .default([]),
+      })
+      .strict()
       .default({}),
     diagnostics: z.boolean().default(false),
   })

@@ -1,3 +1,4 @@
+import { communications } from "./communications.js";
 import ts from "typescript";
 import { dirname, relative, resolve } from "node:path";
 import { existsSync } from "node:fs";
@@ -793,6 +794,9 @@ export class TypeScriptAdapter implements LanguageAdapter {
           ts.forEachChild(ast, (child) => walk(child, owner));
         };
         source.forEachChild((node) => walk(node, fileNode));
+        const topology = communications(source, checker, record, nodes);
+        fileNode.metadata.communications = topology.endpoints;
+        fileNode.metadata.communicationsTruncated = topology.truncated;
         const syntax = program
           .getSyntacticDiagnostics(source)
           .map(

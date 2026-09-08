@@ -24,20 +24,24 @@
     "test:extension": "node scripts/test-extension.mjs",
     "benchmark:scale": "node scripts/scale-benchmark.mjs",
     "package:extension": "node scripts/package-extension.mjs",
-    "package:workspaces": "node scripts/package-workspaces.mjs"
+    "package:workspaces": "node scripts/package-workspaces.mjs",
+    "test:explorer": "node scripts/test-explorer-ui.mjs"
   },
   "devDependencies": {
-    "typescript": "~5.9.3",
+    "@types/cytoscape": "^3.21.9",
     "@types/node": "^22.19.0",
     "@types/picomatch": "^4.0.2",
     "@types/vscode": "^1.100.0",
+    "@vitest/coverage-v8": "^3.2.4",
     "@vscode/test-electron": "^2.5.2",
     "@vscode/vsce": "^3.7.1",
-    "vitest": "^3.2.4",
-    "@vitest/coverage-v8": "^3.2.4",
+    "cytoscape": "^3.34.3",
+    "esbuild": "^0.25.12",
     "eslint": "^9.39.0",
-    "typescript-eslint": "^8.48.0",
+    "playwright": "^1.63.0",
     "prettier": "^3.7.4",
-    "esbuild": "^0.25.12"
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.48.0",
+    "vitest": "^3.2.4"
   }
 }

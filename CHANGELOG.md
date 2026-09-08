@@ -2,6 +2,14 @@
 
 ## 0.1.0 — Unreleased
 
+- Add an offline Cytoscape relationship explorer with workspace service maps,
+  symbol drill-down, search, graph controls, evidence inspection and validated
+  source navigation.
+- Persist TypeScript/CommonJS HTTP and Azure messaging declarations, recognize
+  v3 function.json and v4 registrations, and compose namespaced cross-root links
+  using explicit URL/resource identities. Preserve ambiguous and unresolved targets.
+- Add provider-independent topology/relationship APIs and bounded workspace composition.
+
 - Add Index Workspace for all open microservice folders, per-folder results,
   sequential execution, idle worker release and removed-folder cleanup.
 - Expose discovery/project/persistence progress for mixed TypeScript workspaces,

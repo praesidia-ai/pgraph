@@ -11,6 +11,14 @@ an explicit token budget, instead of repeatedly opening whole files.
 The engine is an independent TypeScript library. CLI, MCP, and VS Code/Copilot are
 adapters. Indexing needs **no AI account, external API key, cloud database, or Docker**.
 
+## Workspace relationship explorer
+
+Run **PGraph: Index Workspace**, then **PGraph: Explore Relationships** to view
+services across all folders in the current VS Code workspace. Drill into symbols,
+filter directed relationships, inspect evidence and open source. HTTP, Azure queue
+and Event Grid candidates use explicit URL/resource mappings; unknown targets stay
+unresolved. See [setup and supported patterns](docs/WORKSPACE_GRAPH.md).
+
 ## Try it in one minute
 
 Requires Node.js **22.18+** (24 LTS recommended) and npm.
@@ -119,8 +127,9 @@ index. The indexing notification names the current TypeScript configuration and
 shows elapsed time; the PGraph output channel records stage messages. Workspace
 indexing processes folders sequentially and releases idle workers between folders.
 Each folder retains its own `.pgraph` database. Current query tools use one selected
-folder; cross-service communication queries and the graph browser are planned in
-[the v2 design](docs/V2_PLAN.md).
+folder. The [workspace explorer](docs/WORKSPACE_GRAPH.md) composes cross-service
+communication candidates across those indexes; cross-root context packing remains
+in [the v2 design](docs/V2_PLAN.md).
 
 Semantic enrichment is optional: enable the **user/machine** setting
 `pgraph.semanticEnabled`, then run **PGraph: Build Semantic Index** and select

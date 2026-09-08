@@ -1,3 +1,6 @@
+import { relationships as readRelationships } from "./explorer.js";
+import { topologySnapshot as readTopology } from "./workspace.js";
+import type { RelationshipOptions } from "@praesidia/pgraph-ir";
 import type {
   EdgeType,
   GraphNode,
@@ -52,6 +55,12 @@ export class GraphQuery {
     readonly root: string,
     public maxFileBytes = 2_000_000,
   ) {}
+  relationships(options: RelationshipOptions = {}) {
+    return readRelationships(this.store, hash(this.root).slice(0, 24), options);
+  }
+  topology() {
+    return readTopology(this.store, this.root);
+  }
   symbol(name: string): GraphNode {
     const nodes = this.store.resolve(name);
     if (!nodes.length) throw new Error(`Symbol not found: ${name}`);
@@ -397,3 +406,5 @@ export class GraphQuery {
     };
   }
 }
+export { relationships } from "./explorer.js";
+export { topologySnapshot, composeWorkspace } from "./workspace.js";

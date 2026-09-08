@@ -1,8 +1,9 @@
 # PGraph v2: explainable repository exploration
 
 Started 2026-09-08. The first delivered change addresses the reported company-repository
-indexing timeout. The graph browser and ranking improvements below are planned,
-not yet shipped.
+indexing timeout. The workspace map and relationship browser are now delivered for the supported
+patterns in [the workspace guide](WORKSPACE_GRAPH.md). Ranking improvements remain
+planned.
 
 ## Research and choices
 
@@ -72,9 +73,8 @@ flowchart LR
   F --> Q[Cross-service context and impact queries]
 ```
 
-The relationship layer and its consumers in this diagram are the intended v2
-architecture. Current Index Workspace creates the per-root graphs; it does not
-already infer communication between them.
+The workspace relationship layer and interactive explorer are now implemented.
+Cross-service context packing and impact ranking in this diagram remain planned.
 
 Candidate communication evidence includes HTTP clients and route definitions,
 Azure Service Bus queue/topic producers and consumers, Event Grid event contracts,
@@ -92,14 +92,19 @@ Do not follow URLs or execute application code to discover topology.
 Azure Functions programming models use different registration mechanisms; the
 [official Node.js reference](https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference-node)
 documents folder/binding-based registration and the newer app registration API.
-Add dedicated tested recognizers before claiming Azure runtime-topology coverage.
+The first tested recognizers cover v3/v4 HTTP and messaging declarations; they
+do not establish complete Azure runtime-topology coverage.
 Keep local secret settings and connection-string values out of discovery evidence.
 
 The explorer should start with service groups and expand toward routes, handlers,
 callers and shared code. Impact analysis needs to cross explicitly evidenced service
 boundaries while labeling unknown or incomplete downstream relationships.
 
-## Next: an interactive relationship browser
+## Delivered: first interactive relationship browser
+
+The initial implementation follows these requirements; the shipped service view
+uses a circle layout and the symbol view a directed breadth-first layout. See the
+workspace guide for supported patterns and remaining limits.
 
 1. Add a provider-independent graph-view query returning nodes, directed edges,
    provenance, source locations, index revision and explicit truncation flags.

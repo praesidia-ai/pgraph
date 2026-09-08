@@ -1,8 +1,11 @@
+import { RelationshipExplorer } from "./explorer.js";
 import * as vscode from "vscode";
 import { readFileSync } from "node:fs";
 import { EngineClient, NodeLaunchError } from "./client.js";
 import type {
   GraphStats,
+  ExplorerGraph,
+  RepositoryTopology,
   SemanticInput,
   IndexResult,
 } from "@praesidia/pgraph-core";
@@ -31,6 +34,7 @@ class Overview implements vscode.TreeDataProvider<vscode.TreeItem> {
   getChildren(): vscode.TreeItem[] {
     const rows: [string, string, string?][] = [
       ["Workspace", "Index all open folders", "indexWorkspace"],
+      ["Service map", "Explore relationships", "explore"],
       [
         "Index health",
         this.stats?.revision ? "Indexed" : "Not indexed",
@@ -67,6 +71,8 @@ export function activate(context: vscode.ExtensionContext): {
     vscode.window.registerTreeDataProvider("pgraph.overview", overview),
   );
   let selectedFolder: vscode.WorkspaceFolder | undefined;
+  let explorer: RelationshipExplorer | undefined;
+  const explorerRoots = new Map<string, vscode.WorkspaceFolder>();
   const engineFor = (folder: vscode.WorkspaceFolder): EngineClient => {
     if (!vscode.workspace.isTrusted)
       throw new Error("Trust the workspace before using PGraph");
@@ -298,6 +304,103 @@ export function activate(context: vscode.ExtensionContext): {
     });
     return workspaceRun;
   });
+  const workspaceGraph = async (): Promise<ExplorerGraph> => {
+    const folders = vscode.workspace.workspaceFolders ?? [];
+    if (!folders.length) throw new Error("Open repository folders first");
+    if (folders.length > 64)
+      throw new Error("Select up to 64 workspace roots for this map");
+    const snapshots: RepositoryTopology[] = [];
+    const warnings: string[] = [];
+    explorerRoots.clear();
+    for (const folder of folders) {
+      let engine: EngineClient | undefined;
+      try {
+        engine = engineFor(folder);
+        const snapshot = await engine.request<RepositoryTopology>("topology");
+        if (explorerRoots.has(snapshot.rootId)) {
+          warnings.push(`${folder.name}: duplicate repository root skipped`);
+          continue;
+        }
+        explorerRoots.set(snapshot.rootId, folder);
+        snapshots.push(snapshot);
+      } catch (error) {
+        if (error instanceof NodeLaunchError) throw error;
+        warnings.push(
+          `${folder.name}: ${error instanceof Error ? error.message : String(error)}`,
+        );
+      } finally {
+        engine?.releaseIdle();
+      }
+    }
+    const first = snapshots[0];
+    if (!first)
+      throw new Error(warnings.join("; ") || "No local indexed repositories");
+    const engine = engineFor(explorerRoots.get(first.rootId)!);
+    try {
+      const result = await engine.request<ExplorerGraph>("workspaceGraph", {
+        snapshots,
+      });
+      result.warnings.push(...warnings);
+      return result;
+    } finally {
+      engine.releaseIdle();
+    }
+  };
+  command("explore", async () => {
+    if (explorer) {
+      explorer.panel.reveal();
+      return;
+    }
+    if (!vscode.workspace.isTrusted)
+      throw new Error("Trust the workspace before using PGraph");
+    explorer = new RelationshipExplorer(context.extensionUri, {
+      workspace: workspaceGraph,
+      relationships: async (rootId, options) => {
+        const folder = explorerRoots.get(rootId);
+        if (!folder) throw new Error("Refresh the service map first");
+        return engineFor(folder).request<ExplorerGraph>(
+          "relationships",
+          options,
+        );
+      },
+      open: async (rootId, symbol, revision, line) => {
+        const folder = explorerRoots.get(rootId);
+        if (!folder) throw new Error("Repository is no longer in this view");
+        const source = await engineFor(folder).request<{
+          path: string;
+          line: number;
+        }>("sourceLocation", { symbol, revision, line });
+        const document = await vscode.workspace.openTextDocument(
+          vscode.Uri.file(source.path),
+        );
+        if (document.isDirty)
+          throw new Error(
+            "Save and reindex this source before opening indexed evidence",
+          );
+        await vscode.window.showTextDocument(document, {
+          viewColumn: vscode.ViewColumn.Beside,
+          selection: new vscode.Range(source.line - 1, 0, source.line - 1, 0),
+        });
+      },
+    });
+    const current = explorer;
+    current.panel.onDidDispose(() => {
+      if (explorer === current) explorer = undefined;
+    });
+    context.subscriptions.push(current);
+  });
+  context.subscriptions.push(
+    vscode.workspace.onDidChangeTextDocument((event) => {
+      if (
+        event.document.uri.scheme === "file" &&
+        vscode.workspace.getWorkspaceFolder(event.document.uri)
+      )
+        explorer?.markStale();
+    }),
+  );
+  context.subscriptions.push(
+    vscode.workspace.onDidChangeWorkspaceFolders(() => explorer?.markStale()),
+  );
   command("status", async () => {
     const text = await request("status", {});
     await show(text, "json");

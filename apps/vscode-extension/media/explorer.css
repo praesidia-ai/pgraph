@@ -1,0 +1,202 @@
+:root {
+  color-scheme: dark light;
+  font-family: var(--vscode-font-family, system-ui, sans-serif);
+  color: var(--vscode-foreground, #dce4f2);
+  background: var(--vscode-editor-background, #101725);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 22px 26px;
+}
+header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+header > div {
+  flex: 1;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #77aaf9;
+}
+h1 {
+  font-size: 24px;
+  font-weight: 550;
+  margin: 7px 0 0;
+}
+h2 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 18px 0 10px;
+}
+button,
+input,
+select {
+  font: inherit;
+  font-size: 12px;
+  border: 1px solid var(--vscode-input-border, #344258);
+  border-radius: 5px;
+  padding: 8px 10px;
+  color: var(--vscode-input-foreground, #e1eafa);
+  background: var(--vscode-input-background, #192438);
+}
+button {
+  cursor: pointer;
+}
+button:hover {
+  border-color: #78aaff;
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #78aaff;
+  outline-offset: 2px;
+}
+#workspace {
+  background: #295cb4;
+  color: white;
+  border-color: #3972d0;
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+form {
+  flex: 1;
+  display: flex;
+  gap: 6px;
+  min-width: 240px;
+}
+input {
+  flex: 1;
+  min-width: 100px;
+}
+label {
+  font-size: 11px;
+  color: var(--vscode-descriptionForeground, #9baac3);
+}
+select {
+  margin-left: 4px;
+}
+#status {
+  font-size: 12px;
+  color: var(--vscode-descriptionForeground, #9baac3);
+  line-height: 1.6;
+  min-height: 20px;
+}
+#status.error {
+  color: #f1ab7d;
+}
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  border: 1px solid var(--vscode-panel-border, #2c394e);
+  border-radius: 10px;
+  overflow: hidden;
+  height: calc(100vh - 205px);
+  min-height: 420px;
+}
+.canvas-wrap {
+  position: relative;
+  min-width: 0;
+  background: radial-gradient(ellipse at 40% 35%, #4a76b810, transparent 70%);
+}
+#graph {
+  position: absolute;
+  inset: 0;
+}
+.legend {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 10px;
+  opacity: 0.8;
+  pointer-events: none;
+}
+.unknown {
+  color: #d1aa68;
+}
+#empty {
+  position: absolute;
+  top: 40%;
+  left: 15%;
+  right: 15%;
+  text-align: center;
+  opacity: 0.65;
+  pointer-events: none;
+}
+aside {
+  padding: 0 18px 20px;
+  border-left: 1px solid var(--vscode-panel-border, #2c394e);
+  overflow-y: auto;
+}
+#detail {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--vscode-descriptionForeground, #afbdd2);
+}
+#actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.list button {
+  text-align: left;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+  background: transparent;
+  border-color: transparent;
+  padding: 6px 4px;
+}
+.list button:hover {
+  background: #6385b31a;
+}
+@media (max-width: 800px) {
+  body {
+    padding: 14px;
+  }
+  main {
+    grid-template-columns: minmax(0, 1fr) 230px;
+  }
+  .toolbar {
+    gap: 6px;
+  }
+  header {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 520px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  .canvas-wrap {
+    height: 400px;
+  }
+  aside {
+    max-height: 350px;
+    border-left: 0;
+    border-top: 1px solid #2c394e;
+  }
+}

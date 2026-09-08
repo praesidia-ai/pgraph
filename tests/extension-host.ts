@@ -1,3 +1,5 @@
+import { RelationshipExplorer } from "../apps/vscode-extension/src/explorer.js";
+import type { ExplorerGraph, RepositoryTopology } from "@praesidia/pgraph-core";
 import * as vscode from "vscode";
 import assert from "node:assert/strict";
 import { mkdtempSync, writeFileSync, rmSync, existsSync } from "node:fs";
@@ -130,6 +132,82 @@ export async function run(): Promise<void> {
     "AuthService.login",
     "Released workers restart for later queries",
   );
+  const explorerOutput = vscode.window.createOutputChannel(
+    "PGraph explorer test",
+  );
+  const explorerEngine = new EngineClient(
+    vscode.workspace.workspaceFolders![0]!.uri.fsPath,
+    extension.extensionUri.fsPath + "/dist/worker.cjs",
+    explorerOutput,
+  );
+  const snapshot = await explorerEngine.request<RepositoryTopology>("topology");
+  const neighborhood = await explorerEngine.request<ExplorerGraph>(
+    "relationships",
+    { query: "AuthService", depth: 1 },
+  );
+  assert.ok(neighborhood.nodes.length > 0);
+  const navigated: string[] = [];
+  const panel = new RelationshipExplorer(extension.extensionUri, {
+    workspace: async () => neighborhood,
+    relationships: async (rootId, options) => {
+      assert.equal(rootId, snapshot.rootId);
+      return explorerEngine.request<ExplorerGraph>("relationships", options);
+    },
+    open: async (rootId, symbol, revision, line) => {
+      assert.equal(rootId, snapshot.rootId);
+      const location = await explorerEngine.request<{ path: string }>(
+        "sourceLocation",
+        { symbol, revision, line },
+      );
+      navigated.push(location.path);
+    },
+  });
+  try {
+    assert.ok(panel.panel.webview.html.includes("default-src 'none'"));
+    assert.ok(panel.panel.webview.html.includes("media/explorer.css"));
+    await panel.handle({ type: "ready" });
+    const node = neighborhood.nodes.find((n) => n.symbolId && n.location)!;
+    await panel.handle({ type: "open", id: node.id });
+    assert.equal(navigated.length, 1);
+    await assert.rejects(
+      panel.handle({ type: "open", id: "../../.ssh/id_rsa" }),
+      /not in the displayed graph/,
+    );
+    await assert.rejects(
+      panel.handle({ type: "focus", id: "unknown-root" }),
+      /not in the displayed graph/,
+    );
+    await assert.rejects(
+      panel.handle({ type: "execute", command: "anything" }),
+      /Unknown explorer action/,
+    );
+    await assert.rejects(
+      explorerEngine.request("sourceLocation", {
+        symbol: node.symbolId,
+        revision: -1,
+      }),
+      /Index changed/,
+    );
+    await panel.handle({ type: "focus", id: node.id });
+    await panel.handle({
+      type: "search",
+      query: "AuthService",
+      direction: "both",
+      depth: 2,
+    });
+    panel.markStale();
+  } finally {
+    panel.dispose();
+    explorerEngine.dispose();
+    explorerOutput.dispose();
+  }
+  await vscode.commands.executeCommand("pgraph.explore");
+  assert.ok(
+    vscode.window.tabGroups.all.some((group) =>
+      group.tabs.some((tab) => tab.input instanceof vscode.TabInputWebview),
+    ),
+    "Explore Relationships opens a real webview",
+  );
   const testRoot = mkdtempSync(join(tmpdir(), "pgraph-timeouts-"));
   const worker = join(testRoot, "worker.cjs");
   writeFileSync(
@@ -205,6 +283,6 @@ export async function run(): Promise<void> {
       );
   }
   console.log(
-    "PGraph extension-host workflow passed: multi-root indexing, per-project progress, long indexing, queued query/cancellation, timeout recovery, missing Node recovery, activation, sidebar, indexing, LM tool, context document, metrics, incremental update.",
+    "PGraph extension-host workflow passed: relationship webview, graph worker, validated navigation, message rejection, multi-root indexing, per-project progress, long indexing, queued query/cancellation, timeout recovery, missing Node recovery, activation, sidebar, indexing, LM tool, context document, metrics, incremental update.",
   );
 }

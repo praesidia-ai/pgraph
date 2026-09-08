@@ -33,8 +33,10 @@ opt-in per-symbol semantic enrichment, benchmark tooling, security tests and doc
   partition large compiler projects and improve dependency closure bounds.
 - Add stronger cache provenance,
   platform-specific descriptor-relative filesystem traversal and clean coordination.
-- Add a graph/table browser in the editor, per-task saved metrics, cancellable
-  semantic batches with explicit evidence previews, and precise readiness status.
+- Extend the delivered service/symbol explorer with cross-root context packing,
+  impact ranking, additional communication recognizers and measured layout tuning.
+- Add per-task saved metrics, cancellable semantic batches with explicit evidence
+  previews, and precise readiness status.
 - Add SCIP ingestion, then language adapters based on demonstrated demand.
 
 Future options: CI-generated sanitized artifacts, shared team indexes, alternate

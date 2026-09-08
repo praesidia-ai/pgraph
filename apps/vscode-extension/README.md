@@ -33,8 +33,8 @@ to 120 seconds (`pgraph.queryTimeoutSeconds`), excluding time queued behind an
 index. The indexing notification shows the current TypeScript project and elapsed
 time, and remains cancellable. Workspace indexing processes folders sequentially,
 keeps a database in each folder, and releases idle workers to limit memory use.
-Current queries still target one selected folder. Cross-service communication
-inference and an interactive graph browser are planned for v2.
+Context tools still target one selected folder. **Explore Relationships** composes
+cross-service communication candidates across the workspace indexes.
 
 ## Optional Copilot enrichment
 
@@ -60,3 +60,16 @@ model authorization and correctness on representative company tasks must be
 validated in your environment before production rollout.
 
 MIT licensed. The underlying PGraph core also exposes CLI and MCP adapters.
+
+## Explore services and symbols
+
+After **PGraph: Index Workspace**, run **PGraph: Explore Relationships**. The local
+interactive map spans the folders in this window's workspace. Select a service to
+search symbols, expand incoming/outgoing relationships, inspect provenance, and
+open either endpoint's source. Keyboard-accessible lists accompany the canvas.
+
+Cross-service candidates require compatible routes/channels and explicit service
+URL or messaging resource identities in `.pgraph.json` → `topology.services`.
+Unknown destinations appear separately. See `docs/WORKSPACE_GRAPH.md` in the project
+for configuration examples, supported Azure patterns and limits. Context tools
+continue to query one selected repository.

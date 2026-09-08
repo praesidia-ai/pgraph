@@ -98,3 +98,11 @@ Never treat an index downloaded from an untrusted source as a trusted cache.
 `completed` / `total` fields. Phases are `discover`, `analyze`, `persist` and `complete`. TypeScript analysis reports its active configuration group; mixed
 root/shared and nested project configurations remain in one repository graph.
 Progress events are informational and are not a resumable checkpoint protocol.
+
+## Workspace maps and graph views
+
+`graph.topology()` returns a committed repository communication snapshot.
+`composeWorkspace([snapshot, ...])` combines explicitly selected roots with
+namespaced identities and evidence-backed candidate links. `graph.relationships`
+returns a bounded symbol neighborhood with directed edges and provenance. See
+[the workspace graph guide](WORKSPACE_GRAPH.md) for examples and exact limits.

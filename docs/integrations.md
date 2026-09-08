@@ -12,7 +12,8 @@ folders. Repeated invocations share the active workspace run. Each root owns its
 
 Queries use the active editor's folder, retain the last selected folder while a
 result document is open, or ask the user to pick one. These are currently per-root
-queries; cross-service communication inference is not implemented yet.
+context queries. **PGraph: Explore Relationships** adds a separate cross-service
+map and bounded symbol browser; see [the workspace guide](WORKSPACE_GRAPH.md).
 Virtual/untrusted workspaces are disabled.
 
 Commands cover initialize, index, changed-file indexing, architecture, symbol,
@@ -21,7 +22,8 @@ The sidebar shows the selected repository's stored health and counts, task/conte
 entry points and recent workspace indexing results. Progress reports discovery,
 per-tsconfig analysis, persistence and commit completion; timestamped messages are
 available in the PGraph output channel.
-It is an overview/navigation view, not an interactive graph visualization.
+The sidebar opens the relationship webview, with a locally bundled renderer,
+nonce-based script policy, bounded graph results and validated source navigation.
 
 An existing index is incrementally updated after supported source/JSON file events
 when `pgraph.autoIndex` is enabled. `.gitignore` changes currently require the

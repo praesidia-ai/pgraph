@@ -82,7 +82,9 @@ export function discover(root: string, config: Config): Discovery {
       if (!entry.isFile()) continue;
       const isConfig =
         /^(?:tsconfig[^/]*|jsconfig|package)\.json$/.test(entry.name) ||
-        entry.name === ".pgraph.json";
+        entry.name === ".pgraph.json" ||
+        entry.name === "function.json" ||
+        entry.name === "host.json";
       const isSource =
         /\.[cm]?[jt]sx?$/.test(path) &&
         !/\.min\.js$/.test(path) &&
@@ -99,7 +101,10 @@ export function discover(root: string, config: Config): Discovery {
       const content = readLocal(root, path, config.limits.maxFileBytes);
       const digest = hash(content);
       if (isConfig) configuration.push(`${path}:${digest}`);
-      if (isSource || entry.name === "package.json") {
+      if (
+        isSource ||
+        ["package.json", "function.json", "host.json"].includes(entry.name)
+      ) {
         const record: FileRecord = {
           path,
           hash: digest,

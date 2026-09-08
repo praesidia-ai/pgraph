@@ -190,3 +190,8 @@ export class PGraph extends GraphQuery {
     this.store.close();
   }
 }
+export {
+  relationships,
+  topologySnapshot,
+  composeWorkspace,
+} from "@praesidia/pgraph-query";
