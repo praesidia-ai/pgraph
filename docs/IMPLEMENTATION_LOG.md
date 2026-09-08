@@ -42,6 +42,16 @@ an independent engine API before building editor UI.
    installation of all 16 renamed package archives passed. Retrieval benchmark
    reports are regenerated after naming changes to match the current API.
 
+10. **V2 workspace foundation:** fixed missing-Node recovery and separated indexing
+    and query execution limits. Requests queue without using their execution timeout;
+    queued cancellation leaves the active index running. Added per-configuration
+    progress for mixed root/nested TypeScript projects and Index Workspace for all
+    open local roots, with sequential indexing, per-root results, duplicate-run
+    sharing and idle compiler-worker release. All 27 tests and an actual two-root
+    VS Code extension-host workflow passed, including timeout/cancellation/restart
+    checks. The researched workspace relationship layer and interactive explorer
+    remain planned in docs/V2_PLAN.md; cross-service links are not inferred yet.
+
 The production acceptance gates in ROADMAP.md remain visible. A functional local
 pre-release does not establish every framework pattern, representative task
 correctness, platform behavior or enterprise provider policy.

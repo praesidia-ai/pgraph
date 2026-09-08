@@ -1,7 +1,11 @@
 import * as vscode from "vscode";
 import { readFileSync } from "node:fs";
-import { EngineClient } from "./client.js";
-import type { GraphStats, SemanticInput } from "@praesidia/pgraph-core";
+import { EngineClient, NodeLaunchError } from "./client.js";
+import type {
+  GraphStats,
+  SemanticInput,
+  IndexResult,
+} from "@praesidia/pgraph-core";
 
 interface ToolManifest {
   name: string;
@@ -17,11 +21,16 @@ class Overview implements vscode.TreeDataProvider<vscode.TreeItem> {
     this.recent = message ?? this.recent;
     this.changed.fire();
   }
+  updateRecent(message: string): void {
+    this.recent = message;
+    this.changed.fire();
+  }
   getTreeItem(item: vscode.TreeItem): vscode.TreeItem {
     return item;
   }
   getChildren(): vscode.TreeItem[] {
     const rows: [string, string, string?][] = [
+      ["Workspace", "Index all open folders", "indexWorkspace"],
       [
         "Index health",
         this.stats?.revision ? "Indexed" : "Not indexed",
@@ -57,23 +66,16 @@ export function activate(context: vscode.ExtensionContext): {
   context.subscriptions.push(
     vscode.window.registerTreeDataProvider("pgraph.overview", overview),
   );
-  const client = async (): Promise<EngineClient> => {
+  let selectedFolder: vscode.WorkspaceFolder | undefined;
+  const engineFor = (folder: vscode.WorkspaceFolder): EngineClient => {
     if (!vscode.workspace.isTrusted)
       throw new Error("Trust the workspace before using PGraph");
-    const folders = vscode.workspace.workspaceFolders;
-    if (!folders?.length)
-      throw new Error("Open a local repository folder first");
-    const editor = vscode.window.activeTextEditor;
-    let folder = editor
-      ? vscode.workspace.getWorkspaceFolder(editor.document.uri)
-      : undefined;
-    folder ??=
-      folders.length === 1
-        ? folders[0]
-        : await vscode.window.showWorkspaceFolderPick({
-            placeHolder: "Choose the repository to query",
-          });
-    if (!folder) throw new vscode.CancellationError();
+    if (
+      !vscode.workspace.workspaceFolders?.some(
+        (current) => current.uri.toString() === folder.uri.toString(),
+      )
+    )
+      throw new Error("Repository is no longer open in the workspace");
     if (folder.uri.scheme !== "file")
       throw new Error("PGraph requires a local filesystem workspace");
     let engine = clients.get(folder.uri.fsPath);
@@ -87,6 +89,27 @@ export function activate(context: vscode.ExtensionContext): {
       context.subscriptions.push(engine);
     }
     return engine;
+  };
+  const client = async (): Promise<EngineClient> => {
+    if (!vscode.workspace.isTrusted)
+      throw new Error("Trust the workspace before using PGraph");
+    const folders = vscode.workspace.workspaceFolders;
+    if (!folders?.length)
+      throw new Error("Open a local repository folder first");
+    const editor = vscode.window.activeTextEditor;
+    let folder = editor
+      ? vscode.workspace.getWorkspaceFolder(editor.document.uri)
+      : undefined;
+    folder ??= selectedFolder;
+    folder ??=
+      folders.length === 1
+        ? folders[0]
+        : await vscode.window.showWorkspaceFolderPick({
+            placeHolder: "Choose the repository to query",
+          });
+    if (!folder) throw new vscode.CancellationError();
+    selectedFolder = folder;
+    return engineFor(folder);
   };
   const show = async (text: string, language = "markdown"): Promise<void> => {
     const document = await vscode.workspace.openTextDocument({
@@ -119,9 +142,20 @@ export function activate(context: vscode.ExtensionContext): {
             return await handler(arg);
           } catch (error) {
             if (!(error instanceof vscode.CancellationError))
-              void vscode.window.showErrorMessage(
-                `PGraph: ${error instanceof Error ? error.message : String(error)}`,
-              );
+              void vscode.window
+                .showErrorMessage(
+                  `PGraph: ${error instanceof Error ? error.message : String(error)}`,
+                  ...(error instanceof NodeLaunchError
+                    ? ["Open Node Settings"]
+                    : []),
+                )
+                .then((action) => {
+                  if (action === "Open Node Settings")
+                    return vscode.commands.executeCommand(
+                      "workbench.action.openSettings",
+                      "@id:pgraph.nodePath",
+                    );
+                });
             throw error;
           }
         },
@@ -135,17 +169,37 @@ export function activate(context: vscode.ExtensionContext): {
         title: "PGraph: indexing repository",
         cancellable: true,
       },
-      async (_progress, token) => {
-        const result = await (
-          await client()
-        ).request<{ durationMs: number; parsed: number }>("index", {}, token);
-        await refresh();
-        overview.update(
-          undefined,
-          `${result.parsed} files / ${result.durationMs} ms`,
-        );
-        await refresh();
-        return result;
+      async (progress, token) => {
+        const started = performance.now();
+        let phase = "Waiting to index";
+        const elapsed = setInterval(() => {
+          const seconds = Math.floor((performance.now() - started) / 1000);
+          progress.report({
+            message: `${phase} — ${Math.floor(seconds / 60)}m ${seconds % 60}s elapsed`,
+          });
+        }, 1000);
+        try {
+          const result = await (
+            await client()
+          ).request<{ durationMs: number; parsed: number }>(
+            "index",
+            {},
+            token,
+            (update) => {
+              phase = update.message;
+              progress.report({ message: phase });
+            },
+          );
+          await refresh();
+          overview.update(
+            undefined,
+            `${result.parsed} files / ${result.durationMs} ms`,
+          );
+          await refresh();
+          return result;
+        } finally {
+          clearInterval(elapsed);
+        }
       },
     );
   command("initialize", async () => {
@@ -154,6 +208,96 @@ export function activate(context: vscode.ExtensionContext): {
   });
   command("index", index);
   command("reindex", index);
+  const indexWorkspace = async (): Promise<unknown> => {
+    if (!vscode.workspace.isTrusted)
+      throw new Error("Trust the workspace before using PGraph");
+    const folders = vscode.workspace.workspaceFolders;
+    if (!folders?.length) throw new Error("Open repository folders first");
+    const results: {
+      root: string;
+      name: string;
+      result?: IndexResult;
+      error?: string;
+    }[] = [];
+    await vscode.window.withProgress(
+      {
+        location: vscode.ProgressLocation.Notification,
+        title: "PGraph: indexing workspace",
+        cancellable: true,
+      },
+      async (progress, token) => {
+        const started = performance.now();
+        let phase = "Preparing repositories";
+        const elapsed = setInterval(
+          () =>
+            progress.report({
+              message: `${phase} — ${Math.floor((performance.now() - started) / 1000)}s elapsed`,
+            }),
+          1000,
+        );
+        try {
+          for (const [i, folder] of folders.entries()) {
+            if (token.isCancellationRequested)
+              throw new vscode.CancellationError();
+            phase = `${i + 1}/${folders.length}: ${folder.name}`;
+            progress.report({ message: phase });
+            let engine: EngineClient | undefined;
+            try {
+              engine = engineFor(folder);
+              const result = await engine.request<IndexResult>(
+                "index",
+                {},
+                token,
+                (update) => {
+                  phase = `${i + 1}/${folders.length}: ${folder.name} — ${update.message}`;
+                  progress.report({ message: phase });
+                },
+              );
+              results.push({
+                root: folder.uri.toString(),
+                name: folder.name,
+                result,
+              });
+            } catch (error) {
+              if (
+                error instanceof vscode.CancellationError ||
+                token.isCancellationRequested ||
+                error instanceof NodeLaunchError
+              )
+                throw error;
+              results.push({
+                root: folder.uri.toString(),
+                name: folder.name,
+                error: error instanceof Error ? error.message : String(error),
+              });
+            } finally {
+              // Avoid retaining a compiler process for every microservice in a large workspace.
+              engine?.releaseIdle();
+            }
+          }
+        } finally {
+          clearInterval(elapsed);
+        }
+      },
+    );
+    const summary = {
+      indexed: results.filter((root) => root.result).length,
+      failed: results.filter((root) => root.error).length,
+      roots: results,
+    };
+    overview.updateRecent(
+      `${summary.indexed}/${folders.length} workspace folders indexed; ${summary.failed} failed`,
+    );
+    await show(JSON.stringify(summary, null, 2), "json");
+    return summary;
+  };
+  let workspaceRun: Promise<unknown> | undefined;
+  command("indexWorkspace", () => {
+    workspaceRun ??= indexWorkspace().finally(() => {
+      workspaceRun = undefined;
+    });
+    return workspaceRun;
+  });
   command("status", async () => {
     const text = await request("status", {});
     await show(text, "json");
@@ -332,6 +476,16 @@ export function activate(context: vscode.ExtensionContext): {
         },
       }),
     );
+  context.subscriptions.push(
+    vscode.workspace.onDidChangeWorkspaceFolders((event) => {
+      for (const folder of event.removed) {
+        clients.get(folder.uri.fsPath)?.dispose();
+        clients.delete(folder.uri.fsPath);
+        if (selectedFolder?.uri.toString() === folder.uri.toString())
+          selectedFolder = undefined;
+      }
+    }),
+  );
   const timers = new Map<string, ReturnType<typeof setTimeout>>();
   const watcher = vscode.workspace.createFileSystemWatcher(
     "**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json}",

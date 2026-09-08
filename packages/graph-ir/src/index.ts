@@ -106,6 +106,16 @@ export interface ParsedFile {
   edges: GraphEdge[];
   diagnostics: string[];
 }
+export interface IndexProgress {
+  phase: "discover" | "analyze" | "persist" | "complete";
+  message: string;
+  completed?: number;
+  total?: number;
+}
+export interface IndexOptions {
+  rebuild?: boolean;
+  onProgress?: (progress: IndexProgress) => void;
+}
 export interface IndexResult {
   files: number;
   parsed: number;
@@ -146,7 +156,12 @@ export interface SemanticFact extends Provenance {
 export interface LanguageAdapter {
   readonly name: string;
   readonly extensions: readonly string[];
-  parse(root: string, files: FileRecord[], changed: Set<string>): ParsedFile[];
+  parse(
+    root: string,
+    files: FileRecord[],
+    changed: Set<string>,
+    onProgress?: (progress: IndexProgress) => void,
+  ): ParsedFile[];
 }
 export function symbolId(
   language: string,

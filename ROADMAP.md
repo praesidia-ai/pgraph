@@ -1,5 +1,7 @@
 # Roadmap and release gates
 
+The active v2 direction and research are in [V2_PLAN.md](docs/V2_PLAN.md).
+
 ## Implemented 0.1 foundation
 
 Local Graph IR/SQLite, TypeScript compiler extraction, cross-file queries,

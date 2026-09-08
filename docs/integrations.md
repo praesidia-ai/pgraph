@@ -5,18 +5,32 @@
 Run `npm ci --ignore-scripts && npm run build && npm run package:extension`, then
 install `artifacts/pgraph-0.1.0.vsix`. Node 22.18+ is required independently of
 VS Code's bundled Electron runtime. Set `pgraph.nodePath` in user/machine settings
-if necessary. Multi-root workspaces select the active editor's folder or ask the
-user to pick a repository. Virtual/untrusted workspaces are disabled.
+if necessary. **PGraph: Index Workspace** indexes all currently open folders in
+sequence, reports success/failure per folder and releases idle workers between
+folders. Repeated invocations share the active workspace run. Each root owns its
+`.pgraph` database and index revision. Removing a folder stops its worker.
+
+Queries use the active editor's folder, retain the last selected folder while a
+result document is open, or ask the user to pick one. These are currently per-root
+queries; cross-service communication inference is not implemented yet.
+Virtual/untrusted workspaces are disabled.
 
 Commands cover initialize, index, changed-file indexing, architecture, symbol,
 callers, callees, impact, context, semantic index, token savings and graph status.
-The sidebar shows stored health, counts, task/context entry points and recent work.
+The sidebar shows the selected repository's stored health and counts, task/context
+entry points and recent workspace indexing results. Progress reports discovery,
+per-tsconfig analysis, persistence and commit completion; timestamped messages are
+available in the PGraph output channel.
 It is an overview/navigation view, not an interactive graph visualization.
 
 An existing index is incrementally updated after supported source/JSON file events
 when `pgraph.autoIndex` is enabled. `.gitignore` changes currently require the
 Reindex Changed Files command. Requests run in a separate Node process and terminate
-on cancellation or a 120-second timeout. SQLite transactions protect committed data
+on cancellation or an execution timeout. Indexing defaults to 900 seconds
+(`pgraph.indexTimeoutSeconds`); queries default to 120 seconds
+(`pgraph.queryTimeoutSeconds`). Requests execute in order, so a queued query does
+not time out while waiting for indexing. Cancelling a queued request does not stop
+the active index. SQLite transactions protect committed data
 if the process stops. A subsequent request restarts the engine.
 
 Copilot tools share dispatch and schemas with MCP. Tool availability in the agent
@@ -60,16 +74,17 @@ architecture, feature and status. Editor names have the `pgraph_` prefix.
 
 ## First-use troubleshooting
 
-| Symptom                    | Resolution                                                                       |
-| -------------------------- | -------------------------------------------------------------------------------- |
-| `node:sqlite` unavailable  | Use Node 22.18+; configure editor `nodePath`                                     |
-| No graph index             | Run `pgraph index --root /repository`                                            |
-| Ambiguous symbol           | Use an ID returned by `search`                                                   |
-| Stale source               | Run `index --changed` / editor Reindex Changed Files                             |
-| Few or no callers          | Check tsconfig aliases, ignored files and unresolved/dynamic dependencies        |
-| Copilot models unavailable | Check account, org policy and VS Code provider authorization                     |
-| Budget envelope too large  | Shorten the task or increase the budget                                          |
-| Worker timeout             | Narrow repository include patterns or use CLI indexing before opening the editor |
+| Symptom                    | Resolution                                                                                                                                       |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `spawn node ENOENT`        | On the affected computer, run `node -p "process.execPath"` in Terminal. Paste its full output into PGraph: Node Path in user settings and retry. |
+| `node:sqlite` unavailable  | Use Node 22.18+; configure editor `nodePath`                                                                                                     |
+| No graph index             | Run `pgraph index --root /repository`                                                                                                            |
+| Ambiguous symbol           | Use an ID returned by `search`                                                                                                                   |
+| Stale source               | Run `index --changed` / editor Reindex Changed Files                                                                                             |
+| Few or no callers          | Check tsconfig aliases, ignored files and unresolved/dynamic dependencies                                                                        |
+| Copilot models unavailable | Check account, org policy and VS Code provider authorization                                                                                     |
+| Budget envelope too large  | Shorten the task or increase the budget                                                                                                          |
+| Worker timeout             | Narrow repository include patterns or use CLI indexing before opening the editor                                                                 |
 
 Supported API references: [VS Code tools](https://code.visualstudio.com/api/extension-guides/ai/tools),
 [Language Model API](https://code.visualstudio.com/api/extension-guides/ai/language-model),

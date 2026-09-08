@@ -4,6 +4,7 @@ import type { GraphStore } from "@praesidia/pgraph-store";
 import type {
   GraphNode,
   IndexResult,
+  IndexOptions,
   LanguageAdapter,
   ParsedFile,
 } from "@praesidia/pgraph-ir";
@@ -25,9 +26,13 @@ export class GraphIndexer {
     private readonly config: Config,
     private readonly adapter: LanguageAdapter = new TypeScriptAdapter(),
   ) {}
-  index(options: { rebuild?: boolean } = {}): IndexResult {
+  index(options: IndexOptions = {}): IndexResult {
     const start = performance.now();
     const baseRevision = this.store.getMeta<number>("revision") ?? 0;
+    options.onProgress?.({
+      phase: "discover",
+      message: "Discovering and hashing repository files",
+    });
     const discovery = discover(this.root, this.config);
     const records = [...discovery.sources, ...discovery.manifests];
     const current = new Map(records.map((f) => [f.path, f]));
@@ -57,7 +62,16 @@ export class GraphIndexer {
     const extract = new Set(
       discovery.sources.filter((f) => affected.has(f.path)).map((f) => f.path),
     );
-    const parsed = this.adapter.parse(this.root, discovery.sources, extract);
+    options.onProgress?.({
+      phase: "analyze",
+      message: `Analyzing ${extract.size} affected files out of ${discovery.sources.length} source files`,
+    });
+    const parsed = this.adapter.parse(
+      this.root,
+      discovery.sources,
+      extract,
+      options.onProgress,
+    );
     for (const manifest of discovery.manifests.filter((f) =>
       affected.has(f.path),
     )) {
@@ -109,7 +123,11 @@ export class GraphIndexer {
         ) !== p.file.hash
       )
         throw new Error(`File changed during indexing: ${p.file.path}; retry`);
-    return this.store.transaction(() => {
+    options.onProgress?.({
+      phase: "persist",
+      message: `Saving ${parsed.length} extracted files to the repository graph`,
+    });
+    const committed = this.store.transaction(() => {
       // A second writer must not silently overwrite a newer graph snapshot.
       const oldRevision = this.store.getMeta<number>("revision") ?? 0;
       if (oldRevision !== baseRevision)
@@ -220,6 +238,11 @@ export class GraphIndexer {
       }
       return result;
     });
+    options.onProgress?.({
+      phase: "complete",
+      message: `Index committed: ${committed.files} files, ${committed.nodes} nodes, ${committed.edges} relationships`,
+    });
+    return committed;
   }
   private persistEdges(parsed: ParsedFile): void {
     for (const edge of parsed.edges)

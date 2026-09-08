@@ -1,6 +1,6 @@
 import { runTests } from "@vscode/test-electron";
 import { build } from "esbuild";
-import { cp, mkdtemp, rm } from "node:fs/promises";
+import { cp, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { resolve, join } from "node:path";
 await build({
@@ -17,6 +17,16 @@ await cp("examples/sample-typescript-app", fixture, {
   recursive: true,
   filter: (p) => !p.includes(".pgraph"),
 });
+const secondFixture = await mkdtemp(join(tmpdir(), "pgraph-vscode-second-"));
+await cp("examples/sample-monorepo", secondFixture, {
+  recursive: true,
+  filter: (p) => !p.includes(".pgraph"),
+});
+const workspaceFile = join(userData, "integration.code-workspace");
+await writeFile(
+  workspaceFile,
+  JSON.stringify({ folders: [{ path: fixture }, { path: secondFixture }] }),
+);
 try {
   await runTests({
     extensionDevelopmentPath: resolve("apps/vscode-extension"),
@@ -27,7 +37,7 @@ try {
       ? { vscodeExecutablePath: process.env.PGRAPH_VSCODE_PATH }
       : {}),
     launchArgs: [
-      fixture,
+      workspaceFile,
       "--user-data-dir",
       userData,
       "--disable-workspace-trust",
@@ -41,5 +51,6 @@ try {
   });
 } finally {
   await rm(fixture, { recursive: true, force: true });
+  await rm(secondFixture, { recursive: true, force: true });
   await rm(userData, { recursive: true, force: true });
 }

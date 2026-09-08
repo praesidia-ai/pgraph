@@ -22,7 +22,9 @@ process.on("message", (message: unknown) => {
         break;
       case "index":
         graph.init();
-        result = graph.index();
+        result = graph.index({
+          onProgress: (progress) => process.send?.({ id: m.id, progress }),
+        });
         break;
       case "tool":
         if (!graph.status().revision && m.args.name !== "status")

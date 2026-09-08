@@ -5,6 +5,7 @@ import {
   rmSync,
   writeFileSync,
 } from "node:fs";
+import type { IndexOptions } from "@praesidia/pgraph-ir";
 import type { GraphStore } from "@praesidia/pgraph-store";
 import { SqliteGraphStore } from "@praesidia/pgraph-store-sqlite";
 import { GraphIndexer } from "@praesidia/pgraph-indexer";
@@ -113,7 +114,7 @@ export class PGraph extends GraphQuery {
       );
     return { root: this.root, database: ".pgraph/graph.db" };
   }
-  index(options: { rebuild?: boolean } = {}) {
+  index(options: IndexOptions = {}) {
     Object.assign(this.config, loadConfig(this.root));
     this.maxFileBytes = this.config.limits.maxFileBytes;
     return this.indexer.index(options);

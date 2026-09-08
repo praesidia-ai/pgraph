@@ -8,7 +8,8 @@ required for the deterministic engine.
 ## Start
 
 1. Install Node.js 22.18 or newer (24 LTS recommended).
-2. Open a trusted repository and run **PGraph: Index Repository**.
+2. Open a trusted repository and run **PGraph: Index Repository**, or add multiple
+   service folders to a workspace and run **PGraph: Index Workspace**.
 3. Open the PGraph sidebar, or enable PGraph tools in Copilot Agent Mode.
 4. Use `#pgraph_context` with a task such as "Add rate limiting to login".
 
@@ -19,6 +20,21 @@ contains source-derived metadata; add it to your repository's ignore rules.
 Commands include Find Symbol, Find Callers, Find Callees, Impact Analysis, Find
 Relevant Context, Show Architecture, Graph Status, Show Token Savings and Reindex
 Changed Files. Existing indexes update after source saves by default.
+
+If VS Code reports `spawn node ENOENT`, run `node --version` and
+`node -p "process.execPath"` in Terminal **on the affected computer**. Set
+**PGraph: Node Path** in VS Code user settings to that full executable path,
+without added quotes, and retry indexing. Node must be 22.18+; installing the VSIX
+does not install Node. Paths from a different laptop may not exist on this one.
+
+For large repositories, indexing has a 15-minute execution limit. Adjust
+`pgraph.indexTimeoutSeconds` in VS Code settings if needed. Query execution defaults
+to 120 seconds (`pgraph.queryTimeoutSeconds`), excluding time queued behind an
+index. The indexing notification shows the current TypeScript project and elapsed
+time, and remains cancellable. Workspace indexing processes folders sequentially,
+keeps a database in each folder, and releases idle workers to limit memory use.
+Current queries still target one selected folder. Cross-service communication
+inference and an interactive graph browser are planned for v2.
 
 ## Optional Copilot enrichment
 

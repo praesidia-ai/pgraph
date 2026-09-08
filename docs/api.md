@@ -91,3 +91,10 @@ markers and narrow scope instead of assuming a complete program proof.
 `clean` deletes only known database/WAL/SHM files. Stop open editor/MCP graph clients
 before cleaning; use `rebuild` for ordinary repairs while keeping the index open.
 Never treat an index downloaded from an untrusted source as a trusted cache.
+
+## Index progress
+
+`graph.index({ onProgress })` accepts a callback with `phase`, `message`, and optional
+`completed` / `total` fields. Phases are `discover`, `analyze`, `persist` and `complete`. TypeScript analysis reports its active configuration group; mixed
+root/shared and nested project configurations remain in one repository graph.
+Progress events are informational and are not a resumable checkpoint protocol.

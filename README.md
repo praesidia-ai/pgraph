@@ -96,13 +96,31 @@ npm run package:extension
 ```
 
 Install `artifacts/pgraph-0.1.0.vsix` using **Extensions → Install from VSIX**.
-Open a trusted repository and run **PGraph: Index Repository**. Use the PGraph
-sidebar or enable its tools in Copilot Agent Mode. `#pgraph_context` explicitly
+Open a trusted repository and run **PGraph: Index Repository**. For multiple
+microservices, add their folders to one VS Code workspace and run **PGraph: Index
+Workspace** to index every open folder. Use the PGraph sidebar or enable its tools
+in Copilot Agent Mode. `#pgraph_context` explicitly
 requests compact context; tool descriptions encourage agents to use it first.
 Automatic selection is ultimately the agent's decision.
 
 The editor runs indexing in a separate Node process. If Node is not on PATH, set
 the machine setting `pgraph.nodePath` to a Node 22.18+ executable.
+
+If VS Code reports `spawn node ENOENT`, run `node --version` and
+`node -p "process.execPath"` in Terminal **on the affected computer**. Set
+**PGraph: Node Path** in VS Code user settings to that full executable path,
+without added quotes, and retry indexing. Node must be 22.18+; installing the VSIX
+does not install Node. Paths from a different laptop may not exist on this one.
+
+For large repositories, indexing has a 15-minute execution limit. Adjust
+`pgraph.indexTimeoutSeconds` in VS Code settings if needed. Query execution defaults
+to 120 seconds (`pgraph.queryTimeoutSeconds`), excluding time queued behind an
+index. The indexing notification names the current TypeScript configuration and
+shows elapsed time; the PGraph output channel records stage messages. Workspace
+indexing processes folders sequentially and releases idle workers between folders.
+Each folder retains its own `.pgraph` database. Current query tools use one selected
+folder; cross-service communication queries and the graph browser are planned in
+[the v2 design](docs/V2_PLAN.md).
 
 Semantic enrichment is optional: enable the **user/machine** setting
 `pgraph.semanticEnabled`, then run **PGraph: Build Semantic Index** and select

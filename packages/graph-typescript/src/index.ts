@@ -3,6 +3,7 @@ import { dirname, relative, resolve } from "node:path";
 import { existsSync } from "node:fs";
 import type {
   FileRecord,
+  IndexProgress,
   GraphEdge,
   GraphNode,
   LanguageAdapter,
@@ -176,7 +177,12 @@ export class TypeScriptAdapter implements LanguageAdapter {
     private readonly enrichers: FrameworkEnricher[] = frameworkEnrichers,
   ) {}
 
-  parse(root: string, files: FileRecord[], changed: Set<string>): ParsedFile[] {
+  parse(
+    root: string,
+    files: FileRecord[],
+    changed: Set<string>,
+    onProgress?: (progress: IndexProgress) => void,
+  ): ParsedFile[] {
     const maxFileBytes = loadConfig(root).limits.maxFileBytes;
     const records = new Map(files.map((f) => [resolve(root, f.path), f]));
     const groups = new Map<string, string[]>();
@@ -198,9 +204,20 @@ export class TypeScriptAdapter implements LanguageAdapter {
       groups.set(config, group);
     }
     const output = new Map<string, ParsedFile>();
-    for (const [config, rootNames] of groups) {
-      if (!rootNames.some((path) => changed.has(records.get(path)!.path)))
-        continue;
+    const activeGroups = [...groups].filter(([, paths]) =>
+      paths.some((path) => changed.has(records.get(path)!.path)),
+    );
+    let completedGroups = 0;
+    for (const [config, rootNames] of activeGroups) {
+      const label = config
+        ? slash(relative(root, config))
+        : "default configuration";
+      onProgress?.({
+        phase: "analyze",
+        message: `Project ${completedGroups + 1}/${activeGroups.length}: ${label} (${rootNames.length} files)`,
+        completed: completedGroups,
+        total: activeGroups.length,
+      });
       const libraryRoot = dirname(ts.getDefaultLibFilePath({}));
       const supportReads = new Map<string, string | undefined>();
       let supportBytes = 0;
@@ -789,6 +806,13 @@ export class TypeScriptAdapter implements LanguageAdapter {
           diagnostics: [...configDiagnostics, ...syntax],
         });
       }
+      completedGroups++;
+      onProgress?.({
+        phase: "analyze",
+        message: `Finished project ${completedGroups}/${activeGroups.length}: ${label}`,
+        completed: completedGroups,
+        total: activeGroups.length,
+      });
     }
     // Drop ASTs for removed repository files, retaining standard library reuse.
     for (const path of this.sourceCache.keys())

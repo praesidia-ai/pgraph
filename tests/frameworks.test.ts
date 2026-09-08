@@ -2,7 +2,7 @@ import { afterEach, it, expect } from "vitest";
 import { cpSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
-import { PGraph } from "@praesidia/pgraph-core";
+import { PGraph, type IndexProgress } from "@praesidia/pgraph-core";
 const roots: string[] = [];
 const graphs: PGraph[] = [];
 function fixture(name: string) {
@@ -41,7 +41,34 @@ it("models Nest controllers, providers and route-to-handler relationships withou
 });
 it("resolves multiple tsconfigs, inherited path aliases and workspace dependencies", () => {
   const { root, graph } = fixture("sample-monorepo");
-  graph.index();
+  writeFileSync(
+    join(root, "tsconfig.json"),
+    JSON.stringify({ extends: "./tsconfig.base.json" }),
+  );
+  writeFileSync(
+    join(root, "health.ts"),
+    'import { createPayment } from "@example/domain"; export function workspaceHealth() { return createPayment(1); }',
+  );
+  const progress: IndexProgress[] = [];
+  graph.index({ onProgress: (update) => progress.push(update) });
+  expect(progress[0]?.phase).toBe("discover");
+  expect(progress.at(-1)?.phase).toBe("complete");
+  expect(
+    progress.some((update) => update.message.includes(": tsconfig.json (")),
+  ).toBe(true);
+  expect(graph.callees("workspaceHealth").map((node) => node.name)).toContain(
+    "createPayment",
+  );
+  expect(
+    progress.some((update) =>
+      update.message.includes("packages/api/tsconfig.json"),
+    ),
+  ).toBe(true);
+  expect(
+    progress.some((update) =>
+      update.message.includes("packages/domain/tsconfig.json"),
+    ),
+  ).toBe(true);
   expect(graph.callees("checkout").map((n) => n.name)).toContain(
     "createPayment",
   );
