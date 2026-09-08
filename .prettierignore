@@ -3,7 +3,6 @@ dist
 coverage
 package-lock.json
 .pgraph
-.codegraph
 .vscode-test
 benchmarks/results
 artifacts

@@ -2,14 +2,18 @@ import { readdirSync, statSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { default as ignoreImport, type Ignore } from "ignore";
 import picomatch from "picomatch";
-import { hash, readLocal, safePath, type Config } from "@praesidia/pgraph-shared";
+import {
+  hash,
+  readLocal,
+  safePath,
+  type Config,
+} from "@praesidia/pgraph-shared";
 import type { FileRecord } from "@praesidia/pgraph-ir";
 
 const hardDirectories = new Set([
   "node_modules",
   ".git",
   ".pgraph",
-  ".codegraph", // Ignore caches from the earlier pre-release name.
   "dist",
   "build",
   ".next",

@@ -12,9 +12,7 @@ export async function run(): Promise<void> {
   await vscode.workspace
     .getConfiguration("pgraph")
     .update("autoIndex", false, vscode.ConfigurationTarget.Global);
-  const extension = vscode.extensions.getExtension(
-    "praesidia.pgraph",
-  );
+  const extension = vscode.extensions.getExtension("praesidia.pgraph");
   assert.ok(extension, "Development extension is present");
   const api = (await extension.activate()) as {
     request: (name: string, input: unknown) => Promise<string>;

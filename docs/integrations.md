@@ -63,7 +63,7 @@ architecture, feature and status. Editor names have the `pgraph_` prefix.
 | Symptom                    | Resolution                                                                       |
 | -------------------------- | -------------------------------------------------------------------------------- |
 | `node:sqlite` unavailable  | Use Node 22.18+; configure editor `nodePath`                                     |
-| No graph index             | Run `pgraph index --root /repository`                                         |
+| No graph index             | Run `pgraph index --root /repository`                                            |
 | Ambiguous symbol           | Use an ID returned by `search`                                                   |
 | Stale source               | Run `index --changed` / editor Reindex Changed Files                             |
 | Few or no callers          | Check tsconfig aliases, ignored files and unresolved/dynamic dependencies        |

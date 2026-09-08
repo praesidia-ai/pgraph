@@ -9,7 +9,12 @@ import type {
 } from "@praesidia/pgraph-ir";
 import { TypeScriptAdapter } from "@praesidia/pgraph-typescript";
 import { readGitSignals } from "@praesidia/pgraph-git";
-import { hash, readLocal, safePath, type Config } from "@praesidia/pgraph-shared";
+import {
+  hash,
+  readLocal,
+  safePath,
+  type Config,
+} from "@praesidia/pgraph-shared";
 import { discover } from "./discovery.js";
 export { discover } from "./discovery.js";
 

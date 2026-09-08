@@ -168,16 +168,13 @@ Read [ARCHITECTURE.md](ARCHITECTURE.md), [CONTRIBUTING.md](CONTRIBUTING.md),
 [SECURITY.md](SECURITY.md), [API/configuration](docs/api.md), and [ROADMAP.md](ROADMAP.md).
 Licensed under [MIT](LICENSE).
 
-## Renamed from CodeGraph
+## Project identity
 
-The pre-release is now **PGraph by Praesidia**. The command is `pgraph`, the public
-class is `PGraph`, packages use `@praesidia/pgraph-*`, and Copilot tools use the
-`pgraph_` prefix. Repository settings live in `.pgraph.json`; indexes live in
-`.pgraph/`. Copy any existing `.codegraph.json` settings to `.pgraph.json` and run
-`pgraph index` to build the renamed index.
+The command is `pgraph`, the public class is `PGraph`, packages use
+`@praesidia/pgraph-*`, and Copilot tools use the `pgraph_` prefix. Repository
+settings live in `.pgraph.json`; indexes live in `.pgraph/`. Run `pgraph index`
+to create or update the index.
 
-If you installed the previous extension, uninstall CodeGraph and install the new
-PGraph VSIX. Its extension ID is `praesidia.pgraph`, and user settings now use
-`pgraph.*`. The original request and historical benchmark reports retain their
-original names and fingerprints. Package and Marketplace publishing remains a
+Install `artifacts/pgraph-0.1.0.vsix` to use the `praesidia.pgraph` extension.
+Editor settings use `pgraph.*`. Package and Marketplace publishing remains a
 separate release step.

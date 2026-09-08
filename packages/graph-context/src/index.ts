@@ -563,9 +563,7 @@ export class ContextEngine {
         hash(readLocal(this.query.root, file, this.query.maxFileBytes)) !==
           record.hash
       )
-        throw new Error(
-          `Stale index for ${file}; run pgraph index --changed`,
-        );
+        throw new Error(`Stale index for ${file}; run pgraph index --changed`);
     }
   }
 }

@@ -3,8 +3,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { createServer } from "./index.js";
 try {
   const args = process.argv.slice(2);
-  if (args.length > 1)
-    throw new Error("Usage: pgraph-mcp [repository-root]");
+  if (args.length > 1) throw new Error("Usage: pgraph-mcp [repository-root]");
   const { server } = createServer(args[0] ?? process.cwd());
   await server.connect(new StdioServerTransport());
   const shutdown = () => {

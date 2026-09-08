@@ -191,7 +191,7 @@ Use a monorepo.
 
 A recommended layout is:
 
-codegraph/
+pgraph/
 apps/
 vscode-extension/
 playground/
@@ -336,7 +336,7 @@ For local use, use SQLite.
 
 Target:
 
-.codegraph/
+.pgraph/
 graph.db
 config.json
 cache/
@@ -415,12 +415,12 @@ When one file changes:
 
 Provide commands:
 
-codegraph init
-codegraph index
-codegraph index --changed
-codegraph status
-codegraph clean
-codegraph rebuild
+pgraph init
+pgraph index
+pgraph index --changed
+pgraph status
+pgraph clean
+pgraph rebuild
 
 ================================================== 7. TYPESCRIPT INTELLIGENCE
 ==========================
@@ -984,18 +984,18 @@ Create a high-quality Visual Studio Code extension.
 
 Commands:
 
-CodeGraph: Initialize Repository
-CodeGraph: Index Repository
-CodeGraph: Reindex Changed Files
-CodeGraph: Show Architecture
-CodeGraph: Find Symbol
-CodeGraph: Find Callers
-CodeGraph: Find Callees
-CodeGraph: Impact Analysis
-CodeGraph: Find Relevant Context
-CodeGraph: Build Semantic Index
-CodeGraph: Show Token Savings
-CodeGraph: Graph Status
+PGraph: Initialize Repository
+PGraph: Index Repository
+PGraph: Reindex Changed Files
+PGraph: Show Architecture
+PGraph: Find Symbol
+PGraph: Find Callers
+PGraph: Find Callees
+PGraph: Impact Analysis
+PGraph: Find Relevant Context
+PGraph: Build Semantic Index
+PGraph: Show Token Savings
+PGraph: Graph Status
 
 Add a sidebar view.
 
@@ -1014,43 +1014,43 @@ Recent indexing
 ================================================== 22. COPILOT AGENT TOOLS
 =======================
 
-Register VS Code agent tools so Copilot Agent Mode can call CodeGraph directly.
+Register VS Code agent tools so Copilot Agent Mode can call PGraph directly.
 
 Tools should include:
 
-codegraph_context
+pgraph_context
 
-codegraph_symbol
+pgraph_symbol
 
-codegraph_search
+pgraph_search
 
-codegraph_callers
+pgraph_callers
 
-codegraph_callees
+pgraph_callees
 
-codegraph_dependencies
+pgraph_dependencies
 
-codegraph_impact
+pgraph_impact
 
-codegraph_tests
+pgraph_tests
 
-codegraph_slice
+pgraph_slice
 
-codegraph_skeleton
+pgraph_skeleton
 
-codegraph_path
+pgraph_path
 
-codegraph_architecture
+pgraph_architecture
 
-codegraph_feature
+pgraph_feature
 
-codegraph_status
+pgraph_status
 
 Tool descriptions must strongly encourage efficient use.
 
 For example:
 
-codegraph_context:
+pgraph_context:
 "Retrieve compact task-specific repository context before manually searching or opening many files."
 
 Tool output must be compact.
@@ -1092,31 +1092,31 @@ Create a CLI.
 
 Examples:
 
-codegraph init
+pgraph init
 
-codegraph index
+pgraph index
 
-codegraph status
+pgraph status
 
-codegraph symbol AuthService.login
+pgraph symbol AuthService.login
 
-codegraph callers AuthService.login
+pgraph callers AuthService.login
 
-codegraph callees AuthService.login
+pgraph callees AuthService.login
 
-codegraph impact AuthService.login
+pgraph impact AuthService.login
 
-codegraph path AuthController.login TokenService.issue
+pgraph path AuthController.login TokenService.issue
 
-codegraph context "Add rate limiting to login"
+pgraph context "Add rate limiting to login"
 
-codegraph context "Add rate limiting to login" --tokens 1500
+pgraph context "Add rate limiting to login" --tokens 1500
 
-codegraph architecture
+pgraph architecture
 
-codegraph feature authentication
+pgraph feature authentication
 
-codegraph benchmark
+pgraph benchmark
 
 Support:
 
@@ -1195,7 +1195,7 @@ For every benchmark compare:
 BASELINE:
 traditional repository search/open workflow
 
-CODEGRAPH:
+PGRAPH:
 graph.context + selective source
 
 Measure:
@@ -1336,7 +1336,7 @@ Do not run arbitrary npm scripts during indexing.
 
 Example:
 
-.codegraph.json
+.pgraph.json
 
 {
 "include": ["src/**", "packages/**"],
@@ -1389,7 +1389,7 @@ README should explain the project in less than one minute.
 
 Example:
 
-CodeGraph creates a persistent graph of your repository so AI coding agents can understand the codebase without repeatedly reading thousands of lines of source.
+PGraph creates a persistent graph of your repository so AI coding agents can understand the codebase without repeatedly reading thousands of lines of source.
 
 Instead of:
 
@@ -1683,7 +1683,7 @@ Click:
 
 or run:
 
-codegraph index
+pgraph index
 
 Then ask Copilot:
 
@@ -1691,7 +1691,7 @@ Then ask Copilot:
 
 Copilot should automatically use:
 
-codegraph_context
+pgraph_context
 
 instead of opening 20 files.
 
@@ -1759,7 +1759,7 @@ Repository context:
 
 AFTER:
 
-codegraph_context({
+pgraph_context({
 task: "Add account lockout to login",
 maxTokens: 1800
 })
@@ -1847,33 +1847,33 @@ The first meaningful milestone must work end-to-end.
 
 Given a TypeScript repository:
 
-codegraph index
+pgraph index
 
 must build:
 
-.codegraph/graph.db
+.pgraph/graph.db
 
 Then:
 
-codegraph symbol AuthService.login
+pgraph symbol AuthService.login
 
 must work.
 
 Then:
 
-codegraph callers AuthService.login
+pgraph callers AuthService.login
 
 must work.
 
 Then:
 
-codegraph impact AuthService.login
+pgraph impact AuthService.login
 
 must work.
 
 Then:
 
-codegraph context "Add account lockout to login" --tokens 1500
+pgraph context "Add account lockout to login" --tokens 1500
 
 must return a ranked, compact context package within the requested budget.
 
@@ -1890,9 +1890,9 @@ baseline files opened
 baseline source lines
 baseline estimated repository tokens
 
-CodeGraph files/symbols
-CodeGraph source lines
-CodeGraph context tokens
+PGraph files/symbols
+PGraph source lines
+PGraph context tokens
 
 Example result:
 
@@ -1904,7 +1904,7 @@ Baseline:
 2,890 lines
 18,230 context tokens
 
-CodeGraph:
+PGraph:
 4 files
 211 source lines
 4,930 context tokens
@@ -1946,7 +1946,7 @@ CLI works.
 
 VS Code extension works.
 
-Copilot can invoke CodeGraph tools.
+Copilot can invoke PGraph tools.
 
 No external LLM API key is required.
 

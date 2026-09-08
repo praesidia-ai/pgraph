@@ -42,8 +42,7 @@ class Overview implements vscode.TreeDataProvider<vscode.TreeItem> {
     return rows.map(([name, description, command]) => {
       const item = new vscode.TreeItem(name);
       item.description = description;
-      if (command)
-        item.command = { command: `pgraph.${command}`, title: name };
+      if (command) item.command = { command: `pgraph.${command}`, title: name };
       return item;
     });
   }
@@ -276,65 +275,62 @@ export function activate(context: vscode.ExtensionContext): {
   ) as ToolManifest[];
   for (const tool of manifest)
     context.subscriptions.push(
-      vscode.lm.registerTool<Record<string, unknown>>(
-        `pgraph_${tool.name}`,
-        {
-          async invoke(options, token) {
-            let input = { ...options.input };
-            const modelBudget = options.tokenizationOptions?.tokenBudget;
-            if (modelBudget !== undefined) {
-              if (modelBudget < 128)
-                return new vscode.LanguageModelToolResult([
-                  new vscode.LanguageModelTextPart(
-                    "PGraph needs at least 128 output tokens.",
-                  ),
-                ]);
-              input.maxTokens = Math.min(
-                Number(input.maxTokens ?? 2000),
-                modelBudget,
+      vscode.lm.registerTool<Record<string, unknown>>(`pgraph_${tool.name}`, {
+        async invoke(options, token) {
+          let input = { ...options.input };
+          const modelBudget = options.tokenizationOptions?.tokenBudget;
+          if (modelBudget !== undefined) {
+            if (modelBudget < 128)
+              return new vscode.LanguageModelToolResult([
+                new vscode.LanguageModelTextPart(
+                  "PGraph needs at least 128 output tokens.",
+                ),
+              ]);
+            input.maxTokens = Math.min(
+              Number(input.maxTokens ?? 2000),
+              modelBudget,
+            );
+          }
+          let text = await request(tool.name, input, token);
+          if (options.tokenizationOptions) {
+            for (let retry = 0; retry < 3; retry++) {
+              const actual = await options.tokenizationOptions.countTokens(
+                text,
+                token,
               );
-            }
-            let text = await request(tool.name, input, token);
-            if (options.tokenizationOptions) {
-              for (let retry = 0; retry < 3; retry++) {
-                const actual = await options.tokenizationOptions.countTokens(
-                  text,
-                  token,
-                );
-                if (actual <= options.tokenizationOptions.tokenBudget) break;
-                input = {
-                  ...input,
-                  maxTokens: Math.floor(
-                    ((Number(input.maxTokens ?? 2000) *
-                      options.tokenizationOptions.tokenBudget) /
-                      actual) *
-                      0.9,
-                  ),
-                };
-                if (Number(input.maxTokens) < 128) {
-                  text =
-                    "PGraph result exceeds this model’s output budget. Increase the budget or narrow the request.";
-                  break;
-                }
-                text = await request(tool.name, input, token);
+              if (actual <= options.tokenizationOptions.tokenBudget) break;
+              input = {
+                ...input,
+                maxTokens: Math.floor(
+                  ((Number(input.maxTokens ?? 2000) *
+                    options.tokenizationOptions.tokenBudget) /
+                    actual) *
+                    0.9,
+                ),
+              };
+              if (Number(input.maxTokens) < 128) {
+                text =
+                  "PGraph result exceeds this model’s output budget. Increase the budget or narrow the request.";
+                break;
               }
-              if (
-                (await options.tokenizationOptions.countTokens(text, token)) >
-                options.tokenizationOptions.tokenBudget
-              )
-                text = "";
+              text = await request(tool.name, input, token);
             }
-            return new vscode.LanguageModelToolResult([
-              new vscode.LanguageModelTextPart(text),
-            ]);
-          },
-          prepareInvocation() {
-            return {
-              invocationMessage: `PGraph: ${tool.name} (local repository)`,
-            };
-          },
+            if (
+              (await options.tokenizationOptions.countTokens(text, token)) >
+              options.tokenizationOptions.tokenBudget
+            )
+              text = "";
+          }
+          return new vscode.LanguageModelToolResult([
+            new vscode.LanguageModelTextPart(text),
+          ]);
         },
-      ),
+        prepareInvocation() {
+          return {
+            invocationMessage: `PGraph: ${tool.name} (local repository)`,
+          };
+        },
+      }),
     );
   const timers = new Map<string, ReturnType<typeof setTimeout>>();
   const watcher = vscode.workspace.createFileSystemWatcher(
@@ -343,9 +339,7 @@ export function activate(context: vscode.ExtensionContext): {
   context.subscriptions.push(watcher);
   const changed = (uri: vscode.Uri): void => {
     if (
-      /\/(node_modules|\.pgraph|dist|build|\.next|coverage)\//.test(
-        uri.path,
-      ) ||
+      /\/(node_modules|\.pgraph|dist|build|\.next|coverage)\//.test(uri.path) ||
       !vscode.workspace.getConfiguration("pgraph").get<boolean>("autoIndex")
     )
       return;

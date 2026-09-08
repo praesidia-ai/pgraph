@@ -1,15 +1,13 @@
 # Recorded benchmark results
 
-These historical runs predate the PGraph by Praesidia rename. Raw reports retain the original CodeGraph identifiers and source fingerprints; they have not been relabeled as measurements of the renamed build.
-
-Recorded locally on 2026-09-08 with Node 24.16.0 on macOS arm64. These are retrieval/scale measurements, not paired coding-agent correctness trials. Re-run with the commands in docs/benchmarks.md; exact source fingerprints are in each JSON report.
+Repository-context retrieval was measured from the current PGraph implementation on 2026-09-08 with Node 24.16.0 on macOS arm64. The synthetic scale section retains earlier implementation measurements. These are retrieval/scale measurements, not paired coding-agent correctness trials. Re-run with the commands in docs/benchmarks.md; exact source fingerprints are in each retrieval JSON report.
 
 ## Repository-context retrieval
 
 | Suite             | Tasks | Baseline tokens | Supplied tokens | Weighted reduction | Required-symbol recall |
 | ----------------- | ----: | --------------: | --------------: | -----------------: | ---------------------- |
 | [auth](auth.json) |     3 |           2,320 |           1,203 |             48.15% | All required symbols   |
-| [self](self.json) |    10 |         115,914 |           5,955 |             94.86% | All required symbols   |
+| [self](self.json) |    10 |         116,334 |           6,035 |             94.81% | All required symbols   |
 
 The self suite supplies identifier hints and uses declared file-open traces. The tiny authentication suite shows why savings must be measured: metadata overhead makes results depend on task and file size. Correctness and completion fields remain null.
 
@@ -18,16 +16,16 @@ The self suite supplies identifier hints and uses declared file-open traces. The
 | auth/auth-lockout   |           1,184 |          533 |    54.98% |   100% |
 | auth/token-location |             488 |          217 |    55.53% |   100% |
 | auth/login-bug      |             648 |          453 |    30.09% |   100% |
-| self/locate         |           6,632 |          781 |    88.22% |   100% |
-| self/flow           |          13,087 |          665 |    94.92% |   100% |
-| self/architecture   |          18,408 |          328 |    98.22% |   100% |
-| self/impact         |          13,517 |          807 |    94.03% |   100% |
-| self/debug          |          10,817 |          519 |     95.2% |   100% |
-| self/single         |           6,632 |          404 |    93.91% |   100% |
-| self/multi          |           9,323 |          338 |    96.37% |   100% |
-| self/monorepo       |          13,087 |          726 |    94.45% |   100% |
-| self/tests          |          10,817 |          697 |    93.56% |   100% |
-| self/refactor       |          13,594 |          690 |    94.92% |   100% |
+| self/locate         |           6,662 |          781 |    88.28% |   100% |
+| self/flow           |          13,148 |          665 |    94.94% |   100% |
+| self/architecture   |          18,461 |          408 |    97.79% |   100% |
+| self/impact         |          13,547 |          807 |    94.04% |   100% |
+| self/debug          |          10,854 |          519 |    95.22% |   100% |
+| self/single         |           6,662 |          404 |    93.94% |   100% |
+| self/multi          |           9,346 |          338 |    96.38% |   100% |
+| self/monorepo       |          13,148 |          726 |    94.48% |   100% |
+| self/tests          |          10,854 |          697 |    93.58% |   100% |
+| self/refactor       |          13,652 |          690 |    94.95% |   100% |
 
 ## Synthetic scale
 

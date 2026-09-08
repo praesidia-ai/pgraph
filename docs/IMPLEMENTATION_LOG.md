@@ -35,6 +35,12 @@ an independent engine API before building editor UI.
    are separate checks. A clean offline installation of all 16 npm archives passed
    version, indexing, caller lookup and budgeted context checks outside the workspace.
    Final measured reports live in benchmarks/reports.
+9. **Praesidia branding:** renamed the product to PGraph, including the library API,
+   npm scope, CLI, MCP identity, Copilot tools, editor commands/settings and index
+   paths. Added the generated connected-p logo and a monochrome editor adaptation.
+   All 27 tests, the real renamed extension-host workflow and a clean offline
+   installation of all 16 renamed package archives passed. Retrieval benchmark
+   reports are regenerated after naming changes to match the current API.
 
 The production acceptance gates in ROADMAP.md remain visible. A functional local
 pre-release does not establish every framework pattern, representative task

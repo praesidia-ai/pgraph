@@ -6,20 +6,20 @@
       "id": "locate",
       "category": "Find where code lives",
       "task": "Where does ContextEngine.context select relevant symbols?",
-      "repositoryFingerprint": "9525afd6625ed98cd00e22df8e05b22f0693dc7a1f1cf08469606fa0e0e83888",
+      "repositoryFingerprint": "d6d7d2cd455d0500bd90490f017109e161e88ca83b2aeb13dd46fab38b8cb093",
       "baseline": {
         "filesOpened": 4,
-        "sourceLines": 896,
-        "repositoryTokens": 6632,
+        "sourceLines": 894,
+        "repositoryTokens": 6662,
         "toolCalls": 7,
         "workflow": "declared-file-open-trace"
       },
-      "codegraph": {
+      "pgraph": {
         "filesOpened": 0,
         "symbols": [
           "ContextEngine.context",
           "ContextPackage.symbols",
-          "CodeGraph.context",
+          "PGraph.context",
           "BudgetOption",
           "ContextEngine.assertFresh",
           "ContextEngine.context.add",
@@ -34,9 +34,9 @@
         "sourceLines": 0,
         "repositoryTokens": 781,
         "toolCalls": 1,
-        "latencyMs": 159
+        "latencyMs": 123
       },
-      "tokenReductionPercent": 88.22,
+      "tokenReductionPercent": 88.28,
       "fileReadReductionPercent": 100,
       "toolCallReductionPercent": 85.71,
       "requiredSymbolRecall": 1,
@@ -48,15 +48,15 @@
       "id": "flow",
       "category": "Explain feature flow",
       "task": "Explain GraphIndexer.index TypeScriptAdapter.parse SqliteGraphStore.putEdge flow",
-      "repositoryFingerprint": "9525afd6625ed98cd00e22df8e05b22f0693dc7a1f1cf08469606fa0e0e83888",
+      "repositoryFingerprint": "d6d7d2cd455d0500bd90490f017109e161e88ca83b2aeb13dd46fab38b8cb093",
       "baseline": {
         "filesOpened": 5,
-        "sourceLines": 1685,
-        "repositoryTokens": 13087,
+        "sourceLines": 1695,
+        "repositoryTokens": 13148,
         "toolCalls": 8,
         "workflow": "declared-file-open-trace"
       },
-      "codegraph": {
+      "pgraph": {
         "filesOpened": 0,
         "symbols": [
           "SqliteGraphStore.putEdge",
@@ -64,11 +64,11 @@
           "GraphIndexer.index",
           "GraphIndexer.adapter",
           "GraphIndexer.store",
-          "CodeGraph.indexer",
+          "PGraph.indexer",
           "GraphEdge.type",
           "GraphQuery.store",
-          "CodeGraph.index",
           "LanguageAdapter.parse",
+          "PGraph.index",
           "TypeScriptAdapter.parse.allowedRead",
           "TypeScriptAdapter.parse.walk",
           "TypeScriptAdapter.parse.walk",
@@ -77,9 +77,9 @@
         "sourceLines": 0,
         "repositoryTokens": 665,
         "toolCalls": 1,
-        "latencyMs": 125
+        "latencyMs": 80
       },
-      "tokenReductionPercent": 94.92,
+      "tokenReductionPercent": 94.94,
       "fileReadReductionPercent": 100,
       "toolCallReductionPercent": 87.5,
       "requiredSymbolRecall": 1,
@@ -90,31 +90,32 @@
     {
       "id": "architecture",
       "category": "Architecture question",
-      "task": "Explain CodeGraph.open GraphQuery and ContextEngine architecture",
-      "repositoryFingerprint": "9525afd6625ed98cd00e22df8e05b22f0693dc7a1f1cf08469606fa0e0e83888",
+      "task": "Explain PGraph.open GraphQuery and ContextEngine architecture",
+      "repositoryFingerprint": "d6d7d2cd455d0500bd90490f017109e161e88ca83b2aeb13dd46fab38b8cb093",
       "baseline": {
         "filesOpened": 7,
-        "sourceLines": 2392,
-        "repositoryTokens": 18408,
+        "sourceLines": 2389,
+        "repositoryTokens": 18461,
         "toolCalls": 10,
         "workflow": "declared-file-open-trace"
       },
-      "codegraph": {
+      "pgraph": {
         "filesOpened": 0,
         "symbols": [
-          "CodeGraph.open",
+          "PGraph.open",
           "ContextEngine.query",
           "GraphQuery.architecture",
           "ContextEngine.context",
-          "CodeGraph.context",
+          "PGraph.context",
+          "BenchmarkResult.pgraph",
           "ContextEngine.assertFresh"
         ],
         "sourceLines": 0,
-        "repositoryTokens": 328,
+        "repositoryTokens": 408,
         "toolCalls": 1,
-        "latencyMs": 33
+        "latencyMs": 34
       },
-      "tokenReductionPercent": 98.22,
+      "tokenReductionPercent": 97.79,
       "fileReadReductionPercent": 100,
       "toolCallReductionPercent": 90,
       "requiredSymbolRecall": 1,
@@ -126,15 +127,15 @@
       "id": "impact",
       "category": "Impact analysis",
       "task": "What is the impact of changing GraphQuery.symbol?",
-      "repositoryFingerprint": "9525afd6625ed98cd00e22df8e05b22f0693dc7a1f1cf08469606fa0e0e83888",
+      "repositoryFingerprint": "d6d7d2cd455d0500bd90490f017109e161e88ca83b2aeb13dd46fab38b8cb093",
       "baseline": {
         "filesOpened": 5,
-        "sourceLines": 1826,
-        "repositoryTokens": 13517,
+        "sourceLines": 1818,
+        "repositoryTokens": 13547,
         "toolCalls": 8,
         "workflow": "declared-file-open-trace"
       },
-      "codegraph": {
+      "pgraph": {
         "filesOpened": 0,
         "symbols": [
           "GraphQuery.symbol",
@@ -155,9 +156,9 @@
         "sourceLines": 0,
         "repositoryTokens": 807,
         "toolCalls": 1,
-        "latencyMs": 64
+        "latencyMs": 59
       },
-      "tokenReductionPercent": 94.03,
+      "tokenReductionPercent": 94.04,
       "fileReadReductionPercent": 100,
       "toolCallReductionPercent": 87.5,
       "requiredSymbolRecall": 1,
@@ -169,15 +170,15 @@
       "id": "debug",
       "category": "Bug investigation",
       "task": "Why does GraphQuery.slice reject stale source?",
-      "repositoryFingerprint": "9525afd6625ed98cd00e22df8e05b22f0693dc7a1f1cf08469606fa0e0e83888",
+      "repositoryFingerprint": "d6d7d2cd455d0500bd90490f017109e161e88ca83b2aeb13dd46fab38b8cb093",
       "baseline": {
         "filesOpened": 4,
-        "sourceLines": 1443,
-        "repositoryTokens": 10817,
+        "sourceLines": 1441,
+        "repositoryTokens": 10854,
         "toolCalls": 7,
         "workflow": "declared-file-open-trace"
       },
-      "codegraph": {
+      "pgraph": {
         "filesOpened": 0,
         "symbols": [
           "GraphQuery.slice",
@@ -194,9 +195,9 @@
         "sourceLines": 0,
         "repositoryTokens": 519,
         "toolCalls": 1,
-        "latencyMs": 43
+        "latencyMs": 35
       },
-      "tokenReductionPercent": 95.2,
+      "tokenReductionPercent": 95.22,
       "fileReadReductionPercent": 100,
       "toolCallReductionPercent": 85.71,
       "requiredSymbolRecall": 1,
@@ -208,15 +209,15 @@
       "id": "single",
       "category": "Single-file change",
       "task": "Change optimizeBudget to improve representation selection",
-      "repositoryFingerprint": "9525afd6625ed98cd00e22df8e05b22f0693dc7a1f1cf08469606fa0e0e83888",
+      "repositoryFingerprint": "d6d7d2cd455d0500bd90490f017109e161e88ca83b2aeb13dd46fab38b8cb093",
       "baseline": {
         "filesOpened": 4,
-        "sourceLines": 896,
-        "repositoryTokens": 6632,
+        "sourceLines": 894,
+        "repositoryTokens": 6662,
         "toolCalls": 7,
         "workflow": "declared-file-open-trace"
       },
-      "codegraph": {
+      "pgraph": {
         "filesOpened": 0,
         "symbols": [
           "ContextSymbol.representation",
@@ -230,9 +231,9 @@
         "sourceLines": 0,
         "repositoryTokens": 404,
         "toolCalls": 1,
-        "latencyMs": 34
+        "latencyMs": 37
       },
-      "tokenReductionPercent": 93.91,
+      "tokenReductionPercent": 93.94,
       "fileReadReductionPercent": 100,
       "toolCallReductionPercent": 85.71,
       "requiredSymbolRecall": 1,
@@ -244,15 +245,15 @@
       "id": "multi",
       "category": "Multi-file feature",
       "task": "Add another query tool through dispatchTool and createServer",
-      "repositoryFingerprint": "9525afd6625ed98cd00e22df8e05b22f0693dc7a1f1cf08469606fa0e0e83888",
+      "repositoryFingerprint": "d6d7d2cd455d0500bd90490f017109e161e88ca83b2aeb13dd46fab38b8cb093",
       "baseline": {
         "filesOpened": 4,
-        "sourceLines": 1254,
-        "repositoryTokens": 9323,
+        "sourceLines": 1248,
+        "repositoryTokens": 9346,
         "toolCalls": 7,
         "workflow": "declared-file-open-trace"
       },
-      "codegraph": {
+      "pgraph": {
         "filesOpened": 0,
         "symbols": [
           "ContextEngine.query",
@@ -265,9 +266,9 @@
         "sourceLines": 0,
         "repositoryTokens": 338,
         "toolCalls": 1,
-        "latencyMs": 50
+        "latencyMs": 35
       },
-      "tokenReductionPercent": 96.37,
+      "tokenReductionPercent": 96.38,
       "fileReadReductionPercent": 100,
       "toolCallReductionPercent": 85.71,
       "requiredSymbolRecall": 1,
@@ -279,15 +280,15 @@
       "id": "monorepo",
       "category": "Large monorepo task",
       "task": "How does TypeScriptAdapter.parse resolve workspace tsconfig aliases?",
-      "repositoryFingerprint": "9525afd6625ed98cd00e22df8e05b22f0693dc7a1f1cf08469606fa0e0e83888",
+      "repositoryFingerprint": "d6d7d2cd455d0500bd90490f017109e161e88ca83b2aeb13dd46fab38b8cb093",
       "baseline": {
         "filesOpened": 5,
-        "sourceLines": 1685,
-        "repositoryTokens": 13087,
+        "sourceLines": 1695,
+        "repositoryTokens": 13148,
         "toolCalls": 8,
         "workflow": "declared-file-open-trace"
       },
-      "codegraph": {
+      "pgraph": {
         "filesOpened": 0,
         "symbols": [
           "TypeScriptAdapter.parse",
@@ -308,9 +309,9 @@
         "sourceLines": 0,
         "repositoryTokens": 726,
         "toolCalls": 1,
-        "latencyMs": 91
+        "latencyMs": 57
       },
-      "tokenReductionPercent": 94.45,
+      "tokenReductionPercent": 94.48,
       "fileReadReductionPercent": 100,
       "toolCallReductionPercent": 87.5,
       "requiredSymbolRecall": 1,
@@ -322,22 +323,22 @@
       "id": "tests",
       "category": "Test discovery",
       "task": "Find tests for GraphQuery.slice and ContextEngine.context",
-      "repositoryFingerprint": "9525afd6625ed98cd00e22df8e05b22f0693dc7a1f1cf08469606fa0e0e83888",
+      "repositoryFingerprint": "d6d7d2cd455d0500bd90490f017109e161e88ca83b2aeb13dd46fab38b8cb093",
       "baseline": {
         "filesOpened": 4,
-        "sourceLines": 1443,
-        "repositoryTokens": 10817,
+        "sourceLines": 1441,
+        "repositoryTokens": 10854,
         "toolCalls": 7,
         "workflow": "declared-file-open-trace"
       },
-      "codegraph": {
+      "pgraph": {
         "filesOpened": 0,
         "symbols": [
           "GraphQuery.slice",
           "ContextEngine.context",
           "ContextEngine.query",
           "ContextPackage.tests",
-          "CodeGraph.context",
+          "PGraph.context",
           "GraphQuery.fileSlice",
           "GraphQuery.symbol",
           "SourceSlice",
@@ -351,9 +352,9 @@
         "sourceLines": 0,
         "repositoryTokens": 697,
         "toolCalls": 1,
-        "latencyMs": 74
+        "latencyMs": 60
       },
-      "tokenReductionPercent": 93.56,
+      "tokenReductionPercent": 93.58,
       "fileReadReductionPercent": 100,
       "toolCallReductionPercent": 85.71,
       "requiredSymbolRecall": 1,
@@ -365,15 +366,15 @@
       "id": "refactor",
       "category": "Refactor",
       "task": "Refactor SqliteGraphStore.neighbors and GraphQuery.path traversal",
-      "repositoryFingerprint": "9525afd6625ed98cd00e22df8e05b22f0693dc7a1f1cf08469606fa0e0e83888",
+      "repositoryFingerprint": "d6d7d2cd455d0500bd90490f017109e161e88ca83b2aeb13dd46fab38b8cb093",
       "baseline": {
         "filesOpened": 5,
-        "sourceLines": 1730,
-        "repositoryTokens": 13594,
+        "sourceLines": 1733,
+        "repositoryTokens": 13652,
         "toolCalls": 8,
         "workflow": "declared-file-open-trace"
       },
-      "codegraph": {
+      "pgraph": {
         "filesOpened": 0,
         "symbols": [
           "SqliteGraphStore.neighbors",
@@ -394,9 +395,9 @@
         "sourceLines": 0,
         "repositoryTokens": 690,
         "toolCalls": 1,
-        "latencyMs": 57
+        "latencyMs": 53
       },
-      "tokenReductionPercent": 94.92,
+      "tokenReductionPercent": 94.95,
       "fileReadReductionPercent": 100,
       "toolCallReductionPercent": 87.5,
       "requiredSymbolRecall": 1,
@@ -409,16 +410,16 @@
     "scenarios": 10,
     "indexing": {
       "files": 80,
-      "parsed": 2,
-      "skipped": 78,
+      "parsed": 80,
+      "skipped": 0,
       "deleted": 0,
-      "nodes": 1217,
-      "edges": 2944,
-      "durationMs": 2399,
-      "revision": 4,
+      "nodes": 1218,
+      "edges": 2946,
+      "durationMs": 4286,
+      "revision": 1,
       "diagnostics": []
     },
-    "weightedTokenReductionPercent": 94.86,
+    "weightedTokenReductionPercent": 94.81,
     "allRequiredSymbolsRetrieved": true,
     "correctnessEvaluated": false,
     "claim": "Retrieval benchmark only. Paired coding-agent correctness and representative medium/large repository KPI remain unproven."

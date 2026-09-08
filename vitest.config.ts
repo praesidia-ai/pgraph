@@ -5,7 +5,9 @@ export default defineConfig({
   resolve: {
     alias: Object.fromEntries(
       readdirSync("packages").map((name) => [
-        JSON.parse(readFileSync(resolve("packages", name, "package.json"), "utf8")).name,
+        JSON.parse(
+          readFileSync(resolve("packages", name, "package.json"), "utf8"),
+        ).name,
         resolve("packages", name, "src/index.ts"),
       ]),
     ),

@@ -5,7 +5,6 @@ export default tseslint.config(
       "**/dist/**",
       "**/node_modules/**",
       "**/.pgraph/**",
-      "**/.codegraph/**",
       "coverage/**",
       ".vscode-test/**",
       "examples/**",

@@ -1,7 +1,5 @@
 # PGraph by Praesidia for VS Code
 
-<img src="media/pgraph-mark.png" alt="PGraph logo" width="128" />
-
 Persistent local repository intelligence for coding agents. Index TypeScript and
 JavaScript, then retrieve symbols, callers, dependencies, tests and selected source
 ranges under an explicit token budget. No external model key or cloud database is

@@ -55,9 +55,7 @@ export class EngineClient implements vscode.Disposable {
     child.on("exit", () => {
       if (this.child === child)
         this.stop(
-          new Error(
-            "PGraph engine exited; the next request will restart it",
-          ),
+          new Error("PGraph engine exited; the next request will restart it"),
         );
     });
     return child;
@@ -74,9 +72,7 @@ export class EngineClient implements vscode.Disposable {
     return new Promise<T>((resolve, reject) => {
       const timer = setTimeout(
         () =>
-          this.stop(
-            new Error("PGraph operation timed out after 120 seconds"),
-          ),
+          this.stop(new Error("PGraph operation timed out after 120 seconds")),
         120_000,
       );
       const cancel = token?.onCancellationRequested(() =>

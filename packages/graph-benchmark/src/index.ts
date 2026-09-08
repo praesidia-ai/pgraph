@@ -126,10 +126,7 @@ export function runBenchmark(
       (n, r) => n + r.baseline.repositoryTokens,
       0,
     );
-    const supplied = results.reduce(
-      (n, r) => n + r.pgraph.repositoryTokens,
-      0,
-    );
+    const supplied = results.reduce((n, r) => n + r.pgraph.repositoryTokens, 0);
     return {
       version: 1,
       tokenizer: bpeCounter.name,
