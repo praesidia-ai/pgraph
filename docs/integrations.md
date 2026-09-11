@@ -3,18 +3,45 @@
 ## VS Code
 
 Run `npm ci --ignore-scripts && npm run build && npm run package:extension`, then
-install `artifacts/pgraph-0.1.0.vsix`. Node 22.18+ is required independently of
+install `artifacts/pgraph-0.6.0.vsix`. Node 22.18+ is required independently of
 VS Code's bundled Electron runtime. Set `pgraph.nodePath` in user/machine settings
-if necessary. **PGraph: Index Workspace** indexes all currently open folders in
+if necessary. **PGraph: Index Workspace** indexes all detected projects in
 sequence, reports success/failure per folder and releases idle workers between
 folders. Repeated invocations share the active workspace run. Each root owns its
 `.pgraph` database and index revision. Removing a folder stops its worker.
 
-Queries use the active editor's folder, retain the last selected folder while a
-result document is open, or ask the user to pick one. These are currently per-root
-context queries. **PGraph: Explore Relationships** adds a separate cross-service
+The 0.5.1 preview detects direct child Git repositories in non-Git parent folders.
+**Choose Scope** selects grouped daily Workspace queries or pins one Project.
+In Workspace scope, editor/agent context combines bounded per-project evidence
+under one output budget. Other agent tools require a returned `project` ID or a
+pinned project; single-project editor commands retain source/pin selection.
+Context receipts remain per-root. **PGraph: Explore Relationships** adds a separate cross-service
 map and bounded symbol browser; see [the workspace guide](WORKSPACE_GRAPH.md).
 Virtual/untrusted workspaces are disabled.
+
+The 0.6.0 **Workspace Impact for Current Symbol** command and the existing agent
+`impact` tool (`workspace: true` plus an origin `project`) connect supported
+HTTP/Azure sites to handlers and candidate tests across open roots. See the
+[workspace impact contract](WORKSPACE_IMPACT.md). Root-bound CLI/MCP remain local.
+
+The 0.2.0 preview adds **Context for Current Symbol** (also in the source editor
+context menu) and **Review My Changes**. Cursor context validates the saved source
+and anchors retrieval to its indexed declaration. Change review reindexes the
+selected root, then lists conservative affected code and candidate tests for Git
+changes against HEAD. It does not run tests or reconstruct deleted-symbol history.
+
+The 0.5.4 **Review Historical Impact** command adds a separate before/after Git
+analysis with removed-symbol consumers, declared signature changes and candidate
+test paths. The existing `workflow` tool exposes `action: "change_impact"` in both
+MCP profiles and VS Code. [Snapshot selection and limits](HISTORICAL_IMPACT.md)
+explain staged/working differences, budgets and explicit unknowns.
+In 0.5.5, `page.nextOffset` and `page.reviewId` support continuation through the same
+tool. Pass them as `offset` and `reviewId` with unchanged comparison options; the
+editor exposes **Continue Historical Review**. See [paging rules](HISTORICAL_REVIEW_PAGING.md).
+
+`pgraph.evidenceMode` defaults to `local` and excludes cached AI facts from context
+and feature queries. Choose `assisted` to include existing inferred evidence. This
+machine setting overrides tool arguments; neither mode makes a model call.
 
 Commands cover initialize, index, changed-file indexing, architecture, symbol,
 callers, callees, impact, context, semantic index, token savings and graph status.
@@ -25,7 +52,7 @@ available in the PGraph output channel.
 The sidebar opens the relationship webview, with a locally bundled renderer,
 nonce-based script policy, bounded graph results and validated source navigation.
 
-An existing index is incrementally updated after supported source/JSON file events
+An existing index is incrementally updated after supported source/JSON and text lockfile events
 when `pgraph.autoIndex` is enabled. `.gitignore` changes currently require the
 Reindex Changed Files command. Requests run in a separate Node process and terminate
 on cancellation or an execution timeout. Indexing defaults to 900 seconds
@@ -42,6 +69,11 @@ The host may prompt according to its tool-approval policies. No instruction file
 agent hooks are installed by PGraph.
 
 ## Optional semantic enrichment
+
+The 0.4.0 [daily workflow](DAILY_WORKFLOWS.md) adds readable investigation reports,
+saved task anchors and deliberate VS Code check execution. `workflow` is the one
+additional read-only agent tool. Its nine evidence actions never execute scripts;
+the editor check runner is a separate, explicit user command.
 
 1. Enable `pgraph.semanticEnabled` in **user settings**.
 2. Run **PGraph: Build Semantic Index**; enter a symbol such as `AuthService`.
@@ -70,9 +102,39 @@ parameters. MCP exposes no indexing, cleanup, process execution or enrichment to
 Query-only CLI and MCP adapters open SQLite read-only and never run schema migrations.
 The process is not an OS sandbox.
 
-Tools: context, symbol, search, callers, callees, references, implementations,
-dependencies, dependents, impact, tests, slice, file_slice, skeleton, path,
+For a smaller discovery surface, start the source-built MCP server with
+`--tool-profile essential`. It exposes only `workflow`, `context`, `search`,
+`excerpt`, `file_slice` and `impact`. Omit the option or use `--tool-profile full`
+for the complete existing tool set. Profile selection happens at startup;
+unavailable tools are not registered and calls to them fail. Both profiles use
+the same bounded dispatcher and strict schemas, including rejection of unknown
+arguments. Use `search` to find symbol IDs and `file_slice` for source beyond a
+partial excerpt. Dedicated caller/test-path queries require the full profile.
+
+The [actual stdio probe](../benchmarks/reports/tool-profiles.json) measured 3,563
+versus 1,421 BPE tokens for the tools/list arrays: 60.1% fewer schema payload tokens,
+with identical results for the three shared queries tested. Server instructions
+cost 64 versus 100 tokens separately. This is not a billing or whole-task saving.
+Run `node benchmarks/probes/tool-profiles.mjs` after building to reproduce it.
+
+For VS Code's native extension tools, use the optional
+[user tool-set example](../examples/integrations/pgraph-essential.toolsets.jsonc)
+through [Chat: Configure Tool Sets](https://code.visualstudio.com/docs/agent-customization/tool-sets).
+Select the group and deselect the other PGraph tools; a tool set alone does not
+filter all enabled tools. This example does not modify settings automatically.
+Host selection and billing behavior need live-user validation.
+
+Tools: workflow, context, symbol, search, callers, callees, references, implementations,
+dependencies, dependents, impact, tests, slice, excerpt, file_slice, skeleton, path,
 architecture, feature and status. Editor names have the `pgraph_` prefix.
+The preview also provides `review_changes`, a bounded read-only Git/change-impact
+query. Its file-level result identifies unsupported/deleted/stale areas explicitly.
+
+In 0.3.0, `tests` returns a structured target/test-path result instead of a flat
+array. `excerpt` returns a bounded partial source window with a hash and omission
+counts. `context` accepts `explain` and `previousContextId`; receipts only help when
+the caller still retains the referenced context. See [the merge contract and
+agent workflow](AGENT_CONTEXT.md) before implementing a receipt-aware client.
 
 ## First-use troubleshooting
 

@@ -1,0 +1,925 @@
+{
+  "generatedAt": "2026-09-09T20:03:43.859Z",
+  "version": "0.4.0",
+  "node": "v22.22.0",
+  "platform": "darwin/arm64",
+  "fixtureHash": "089811b205c1f8102145bce8ca2b1dc9eda3020493f1cc742231ea1476f342df",
+  "workerHash": "5be9b5daa915b195ade1b220e9d1268acacab09beef1d63c51a11251e7367dfa",
+  "tokenizer": "cl100k_base",
+  "declaredToolSchemaTokens": 3015,
+  "methodology": "Same current engine and identical indexed fixture for existing file-level review versus hunk mapping plus targeted impact. Twenty independent functions share a file; one is edited. Compares exact tool responses and JSON request envelopes; new global tool schema cost is reported separately. Names are explicit oracle knowledge, not blind search. This is a favorable constructed case for hunk mapping; no removed symbols, runtime dispatch, application execution, model calls or completed-task acceptance are measured. Timings are single-run diagnostics.",
+  "comparison": {
+    "fileReviewAffected": [
+      "op0",
+      "src/consumer0.ts",
+      "consumer0",
+      "op1",
+      "src/consumer1.ts",
+      "consumer1",
+      "op10",
+      "src/consumer10.ts",
+      "consumer10",
+      "op11",
+      "src/consumer11.ts",
+      "consumer11",
+      "op12",
+      "src/consumer12.ts",
+      "consumer12",
+      "op13",
+      "src/consumer13.ts",
+      "consumer13",
+      "op14",
+      "src/consumer14.ts",
+      "consumer14",
+      "op15",
+      "src/consumer15.ts",
+      "consumer15",
+      "op16",
+      "src/consumer16.ts",
+      "consumer16",
+      "op17",
+      "src/consumer17.ts",
+      "consumer17",
+      "op18",
+      "src/consumer18.ts",
+      "consumer18",
+      "op19",
+      "src/consumer19.ts",
+      "consumer19",
+      "op2",
+      "src/consumer2.ts",
+      "consumer2",
+      "op3",
+      "src/consumer3.ts",
+      "consumer3",
+      "op4",
+      "src/consumer4.ts",
+      "consumer4",
+      "op5",
+      "src/consumer5.ts",
+      "consumer5",
+      "op6",
+      "src/consumer6.ts",
+      "consumer6",
+      "op7",
+      "src/consumer7.ts",
+      "consumer7",
+      "op8",
+      "src/consumer8.ts",
+      "consumer8",
+      "op9",
+      "src/consumer9.ts",
+      "consumer9"
+    ],
+    "hunkTargets": ["op7"],
+    "targetedAffected": ["op7", "src/consumer7.ts", "consumer7"],
+    "existingTrafficTokens": 3857,
+    "focusedTrafficTokens": 682
+  },
+  "calls": {
+    "fileReview": {
+      "inputTokens": 14,
+      "outputTokens": 3843,
+      "latencyMs": 266.04379200000017,
+      "data": {
+        "base": "dc81bd34c60bef1d9809bf1af6cb3e320a8475fe",
+        "revision": 2,
+        "analysis": "current-file-dependencies",
+        "totalFiles": 1,
+        "files": [
+          {
+            "file": "src/operations.ts",
+            "status": "M",
+            "symbols": 20,
+            "indexedHash": "965b2e4689465436223b490e5f4c1a9d6c22a797ad282c284f225b5f3bfa1023"
+          }
+        ],
+        "affected": [
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op0",
+              "symbol": "op0",
+              "kind": "function",
+              "at": "src/operations.ts:1-1",
+              "signature": "export function op0(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op0",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer0.ts:<file>",
+              "symbol": "src/consumer0.ts",
+              "kind": "file",
+              "at": "src/consumer0.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op0",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer0.ts:consumer0",
+              "symbol": "consumer0",
+              "kind": "function",
+              "at": "src/consumer0.ts:1-1",
+              "signature": "export function consumer0(): number;"
+            },
+            "via": "typescript:src/operations.ts:op0",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op1",
+              "symbol": "op1",
+              "kind": "function",
+              "at": "src/operations.ts:2-2",
+              "signature": "export function op1(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op1",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer1.ts:<file>",
+              "symbol": "src/consumer1.ts",
+              "kind": "file",
+              "at": "src/consumer1.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op1",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer1.ts:consumer1",
+              "symbol": "consumer1",
+              "kind": "function",
+              "at": "src/consumer1.ts:1-1",
+              "signature": "export function consumer1(): number;"
+            },
+            "via": "typescript:src/operations.ts:op1",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op10",
+              "symbol": "op10",
+              "kind": "function",
+              "at": "src/operations.ts:11-11",
+              "signature": "export function op10(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op10",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer10.ts:<file>",
+              "symbol": "src/consumer10.ts",
+              "kind": "file",
+              "at": "src/consumer10.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op10",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer10.ts:consumer10",
+              "symbol": "consumer10",
+              "kind": "function",
+              "at": "src/consumer10.ts:1-1",
+              "signature": "export function consumer10(): number;"
+            },
+            "via": "typescript:src/operations.ts:op10",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op11",
+              "symbol": "op11",
+              "kind": "function",
+              "at": "src/operations.ts:12-12",
+              "signature": "export function op11(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op11",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer11.ts:<file>",
+              "symbol": "src/consumer11.ts",
+              "kind": "file",
+              "at": "src/consumer11.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op11",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer11.ts:consumer11",
+              "symbol": "consumer11",
+              "kind": "function",
+              "at": "src/consumer11.ts:1-1",
+              "signature": "export function consumer11(): number;"
+            },
+            "via": "typescript:src/operations.ts:op11",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op12",
+              "symbol": "op12",
+              "kind": "function",
+              "at": "src/operations.ts:13-13",
+              "signature": "export function op12(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op12",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer12.ts:<file>",
+              "symbol": "src/consumer12.ts",
+              "kind": "file",
+              "at": "src/consumer12.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op12",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer12.ts:consumer12",
+              "symbol": "consumer12",
+              "kind": "function",
+              "at": "src/consumer12.ts:1-1",
+              "signature": "export function consumer12(): number;"
+            },
+            "via": "typescript:src/operations.ts:op12",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op13",
+              "symbol": "op13",
+              "kind": "function",
+              "at": "src/operations.ts:14-14",
+              "signature": "export function op13(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op13",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer13.ts:<file>",
+              "symbol": "src/consumer13.ts",
+              "kind": "file",
+              "at": "src/consumer13.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op13",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer13.ts:consumer13",
+              "symbol": "consumer13",
+              "kind": "function",
+              "at": "src/consumer13.ts:1-1",
+              "signature": "export function consumer13(): number;"
+            },
+            "via": "typescript:src/operations.ts:op13",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op14",
+              "symbol": "op14",
+              "kind": "function",
+              "at": "src/operations.ts:15-15",
+              "signature": "export function op14(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op14",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer14.ts:<file>",
+              "symbol": "src/consumer14.ts",
+              "kind": "file",
+              "at": "src/consumer14.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op14",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer14.ts:consumer14",
+              "symbol": "consumer14",
+              "kind": "function",
+              "at": "src/consumer14.ts:1-1",
+              "signature": "export function consumer14(): number;"
+            },
+            "via": "typescript:src/operations.ts:op14",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op15",
+              "symbol": "op15",
+              "kind": "function",
+              "at": "src/operations.ts:16-16",
+              "signature": "export function op15(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op15",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer15.ts:<file>",
+              "symbol": "src/consumer15.ts",
+              "kind": "file",
+              "at": "src/consumer15.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op15",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer15.ts:consumer15",
+              "symbol": "consumer15",
+              "kind": "function",
+              "at": "src/consumer15.ts:1-1",
+              "signature": "export function consumer15(): number;"
+            },
+            "via": "typescript:src/operations.ts:op15",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op16",
+              "symbol": "op16",
+              "kind": "function",
+              "at": "src/operations.ts:17-17",
+              "signature": "export function op16(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op16",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer16.ts:<file>",
+              "symbol": "src/consumer16.ts",
+              "kind": "file",
+              "at": "src/consumer16.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op16",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer16.ts:consumer16",
+              "symbol": "consumer16",
+              "kind": "function",
+              "at": "src/consumer16.ts:1-1",
+              "signature": "export function consumer16(): number;"
+            },
+            "via": "typescript:src/operations.ts:op16",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op17",
+              "symbol": "op17",
+              "kind": "function",
+              "at": "src/operations.ts:18-18",
+              "signature": "export function op17(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op17",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer17.ts:<file>",
+              "symbol": "src/consumer17.ts",
+              "kind": "file",
+              "at": "src/consumer17.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op17",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer17.ts:consumer17",
+              "symbol": "consumer17",
+              "kind": "function",
+              "at": "src/consumer17.ts:1-1",
+              "signature": "export function consumer17(): number;"
+            },
+            "via": "typescript:src/operations.ts:op17",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op18",
+              "symbol": "op18",
+              "kind": "function",
+              "at": "src/operations.ts:19-19",
+              "signature": "export function op18(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op18",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer18.ts:<file>",
+              "symbol": "src/consumer18.ts",
+              "kind": "file",
+              "at": "src/consumer18.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op18",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer18.ts:consumer18",
+              "symbol": "consumer18",
+              "kind": "function",
+              "at": "src/consumer18.ts:1-1",
+              "signature": "export function consumer18(): number;"
+            },
+            "via": "typescript:src/operations.ts:op18",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op19",
+              "symbol": "op19",
+              "kind": "function",
+              "at": "src/operations.ts:20-20",
+              "signature": "export function op19(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op19",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer19.ts:<file>",
+              "symbol": "src/consumer19.ts",
+              "kind": "file",
+              "at": "src/consumer19.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op19",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer19.ts:consumer19",
+              "symbol": "consumer19",
+              "kind": "function",
+              "at": "src/consumer19.ts:1-1",
+              "signature": "export function consumer19(): number;"
+            },
+            "via": "typescript:src/operations.ts:op19",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op2",
+              "symbol": "op2",
+              "kind": "function",
+              "at": "src/operations.ts:3-3",
+              "signature": "export function op2(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op2",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer2.ts:<file>",
+              "symbol": "src/consumer2.ts",
+              "kind": "file",
+              "at": "src/consumer2.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op2",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer2.ts:consumer2",
+              "symbol": "consumer2",
+              "kind": "function",
+              "at": "src/consumer2.ts:1-1",
+              "signature": "export function consumer2(): number;"
+            },
+            "via": "typescript:src/operations.ts:op2",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op3",
+              "symbol": "op3",
+              "kind": "function",
+              "at": "src/operations.ts:4-4",
+              "signature": "export function op3(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op3",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer3.ts:<file>",
+              "symbol": "src/consumer3.ts",
+              "kind": "file",
+              "at": "src/consumer3.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op3",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer3.ts:consumer3",
+              "symbol": "consumer3",
+              "kind": "function",
+              "at": "src/consumer3.ts:1-1",
+              "signature": "export function consumer3(): number;"
+            },
+            "via": "typescript:src/operations.ts:op3",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op4",
+              "symbol": "op4",
+              "kind": "function",
+              "at": "src/operations.ts:5-5",
+              "signature": "export function op4(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op4",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer4.ts:<file>",
+              "symbol": "src/consumer4.ts",
+              "kind": "file",
+              "at": "src/consumer4.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op4",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer4.ts:consumer4",
+              "symbol": "consumer4",
+              "kind": "function",
+              "at": "src/consumer4.ts:1-1",
+              "signature": "export function consumer4(): number;"
+            },
+            "via": "typescript:src/operations.ts:op4",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op5",
+              "symbol": "op5",
+              "kind": "function",
+              "at": "src/operations.ts:6-6",
+              "signature": "export function op5(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op5",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer5.ts:<file>",
+              "symbol": "src/consumer5.ts",
+              "kind": "file",
+              "at": "src/consumer5.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op5",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer5.ts:consumer5",
+              "symbol": "consumer5",
+              "kind": "function",
+              "at": "src/consumer5.ts:1-1",
+              "signature": "export function consumer5(): number;"
+            },
+            "via": "typescript:src/operations.ts:op5",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op6",
+              "symbol": "op6",
+              "kind": "function",
+              "at": "src/operations.ts:7-7",
+              "signature": "export function op6(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op6",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer6.ts:<file>",
+              "symbol": "src/consumer6.ts",
+              "kind": "file",
+              "at": "src/consumer6.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op6",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer6.ts:consumer6",
+              "symbol": "consumer6",
+              "kind": "function",
+              "at": "src/consumer6.ts:1-1",
+              "signature": "export function consumer6(): number;"
+            },
+            "via": "typescript:src/operations.ts:op6",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op7",
+              "symbol": "op7",
+              "kind": "function",
+              "at": "src/operations.ts:8-8",
+              "signature": "export function op7(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op7",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer7.ts:<file>",
+              "symbol": "src/consumer7.ts",
+              "kind": "file",
+              "at": "src/consumer7.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op7",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer7.ts:consumer7",
+              "symbol": "consumer7",
+              "kind": "function",
+              "at": "src/consumer7.ts:1-1",
+              "signature": "export function consumer7(): number;"
+            },
+            "via": "typescript:src/operations.ts:op7",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op8",
+              "symbol": "op8",
+              "kind": "function",
+              "at": "src/operations.ts:9-9",
+              "signature": "export function op8(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op8",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer8.ts:<file>",
+              "symbol": "src/consumer8.ts",
+              "kind": "file",
+              "at": "src/consumer8.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op8",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer8.ts:consumer8",
+              "symbol": "consumer8",
+              "kind": "function",
+              "at": "src/consumer8.ts:1-1",
+              "signature": "export function consumer8(): number;"
+            },
+            "via": "typescript:src/operations.ts:op8",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op9",
+              "symbol": "op9",
+              "kind": "function",
+              "at": "src/operations.ts:10-10",
+              "signature": "export function op9(value: number): number;"
+            },
+            "via": "typescript:src/operations.ts:op9",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer9.ts:<file>",
+              "symbol": "src/consumer9.ts",
+              "kind": "file",
+              "at": "src/consumer9.ts:1-2"
+            },
+            "via": "typescript:src/operations.ts:op9",
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer9.ts:consumer9",
+              "symbol": "consumer9",
+              "kind": "function",
+              "at": "src/consumer9.ts:1-1",
+              "signature": "export function consumer9(): number;"
+            },
+            "via": "typescript:src/operations.ts:op9",
+            "potentialDispatch": false
+          }
+        ],
+        "tests": [],
+        "checks": [
+          "Run typecheck/build for affected packages",
+          "Run the listed candidate tests and required package/CI checks"
+        ],
+        "warnings": [
+          "Conservative file-level impact in this repository. Deleted/renamed symbols and previous contracts require a baseline graph. Cross-service consumers are not included.",
+          "No candidate tests found; this does not establish test coverage or safety."
+        ],
+        "truncated": false
+      }
+    },
+    "changedDeclarations": {
+      "inputTokens": 17,
+      "outputTokens": 201,
+      "latencyMs": 110.28862500000014,
+      "data": {
+        "base": "dc81bd34c60bef1d9809bf1af6cb3e320a8475fe",
+        "head": "dc81bd34c60bef1d9809bf1af6cb3e320a8475fe",
+        "mode": "working",
+        "revision": 2,
+        "totalFiles": 1,
+        "files": [
+          {
+            "file": "src/operations.ts",
+            "status": "M",
+            "hunks": [
+              {
+                "oldStart": 8,
+                "oldCount": 1,
+                "newStart": 8,
+                "newCount": 1
+              }
+            ]
+          }
+        ],
+        "declarations": [
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op7",
+              "symbol": "op7",
+              "kind": "function",
+              "at": "src/operations.ts:8-8",
+              "signature": "export function op7(value: number): number;"
+            },
+            "hunks": [1],
+            "change": "modified"
+          }
+        ],
+        "unknown": [],
+        "truncated": false,
+        "warnings": [
+          "Hunk-to-current-declaration mapping, not a semantic contract comparison. Renames/removals and historical consumers may be unknown."
+        ]
+      }
+    },
+    "targetedImpact": {
+      "inputTokens": 25,
+      "outputTokens": 439,
+      "latencyMs": 2.086749999999938,
+      "data": {
+        "target": {
+          "id": "typescript:src/operations.ts:op7",
+          "symbol": "op7",
+          "kind": "function",
+          "at": "src/operations.ts:8-8",
+          "signature": "export function op7(value: number): number;"
+        },
+        "directCallers": [
+          {
+            "id": "typescript:src/consumer7.ts:consumer7",
+            "symbol": "consumer7",
+            "kind": "function",
+            "at": "src/consumer7.ts:1-1",
+            "signature": "export function consumer7(): number;"
+          }
+        ],
+        "indirectCallers": [],
+        "routes": [],
+        "tests": [],
+        "dependentModules": [
+          {
+            "id": "typescript:src/consumer7.ts:<file>",
+            "symbol": "src/consumer7.ts",
+            "kind": "file",
+            "at": "src/consumer7.ts:1-2"
+          }
+        ],
+        "publicAPIs": [
+          {
+            "id": "typescript:src/operations.ts:op7",
+            "symbol": "op7",
+            "kind": "function",
+            "at": "src/operations.ts:8-8",
+            "signature": "export function op7(value: number): number;"
+          },
+          {
+            "id": "typescript:src/consumer7.ts:consumer7",
+            "symbol": "consumer7",
+            "kind": "function",
+            "at": "src/consumer7.ts:1-1",
+            "signature": "export function consumer7(): number;"
+          }
+        ],
+        "databaseEffects": [],
+        "events": [],
+        "likelyChangeSurface": [
+          {
+            "node": {
+              "id": "typescript:src/operations.ts:op7",
+              "symbol": "op7",
+              "kind": "function",
+              "at": "src/operations.ts:8-8",
+              "signature": "export function op7(value: number): number;"
+            },
+            "distance": 0,
+            "score": 1,
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer7.ts:<file>",
+              "symbol": "src/consumer7.ts",
+              "kind": "file",
+              "at": "src/consumer7.ts:1-2"
+            },
+            "distance": 1,
+            "score": 0.5,
+            "potentialDispatch": false
+          },
+          {
+            "node": {
+              "id": "typescript:src/consumer7.ts:consumer7",
+              "symbol": "consumer7",
+              "kind": "function",
+              "at": "src/consumer7.ts:1-1",
+              "signature": "export function consumer7(): number;"
+            },
+            "distance": 1,
+            "score": 0.5,
+            "potentialDispatch": false
+          }
+        ],
+        "truncated": false,
+        "warnings": []
+      }
+    },
+    "literalSearch": {
+      "inputTokens": 23,
+      "outputTokens": 128,
+      "latencyMs": 2.8229160000000775,
+      "data": {
+        "query": "invalid amount 7",
+        "matches": [
+          {
+            "file": "src/operations.ts",
+            "line": 8,
+            "text": "export function op7(value: number) { if(value<0) throw new Error('invalid amount 7'); return value * 7; }",
+            "hash": "965b2e4689465436223b490e5f4c1a9d6c22a797ad282c284f225b5f3bfa1023",
+            "symbol": "typescript:src/operations.ts:op7"
+          }
+        ],
+        "scanned": 22,
+        "truncated": false,
+        "warnings": [],
+        "warningsTruncated": false
+      }
+    },
+    "health": {
+      "inputTokens": 17,
+      "outputTokens": 109,
+      "latencyMs": 2.8503749999999854,
+      "data": {
+        "revision": 2,
+        "current": true,
+        "fingerprint": "d78c1a1c8c664d4af421fd1e28ce150529d23ca081b85ae007ec9ef6a9259d2d",
+        "filesChecked": 22,
+        "changed": [],
+        "configChanged": false,
+        "diagnostics": [],
+        "truncated": false,
+        "scope": "Supported non-excluded source, package manifests and indexed configuration; external dependencies, environment and other assets are outside this fingerprint.",
+        "next": "Open a task or review changes"
+      }
+    }
+  }
+}

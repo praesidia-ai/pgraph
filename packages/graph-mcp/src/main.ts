@@ -1,10 +1,24 @@
 #!/usr/bin/env node
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { createServer } from "./index.js";
+import { parseArgs } from "node:util";
 try {
-  const args = process.argv.slice(2);
-  if (args.length > 1) throw new Error("Usage: pgraph-mcp [repository-root]");
-  const { server } = createServer(args[0] ?? process.cwd());
+  const { values, positionals } = parseArgs({
+    args: process.argv.slice(2),
+    options: { "tool-profile": { type: "string", default: "full" } },
+    allowPositionals: true,
+    strict: true,
+  });
+  if (positionals.length > 1)
+    throw new Error(
+      "Usage: pgraph-mcp [repository-root] [--tool-profile full|essential]",
+    );
+  const profile = values["tool-profile"];
+  if (profile !== "full" && profile !== "essential")
+    throw new Error("Unknown tool profile; choose full or essential");
+  const { server } = createServer(positionals[0] ?? process.cwd(), {
+    toolProfile: profile,
+  });
   await server.connect(new StdioServerTransport());
   const shutdown = () => {
     void server.close().finally(() => process.exit(0));

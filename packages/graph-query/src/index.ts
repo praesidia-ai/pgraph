@@ -1,4 +1,14 @@
 import { relationships as readRelationships } from "./explorer.js";
+import { sourceExcerpt, type ExcerptOptions } from "./excerpt.js";
+import { relatedTestPaths } from "./tests.js";
+import {
+  searchText,
+  traceError,
+  fileOverview,
+  dependencyCycles,
+} from "./workflow.js";
+export type { ExcerptOptions, SourceExcerpt } from "./excerpt.js";
+export type { TestPath, TestPathsResult } from "./tests.js";
 import { topologySnapshot as readTopology } from "./workspace.js";
 import type { RelationshipOptions } from "@praesidia/pgraph-ir";
 import type {
@@ -6,6 +16,8 @@ import type {
   GraphNode,
   Neighbor,
   SearchOptions,
+  EvidenceMode,
+  SourceFocus,
 } from "@praesidia/pgraph-ir";
 import type { GraphStore } from "@praesidia/pgraph-store";
 import { bounded, hash, readLocal } from "@praesidia/pgraph-shared";
@@ -28,8 +40,14 @@ export interface ImpactResult {
   publicAPIs: GraphNode[];
   databaseEffects: GraphNode[];
   events: GraphNode[];
-  likelyChangeSurface: { node: GraphNode; distance: number; score: number }[];
+  likelyChangeSurface: {
+    node: GraphNode;
+    distance: number;
+    score: number;
+    potentialDispatch: boolean;
+  }[];
   truncated: boolean;
+  warnings: string[];
 }
 const dependencyTypes: EdgeType[] = [
   "CALLS",
@@ -50,6 +68,18 @@ const dependencyTypes: EdgeType[] = [
   "CONSUMES",
 ];
 export class GraphQuery {
+  searchText(query: string, options: Parameters<typeof searchText>[2] = {}) {
+    return searchText(this, query, options);
+  }
+  traceError(trace: string) {
+    return traceError(this, trace);
+  }
+  fileOverview(file: string) {
+    return fileOverview(this, file);
+  }
+  dependencyCycles(scope?: string) {
+    return dependencyCycles(this, scope);
+  }
   constructor(
     readonly store: GraphStore,
     readonly root: string,
@@ -82,6 +112,38 @@ export class GraphQuery {
   }
   searchSymbols(query: string, options: SearchOptions = {}): GraphNode[] {
     return this.store.search(query, options);
+  }
+  focus({ file, line }: SourceFocus): GraphNode {
+    bounded(line, 1, 10_000_000, "focus.line");
+    const record = this.store.file(file);
+    if (!record)
+      throw new Error("Focus file is not indexed in this repository");
+    if (hash(readLocal(this.root, file, this.maxFileBytes)) !== record.hash)
+      throw new Error(`Stale index for ${file}; run pgraph index --changed`);
+    const nodes = this.store.nodesInFile(file).filter(
+      (node) =>
+        node.kind !== "file" &&
+        node.kind !== "package" &&
+        // Effect/configuration observations can share a declaration's line.
+        // Cursor focus selects code, not the smaller synthetic observation.
+        (node.provenance.source !== "framework-pattern" ||
+          node.metadata.communicationHandler === true) &&
+        node.location &&
+        node.location.startLine <= line &&
+        node.location.endLine >= line,
+    );
+    nodes.sort(
+      (a, b) =>
+        a.location!.endOffset -
+          a.location!.startOffset -
+          (b.location!.endOffset - b.location!.startOffset) ||
+        a.id.localeCompare(b.id),
+    );
+    if (!nodes.length)
+      throw new Error(
+        "No indexed symbol at this line; select a declaration or its body",
+      );
+    return nodes[0]!;
   }
   callers(name: string): GraphNode[] {
     return this.adjacent(name, "in", ["CALLS"]);
@@ -116,6 +178,12 @@ export class GraphQuery {
         if (n.node.kind === "test") tests.set(n.node.id, n.node);
     }
     return [...tests.values()];
+  }
+  testPaths(name: string, options: { depth?: number; limit?: number } = {}) {
+    return relatedTestPaths(this, name, options);
+  }
+  excerpt(name: string, options: ExcerptOptions = {}) {
+    return sourceExcerpt(this, name, options);
   }
   dependencies(name: string): GraphNode[] {
     return this.aggregate(name, "out");
@@ -203,9 +271,19 @@ export class GraphQuery {
     const limit = bounded(options.limit ?? 100, 1, 500, "limit");
     const found = new Map<
       string,
-      { node: GraphNode; distance: number; score: number }
-    >([[target.id, { node: target, distance: 0, score: 1 }]]);
-    const queue = [{ node: target, distance: 0 }];
+      {
+        node: GraphNode;
+        distance: number;
+        score: number;
+        potentialDispatch: boolean;
+      }
+    >([
+      [
+        target.id,
+        { node: target, distance: 0, score: 1, potentialDispatch: false },
+      ],
+    ]);
+    const queue = [{ node: target, distance: 0, potentialDispatch: false }];
     let truncated = false;
     for (let i = 0; i < queue.length; i++) {
       const item = queue[i]!;
@@ -219,13 +297,16 @@ export class GraphQuery {
       const tests = this.store.neighbors(
         item.node.id,
         "out",
-        ["TESTED_BY"],
+        ["TESTED_BY", "IMPLEMENTS"],
         100,
       );
-      if (incoming.length === 200) truncated = true;
+      if (incoming.length === 200 || tests.length === 100) truncated = true;
       for (const next of [...incoming, ...tests]) {
-        if (found.has(next.node.id)) continue;
-        if (found.size >= limit) {
+        const potentialDispatch =
+          item.potentialDispatch || next.edge.type === "IMPLEMENTS";
+        const prior = found.get(next.node.id);
+        if (prior && (!prior.potentialDispatch || potentialDispatch)) continue;
+        if (found.size >= limit && !prior) {
           truncated = true;
           break;
         }
@@ -234,8 +315,9 @@ export class GraphQuery {
           node: next.node,
           distance,
           score: Number((1 / (distance + 1)).toFixed(3)),
+          potentialDispatch,
         });
-        queue.push({ node: next.node, distance });
+        queue.push({ node: next.node, distance, potentialDispatch });
       }
     }
     const surface = [...found.values()].sort(
@@ -263,6 +345,11 @@ export class GraphQuery {
       events: effects.filter((n) => n.kind === "event" || n.kind === "queue"),
       likelyChangeSurface: surface,
       truncated,
+      warnings: surface.some((item) => item.potentialDispatch)
+        ? [
+            "Interface-member paths include possible dispatch; runtime receiver identity is unresolved.",
+          ]
+        : [],
     };
   }
   fileSlice(options: {
@@ -351,15 +438,20 @@ export class GraphQuery {
       .map((n) => this.skeleton(n.node.id))
       .join("\n");
   }
-  feature(concept: string): {
+  feature(
+    concept: string,
+    evidenceMode: EvidenceMode = "local",
+  ): {
     concept: string;
     symbols: GraphNode[];
-    evidence: "semantic-or-name-match";
+    evidence: "semantic-or-name-match" | "local-search";
   } {
     const found = new Map(
       this.store.search(concept, { limit: 40 }).map((n) => [n.id, n]),
     );
-    for (const fact of this.store.semantic())
+    if (!["local", "assisted"].includes(evidenceMode))
+      throw new Error("Invalid evidence mode");
+    for (const fact of evidenceMode === "assisted" ? this.store.semantic() : [])
       if (
         fact.concepts.some((c) =>
           c.toLowerCase().includes(concept.toLowerCase()),
@@ -371,7 +463,8 @@ export class GraphQuery {
     return {
       concept,
       symbols: [...found.values()].slice(0, 100),
-      evidence: "semantic-or-name-match",
+      evidence:
+        evidenceMode === "assisted" ? "semantic-or-name-match" : "local-search",
     };
   }
   architecture(scope?: string): {
@@ -408,3 +501,4 @@ export class GraphQuery {
 }
 export { relationships } from "./explorer.js";
 export { topologySnapshot, composeWorkspace } from "./workspace.js";
+export { connectionReadiness } from "./connections.js";

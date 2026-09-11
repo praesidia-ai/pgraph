@@ -1,4 +1,6 @@
 import { communications } from "./communications.js";
+export { declarationShapes } from "./declaration-shapes.js";
+import { projectSourceResolution } from "./project-resolution.js";
 import ts from "typescript";
 import { dirname, relative, resolve } from "node:path";
 import { existsSync } from "node:fs";
@@ -327,6 +329,15 @@ export class TypeScriptAdapter implements LanguageAdapter {
         this.sourceCache.set(file, { hash: digest, source });
         return source;
       };
+      const sourceResolution = projectSourceResolution(
+        root,
+        config,
+        groups,
+        new Set(records.keys()),
+        allowedRead,
+        configDiagnostics,
+      );
+      sourceResolution.install(host);
       const program = ts.createProgram({ rootNames, options, host });
       if (snapshotError) throw snapshotError;
       const checker = program.getTypeChecker();
@@ -335,6 +346,7 @@ export class TypeScriptAdapter implements LanguageAdapter {
         string,
         { source: ts.SourceFile; nodes: GraphNode[]; edges: GraphEdge[] }
       >();
+      const ownedFiles = new Set(rootNames);
       const testCallbacks = new Map<ts.Node, GraphNode>();
 
       for (const source of program.getSourceFiles()) {
@@ -417,6 +429,11 @@ export class TypeScriptAdapter implements LanguageAdapter {
                   (m) => m.kind === ts.SyntaxKind.DefaultKeyword,
                 ),
               decorators: decorators(ast),
+              documentation: ts
+                .getJSDocCommentsAndTags(ast)
+                .map((comment) => comment.getText(source))
+                .join("\n")
+                .slice(0, 4000),
             },
             provenance: { ...compilerProvenance, sourceHash: record.hash },
           };
@@ -498,7 +515,9 @@ export class TypeScriptAdapter implements LanguageAdapter {
         byFile.set(source.fileName, { source, nodes, edges });
       }
       const targetOf = (node: ts.Node): GraphNode | undefined => {
-        let sym = checker.getSymbolAtLocation(node);
+        let sym = ts.isShorthandPropertyAssignment(node.parent)
+          ? checker.getShorthandAssignmentValueSymbol(node.parent)
+          : checker.getSymbolAtLocation(node);
         if (sym && sym.flags & ts.SymbolFlags.Alias) {
           try {
             sym = checker.getAliasedSymbol(sym);
@@ -519,7 +538,12 @@ export class TypeScriptAdapter implements LanguageAdapter {
       };
       for (const [file, { source, nodes, edges }] of byFile) {
         const record = records.get(resolve(file))!;
-        if (!changed.has(record.path) || output.has(record.path)) continue;
+        if (
+          !ownedFiles.has(resolve(file)) ||
+          !changed.has(record.path) ||
+          output.has(record.path)
+        )
+          continue;
         const fileNode = nodes[0]!;
         const addEdge = (
           from: GraphNode,
@@ -544,6 +568,12 @@ export class TypeScriptAdapter implements LanguageAdapter {
               : {}),
             sourceHash: record.hash,
             metadata: {
+              ...(to.location &&
+              sourceResolution.redirectedFiles.has(
+                resolve(root, to.location.file),
+              )
+                ? { resolution: "referenced project source" }
+                : {}),
               line:
                 source.getLineAndCharacterOfPosition(ast.getStart()).line + 1,
             },
@@ -589,6 +619,27 @@ export class TypeScriptAdapter implements LanguageAdapter {
           addEdge(fileNode, g, "CONTAINS", ast, true);
           return g;
         };
+        const topology = communications(
+          source,
+          checker,
+          record,
+          nodes,
+          targetOf,
+          (callback) => {
+            const existing = declarations.get(callback);
+            if (existing) return existing;
+            const node = synthetic(
+              `handler@${callback.getStart(source)}`,
+              "function",
+              callback,
+            );
+            node.metadata.entryPoint = true;
+            node.metadata.communicationHandler = true;
+            node.signature = signature(callback, checker);
+            declarations.set(callback, node);
+            return node;
+          },
+        );
         const walk = (ast: ts.Node, parent: GraphNode): void => {
           const declaration = declarations.get(ast);
           const owner =
@@ -597,6 +648,14 @@ export class TypeScriptAdapter implements LanguageAdapter {
               : undefined) ??
             testCallbacks.get(ast) ??
             parent;
+          if (
+            ts.isIdentifier(ast) ||
+            (ts.isStringLiteralLike(ast) && ast.text.length <= 120)
+          ) {
+            const terms = (owner.metadata.searchTerms ??= []) as string[];
+            const term = ast.text;
+            if (terms.length < 128 && !terms.includes(term)) terms.push(term);
+          }
           if (declaration?.metadata.route) {
             const route = synthetic(
               String(declaration.metadata.route),
@@ -610,13 +669,14 @@ export class TypeScriptAdapter implements LanguageAdapter {
             const spec = ast.moduleSpecifier;
             if (spec) {
               const target = targetOf(spec);
-              if (target)
+              if (target) {
                 addEdge(
                   fileNode,
                   target,
                   ts.isImportDeclaration(ast) ? "IMPORTS" : "EXPORTS",
                   ast,
                 );
+              }
             }
           }
           if (ts.isCallExpression(ast) || ts.isNewExpression(ast)) {
@@ -655,7 +715,7 @@ export class TypeScriptAdapter implements LanguageAdapter {
                 ast,
               );
               for (const arg of ast.arguments?.slice(1) ?? []) {
-                const handler = targetOf(arg);
+                const handler = declarations.get(arg) ?? targetOf(arg);
                 if (handler) {
                   addEdge(r, handler, "CALLS", ast, true);
                   addEdge(handler, r, "ROUTED_FROM", ast, true);
@@ -721,7 +781,7 @@ export class TypeScriptAdapter implements LanguageAdapter {
           if (ts.isHeritageClause(ast))
             for (const type of ast.types) {
               const target = targetOf(type.expression);
-              if (target)
+              if (target) {
                 addEdge(
                   owner,
                   target,
@@ -730,6 +790,26 @@ export class TypeScriptAdapter implements LanguageAdapter {
                     : "IMPLEMENTS",
                   ast,
                 );
+                // Declaration membership, not proof of a runtime receiver.
+                if (ast.token === ts.SyntaxKind.ImplementsKeyword) {
+                  const instance = checker.getTypeAtLocation(ast.parent);
+                  const contract = checker.getTypeAtLocation(type);
+                  for (const member of checker.getPropertiesOfType(contract)) {
+                    const implementation = checker.getPropertyOfType(
+                      instance,
+                      member.name,
+                    );
+                    const from = implementation?.declarations
+                      ?.map((d) => declarations.get(d))
+                      .find(Boolean);
+                    const to = member.declarations
+                      ?.map((d) => declarations.get(d))
+                      .find(Boolean);
+                    if (from && to && from.id !== to.id)
+                      addEdge(from, to, "IMPLEMENTS", ast);
+                  }
+                }
+              }
             }
           if (ts.isTypeReferenceNode(ast)) {
             const target = targetOf(ast.typeName);
@@ -794,7 +874,6 @@ export class TypeScriptAdapter implements LanguageAdapter {
           ts.forEachChild(ast, (child) => walk(child, owner));
         };
         source.forEachChild((node) => walk(node, fileNode));
-        const topology = communications(source, checker, record, nodes);
         fileNode.metadata.communications = topology.endpoints;
         fileNode.metadata.communicationsTruncated = topology.truncated;
         const syntax = program

@@ -1,0 +1,632 @@
+{
+  "generatedAt": "2026-09-09T19:02:23.517Z",
+  "node": "v22.22.0",
+  "platform": "darwin/arm64",
+  "tokenizer": "cl100k_base",
+  "methodology": "Two built extension workers index separate roots with identical generated source. Three identical named context requests per task, same 2000-token output budget; the new worker receives a retained receipt on requests 2 and 3. Counts exact returned text plus JSON {name,input} requests. A separate total includes one JSON serialization of ALL declared VS Code tool schemas per three-call session. Actual host schema exposure/encoding, reasoning, tool decisions, retries and unrelated conversation tokens are unavailable. The scripted repeat pattern favors reuse and is not representative paired agent work. Source markers and receipt reconstruction are checked; no model calls or application tests are executed. Excerpts are partial line windows, not complete implementations. No runtime receiver identity is inferred.",
+  "fixtureHash": "7ef089f94de9aefb1bc1118ff318399be4b82a5ac984d4613e6fd41f99c179b7",
+  "baselineArtifactHash": "9eb8950ad5f4c4f0e1c405cf08b0dbd5273c6c12a3c085dd0cc6fcb5370867fb",
+  "runs": [
+    {
+      "version": "0.2.0",
+      "workerHash": "8a0e40f806ce9d9f2427c7c3a17d65e8e53e5f2851e5417e8da1800ee39a0e2a",
+      "declaredToolSchemaTokens": 2480,
+      "sessions": [
+        {
+          "task": "Change SqlLedger.save balance validation",
+          "calls": [
+            {
+              "inputTokens": 27,
+              "outputTokens": 657,
+              "reused": 0,
+              "symbols": [
+                {
+                  "symbol": "SqlLedger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "directly",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "Ledger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "OtherLedger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "direct concrete call",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "throughInterface",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "injected",
+                  "representation": "source"
+                }
+              ],
+              "hasTargetSourceMarker": true,
+              "metrics": {
+                "rawContextEstimate": 210,
+                "contextTokens": 657,
+                "tokensAvoided": 0,
+                "reductionPercent": -212.86,
+                "fullFilesAvoided": 2,
+                "sourceLinesAvoided": 8,
+                "symbolsSupplied": 7,
+                "sourceSlices": 7,
+                "toolCalls": 1,
+                "cacheHit": false,
+                "latencyMs": 199
+              }
+            },
+            {
+              "inputTokens": 27,
+              "outputTokens": 657,
+              "reused": 0,
+              "symbols": [
+                {
+                  "symbol": "SqlLedger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "directly",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "Ledger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "OtherLedger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "direct concrete call",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "throughInterface",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "injected",
+                  "representation": "source"
+                }
+              ],
+              "hasTargetSourceMarker": true,
+              "metrics": {
+                "rawContextEstimate": 210,
+                "contextTokens": 657,
+                "tokensAvoided": 0,
+                "reductionPercent": -212.86,
+                "fullFilesAvoided": 2,
+                "sourceLinesAvoided": 8,
+                "symbolsSupplied": 7,
+                "sourceSlices": 7,
+                "toolCalls": 1,
+                "cacheHit": true,
+                "latencyMs": 0
+              }
+            },
+            {
+              "inputTokens": 27,
+              "outputTokens": 657,
+              "reused": 0,
+              "symbols": [
+                {
+                  "symbol": "SqlLedger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "directly",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "Ledger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "OtherLedger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "direct concrete call",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "throughInterface",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "injected",
+                  "representation": "source"
+                }
+              ],
+              "hasTargetSourceMarker": true,
+              "metrics": {
+                "rawContextEstimate": 210,
+                "contextTokens": 657,
+                "tokensAvoided": 0,
+                "reductionPercent": -212.86,
+                "fullFilesAvoided": 2,
+                "sourceLinesAvoided": 8,
+                "symbolsSupplied": 7,
+                "sourceSlices": 7,
+                "toolCalls": 1,
+                "cacheHit": true,
+                "latencyMs": 0
+              }
+            }
+          ],
+          "trafficTokens": 2052,
+          "withSchemaTokens": 4532
+        },
+        {
+          "task": "Change Handler.reconcile chargeback reconciliation",
+          "calls": [
+            {
+              "inputTokens": 28,
+              "outputTokens": 136,
+              "reused": 0,
+              "symbols": [
+                {
+                  "symbol": "Handler.reconcile",
+                  "representation": "signature"
+                }
+              ],
+              "hasTargetSourceMarker": false,
+              "metrics": {
+                "rawContextEstimate": 1294,
+                "contextTokens": 136,
+                "tokensAvoided": 1158,
+                "reductionPercent": 89.49,
+                "fullFilesAvoided": 1,
+                "sourceLinesAvoided": 217,
+                "symbolsSupplied": 1,
+                "sourceSlices": 0,
+                "toolCalls": 1,
+                "cacheHit": false,
+                "latencyMs": 5
+              }
+            },
+            {
+              "inputTokens": 28,
+              "outputTokens": 136,
+              "reused": 0,
+              "symbols": [
+                {
+                  "symbol": "Handler.reconcile",
+                  "representation": "signature"
+                }
+              ],
+              "hasTargetSourceMarker": false,
+              "metrics": {
+                "rawContextEstimate": 1294,
+                "contextTokens": 136,
+                "tokensAvoided": 1158,
+                "reductionPercent": 89.49,
+                "fullFilesAvoided": 1,
+                "sourceLinesAvoided": 217,
+                "symbolsSupplied": 1,
+                "sourceSlices": 0,
+                "toolCalls": 1,
+                "cacheHit": true,
+                "latencyMs": 0
+              }
+            },
+            {
+              "inputTokens": 28,
+              "outputTokens": 136,
+              "reused": 0,
+              "symbols": [
+                {
+                  "symbol": "Handler.reconcile",
+                  "representation": "signature"
+                }
+              ],
+              "hasTargetSourceMarker": false,
+              "metrics": {
+                "rawContextEstimate": 1294,
+                "contextTokens": 136,
+                "tokensAvoided": 1158,
+                "reductionPercent": 89.49,
+                "fullFilesAvoided": 1,
+                "sourceLinesAvoided": 217,
+                "symbolsSupplied": 1,
+                "sourceSlices": 0,
+                "toolCalls": 1,
+                "cacheHit": true,
+                "latencyMs": 0
+              }
+            }
+          ],
+          "trafficTokens": 492,
+          "withSchemaTokens": 2972
+        }
+      ],
+      "testPathResponse": []
+    },
+    {
+      "version": "0.3.0",
+      "workerHash": "0f3c309c6f40d054eed54171811e84d8a32dff3740d38926484f4ba6635798b6",
+      "declaredToolSchemaTokens": 2769,
+      "sessions": [
+        {
+          "task": "Change SqlLedger.save balance validation",
+          "calls": [
+            {
+              "inputTokens": 27,
+              "outputTokens": 814,
+              "reused": 0,
+              "symbols": [
+                {
+                  "symbol": "SqlLedger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "Ledger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "directly",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "direct concrete call",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "injected concrete call",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "OtherLedger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "throughInterface",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "injected",
+                  "representation": "source"
+                }
+              ],
+              "hasTargetSourceMarker": true,
+              "metrics": {
+                "rawContextEstimate": 210,
+                "contextTokens": 814,
+                "tokensAvoided": 0,
+                "reductionPercent": -287.62,
+                "fullFilesAvoided": 2,
+                "sourceLinesAvoided": 7,
+                "symbolsSupplied": 8,
+                "sourceSlices": 8,
+                "excerptSlices": 0,
+                "toolCalls": 1,
+                "cacheHit": false,
+                "latencyMs": 201
+              }
+            },
+            {
+              "inputTokens": 44,
+              "outputTokens": 294,
+              "reused": 8,
+              "symbols": [
+                {
+                  "symbol": "SqlLedger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "Ledger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "directly",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "direct concrete call",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "injected concrete call",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "OtherLedger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "throughInterface",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "injected",
+                  "representation": "source"
+                }
+              ],
+              "hasTargetSourceMarker": true,
+              "metrics": {
+                "rawContextEstimate": 210,
+                "contextTokens": 294,
+                "tokensAvoided": 0,
+                "reductionPercent": -40,
+                "fullFilesAvoided": 2,
+                "sourceLinesAvoided": 7,
+                "symbolsSupplied": 0,
+                "sourceSlices": 0,
+                "excerptSlices": 0,
+                "toolCalls": 1,
+                "cacheHit": true,
+                "latencyMs": 0,
+                "reusedSymbols": 8
+              }
+            },
+            {
+              "inputTokens": 44,
+              "outputTokens": 294,
+              "reused": 8,
+              "symbols": [
+                {
+                  "symbol": "SqlLedger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "Ledger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "directly",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "direct concrete call",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "injected concrete call",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "OtherLedger.save",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "throughInterface",
+                  "representation": "source"
+                },
+                {
+                  "symbol": "injected",
+                  "representation": "source"
+                }
+              ],
+              "hasTargetSourceMarker": true,
+              "metrics": {
+                "rawContextEstimate": 210,
+                "contextTokens": 294,
+                "tokensAvoided": 0,
+                "reductionPercent": -40,
+                "fullFilesAvoided": 2,
+                "sourceLinesAvoided": 7,
+                "symbolsSupplied": 0,
+                "sourceSlices": 0,
+                "excerptSlices": 0,
+                "toolCalls": 1,
+                "cacheHit": true,
+                "latencyMs": 0,
+                "reusedSymbols": 8
+              }
+            }
+          ],
+          "trafficTokens": 1517,
+          "withSchemaTokens": 4286
+        },
+        {
+          "task": "Change Handler.reconcile chargeback reconciliation",
+          "calls": [
+            {
+              "inputTokens": 28,
+              "outputTokens": 308,
+              "reused": 0,
+              "symbols": [
+                {
+                  "symbol": "Handler.reconcile",
+                  "representation": "excerpt"
+                }
+              ],
+              "hasTargetSourceMarker": true,
+              "metrics": {
+                "rawContextEstimate": 1294,
+                "contextTokens": 308,
+                "tokensAvoided": 986,
+                "reductionPercent": 76.2,
+                "fullFilesAvoided": 1,
+                "sourceLinesAvoided": 198,
+                "symbolsSupplied": 1,
+                "sourceSlices": 0,
+                "excerptSlices": 1,
+                "toolCalls": 1,
+                "cacheHit": false,
+                "latencyMs": 7
+              }
+            },
+            {
+              "inputTokens": 48,
+              "outputTokens": 128,
+              "reused": 1,
+              "symbols": [
+                {
+                  "symbol": "Handler.reconcile",
+                  "representation": "excerpt"
+                }
+              ],
+              "hasTargetSourceMarker": true,
+              "metrics": {
+                "rawContextEstimate": 1294,
+                "contextTokens": 128,
+                "tokensAvoided": 1166,
+                "reductionPercent": 90.11,
+                "fullFilesAvoided": 1,
+                "sourceLinesAvoided": 198,
+                "symbolsSupplied": 0,
+                "sourceSlices": 0,
+                "excerptSlices": 0,
+                "toolCalls": 1,
+                "cacheHit": true,
+                "latencyMs": 0,
+                "reusedSymbols": 1
+              }
+            },
+            {
+              "inputTokens": 48,
+              "outputTokens": 128,
+              "reused": 1,
+              "symbols": [
+                {
+                  "symbol": "Handler.reconcile",
+                  "representation": "excerpt"
+                }
+              ],
+              "hasTargetSourceMarker": true,
+              "metrics": {
+                "rawContextEstimate": 1294,
+                "contextTokens": 128,
+                "tokensAvoided": 1166,
+                "reductionPercent": 90.11,
+                "fullFilesAvoided": 1,
+                "sourceLinesAvoided": 198,
+                "symbolsSupplied": 0,
+                "sourceSlices": 0,
+                "excerptSlices": 0,
+                "toolCalls": 1,
+                "cacheHit": true,
+                "latencyMs": 0,
+                "reusedSymbols": 1
+              }
+            }
+          ],
+          "trafficTokens": 688,
+          "withSchemaTokens": 3457
+        }
+      ],
+      "testPathResponse": {
+        "target": {
+          "id": "typescript:ledger.ts:SqlLedger.save",
+          "symbol": "SqlLedger.save",
+          "kind": "method",
+          "at": "ledger.ts:4-8",
+          "signature": "save(amount: number): number;"
+        },
+        "tests": [
+          {
+            "node": {
+              "id": "typescript:ledger.test.ts:direct concrete call",
+              "symbol": "direct concrete call",
+              "kind": "test",
+              "at": "ledger.test.ts:3-3",
+              "signature": "test(\"direct concrete call\")"
+            },
+            "potentialDispatch": false,
+            "path": [
+              {
+                "from": "typescript:ledger.ts:SqlLedger.save",
+                "to": "typescript:ledger.ts:directly",
+                "type": "CALLS",
+                "direction": "in"
+              },
+              {
+                "from": "typescript:ledger.ts:directly",
+                "to": "typescript:ledger.test.ts:direct concrete call",
+                "type": "CALLS",
+                "direction": "in"
+              }
+            ]
+          },
+          {
+            "node": {
+              "id": "typescript:ledger.test.ts:injected concrete call",
+              "symbol": "injected concrete call",
+              "kind": "test",
+              "at": "ledger.test.ts:4-4",
+              "signature": "test(\"injected concrete call\")"
+            },
+            "potentialDispatch": true,
+            "path": [
+              {
+                "from": "typescript:ledger.ts:SqlLedger.save",
+                "to": "typescript:ledger.ts:Ledger.save",
+                "type": "IMPLEMENTS",
+                "direction": "out"
+              },
+              {
+                "from": "typescript:ledger.ts:Ledger.save",
+                "to": "typescript:ledger.ts:throughInterface",
+                "type": "CALLS",
+                "direction": "in"
+              },
+              {
+                "from": "typescript:ledger.ts:throughInterface",
+                "to": "typescript:ledger.ts:injected",
+                "type": "CALLS",
+                "direction": "in"
+              },
+              {
+                "from": "typescript:ledger.ts:injected",
+                "to": "typescript:ledger.test.ts:injected concrete call",
+                "type": "CALLS",
+                "direction": "in"
+              }
+            ]
+          }
+        ],
+        "truncated": false,
+        "warnings": [
+          "Candidate tests from static paths; execution and coverage are not established.",
+          "Interface-member paths describe possible dispatch; runtime receiver identity is unresolved."
+        ]
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "task": "Change SqlLedger.save balance validation",
+      "trafficTokens": {
+        "baseline": 2052,
+        "preview": 1517
+      },
+      "trafficReductionPercent": 26.07,
+      "withAllSchemasOnce": {
+        "baseline": 4532,
+        "preview": 4286
+      },
+      "withSchemaReductionPercent": 5.43,
+      "targetSourceAllTurns": {
+        "baseline": true,
+        "preview": true
+      }
+    },
+    {
+      "task": "Change Handler.reconcile chargeback reconciliation",
+      "trafficTokens": {
+        "baseline": 492,
+        "preview": 688
+      },
+      "trafficReductionPercent": -39.84,
+      "withAllSchemasOnce": {
+        "baseline": 2972,
+        "preview": 3457
+      },
+      "withSchemaReductionPercent": -16.32,
+      "targetSourceAllTurns": {
+        "baseline": false,
+        "preview": true
+      }
+    }
+  ]
+}

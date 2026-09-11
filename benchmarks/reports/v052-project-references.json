@@ -1,0 +1,530 @@
+{
+  "generatedAt": "2026-09-10T16:28:09.359Z",
+  "node": "v22.22.0",
+  "platform": "darwin/arm64",
+  "baselineArtifactSha256": "9bbf75a54821a4e66611cee071795fb15347879a30fafc4a126f0a9d340bf2dd",
+  "previewWorkerSha256": "93841cb972dfdee90cefd1fc3aee99db1c5fa6ce00cf1b398f26496871f3a718",
+  "fixtureHash": "a3b1a9864d74746a706a6d522daf25ab856e7ccb651819b5d8760c771475b7c7",
+  "fixtures": {
+    "package.json": {
+      "private": true,
+      "workspaces": ["packages/*"]
+    },
+    "packages/domain/package.json": {
+      "name": "@fixture/domain",
+      "type": "module",
+      "exports": {
+        ".": {
+          "types": "./dist/index.d.ts",
+          "import": "./dist/index.js"
+        }
+      }
+    },
+    "packages/domain/tsconfig.json": {
+      "compilerOptions": {
+        "composite": true,
+        "rootDir": "src",
+        "outDir": "dist",
+        "module": "NodeNext"
+      }
+    },
+    "packages/domain/src/index.ts": "export function chargeCard(amount:number) { return amount * 100; }\n",
+    "packages/app/package.json": {
+      "name": "@fixture/app",
+      "type": "module"
+    },
+    "packages/app/tsconfig.json": {
+      "compilerOptions": {
+        "composite": true,
+        "rootDir": "src",
+        "outDir": "dist",
+        "module": "NodeNext"
+      },
+      "references": [
+        {
+          "path": "../domain"
+        }
+      ]
+    },
+    "packages/app/src/index.ts": "import {chargeCard} from '@fixture/domain'; export function checkout(){return chargeCard(42);}\n",
+    "packages/app/src/payment.test.ts": "import {checkout} from './index.js'; declare function test(name:string,run:()=>void):void; test('payment works',()=>{checkout();});\n"
+  },
+  "tokenizer": "cl100k_base",
+  "method": "Actual old/new extension workers index identical generated source in isolated roots. Exact callers, callees and static test-path responses are compared for cold source, installed local workspace links with stale declarations, and a separate installed package. Counts cover JSON {name,input} query requests and returned text, excluding indexing and IPC framing. No model, billing or application test execution is involved.",
+  "runs": [
+    {
+      "scenario": "unbuilt",
+      "version": "baseline",
+      "files": 6,
+      "indexMs": 458,
+      "calls": [
+        {
+          "request": {
+            "name": "callees",
+            "input": {
+              "symbol": "checkout",
+              "maxTokens": 1500
+            }
+          },
+          "response": [],
+          "requestTokens": 19,
+          "responseTokens": 1
+        },
+        {
+          "request": {
+            "name": "callers",
+            "input": {
+              "symbol": "chargeCard",
+              "maxTokens": 1500
+            }
+          },
+          "response": [],
+          "requestTokens": 19,
+          "responseTokens": 1
+        },
+        {
+          "request": {
+            "name": "tests",
+            "input": {
+              "symbol": "chargeCard",
+              "maxTokens": 1500
+            }
+          },
+          "response": {
+            "target": {
+              "id": "typescript:packages/domain/src/index.ts:chargeCard",
+              "symbol": "chargeCard",
+              "kind": "function",
+              "at": "packages/domain/src/index.ts:1-1",
+              "signature": "export function chargeCard(amount: number): number;"
+            },
+            "tests": [],
+            "truncated": false,
+            "warnings": [
+              "Candidate tests from static paths; execution and coverage are not established."
+            ]
+          },
+          "requestTokens": 18,
+          "responseTokens": 74
+        }
+      ]
+    },
+    {
+      "scenario": "unbuilt",
+      "version": "preview",
+      "files": 6,
+      "indexMs": 626,
+      "calls": [
+        {
+          "request": {
+            "name": "callees",
+            "input": {
+              "symbol": "checkout",
+              "maxTokens": 1500
+            }
+          },
+          "response": [
+            {
+              "id": "typescript:packages/domain/src/index.ts:chargeCard",
+              "symbol": "chargeCard",
+              "kind": "function",
+              "at": "packages/domain/src/index.ts:1-1",
+              "signature": "export function chargeCard(amount: number): number;"
+            }
+          ],
+          "requestTokens": 19,
+          "responseTokens": 50
+        },
+        {
+          "request": {
+            "name": "callers",
+            "input": {
+              "symbol": "chargeCard",
+              "maxTokens": 1500
+            }
+          },
+          "response": [
+            {
+              "id": "typescript:packages/app/src/index.ts:checkout",
+              "symbol": "checkout",
+              "kind": "function",
+              "at": "packages/app/src/index.ts:1-1",
+              "signature": "export function checkout(): number;"
+            }
+          ],
+          "requestTokens": 19,
+          "responseTokens": 44
+        },
+        {
+          "request": {
+            "name": "tests",
+            "input": {
+              "symbol": "chargeCard",
+              "maxTokens": 1500
+            }
+          },
+          "response": {
+            "target": {
+              "id": "typescript:packages/domain/src/index.ts:chargeCard",
+              "symbol": "chargeCard",
+              "kind": "function",
+              "at": "packages/domain/src/index.ts:1-1",
+              "signature": "export function chargeCard(amount: number): number;"
+            },
+            "tests": [
+              {
+                "node": {
+                  "id": "typescript:packages/app/src/payment.test.ts:payment works",
+                  "symbol": "payment works",
+                  "kind": "test",
+                  "at": "packages/app/src/payment.test.ts:1-1",
+                  "signature": "test(\"payment works\")"
+                },
+                "potentialDispatch": false,
+                "path": [
+                  {
+                    "from": "typescript:packages/domain/src/index.ts:chargeCard",
+                    "to": "typescript:packages/app/src/index.ts:checkout",
+                    "type": "CALLS",
+                    "direction": "in"
+                  },
+                  {
+                    "from": "typescript:packages/app/src/index.ts:checkout",
+                    "to": "typescript:packages/app/src/payment.test.ts:payment works",
+                    "type": "CALLS",
+                    "direction": "in"
+                  }
+                ]
+              }
+            ],
+            "truncated": false,
+            "warnings": [
+              "Candidate tests from static paths; execution and coverage are not established."
+            ]
+          },
+          "requestTokens": 18,
+          "responseTokens": 197
+        }
+      ]
+    },
+    {
+      "scenario": "local-link-stale-types",
+      "version": "baseline",
+      "files": 6,
+      "indexMs": 398,
+      "calls": [
+        {
+          "request": {
+            "name": "callees",
+            "input": {
+              "symbol": "checkout",
+              "maxTokens": 1500
+            }
+          },
+          "response": [],
+          "requestTokens": 19,
+          "responseTokens": 1
+        },
+        {
+          "request": {
+            "name": "callers",
+            "input": {
+              "symbol": "chargeCard",
+              "maxTokens": 1500
+            }
+          },
+          "response": [],
+          "requestTokens": 19,
+          "responseTokens": 1
+        },
+        {
+          "request": {
+            "name": "tests",
+            "input": {
+              "symbol": "chargeCard",
+              "maxTokens": 1500
+            }
+          },
+          "response": {
+            "target": {
+              "id": "typescript:packages/domain/src/index.ts:chargeCard",
+              "symbol": "chargeCard",
+              "kind": "function",
+              "at": "packages/domain/src/index.ts:1-1",
+              "signature": "export function chargeCard(amount: number): number;"
+            },
+            "tests": [],
+            "truncated": false,
+            "warnings": [
+              "Candidate tests from static paths; execution and coverage are not established."
+            ]
+          },
+          "requestTokens": 18,
+          "responseTokens": 74
+        }
+      ]
+    },
+    {
+      "scenario": "local-link-stale-types",
+      "version": "preview",
+      "files": 6,
+      "indexMs": 428,
+      "calls": [
+        {
+          "request": {
+            "name": "callees",
+            "input": {
+              "symbol": "checkout",
+              "maxTokens": 1500
+            }
+          },
+          "response": [
+            {
+              "id": "typescript:packages/domain/src/index.ts:chargeCard",
+              "symbol": "chargeCard",
+              "kind": "function",
+              "at": "packages/domain/src/index.ts:1-1",
+              "signature": "export function chargeCard(amount: number): number;"
+            }
+          ],
+          "requestTokens": 19,
+          "responseTokens": 50
+        },
+        {
+          "request": {
+            "name": "callers",
+            "input": {
+              "symbol": "chargeCard",
+              "maxTokens": 1500
+            }
+          },
+          "response": [
+            {
+              "id": "typescript:packages/app/src/index.ts:checkout",
+              "symbol": "checkout",
+              "kind": "function",
+              "at": "packages/app/src/index.ts:1-1",
+              "signature": "export function checkout(): number;"
+            }
+          ],
+          "requestTokens": 19,
+          "responseTokens": 44
+        },
+        {
+          "request": {
+            "name": "tests",
+            "input": {
+              "symbol": "chargeCard",
+              "maxTokens": 1500
+            }
+          },
+          "response": {
+            "target": {
+              "id": "typescript:packages/domain/src/index.ts:chargeCard",
+              "symbol": "chargeCard",
+              "kind": "function",
+              "at": "packages/domain/src/index.ts:1-1",
+              "signature": "export function chargeCard(amount: number): number;"
+            },
+            "tests": [
+              {
+                "node": {
+                  "id": "typescript:packages/app/src/payment.test.ts:payment works",
+                  "symbol": "payment works",
+                  "kind": "test",
+                  "at": "packages/app/src/payment.test.ts:1-1",
+                  "signature": "test(\"payment works\")"
+                },
+                "potentialDispatch": false,
+                "path": [
+                  {
+                    "from": "typescript:packages/domain/src/index.ts:chargeCard",
+                    "to": "typescript:packages/app/src/index.ts:checkout",
+                    "type": "CALLS",
+                    "direction": "in"
+                  },
+                  {
+                    "from": "typescript:packages/app/src/index.ts:checkout",
+                    "to": "typescript:packages/app/src/payment.test.ts:payment works",
+                    "type": "CALLS",
+                    "direction": "in"
+                  }
+                ]
+              }
+            ],
+            "truncated": false,
+            "warnings": [
+              "Candidate tests from static paths; execution and coverage are not established."
+            ]
+          },
+          "requestTokens": 18,
+          "responseTokens": 197
+        }
+      ]
+    },
+    {
+      "scenario": "installed-external",
+      "version": "baseline",
+      "files": 6,
+      "indexMs": 419,
+      "calls": [
+        {
+          "request": {
+            "name": "callees",
+            "input": {
+              "symbol": "checkout",
+              "maxTokens": 1500
+            }
+          },
+          "response": [],
+          "requestTokens": 19,
+          "responseTokens": 1
+        },
+        {
+          "request": {
+            "name": "callers",
+            "input": {
+              "symbol": "chargeCard",
+              "maxTokens": 1500
+            }
+          },
+          "response": [],
+          "requestTokens": 19,
+          "responseTokens": 1
+        },
+        {
+          "request": {
+            "name": "tests",
+            "input": {
+              "symbol": "chargeCard",
+              "maxTokens": 1500
+            }
+          },
+          "response": {
+            "target": {
+              "id": "typescript:packages/domain/src/index.ts:chargeCard",
+              "symbol": "chargeCard",
+              "kind": "function",
+              "at": "packages/domain/src/index.ts:1-1",
+              "signature": "export function chargeCard(amount: number): number;"
+            },
+            "tests": [],
+            "truncated": false,
+            "warnings": [
+              "Candidate tests from static paths; execution and coverage are not established."
+            ]
+          },
+          "requestTokens": 18,
+          "responseTokens": 74
+        }
+      ]
+    },
+    {
+      "scenario": "installed-external",
+      "version": "preview",
+      "files": 6,
+      "indexMs": 571,
+      "calls": [
+        {
+          "request": {
+            "name": "callees",
+            "input": {
+              "symbol": "checkout",
+              "maxTokens": 1500
+            }
+          },
+          "response": [],
+          "requestTokens": 19,
+          "responseTokens": 1
+        },
+        {
+          "request": {
+            "name": "callers",
+            "input": {
+              "symbol": "chargeCard",
+              "maxTokens": 1500
+            }
+          },
+          "response": [],
+          "requestTokens": 19,
+          "responseTokens": 1
+        },
+        {
+          "request": {
+            "name": "tests",
+            "input": {
+              "symbol": "chargeCard",
+              "maxTokens": 1500
+            }
+          },
+          "response": {
+            "target": {
+              "id": "typescript:packages/domain/src/index.ts:chargeCard",
+              "symbol": "chargeCard",
+              "kind": "function",
+              "at": "packages/domain/src/index.ts:1-1",
+              "signature": "export function chargeCard(amount: number): number;"
+            },
+            "tests": [],
+            "truncated": false,
+            "warnings": [
+              "Candidate tests from static paths; execution and coverage are not established."
+            ]
+          },
+          "requestTokens": 18,
+          "responseTokens": 74
+        }
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "scenario": "unbuilt",
+      "version": "baseline",
+      "calleeFound": false,
+      "callerFound": false,
+      "testFound": false,
+      "trafficTokens": 132
+    },
+    {
+      "scenario": "unbuilt",
+      "version": "preview",
+      "calleeFound": true,
+      "callerFound": true,
+      "testFound": true,
+      "trafficTokens": 347
+    },
+    {
+      "scenario": "local-link-stale-types",
+      "version": "baseline",
+      "calleeFound": false,
+      "callerFound": false,
+      "testFound": false,
+      "trafficTokens": 132
+    },
+    {
+      "scenario": "local-link-stale-types",
+      "version": "preview",
+      "calleeFound": true,
+      "callerFound": true,
+      "testFound": true,
+      "trafficTokens": 347
+    },
+    {
+      "scenario": "installed-external",
+      "version": "baseline",
+      "calleeFound": false,
+      "callerFound": false,
+      "testFound": false,
+      "trafficTokens": 132
+    },
+    {
+      "scenario": "installed-external",
+      "version": "preview",
+      "calleeFound": false,
+      "callerFound": false,
+      "testFound": false,
+      "trafficTokens": 132
+    }
+  ]
+}

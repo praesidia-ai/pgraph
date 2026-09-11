@@ -5,12 +5,19 @@ export interface CommunicationEndpoint {
   protocol: "http" | "service-bus" | "storage-queue" | "event-grid";
   direction: "provide" | "request" | "publish" | "subscribe";
   address?: string;
+  addressSetting?: string;
+  addressFallback?: string;
   setting?: string;
   resource?: string;
   channelKind?: "queue" | "topic";
   method?: string;
   location: Location;
   symbolId: string;
+  execution?: {
+    kind: "call" | "handler" | "declaration";
+    symbols: string[];
+    unresolved?: string;
+  };
   provenance: Provenance;
 }
 export interface ServiceDefinition {
@@ -19,6 +26,7 @@ export interface ServiceDefinition {
   origins: string[];
   urls: Record<string, string>;
   resources: Record<string, string>;
+  channels?: Record<string, string>;
 }
 export interface ExplorerNode {
   id: string;
@@ -38,6 +46,10 @@ export interface ExplorerEdge {
   evidence: string;
   confidence: number;
   detail: string;
+  communication?: {
+    from: { project: string; endpoint: string };
+    to?: { project: string; endpoint: string };
+  };
   sources: {
     rootId: string;
     symbolId: string;

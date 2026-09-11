@@ -34,11 +34,11 @@ export class SqliteGraphStore implements GraphStore {
     const version = Number(
       this.db.prepare("PRAGMA user_version").get()?.user_version,
     );
-    if (version > 2) {
+    if (version > 3) {
       this.db.close();
       throw new Error(`Unsupported graph schema ${version}; upgrade PGraph`);
     }
-    if (version < 2 && options.readOnly) {
+    if (version < 3 && options.readOnly) {
       this.db.close();
       throw new Error(
         "Graph schema needs initialization/migration; run pgraph index",
@@ -80,6 +80,52 @@ export class SqliteGraphStore implements GraphStore {
         ALTER TABLE node_search_v2 RENAME TO node_search;
         PRAGMA user_version=2;`);
       });
+    if (version < 3)
+      this.transaction(() => {
+        this.db.exec(`
+          DROP TABLE node_search;
+          CREATE VIRTUAL TABLE node_search USING fts5(
+            id UNINDEXED, identity, signature, documentation, effects,
+            tokenize='porter unicode61'
+          );
+        `);
+        for (const row of this.db.prepare("SELECT rowid,data FROM nodes").all())
+          this.indexText(Number(row.rowid), decode<GraphNode>(row)!);
+        this.db.exec("PRAGMA user_version=3;");
+      });
+    if (!options.readOnly)
+      this.db.exec(
+        "CREATE INDEX IF NOT EXISTS edges_source ON edges(source,type,target)",
+      );
+  }
+  private indexText(rowid: number, node: GraphNode): void {
+    const text = (value: unknown) =>
+      words(typeof value === "string" ? value : "").join(" ");
+    this.db
+      .prepare(
+        "INSERT INTO node_search(rowid,id,identity,signature,documentation,effects) VALUES(?,?,?,?,?,?)",
+      )
+      .run(
+        rowid,
+        node.id,
+        text(`${node.name} ${node.qualifiedName} ${node.location?.file ?? ""}`),
+        text(node.signature),
+        text(node.metadata.documentation),
+        text(
+          [
+            node.metadata.framework,
+            node.metadata.route,
+            ...(Array.isArray(node.metadata.exceptions)
+              ? node.metadata.exceptions
+              : []),
+            ...(Array.isArray(node.metadata.searchTerms)
+              ? node.metadata.searchTerms
+              : []),
+          ]
+            .filter((value) => typeof value === "string")
+            .join(" "),
+        ),
+      );
   }
   transaction<T>(work: () => T): T {
     this.db.exec("BEGIN IMMEDIATE");
@@ -155,15 +201,7 @@ export class SqliteGraphStore implements GraphStore {
       .prepare("SELECT rowid FROM nodes WHERE id=?")
       .get(node.id)!.rowid as number;
     this.db.prepare("DELETE FROM node_search WHERE rowid=?").run(rowid);
-    this.db
-      .prepare("INSERT INTO node_search(rowid,id,text) VALUES(?,?,?)")
-      .run(
-        rowid,
-        node.id,
-        words(
-          `${node.name} ${node.qualifiedName} ${node.location?.file ?? ""} ${node.signature ?? ""} ${String(node.metadata.framework ?? "")}`,
-        ).join(" "),
-      );
+    this.indexText(rowid, node);
   }
   putEdge(edge: GraphEdge): void {
     if (edge.type === "CALLED_BY")
@@ -206,12 +244,17 @@ export class SqliteGraphStore implements GraphStore {
       clauses.push("n.kind=?");
       args.push(options.kind);
     }
+    if (options.kinds) {
+      bounded(options.kinds.length, 1, 64, "kinds.length");
+      clauses.push(`n.kind IN (${options.kinds.map(() => "?").join(",")})`);
+      args.push(...options.kinds);
+    }
     const terms = [...new Set(words(query))].slice(0, 30);
     if (terms.length) {
       const extra = clauses.length ? `AND ${clauses.join(" AND ")}` : "";
       const matches = this.db
         .prepare(
-          `SELECT n.data FROM node_search JOIN nodes n ON n.rowid=node_search.rowid WHERE node_search MATCH ? ${extra} ORDER BY node_search.rank LIMIT ? OFFSET ?`,
+          `SELECT n.data FROM node_search JOIN nodes n ON n.rowid=node_search.rowid WHERE node_search MATCH ? AND node_search.rank MATCH 'bm25(0,4,1,3,2)' ${extra} ORDER BY node_search.rank LIMIT ? OFFSET ?`,
         )
         .all(terms.map((t) => `"${t}"*`).join(" OR "), ...args, limit, offset)
         .map((row) => decode<GraphNode>(row)!);

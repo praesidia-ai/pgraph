@@ -1,6 +1,6 @@
 {
   "name": "@praesidia/pgraph-mcp",
-  "version": "0.1.0",
+  "version": "0.6.1",
   "type": "module",
   "license": "MIT",
   "engines": {
@@ -20,8 +20,8 @@
     "dist/**/*.map"
   ],
   "dependencies": {
-    "@praesidia/pgraph-core": "0.1.0",
-    "@praesidia/pgraph-tools": "0.1.0",
+    "@praesidia/pgraph-core": "0.6.1",
+    "@praesidia/pgraph-tools": "0.6.1",
     "@modelcontextprotocol/sdk": "^1.27.1",
     "zod": "^3.25.76"
   },

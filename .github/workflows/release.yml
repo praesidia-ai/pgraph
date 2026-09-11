@@ -21,6 +21,6 @@ jobs:
       - run: npm run package:workspaces
       - uses: actions/upload-artifact@v4
         with:
-          name: pgraph-0.1.0-candidate
+          name: pgraph-release-candidate
           path: artifacts/*
 # Publishing is deliberately a separate maintainer action after reviewing ROADMAP gates.

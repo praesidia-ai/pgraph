@@ -1,6 +1,6 @@
 {
   "name": "@praesidia/pgraph-shared",
-  "version": "0.1.0",
+  "version": "0.6.1",
   "type": "module",
   "license": "MIT",
   "engines": {

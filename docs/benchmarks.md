@@ -42,6 +42,19 @@ reductions instead of suppressing them.
 
 ## Recorded results
 
+The 0.3.0 [controlled agent-context probe](../benchmarks/probes/agent-context.mjs)
+compares the retained 0.2.0 VSIX with the current built worker on identical generated
+files. It counts request and response traffic and separately adds all declared tool
+schemas once. Three repeated calls deliberately exercise receipts; this is not an
+autonomous task trial. Results include source-marker checks so a cheaper answer
+that omits required detail is visible. See the [report](../benchmarks/reports/v3-agent-context.json)
+and [interpretation](AGENT_CONTEXT.md). Small run-to-run count differences arise
+from receipts containing hashes of temporary roots.
+
+```sh
+node benchmarks/probes/agent-context.mjs /tmp/agent-context.json artifacts/pgraph-0.2.0.vsix
+```
+
 See [RESULTS.md](../benchmarks/reports/RESULTS.md) for the latest measured table and
 links to machine-readable reports. Timing varies with hardware, OS caching,
 compiler graph shape and concurrent processes. These are single local runs, not
@@ -58,6 +71,26 @@ node replacement. Query name collation now matches the name index. These fixes a
 covered by migration and >2,000-dependent-file invalidation regression tests.
 
 ## Production KPI acceptance protocol
+
+The [retrieval and dispatch diagnostic](../benchmarks/probes/retrieval-funnel.mjs)
+compares natural-language, larger-budget, known-target-anchor and identifier-assisted
+requests on one in-memory corpus. It records which expected nodes search returned,
+which were observed during retrieval traversal, and their final representations.
+It also indexes a small interface-injection fixture to inspect missing impact/test
+paths. Run after building:
+
+```sh
+node benchmarks/probes/retrieval-funnel.mjs /tmp/pgraph-research-funnel.json
+```
+
+The [recorded report](../benchmarks/reports/v2-research-funnel.json) and
+[research interpretation](V2_POWER_RESEARCH.md) explain limitations. The anchor
+control uses oracle knowledge and is not an automatic-search benchmark. Search
+observation alone cannot identify a later filtering/ranking/budget rejection. The
+fixture tests are indexed but not executed. Name recall and source representation
+counts do not establish implementation sufficiency or successful coding outcomes.
+
+### Completed-task evaluation
 
 Before claiming >=50% reduction at unchanged correctness:
 

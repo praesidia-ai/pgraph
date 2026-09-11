@@ -1,6 +1,6 @@
 {
   "name": "@praesidia/pgraph-context",
-  "version": "0.1.0",
+  "version": "0.6.1",
   "type": "module",
   "license": "MIT",
   "engines": {
@@ -20,11 +20,11 @@
     "dist/**/*.map"
   ],
   "dependencies": {
-    "@praesidia/pgraph-ir": "0.1.0",
-    "@praesidia/pgraph-store": "0.1.0",
-    "@praesidia/pgraph-query": "0.1.0",
-    "@praesidia/pgraph-ranking": "0.1.0",
-    "@praesidia/pgraph-shared": "0.1.0",
+    "@praesidia/pgraph-ir": "0.6.1",
+    "@praesidia/pgraph-store": "0.6.1",
+    "@praesidia/pgraph-query": "0.6.1",
+    "@praesidia/pgraph-ranking": "0.6.1",
+    "@praesidia/pgraph-shared": "0.6.1",
     "js-tiktoken": "^1.0.21"
   },
   "description": "PGraph graph context: local graph-native repository context infrastructure.",

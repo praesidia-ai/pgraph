@@ -1,8 +1,8 @@
 import { describe, it, expect, afterEach } from "vitest";
-import { mkdtempSync, cpSync, rmSync } from "node:fs";
+import { mkdtempSync, cpSync, rmSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
 import { PGraph, bpeCounter } from "@praesidia/pgraph-core";
@@ -10,6 +10,7 @@ import {
   dispatchTool,
   toolDefinitions,
   toolJsonSchema,
+  essentialToolNames,
 } from "@praesidia/pgraph-tools";
 import { runCli } from "@praesidia/pgraph-cli";
 import { runBenchmark } from "@praesidia/pgraph-benchmark";
@@ -30,7 +31,7 @@ afterEach(() => {
 });
 describe("consumer adapters", () => {
   it("runs actual CLI processes against persistent storage", () => {
-    expect(runCli(["--version"])).toBe("0.1.0");
+    expect(runCli(["--version"])).toBe("0.6.1");
     const root = fixture();
     const cli = resolve("packages/graph-cli/dist/main.js");
     const run = (args: string[]) =>
@@ -64,6 +65,7 @@ describe("consumer adapters", () => {
     try {
       graph.index();
       const inputs: Record<string, unknown> = {
+        workflow: { action: "health" },
         context: { task: "Find login" },
         search: { query: "login" },
         symbol: { symbol: "AuthService.login" },
@@ -74,6 +76,13 @@ describe("consumer adapters", () => {
         file_slice: { file: "src/auth.service.ts", startLine: 6, endLine: 12 },
       };
       for (const tool of toolDefinitions) {
+        if (tool.name === "review_changes") {
+          expect(() => dispatchTool(graph, tool.name, {})).toThrow(
+            "not a Git repository",
+          );
+          expect(toolJsonSchema(tool.name).type).toBe("object");
+          continue;
+        }
         const input = {
           ...((inputs[tool.name] ?? { symbol: "AuthService.login" }) as object),
           maxTokens: 500,
@@ -110,6 +119,13 @@ describe("consumer adapters", () => {
       await client.connect(transport);
       const list = await client.listTools();
       expect(list.tools.map((t) => t.name)).toContain("context");
+      expect(
+        list.tools.every(
+          (t) =>
+            !Object.hasOwn(t.inputSchema.properties ?? {}, "project") &&
+            !Object.hasOwn(t.inputSchema.properties ?? {}, "workspace"),
+        ),
+      ).toBe(true);
       const result = await client.callTool({
         name: "callers",
         arguments: { symbol: "AuthService.login" },
@@ -120,8 +136,93 @@ describe("consumer adapters", () => {
         arguments: { task: "login", maxTokens: -1 },
       });
       expect(invalid.isError).toBe(true);
+      const unknownArgument = await client.callTool({
+        name: "context",
+        arguments: { task: "login", root: "/etc" },
+      });
+      expect(unknownArgument.isError).toBe(true);
+      const editorRouting = await client.callTool({
+        name: "context",
+        arguments: { task: "login", project: "a".repeat(24) },
+      });
+      expect(editorRouting.isError).toBe(true);
+      const workspaceImpact = await client.callTool({
+        name: "impact",
+        arguments: { symbol: "AuthService.login", workspace: true },
+      });
+      expect(workspaceImpact.isError).toBe(true);
     } finally {
       await client.close();
+    }
+  });
+  it("limits MCP discovery and calls to the selected profile without changing evidence", async () => {
+    const root = fixture();
+    const graph = PGraph.open(root);
+    graph.index();
+    const input = { symbol: "AuthService.login", maxTokens: 500 };
+    const expected = dispatchTool(graph, "impact", input);
+    graph.close();
+    const client = new Client({
+      name: "pgraph-profile-test",
+      version: "1.0.0",
+    });
+    try {
+      await client.connect(
+        new StdioClientTransport({
+          command: process.execPath,
+          args: [
+            resolve("packages/graph-mcp/dist/main.js"),
+            "--tool-profile",
+            "essential",
+            root,
+          ],
+          stderr: "pipe",
+        }),
+      );
+      const list = await client.listTools();
+      expect(list.tools.map((t) => t.name).sort()).toEqual(
+        [...essentialToolNames].sort(),
+      );
+      const result = await client.callTool({
+        name: "impact",
+        arguments: input,
+      });
+      expect(result.content).toEqual([{ type: "text", text: expected }]);
+      const unavailable = await client
+        .callTool({
+          name: "callers",
+          arguments: { symbol: "AuthService.login" },
+        })
+        .then(
+          (r) => r.isError === true,
+          (e: Error) => /not found|unknown/i.test(e.message),
+        );
+      expect(unavailable).toBe(true);
+      const invalid = await client.callTool({
+        name: "context",
+        arguments: { task: "login", root: "/etc" },
+      });
+      expect(invalid.isError).toBe(true);
+    } finally {
+      await client.close();
+    }
+  });
+  it("rejects invalid MCP profiles and options before opening repository storage", () => {
+    const root = fixture();
+    for (const flags of [
+      ["--tool-profile", "typo"],
+      ["--unknown"],
+      ["extra-root"],
+    ]) {
+      const result = spawnSync(
+        process.execPath,
+        [resolve("packages/graph-mcp/dist/main.js"), root, ...flags],
+        { encoding: "utf8" },
+      );
+      expect(result.status).toBe(1);
+      expect(result.stdout).toBe("");
+      expect(result.stderr).toMatch(/profile|option|Usage/);
+      expect(existsSync(join(root, ".pgraph"))).toBe(false);
     }
   });
   it("reports measured tokens separately from untested task correctness", () => {

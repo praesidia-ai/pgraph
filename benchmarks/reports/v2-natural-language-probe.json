@@ -1,0 +1,593 @@
+{
+  "version": 1,
+  "generatedAt": "2026-09-09T06:22:30.347Z",
+  "commit": "8505dc11f903e15a3d810e5dd5221bb874f26eba",
+  "node": "v22.22.0",
+  "platform": "darwin/arm64",
+  "repositoryFingerprint": "ff68874de26696b7f5342616e55217fd1473b989d51085a08bf42e4449686cce",
+  "methodology": "One manually authored paraphrase for each existing self-suite task; same required-symbol oracle and token budget; Markdown output; fresh in-memory SQLite graph; no semantic enrichment; benchmarks/probes excluded from indexing to avoid self-contamination. Diagnostic only: paraphrases and oracles are not independently validated, and timings are single-run with warm-cache/order effects. No agent edits, tests or task-correctness measurement.",
+  "indexing": {
+    "files": 91,
+    "parsed": 91,
+    "skipped": 0,
+    "deleted": 0,
+    "nodes": 1760,
+    "edges": 4355,
+    "durationMs": 4292,
+    "revision": 1,
+    "diagnostics": []
+  },
+  "summary": {
+    "identifierAssisted": {
+      "fullRecallTasks": 10,
+      "totalTasks": 10,
+      "retrievedRequired": 15,
+      "totalRequired": 15,
+      "sourceSlices": 60
+    },
+    "naturalLanguage": {
+      "fullRecallTasks": 4,
+      "totalTasks": 10,
+      "retrievedRequired": 7,
+      "totalRequired": 15,
+      "sourceSlices": 64
+    }
+  },
+  "results": [
+    {
+      "id": "locate",
+      "maxTokens": 1500,
+      "requiredSymbols": ["ContextEngine.context"],
+      "identifierAssisted": {
+        "task": "Where does ContextEngine.context select relevant symbols?",
+        "symbols": [
+          "ContextEngine.context",
+          "ContextEngine.assertFresh",
+          "ContextEngine.context.add",
+          "ContextEngine.context.attempt",
+          "ContextEngine.context.measure",
+          "ContextRequest",
+          "optimizeBudget",
+          "renderContext",
+          "renderSymbol",
+          "TokenCounter.count"
+        ],
+        "missing": [],
+        "recall": 1,
+        "tokens": 1397,
+        "sourceSlices": 7,
+        "tests": [],
+        "latencyMs": 298
+      },
+      "naturalLanguage": {
+        "task": "Where is the code that selects relevant symbols for a task within a token budget?",
+        "symbols": [
+          "serializeWithin",
+          "renderContext",
+          "reports measured tokens separately from untested task correctness",
+          "optimizeBudget",
+          "compact",
+          "dispatchTool",
+          "ContextEngine.context",
+          "enforces complete JSON and Markdown BPE budgets and caches by revision",
+          "ContextEngine.context.measure",
+          "ContextPackage",
+          "renderSymbol",
+          "fixture",
+          "runBenchmark",
+          "BudgetOption"
+        ],
+        "missing": [],
+        "recall": 1,
+        "tokens": 1439,
+        "sourceSlices": 4,
+        "tests": [
+          "reports measured tokens separately from untested task correctness",
+          "enforces complete JSON and Markdown BPE budgets and caches by revision"
+        ],
+        "latencyMs": 141
+      }
+    },
+    {
+      "id": "flow",
+      "maxTokens": 2000,
+      "requiredSymbols": [
+        "GraphIndexer.index",
+        "TypeScriptAdapter.parse",
+        "SqliteGraphStore.putEdge"
+      ],
+      "identifierAssisted": {
+        "task": "Explain GraphIndexer.index TypeScriptAdapter.parse SqliteGraphStore.putEdge flow",
+        "symbols": [
+          "SqliteGraphStore.putEdge",
+          "TypeScriptAdapter.parse",
+          "GraphIndexer.index",
+          "communications",
+          "TypeScriptAdapter.parse.allowedRead",
+          "TypeScriptAdapter.parse.walk",
+          "TypeScriptAdapter.parse.walk",
+          "azureConfiguration",
+          "discover",
+          "GraphIndexer.persistEdges",
+          "communications.sym",
+          "communications.visit",
+          "declarationKind",
+          "literal"
+        ],
+        "missing": [],
+        "recall": 1,
+        "tokens": 1734,
+        "sourceSlices": 5,
+        "tests": [],
+        "latencyMs": 202
+      },
+      "naturalLanguage": {
+        "task": "Explain how repository indexing parses TypeScript and stores the resulting relationships in SQLite.",
+        "symbols": [
+          "SqliteGraphStore.neighbors",
+          "SqliteGraphStore.transaction",
+          "SqliteGraphStore.finishRun",
+          "decode",
+          "relationships",
+          "Row",
+          "SqliteGraphStore.getMeta",
+          "SqliteGraphStore.stats.count",
+          "ExplorerHost.relationships",
+          "GraphQuery.relationships",
+          "SqliteGraphStore.setMeta",
+          "SqliteGraphStore.file",
+          "SqliteGraphStore.files"
+        ],
+        "missing": [
+          "GraphIndexer.index",
+          "TypeScriptAdapter.parse",
+          "SqliteGraphStore.putEdge"
+        ],
+        "recall": 0,
+        "tokens": 1570,
+        "sourceSlices": 12,
+        "tests": [],
+        "latencyMs": 81
+      }
+    },
+    {
+      "id": "architecture",
+      "maxTokens": 1500,
+      "requiredSymbols": ["PGraph.open"],
+      "identifierAssisted": {
+        "task": "Explain PGraph.open GraphQuery and ContextEngine architecture",
+        "symbols": [
+          "PGraph.open",
+          "PGraph.context",
+          "PGraph.clean",
+          "PGraph.close",
+          "PGraph.enrich",
+          "PGraph.feature",
+          "PGraph.index",
+          "PGraph.init",
+          "PGraph.reviewChanges",
+          "PGraph.semanticInput",
+          "PGraph.status",
+          "PGraph.validateSemanticInput",
+          "reviewChanges",
+          "GraphQuery.architecture"
+        ],
+        "missing": [],
+        "recall": 1,
+        "tokens": 1336,
+        "sourceSlices": 8,
+        "tests": [],
+        "latencyMs": 98
+      },
+      "naturalLanguage": {
+        "task": "Explain how opening a repository connects the database, queries and context engine.",
+        "symbols": [
+          "activate.client",
+          "activate.engineFor",
+          "activate.workspaceGraph",
+          "activate",
+          "activate.index",
+          "activate.request",
+          "GraphQuery.skeleton",
+          "activate.indexWorkspace",
+          "negotiates real MCP stdio, lists tools and performs a query",
+          "rejects poisoned cache symlinks and incompatible/corrupt database versions",
+          "EngineClient.releaseIdle",
+          "EngineClient.request",
+          "NodeLaunchError",
+          "EngineClient.dispose"
+        ],
+        "missing": ["PGraph.open"],
+        "recall": 0,
+        "tokens": 1488,
+        "sourceSlices": 3,
+        "tests": [
+          "negotiates real MCP stdio, lists tools and performs a query"
+        ],
+        "latencyMs": 199
+      }
+    },
+    {
+      "id": "impact",
+      "maxTokens": 1500,
+      "requiredSymbols": ["GraphQuery.symbol"],
+      "identifierAssisted": {
+        "task": "What is the impact of changing GraphQuery.symbol?",
+        "symbols": [
+          "GraphQuery.symbol",
+          "GraphQuery.adjacent",
+          "GraphQuery.aggregate",
+          "GraphQuery.impact",
+          "GraphQuery.path",
+          "GraphQuery.skeleton",
+          "GraphQuery.slice",
+          "GraphQuery.testsFor",
+          "GraphQuery.callees",
+          "GraphQuery.callers",
+          "GraphQuery.dependencies",
+          "GraphQuery.dependents",
+          "GraphQuery.implementations",
+          "GraphQuery.references"
+        ],
+        "missing": [],
+        "recall": 1,
+        "tokens": 1377,
+        "sourceSlices": 7,
+        "tests": [],
+        "latencyMs": 122
+      },
+      "naturalLanguage": {
+        "task": "What could break if symbol lookup changes its handling of ambiguous names?",
+        "symbols": [
+          "GraphQuery.symbol",
+          "GraphQuery.adjacent",
+          "GraphQuery.aggregate",
+          "GraphQuery.impact",
+          "GraphQuery.path",
+          "GraphQuery.skeleton",
+          "GraphQuery.slice",
+          "GraphQuery.testsFor",
+          "anchors ambiguous names to the cursor and rejects stale, external or contradictory focus",
+          "GraphQuery.callees",
+          "GraphQuery.callers",
+          "GraphQuery.dependencies",
+          "GraphQuery.dependents",
+          "GraphQuery.fileSlice"
+        ],
+        "missing": [],
+        "recall": 1,
+        "tokens": 1385,
+        "sourceSlices": 5,
+        "tests": [
+          "anchors ambiguous names to the cursor and rejects stale, external or contradictory focus"
+        ],
+        "latencyMs": 113
+      }
+    },
+    {
+      "id": "debug",
+      "maxTokens": 1500,
+      "requiredSymbols": ["GraphQuery.slice", "GraphQuery.fileSlice"],
+      "identifierAssisted": {
+        "task": "Why does GraphQuery.slice reject stale source?",
+        "symbols": [
+          "GraphQuery.slice",
+          "GraphQuery.fileSlice",
+          "GraphQuery.symbol",
+          "SourceSlice",
+          "GraphQuery.adjacent",
+          "GraphQuery.aggregate",
+          "GraphQuery.impact",
+          "GraphQuery.path",
+          "GraphQuery.skeleton",
+          "GraphQuery.testsFor",
+          "skips unchanged files, updates reverse dependencies and rejects stale slices"
+        ],
+        "missing": [],
+        "recall": 1,
+        "tokens": 1418,
+        "sourceSlices": 4,
+        "tests": [
+          "skips unchanged files, updates reverse dependencies and rejects stale slices"
+        ],
+        "latencyMs": 77
+      },
+      "naturalLanguage": {
+        "task": "Why does reading an indexed implementation reject source that has changed on disk?",
+        "symbols": [
+          "handles hostile tokenizer strings and rejects impossible envelopes",
+          "GraphQuery.slice",
+          "activate.changed",
+          "reviewChanges",
+          "root",
+          "keeps change discovery within a nested repository root",
+          "GraphQuery.symbol",
+          "PGraph.semanticInput",
+          "SourceSlice",
+          "ChangeReview",
+          "PGraph.reviewChanges",
+          "PGraph.status"
+        ],
+        "missing": ["GraphQuery.fileSlice"],
+        "recall": 0.5,
+        "tokens": 1397,
+        "sourceSlices": 7,
+        "tests": [
+          "handles hostile tokenizer strings and rejects impossible envelopes",
+          "keeps change discovery within a nested repository root"
+        ],
+        "latencyMs": 106
+      }
+    },
+    {
+      "id": "single",
+      "maxTokens": 1500,
+      "requiredSymbols": ["optimizeBudget"],
+      "identifierAssisted": {
+        "task": "Change optimizeBudget to improve representation selection",
+        "symbols": [
+          "optimizeBudget",
+          "solves representation choices rather than cutting characters",
+          "BudgetOption",
+          "ContextEngine.context",
+          "ContextEngine.assertFresh",
+          "ContextEngine.context.attempt",
+          "ContextEngine.context.measure",
+          "ContextRequest",
+          "renderContext",
+          "renderSymbol",
+          "TokenCounter.count"
+        ],
+        "missing": [],
+        "recall": 1,
+        "tokens": 1452,
+        "sourceSlices": 8,
+        "tests": [
+          "solves representation choices rather than cutting characters"
+        ],
+        "latencyMs": 120
+      },
+      "naturalLanguage": {
+        "task": "Improve how the context budget chooses between summaries, signatures and implementation source.",
+        "symbols": [
+          "PGraph.semanticInput",
+          "ContextEngine.context",
+          "GraphQuery.slice",
+          "PGraph.enrich",
+          "PGraph.validateSemanticInput",
+          "BudgetOption",
+          "GraphQuery.symbol",
+          "SourceSlice",
+          "optimizeBudget",
+          "ContextEngine.assertFresh",
+          "ContextEngine.context.attempt"
+        ],
+        "missing": [],
+        "recall": 1,
+        "tokens": 1398,
+        "sourceSlices": 7,
+        "tests": [],
+        "latencyMs": 102
+      }
+    },
+    {
+      "id": "multi",
+      "maxTokens": 1500,
+      "requiredSymbols": ["dispatchTool"],
+      "identifierAssisted": {
+        "task": "Add another query tool through dispatchTool and createServer",
+        "symbols": [
+          "createServer",
+          "negotiates real MCP stdio, lists tools and performs a query",
+          "dispatchTool",
+          "validates schemas and keeps every tool output bounded",
+          "createPayment",
+          "serializeWithin"
+        ],
+        "missing": [],
+        "recall": 1,
+        "tokens": 1292,
+        "sourceSlices": 4,
+        "tests": [
+          "negotiates real MCP stdio, lists tools and performs a query",
+          "validates schemas and keeps every tool output bounded"
+        ],
+        "latencyMs": 42
+      },
+      "naturalLanguage": {
+        "task": "Add a new query tool available to both coding agents and editor users.",
+        "symbols": [
+          "activate.client",
+          "UserRepository.save",
+          "UserRepository.disable",
+          "run",
+          "activate",
+          "activate.engineFor",
+          "activate.index",
+          "activate.request",
+          "toolJsonSchema",
+          "User",
+          "dispatchTool",
+          "EngineClient.dispose",
+          "RelationshipExplorer.dispose"
+        ],
+        "missing": [],
+        "recall": 1,
+        "tokens": 1397,
+        "sourceSlices": 8,
+        "tests": [],
+        "latencyMs": 117
+      }
+    },
+    {
+      "id": "monorepo",
+      "maxTokens": 1500,
+      "requiredSymbols": ["TypeScriptAdapter.parse"],
+      "identifierAssisted": {
+        "task": "How does TypeScriptAdapter.parse resolve workspace tsconfig aliases?",
+        "symbols": [
+          "TypeScriptAdapter.parse",
+          "communications",
+          "TypeScriptAdapter.parse.allowedRead",
+          "TypeScriptAdapter.parse.walk",
+          "TypeScriptAdapter.parse.walk",
+          "communications.sym",
+          "communications.visit",
+          "declarationKind",
+          "declarationName",
+          "literal",
+          "TypeScriptAdapter.parse.add",
+          "TypeScriptAdapter.parse.targetOf"
+        ],
+        "missing": [],
+        "recall": 1,
+        "tokens": 1458,
+        "sourceSlices": 4,
+        "tests": [],
+        "latencyMs": 152
+      },
+      "naturalLanguage": {
+        "task": "How are workspace path aliases resolved when parsing multiple TypeScript projects?",
+        "symbols": [
+          "resolves multiple tsconfigs, inherited path aliases and workspace dependencies",
+          "ExplorerHost.workspace",
+          "GraphQuery.path",
+          "fixture",
+          "supports JavaScript, arrow/default exports, aliases, generics, enums and property impact",
+          "TypeScriptAdapter.parse.targetOf",
+          "models Express callbacks, database usage, events and configuration",
+          "models Nest controllers, providers and route-to-handler relationships without loading Nest",
+          "recognizes Next App Router entry points, JSX components and hooks",
+          "stores semantic provenance, rejects malformed/stale results and invalidates dependencies",
+          "TypeScriptAdapter.parse.walk",
+          "TypeScriptAdapter.parse.allowedRead"
+        ],
+        "missing": ["TypeScriptAdapter.parse"],
+        "recall": 0,
+        "tokens": 1494,
+        "sourceSlices": 4,
+        "tests": [
+          "resolves multiple tsconfigs, inherited path aliases and workspace dependencies",
+          "supports JavaScript, arrow/default exports, aliases, generics, enums and property impact",
+          "models Express callbacks, database usage, events and configuration",
+          "models Nest controllers, providers and route-to-handler relationships without loading Nest",
+          "recognizes Next App Router entry points, JSX components and hooks"
+        ],
+        "latencyMs": 142
+      }
+    },
+    {
+      "id": "tests",
+      "maxTokens": 1800,
+      "requiredSymbols": ["GraphQuery.slice", "ContextEngine.context"],
+      "identifierAssisted": {
+        "task": "Find tests for GraphQuery.slice and ContextEngine.context",
+        "symbols": [
+          "GraphQuery.slice",
+          "ContextEngine.context",
+          "GraphQuery.fileSlice",
+          "GraphQuery.symbol",
+          "SourceSlice",
+          "ContextEngine.assertFresh",
+          "ContextEngine.context.add",
+          "ContextEngine.context.attempt",
+          "ContextEngine.context.measure",
+          "ContextRequest",
+          "optimizeBudget",
+          "renderContext",
+          "renderSymbol",
+          "TokenCounter.count"
+        ],
+        "missing": [],
+        "recall": 1,
+        "tokens": 1714,
+        "sourceSlices": 8,
+        "tests": [],
+        "latencyMs": 157
+      },
+      "naturalLanguage": {
+        "task": "Find tests for rejecting stale implementation reads and selecting task-specific context.",
+        "symbols": [
+          "anchors ambiguous names to the cursor and rejects stale, external or contradictory focus",
+          "skips unchanged files, updates reverse dependencies and rejects stale slices",
+          "ContextEngine.context",
+          "fixture",
+          "fixture",
+          "stores semantic provenance, rejects malformed/stale results and invalidates dependencies",
+          "ContextEngine.assertFresh",
+          "ContextEngine.context.attempt",
+          "ContextEngine.context.measure",
+          "ContextRequest",
+          "optimizeBudget",
+          "renderSymbol"
+        ],
+        "missing": ["GraphQuery.slice"],
+        "recall": 0.5,
+        "tokens": 1765,
+        "sourceSlices": 7,
+        "tests": [
+          "anchors ambiguous names to the cursor and rejects stale, external or contradictory focus",
+          "skips unchanged files, updates reverse dependencies and rejects stale slices",
+          "stores semantic provenance, rejects malformed/stale results and invalidates dependencies"
+        ],
+        "latencyMs": 151
+      }
+    },
+    {
+      "id": "refactor",
+      "maxTokens": 1800,
+      "requiredSymbols": ["SqliteGraphStore.neighbors", "GraphQuery.path"],
+      "identifierAssisted": {
+        "task": "Refactor SqliteGraphStore.neighbors and GraphQuery.path traversal",
+        "symbols": [
+          "SqliteGraphStore.neighbors",
+          "GraphQuery.path",
+          "GraphQuery.symbol",
+          "GraphQuery.adjacent",
+          "GraphQuery.aggregate",
+          "GraphQuery.impact",
+          "GraphQuery.skeleton",
+          "GraphQuery.slice",
+          "GraphQuery.testsFor",
+          "GraphStore.neighbors",
+          "bounds symbol traversal and reports omitted neighbors without dangling edges"
+        ],
+        "missing": [],
+        "recall": 1,
+        "tokens": 1663,
+        "sourceSlices": 5,
+        "tests": [
+          "bounds symbol traversal and reports omitted neighbors without dangling edges"
+        ],
+        "latencyMs": 76
+      },
+      "naturalLanguage": {
+        "task": "Refactor database neighbor queries and dependency path traversal together.",
+        "symbols": [
+          "GraphQuery.path",
+          "GraphQuery.impact",
+          "GraphQuery.symbol",
+          "bounds symbol traversal and reports omitted neighbors without dangling edges",
+          "GraphQuery.callers",
+          "GraphQuery.dependencies",
+          "ImpactResult",
+          "GraphQuery.architecture",
+          "Neighbor",
+          "GraphQuery.skeleton",
+          "GraphQuery.aggregate",
+          "GraphQuery.adjacent",
+          "GraphQuery.slice",
+          "GraphQuery.testsFor"
+        ],
+        "missing": ["SqliteGraphStore.neighbors"],
+        "recall": 0.5,
+        "tokens": 1694,
+        "sourceSlices": 7,
+        "tests": [
+          "bounds symbol traversal and reports omitted neighbors without dangling edges"
+        ],
+        "latencyMs": 102
+      }
+    }
+  ]
+}

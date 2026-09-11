@@ -1,0 +1,3534 @@
+{
+  "generatedAt": "2026-09-10T16:55:56.590Z",
+  "node": "v22.22.0",
+  "platform": "darwin/arm64",
+  "corpusHash": "9f4d9cdb7bd982ef985a776eb7dfc7e90c2d8bb844d7e3a648d08f587ae5bfe4",
+  "graphHash": "4f209b8c2196e51d36f20174ce56d722218e329e09ad0c42b536c050ca1b3a8d",
+  "baselineHash": "673210c883614ffd4573fe0a9758b3484aad976895c0f458000dce79c4ab6d06",
+  "currentHash": "bf60b0b1942353444361fe3bc0b7060fae2196412b6656a45db3de48a68aa9b7",
+  "method": "Both library engines use the identical frozen graph, verified source files, requests, tokenizer and shared GraphQuery. Current selection has a local diagnostic hook, absent from response text. One untimed warm-up primes each tokenizer. This isolates selection, not indexing or extension IPC. Ten inherited self-repository name oracles are known development diagnostics, not held-out task correctness or billing. Additional cohorts, if present, are reported separately. Latency is a single warm-tokenizer observation, not a performance benchmark.",
+  "files": [
+    {
+      "path": "apps/vscode-extension/package.json",
+      "hash": "725cf87c1d98a70de34ea86220c42c1ba80c5fb2b7632197c0a9493a200b8d01"
+    },
+    {
+      "path": "apps/vscode-extension/src/client.ts",
+      "hash": "21b32584e0bee6516983a6f5cfbfd8a732a2e10f4d1bc0db8980e4c2ba87aa04"
+    },
+    {
+      "path": "apps/vscode-extension/src/daily-report.ts",
+      "hash": "1e0c5c06341ba2bb10688315d54fd416ab36c744f06e668093b0adaedf826bdc"
+    },
+    {
+      "path": "apps/vscode-extension/src/daily.ts",
+      "hash": "63755fb32617162d3bd94cd165b0263e4578e2d068c0e24d71e492de7874c84b"
+    },
+    {
+      "path": "apps/vscode-extension/src/explorer.ts",
+      "hash": "7bbe00b24975de6e724806dd751aca37f9081ca6adec74deab57a3997dffc35d"
+    },
+    {
+      "path": "apps/vscode-extension/src/extension.ts",
+      "hash": "d48fa3e9c642ad2dc35f6974091a4ef761e2646c81fc32228a92d4eb3c6bd430"
+    },
+    {
+      "path": "apps/vscode-extension/src/projects.ts",
+      "hash": "5452af1c8c00ce00f17aaeef281d794036204113f7e8015158bfc198f1ec529a"
+    },
+    {
+      "path": "apps/vscode-extension/src/webview.ts",
+      "hash": "e8530a55c1f613330393b4dc244cab5fbe7e6dee8fd095576bb7bcc1a911a18f"
+    },
+    {
+      "path": "apps/vscode-extension/src/worker.ts",
+      "hash": "a180cbe014ffda4478cf739b97140b63bb3eeba04ba2120283101758a7cbd407"
+    },
+    {
+      "path": "apps/vscode-extension/src/workspace-context.ts",
+      "hash": "c7cb67ce8915b747c4089964e6b306ce2fe8e2ff0392caecd0a8a87a245fd209"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "hash": "6b50d1eae15c797e8b8a20624697c2043ec9711d831b7f3735dde5cfd6967417"
+    },
+    {
+      "path": "examples/sample-monorepo/package.json",
+      "hash": "0723d02eefc0439cad42bda00a3cce3b4b672aa04e46fca23eb00f68044aa52b"
+    },
+    {
+      "path": "examples/sample-monorepo/packages/api/package.json",
+      "hash": "b6717701569b2810d6c85e4562599081b4be7fc0ea4016a13279318a1a03ab10"
+    },
+    {
+      "path": "examples/sample-monorepo/packages/api/src/index.ts",
+      "hash": "1356376bc992a7b3ab65f600ad0153af938f0cafbc509238d0e3021c48aa305f"
+    },
+    {
+      "path": "examples/sample-monorepo/packages/domain/package.json",
+      "hash": "46bbbb012a2b6923863278012e8b50d1d5ab335dcf492df05bbb5db33103d501"
+    },
+    {
+      "path": "examples/sample-monorepo/packages/domain/src/index.ts",
+      "hash": "7b4beb5966b557f3c4254cc50c30d255057929ba1850904f821422a6acb9b2ba"
+    },
+    {
+      "path": "examples/sample-nestjs-app/package.json",
+      "hash": "40e144bd3716d2c516a59482a288b19c6c97b9d7eee1aa48d799aa378892652a"
+    },
+    {
+      "path": "examples/sample-nestjs-app/src/auth.controller.ts",
+      "hash": "c3123bb3535c80199efe6151ef0a261161a647e1ad2cdcc71c4339127892fe04"
+    },
+    {
+      "path": "examples/sample-nestjs-app/src/auth.service.ts",
+      "hash": "0202da22301d9a2d824c3907d418af69512a0c55584bb3bedab685e6fda73271"
+    },
+    {
+      "path": "examples/sample-nextjs-app/app/api/login/route.ts",
+      "hash": "2a7a01ff2839af55f357e610fbbfab76441c9f477e70ba5e9a4047cadacdaeee"
+    },
+    {
+      "path": "examples/sample-nextjs-app/app/layout.tsx",
+      "hash": "394efed3d5a2f765c9036ff9a156e582f68a9045eeae9a604b7908cf0e21071d"
+    },
+    {
+      "path": "examples/sample-nextjs-app/app/page.tsx",
+      "hash": "18948da8fbe7ed320ab8c96d2a162bbc2818a5e5bc152e7e180b5bd7b91c9aef"
+    },
+    {
+      "path": "examples/sample-nextjs-app/auth.ts",
+      "hash": "f8f162599d50d0fee2619dd2b9e5f5a87f5e07e11fe9ca82a71f14117db3c70b"
+    },
+    {
+      "path": "examples/sample-nextjs-app/package.json",
+      "hash": "bac934202026f6be9df935f8fff4e9f05d3b5a4ba59cd040865c19b029e9005f"
+    },
+    {
+      "path": "examples/sample-typescript-app/package.json",
+      "hash": "fe2b95d0444a65519b8dd611f80ac5bc143c4101f232c864d1f0a7f421630225"
+    },
+    {
+      "path": "examples/sample-typescript-app/src/account-lockout.service.spec.ts",
+      "hash": "b10d4c00ccb5be12e352250fb16f09a13bf426eb991b5200e0868aa139eb89d1"
+    },
+    {
+      "path": "examples/sample-typescript-app/src/account-lockout.service.ts",
+      "hash": "0a88d33f319955ceb5097ca4676ad9ab1b49ecc15d17fb1720cf281850a310c6"
+    },
+    {
+      "path": "examples/sample-typescript-app/src/auth.controller.ts",
+      "hash": "a14de4e5a09dcf24f5f7cf37fb54caeb10d4a12eeec51d90b3482780a1c7fd8d"
+    },
+    {
+      "path": "examples/sample-typescript-app/src/auth.service.spec.ts",
+      "hash": "9a4719b92501e6d723d3322cd2a4228b76800a6a25d61e64c1c99e964e094bb7"
+    },
+    {
+      "path": "examples/sample-typescript-app/src/auth.service.ts",
+      "hash": "1ca3b68c041a4abff72c41d61d34ce524c2ae12d9940367762d7d627e753a056"
+    },
+    {
+      "path": "examples/sample-typescript-app/src/password.service.ts",
+      "hash": "bbc090cbf62e9d1fa7ad64e2ef9e6773e9bdbcb00d960cf11c15bb712ffbc557"
+    },
+    {
+      "path": "examples/sample-typescript-app/src/token.service.ts",
+      "hash": "dc915a1991c4b752da4947b12eb9ccc703f482e9d1b00a076bac466139537f08"
+    },
+    {
+      "path": "examples/sample-typescript-app/src/user.repository.ts",
+      "hash": "98121623d159957ebd06d41febd5462e8090331dcecc6069da9db65ba8f8dba1"
+    },
+    {
+      "path": "package.json",
+      "hash": "9cf584790291d662e39e021858cb67c06ce722228b57d357330a67c4e310b1c2"
+    },
+    {
+      "path": "packages/graph-benchmark/package.json",
+      "hash": "bca813245ca99b7985175adbb3af50ff597e1858110763a5ba25e2cbfd038470"
+    },
+    {
+      "path": "packages/graph-benchmark/src/index.ts",
+      "hash": "670bc4f1d894ed9653f0d54ad940bbb3f9bd6902b73fe31af47e638e4ebaf064"
+    },
+    {
+      "path": "packages/graph-cli/package.json",
+      "hash": "58594e82ae7a208579cb26dc59c7b2361b0a7ddeb505a01379cd6d3f21649726"
+    },
+    {
+      "path": "packages/graph-cli/src/index.ts",
+      "hash": "f2c3ad0367ccde271646b355612175193fdf6cc717c1400263f96fba4a726554"
+    },
+    {
+      "path": "packages/graph-cli/src/main.ts",
+      "hash": "fc033eded479ece198bc6fe9f7e87c00e5b365e6b5dc829011b15c8ee304dc6d"
+    },
+    {
+      "path": "packages/graph-context/package.json",
+      "hash": "bc926696b1f4e12ddb1ff0ca460ee51286f678fa79103a0ea58d987d7d6cd398"
+    },
+    {
+      "path": "packages/graph-context/src/budget.ts",
+      "hash": "07df3221cb84953ff4cd40d272f8a016ecc9d964659a167078f57fde1fbf8053"
+    },
+    {
+      "path": "packages/graph-context/src/index.ts",
+      "hash": "b04d54bd3e4b05c9b75424f68bd088acf834b59ddb1df1a384505ca82fda500b"
+    },
+    {
+      "path": "packages/graph-core/package.json",
+      "hash": "2b46577ff297103168122aac9e0b89eea83781db47169fe253573ef51a1a0907"
+    },
+    {
+      "path": "packages/graph-core/src/changes.ts",
+      "hash": "8dfc98f6aef1611c897c1c40d1af0e6d3cfd02b3377faaececf19f2bbf7ced44"
+    },
+    {
+      "path": "packages/graph-core/src/daily.ts",
+      "hash": "9ec994189c4a8c548c6b1258c27302f63f6eb76aa5dbf477cb024537651410a4"
+    },
+    {
+      "path": "packages/graph-core/src/diff.ts",
+      "hash": "58e2df8cea6445c45c4ffba41a364abc9f30c55e90bc09c00ddd7a4f685c697f"
+    },
+    {
+      "path": "packages/graph-core/src/index.ts",
+      "hash": "c1934df53c1711b1286ebf2054153ce2ac4e7f4c19a71acba2018b39f9a612f0"
+    },
+    {
+      "path": "packages/graph-git/package.json",
+      "hash": "a206b46eb3d0dfe35a250c2d460a9ef29924df40e1ce74fd942777c8af347766"
+    },
+    {
+      "path": "packages/graph-git/src/index.ts",
+      "hash": "5390c83bbac14a7fa1a8d41258289a666ed171ff653bf6a8eb34b565ad013fcc"
+    },
+    {
+      "path": "packages/graph-indexer/package.json",
+      "hash": "efa5db10c3f2954f59bc85548796bfd9c9051bf5ac5d9cb14bae84742cc0dca4"
+    },
+    {
+      "path": "packages/graph-indexer/src/bindings.ts",
+      "hash": "78a851bbe2f041c6829c7e80ace0760924b0b540514d5fb57e6df92abf612806"
+    },
+    {
+      "path": "packages/graph-indexer/src/discovery.ts",
+      "hash": "cfa18efe2116bbff0a511e43fc804f9a0ce384980bc5e919aec65bd23de3ca85"
+    },
+    {
+      "path": "packages/graph-indexer/src/index.ts",
+      "hash": "24770bcd21e29094e8fdd0de86e5e0a265b5b6eb5663fea12e04e4b66cf19b5b"
+    },
+    {
+      "path": "packages/graph-ir/package.json",
+      "hash": "9ea73f4b8e6aa83da51ef796b1f28e2be485828639d6847970526a6e8951513d"
+    },
+    {
+      "path": "packages/graph-ir/src/explorer.ts",
+      "hash": "488068a5bd1f4e1474ab1f64c0d9b694d198eb1701a6b0f0bf67c44322482be8"
+    },
+    {
+      "path": "packages/graph-ir/src/index.ts",
+      "hash": "8cddd413eaed098c564ab2d9872309d6b9c9ba055950ad4912617f2b63f92e11"
+    },
+    {
+      "path": "packages/graph-mcp/package.json",
+      "hash": "839141f22213eef5633c803d462091ef4d18716ffbb4561b1e73c36a64658ec4"
+    },
+    {
+      "path": "packages/graph-mcp/src/index.ts",
+      "hash": "f5f337bbece316b34e9099d2229fa24edcdc7dd9719cc69d29b502684d3353b9"
+    },
+    {
+      "path": "packages/graph-mcp/src/main.ts",
+      "hash": "b3d5f4e2dc2c949ebec9449cef100e4b79bcac8bff196ae204b9ffdc3f4c3a27"
+    },
+    {
+      "path": "packages/graph-query/package.json",
+      "hash": "68a4f0a0dabbd030aad5b77ebfe3c91610d7dc935522ffd2ee83edab4934b502"
+    },
+    {
+      "path": "packages/graph-query/src/excerpt.ts",
+      "hash": "9708cbd70fed6839b38927b8eec6fec12e0af411b815c304ea0915b4fc4ce019"
+    },
+    {
+      "path": "packages/graph-query/src/explorer.ts",
+      "hash": "0177fb325120f4179f894ed8101a4cbaf38da52f508bfe3cb8e49eebf31a24cb"
+    },
+    {
+      "path": "packages/graph-query/src/index.ts",
+      "hash": "17e1dc9e21290c7aa6d54998021fc79844199b21fc0d1752caeb3c8426206e0e"
+    },
+    {
+      "path": "packages/graph-query/src/tests.ts",
+      "hash": "e2896364e0f2dd06e824bb91489f63b3a78dccb3041435082372a2b81cd3ffc9"
+    },
+    {
+      "path": "packages/graph-query/src/workflow.ts",
+      "hash": "1fa5f4e2d28d1e652bbc74bf882b0586e8fc0181c61934e119f4cd8365ee65d2"
+    },
+    {
+      "path": "packages/graph-query/src/workspace.ts",
+      "hash": "77aa08fced121a441ac30d4b833eb1b94bd703dfc6a3bc3ee384230cfe72c3b2"
+    },
+    {
+      "path": "packages/graph-ranking/package.json",
+      "hash": "487d3d5953830536e32e9c649a6f53f09eae51cccec81b56f142b4b0783729bb"
+    },
+    {
+      "path": "packages/graph-ranking/src/index.ts",
+      "hash": "c016b363d9c899d47a1a59bd5974cf55088d4efd3b226ec4b265ebaa8943a56e"
+    },
+    {
+      "path": "packages/graph-semantic/package.json",
+      "hash": "f1eaee543fc9682494426e86ee7a6c143856882c077f50236786bac75c4f64fc"
+    },
+    {
+      "path": "packages/graph-semantic/src/index.ts",
+      "hash": "18c84be33cd2ed65cbc7448d9f6a022398330c0aa76d21bdddb056b413e86327"
+    },
+    {
+      "path": "packages/graph-store-sqlite/package.json",
+      "hash": "dfc20bfcd317e879484829ee375e69af7d2e3f0edc34aae664ed1472b0475294"
+    },
+    {
+      "path": "packages/graph-store-sqlite/src/index.ts",
+      "hash": "a01035c714893183ddf64b2e4e326b42e52abd7e8bb32104be69c217c8f46329"
+    },
+    {
+      "path": "packages/graph-store/package.json",
+      "hash": "35e3e55ad13c31ea8830963efc586c6955b27734f2ba7baf3881d03b172cb718"
+    },
+    {
+      "path": "packages/graph-store/src/index.ts",
+      "hash": "7f0b630e8e6a11ffc40d0c1961918d166e814460c8c6ba51e8fb15b1cb0dd3a9"
+    },
+    {
+      "path": "packages/graph-tools/package.json",
+      "hash": "1b37ecd451143cf2b3fba7ffb3adb5172a2f7f145c66607b75b7b40dc37c9168"
+    },
+    {
+      "path": "packages/graph-tools/src/index.ts",
+      "hash": "90583431a8fdb1c0bf152017bfe0dbd56fc0cdcaa0e1a2097bd6b50a689a78b2"
+    },
+    {
+      "path": "packages/graph-tools/src/workspace.ts",
+      "hash": "3b069b0a2b9c2550af555d358a0e71e3ed105c37e247db65884050410c331569"
+    },
+    {
+      "path": "packages/graph-typescript/package.json",
+      "hash": "d0807302adcd0e240d465d8746e974976dee10823814223784f6c485f2278d69"
+    },
+    {
+      "path": "packages/graph-typescript/src/communications.ts",
+      "hash": "545f583a332ebd05b1976dc6b492f29ac4d011b1ebdc4002fad17420cf18b259"
+    },
+    {
+      "path": "packages/graph-typescript/src/frameworks.ts",
+      "hash": "bff23ac7845cfded144fdb60405c254a71986898f8c716882972e71af79bc67f"
+    },
+    {
+      "path": "packages/graph-typescript/src/index.ts",
+      "hash": "d119006cf10d426428323ddba1bf03f301a999fded6ffb6b171fee5528cda244"
+    },
+    {
+      "path": "packages/graph-typescript/src/project-resolution.ts",
+      "hash": "bc2a7b937a259746f28a388605e9abf92707c38a4b7b4145b61461590e8b9c9b"
+    },
+    {
+      "path": "packages/shared/package.json",
+      "hash": "ced9a6f22b5638d289f8e1d77a981368641e38606246a9dc2a175fa1bc500aca"
+    },
+    {
+      "path": "packages/shared/src/index.ts",
+      "hash": "34946024bb39dc9d8cf362073c06602959b2d6632f719ab63c1bbeef600267b8"
+    },
+    {
+      "path": "scripts/build-extension.mjs",
+      "hash": "cb9475bec0048f980c62c2d21fe8a8406f0604f11ccbf14c3d9e1c2eb51b7843"
+    },
+    {
+      "path": "scripts/package-extension.mjs",
+      "hash": "b9d628d58263a8c37cae06370da05fadd53950c2668d24cc5b711e810d2d7970"
+    },
+    {
+      "path": "scripts/package-workspaces.mjs",
+      "hash": "73ab259b109eb2936dcd5aca24ec670c7a038ce8a7be45dfc038fa42c9ef41f7"
+    },
+    {
+      "path": "scripts/record-benchmarks.mjs",
+      "hash": "882528d06595266c59d1247e363f8720988b36f1a6379aa7523b2b8f009d513d"
+    },
+    {
+      "path": "scripts/scale-benchmark.mjs",
+      "hash": "e79bac3f137fd0b6397ae2ec37f545e4b29bffc4991f91fc07d0da58a22a3a53"
+    },
+    {
+      "path": "scripts/test-explorer-ui.mjs",
+      "hash": "3bde1da36cf5f760db523d26c0babbe2817c192cf6ca6aea4f38840217306d18"
+    },
+    {
+      "path": "scripts/test-extension.mjs",
+      "hash": "3f232982b341edb3955b06896347e7e3cbd27c663806fc460babda367310b09d"
+    },
+    {
+      "path": "tests/adapters.test.ts",
+      "hash": "3aaf8188902a8b7678b99830a0e187fe892967f7c28cad4ab6e0b69d15a5113e"
+    },
+    {
+      "path": "tests/daily.test.ts",
+      "hash": "793bae8fa2e989f1e00d89a1f22ca87e7555155fd5b933c78a0399ccf4999e65"
+    },
+    {
+      "path": "tests/engine.test.ts",
+      "hash": "4f5d7b22e497d0e8460f33479428887c378b210eaedf3a9eaad6f1487d932be3"
+    },
+    {
+      "path": "tests/extension-host.ts",
+      "hash": "699f21f1bbe606134227c15d05962fd2bbd2f494ef35e9b974f37be052d93628"
+    },
+    {
+      "path": "tests/frameworks.test.ts",
+      "hash": "173e471bfd71ea487330fa1ad7b13ee5abd481b16b8cd1699a2f90690391414f"
+    },
+    {
+      "path": "tests/git.test.ts",
+      "hash": "f2048549048f95e6186b4fc1a48939383e054e1f3e00401842e44fc98a3fd7d9"
+    },
+    {
+      "path": "tests/language.test.ts",
+      "hash": "a63bd19ab1fed5b44c85df0cd2034995b311f0a0ff7bc80902377f4c8378f8d5"
+    },
+    {
+      "path": "tests/power.test.ts",
+      "hash": "572ced05feb92d66ded3cd68128adc1186fde3e0bfac6f97c45567121fc73577"
+    },
+    {
+      "path": "tests/project-resolution.test.ts",
+      "hash": "eea793b7e2f26ede378b7b13dcd0b74151d07c0081d758856dbc7a6f7eb13c69"
+    },
+    {
+      "path": "tests/projects.test.ts",
+      "hash": "ffa308c06de2c1698a21dfb22c6112ee244974614577f124357106c3a735226d"
+    },
+    {
+      "path": "tests/security.test.ts",
+      "hash": "f254b438a38a88a88a34d427b70b836d3a480d68a5ff97512251dca7d3ba73d6"
+    },
+    {
+      "path": "tests/storage.test.ts",
+      "hash": "4e8a845a1d6b7d2f504b883d7dd104ab4d12c30fd4221e43baa333ace34081e5"
+    },
+    {
+      "path": "tests/v2.test.ts",
+      "hash": "16e3fa0f9eea4aec698434734ae84a63d7fe1fa932bb2411326035e45f914637"
+    },
+    {
+      "path": "tests/workspace-context.test.ts",
+      "hash": "cdfa208a30143a38ab758510a5e12880c2da40a8d452eebf5c57a7ddc47e6f60"
+    },
+    {
+      "path": "tests/workspace.test.ts",
+      "hash": "4401b97280df692eef86078c6f9553a3739e8d4ec0720e98ea514b64157a1e50"
+    },
+    {
+      "path": "vitest.config.ts",
+      "hash": "dbaf05bd1c7c74a8020b2898139bb282e9ce572ce3158b1611ba4776ae26eef3"
+    }
+  ],
+  "results": [
+    {
+      "id": "locate",
+      "cohort": "known self-repository diagnostic",
+      "request": {
+        "task": "Where is the code that selects relevant symbols for a task within a token budget?",
+        "maxTokens": 1500,
+        "options": {
+          "format": "markdown"
+        }
+      },
+      "requiredSymbols": ["ContextEngine.context"],
+      "baseline": {
+        "tokens": 1452,
+        "latencyMs": 243,
+        "selected": [
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:renderContext",
+            "symbol": "renderContext",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-tools/src/index.ts:serializeWithin",
+            "symbol": "serializeWithin",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/adapters.test.ts:reports measured tokens separately from untested task correctness",
+            "symbol": "reports measured tokens separately from untested task correctness",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/budget.ts:optimizeBudget",
+            "symbol": "optimizeBudget",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context",
+            "symbol": "ContextEngine.context",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context.measure",
+            "symbol": "ContextEngine.context.measure",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.reuse",
+            "symbol": "ContextEngine.reuse",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextPackage",
+            "symbol": "ContextPackage",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:renderSymbol",
+            "symbol": "renderSymbol",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/engine.test.ts:enforces complete JSON and Markdown BPE budgets and caches by revision",
+            "symbol": "enforces complete JSON and Markdown BPE budgets and caches by revision",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/daily.test.ts:exposes daily queries through one bounded agent tool and rejects execution requests",
+            "symbol": "exposes daily queries through one bounded agent tool and rejects execution requests",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/power.test.ts:falls back to full evidence after a worker restart and isolates evidence modes",
+            "symbol": "falls back to full evidence after a worker restart and isolates evidence modes",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/adapters.test.ts:limits MCP discovery and calls to the selected profile without changing evidence",
+            "symbol": "limits MCP discovery and calls to the selected profile without changing evidence",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/adapters.test.ts:validates schemas and keeps every tool output bounded",
+            "symbol": "validates schemas and keeps every tool output bounded",
+            "representation": "signature"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "ContextEngine.context",
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context",
+            "representation": "signature"
+          }
+        ]
+      },
+      "current": {
+        "tokens": 1499,
+        "latencyMs": 250,
+        "selected": [
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:renderContext",
+            "symbol": "renderContext",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-tools/src/index.ts:serializeWithin",
+            "symbol": "serializeWithin",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/adapters.test.ts:reports measured tokens separately from untested task correctness",
+            "symbol": "reports measured tokens separately from untested task correctness",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/budget.ts:optimizeBudget",
+            "symbol": "optimizeBudget",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:renderSymbol",
+            "symbol": "renderSymbol",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/engine.test.ts:enforces complete JSON and Markdown BPE budgets and caches by revision",
+            "symbol": "enforces complete JSON and Markdown BPE budgets and caches by revision",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context",
+            "symbol": "ContextEngine.context",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context.measure",
+            "symbol": "ContextEngine.context.measure",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.reuse",
+            "symbol": "ContextEngine.reuse",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:TokenCounter.count",
+            "symbol": "TokenCounter.count",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/power.test.ts:keeps the target implementation and an evidenced test in task context",
+            "symbol": "keeps the target implementation and an evidenced test in task context",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-tools/src/index.ts:dispatchTool",
+            "symbol": "dispatchTool",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-tools/src/index.ts:compact",
+            "symbol": "compact",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/daily-report.ts:dailyReport",
+            "symbol": "dailyReport",
+            "representation": "signature"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "ContextEngine.context",
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context",
+            "representation": "signature",
+            "diagnostic": {
+              "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context",
+              "score": 0.33599999999999997,
+              "rank": 7,
+              "seed": false,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "selected",
+              "representations": [
+                {
+                  "kind": "summary",
+                  "cost": 38,
+                  "utility": 0.1512
+                },
+                {
+                  "kind": "signature",
+                  "cost": 45,
+                  "utility": 0.33599999999999997
+                },
+                {
+                  "kind": "excerpt",
+                  "cost": 248,
+                  "utility": 0.41999999999999993
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "flow",
+      "cohort": "known self-repository diagnostic",
+      "request": {
+        "task": "Explain how repository indexing parses TypeScript and stores the resulting relationships in SQLite.",
+        "maxTokens": 2000,
+        "options": {
+          "format": "markdown"
+        }
+      },
+      "requiredSymbols": [
+        "GraphIndexer.index",
+        "TypeScriptAdapter.parse",
+        "SqliteGraphStore.putEdge"
+      ],
+      "baseline": {
+        "tokens": 1800,
+        "latencyMs": 130,
+        "selected": [
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.relationships",
+            "symbol": "GraphQuery.relationships",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/explorer.ts:relationships",
+            "symbol": "relationships",
+            "representation": "excerpt"
+          },
+          {
+            "id": "typescript:packages/graph-store-sqlite/src/index.ts:SqliteGraphStore.neighbors",
+            "symbol": "SqliteGraphStore.neighbors",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/explorer.ts:ExplorerHost.relationships",
+            "symbol": "ExplorerHost.relationships",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store-sqlite/src/index.ts:SqliteGraphStore.stats",
+            "symbol": "SqliteGraphStore.stats",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store-sqlite/src/index.ts:SqliteGraphStore.transaction",
+            "symbol": "SqliteGraphStore.transaction",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-ir/src/explorer.ts:ExplorerGraph",
+            "symbol": "ExplorerGraph",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-ir/src/explorer.ts:explorerNode",
+            "symbol": "explorerNode",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store/src/index.ts:GraphStore",
+            "symbol": "GraphStore",
+            "representation": "excerpt"
+          },
+          {
+            "id": "typescript:packages/graph-store/src/index.ts:GraphStore.file",
+            "symbol": "GraphStore.file",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store/src/index.ts:GraphStore.neighbors",
+            "symbol": "GraphStore.neighbors",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store/src/index.ts:GraphStore.node",
+            "symbol": "GraphStore.node",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store/src/index.ts:GraphStore.resolve",
+            "symbol": "GraphStore.resolve",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-ir/src/explorer.ts:RelationshipOptions",
+            "symbol": "RelationshipOptions",
+            "representation": "source"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "GraphIndexer.index",
+            "id": "typescript:packages/graph-indexer/src/index.ts:GraphIndexer.index",
+            "representation": null
+          },
+          {
+            "symbol": "TypeScriptAdapter.parse",
+            "id": "typescript:packages/graph-typescript/src/index.ts:TypeScriptAdapter.parse",
+            "representation": null
+          },
+          {
+            "symbol": "SqliteGraphStore.putEdge",
+            "id": "typescript:packages/graph-store-sqlite/src/index.ts:SqliteGraphStore.putEdge",
+            "representation": null
+          }
+        ]
+      },
+      "current": {
+        "tokens": 1601,
+        "latencyMs": 116,
+        "selected": [
+          {
+            "id": "typescript:packages/graph-query/src/explorer.ts:relationships",
+            "symbol": "relationships",
+            "representation": "excerpt"
+          },
+          {
+            "id": "typescript:packages/graph-store-sqlite/src/index.ts:SqliteGraphStore.neighbors",
+            "symbol": "SqliteGraphStore.neighbors",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store-sqlite/src/index.ts:SqliteGraphStore.stats",
+            "symbol": "SqliteGraphStore.stats",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/explorer.ts:ExplorerHost.relationships",
+            "symbol": "ExplorerHost.relationships",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store-sqlite/src/index.ts:SqliteGraphStore.transaction",
+            "symbol": "SqliteGraphStore.transaction",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.relationships",
+            "symbol": "GraphQuery.relationships",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store/src/index.ts:GraphStore.neighbors",
+            "symbol": "GraphStore.neighbors",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store-sqlite/src/index.ts:SqliteGraphStore.finishRun",
+            "symbol": "SqliteGraphStore.finishRun",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store/src/index.ts:GraphStore.file",
+            "symbol": "GraphStore.file",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store/src/index.ts:GraphStore.node",
+            "symbol": "GraphStore.node",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store/src/index.ts:GraphStore.resolve",
+            "symbol": "GraphStore.resolve",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store/src/index.ts:GraphStore.search",
+            "symbol": "GraphStore.search",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store/src/index.ts:GraphStore.stats",
+            "symbol": "GraphStore.stats",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/shared/src/index.ts:bounded",
+            "symbol": "bounded",
+            "representation": "source"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "GraphIndexer.index",
+            "id": "typescript:packages/graph-indexer/src/index.ts:GraphIndexer.index",
+            "representation": null,
+            "diagnostic": {
+              "id": "typescript:packages/graph-indexer/src/index.ts:GraphIndexer.index",
+              "score": 0.16787878787878785,
+              "rank": 82,
+              "seed": false,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "shortlist limit"
+            }
+          },
+          {
+            "symbol": "TypeScriptAdapter.parse",
+            "id": "typescript:packages/graph-typescript/src/index.ts:TypeScriptAdapter.parse",
+            "representation": null,
+            "diagnostic": {
+              "id": "typescript:packages/graph-typescript/src/index.ts:TypeScriptAdapter.parse",
+              "score": 0.26666666666666666,
+              "rank": 36,
+              "seed": false,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "shortlist limit"
+            }
+          },
+          {
+            "symbol": "SqliteGraphStore.putEdge",
+            "id": "typescript:packages/graph-store-sqlite/src/index.ts:SqliteGraphStore.putEdge",
+            "representation": null,
+            "diagnostic": {
+              "id": "typescript:packages/graph-store-sqlite/src/index.ts:SqliteGraphStore.putEdge",
+              "score": 0.26666666666666666,
+              "rank": 35,
+              "seed": false,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "shortlist limit"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "architecture",
+      "cohort": "known self-repository diagnostic",
+      "request": {
+        "task": "Explain how opening a repository connects the database, queries and context engine.",
+        "maxTokens": 1500,
+        "options": {
+          "format": "markdown"
+        }
+      },
+      "requiredSymbols": ["PGraph.open"],
+      "baseline": {
+        "tokens": 1500,
+        "latencyMs": 302,
+        "selected": [
+          {
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.context",
+            "symbol": "PGraph.context",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/extension.ts:activate.engineFor",
+            "symbol": "activate.engineFor",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context",
+            "symbol": "ContextEngine.context",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/extension.ts:activate.workspaceGraph",
+            "symbol": "activate.workspaceGraph",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.skeleton",
+            "symbol": "GraphQuery.skeleton",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/extension.ts:activate",
+            "symbol": "activate",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/extension.ts:activate.client",
+            "symbol": "activate.client",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/extension.ts:activate.indexWorkspace",
+            "symbol": "activate.indexWorkspace",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/extension.ts:activate.projects",
+            "symbol": "activate.projects",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/extension.ts:activate.request",
+            "symbol": "activate.request",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.assertFresh",
+            "symbol": "ContextEngine.assertFresh",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context.add",
+            "symbol": "ContextEngine.context.add",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context.attempt",
+            "symbol": "ContextEngine.context.attempt",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/budget.ts:optimizeBudget",
+            "symbol": "optimizeBudget",
+            "representation": "signature"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "PGraph.open",
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.open",
+            "representation": null
+          }
+        ]
+      },
+      "current": {
+        "tokens": 1474,
+        "latencyMs": 343,
+        "selected": [
+          {
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.context",
+            "symbol": "PGraph.context",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context",
+            "symbol": "ContextEngine.context",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/extension.ts:activate.engineFor",
+            "symbol": "activate.engineFor",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/extension.ts:activate.workspaceGraph",
+            "symbol": "activate.workspaceGraph",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.assertFresh",
+            "symbol": "ContextEngine.assertFresh",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.reuse",
+            "symbol": "ContextEngine.reuse",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context.add",
+            "symbol": "ContextEngine.context.add",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context.attempt",
+            "symbol": "ContextEngine.context.attempt",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context.measure",
+            "symbol": "ContextEngine.context.measure",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context.omit",
+            "symbol": "ContextEngine.context.omit",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context.reserve",
+            "symbol": "ContextEngine.context.reserve",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:renderContext",
+            "symbol": "renderContext",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.skeleton",
+            "symbol": "GraphQuery.skeleton",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.excerpt",
+            "symbol": "GraphQuery.excerpt",
+            "representation": "source"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "PGraph.open",
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.open",
+            "representation": null,
+            "diagnostic": {
+              "id": "typescript:packages/graph-core/src/index.ts:PGraph.open",
+              "score": 0.30747252747252746,
+              "rank": 43,
+              "seed": false,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "shortlist limit"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "impact",
+      "cohort": "known self-repository diagnostic",
+      "request": {
+        "task": "What could break if symbol lookup changes its handling of ambiguous names?",
+        "maxTokens": 1500,
+        "options": {
+          "format": "markdown"
+        }
+      },
+      "requiredSymbols": ["GraphQuery.symbol"],
+      "baseline": {
+        "tokens": 1472,
+        "latencyMs": 379,
+        "selected": [
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.symbol",
+            "symbol": "GraphQuery.symbol",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-tools/src/index.ts:dispatchTool",
+            "symbol": "dispatchTool",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-ir/src/index.ts:GraphNode",
+            "symbol": "GraphNode",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.adjacent",
+            "symbol": "GraphQuery.adjacent",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.aggregate",
+            "symbol": "GraphQuery.aggregate",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.impact",
+            "symbol": "GraphQuery.impact",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.path",
+            "symbol": "GraphQuery.path",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.skeleton",
+            "symbol": "GraphQuery.skeleton",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.slice",
+            "symbol": "GraphQuery.slice",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.testsFor",
+            "symbol": "GraphQuery.testsFor",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-store/src/index.ts:GraphStore.resolve",
+            "symbol": "GraphStore.resolve",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.semanticInput",
+            "symbol": "PGraph.semanticInput",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/tests.ts:relatedTestPaths",
+            "symbol": "relatedTestPaths",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/excerpt.ts:sourceExcerpt",
+            "symbol": "sourceExcerpt",
+            "representation": "signature"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "GraphQuery.symbol",
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.symbol",
+            "representation": "source"
+          }
+        ]
+      },
+      "current": {
+        "tokens": 1499,
+        "latencyMs": 407,
+        "selected": [
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.symbol",
+            "symbol": "GraphQuery.symbol",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/workspace.test.ts:bounds symbol traversal and reports omitted neighbors without dangling edges",
+            "symbol": "bounds symbol traversal and reports omitted neighbors without dangling edges",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/engine.test.ts:handles deleted and renamed files without dangling edges",
+            "symbol": "handles deleted and renamed files without dangling edges",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/frameworks.test.ts:models Nest controllers, providers and route-to-handler relationships without loading Nest",
+            "symbol": "models Nest controllers, providers and route-to-handler relationships without loading Nest",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/engine.test.ts:persists symbols and resolves cross-file calls, paths, tests and slices",
+            "symbol": "persists symbols and resolves cross-file calls, paths, tests and slices",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-tools/src/index.ts:dispatchTool",
+            "symbol": "dispatchTool",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/tests.ts:relatedTestPaths",
+            "symbol": "relatedTestPaths",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/excerpt.ts:sourceExcerpt",
+            "symbol": "sourceExcerpt",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/project-resolution.test.ts:connects package exports, barrels, methods, consumers and candidate tests to source before building",
+            "symbol": "connects package exports, barrels, methods, consumers and candidate tests to source before building",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/daily.test.ts:finds literal error text with locations, scopes, pagination and stale-file exclusion",
+            "symbol": "finds literal error text with locations, scopes, pagination and stale-file exclusion",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/daily.test.ts:maps real-style relative, absolute and file-URL stack frames and leaves external frames unknown",
+            "symbol": "maps real-style relative, absolute and file-URL stack frames and leaves external frames unknown",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/frameworks.test.ts:recognizes Next App Router entry points, JSX components and hooks",
+            "symbol": "recognizes Next App Router entry points, JSX components and hooks",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/engine.test.ts:skips unchanged files, updates reverse dependencies and rejects stale slices",
+            "symbol": "skips unchanged files, updates reverse dependencies and rejects stale slices",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/language.test.ts:supports JavaScript, arrow/default exports, aliases, generics, enums and property impact",
+            "symbol": "supports JavaScript, arrow/default exports, aliases, generics, enums and property impact",
+            "representation": "signature"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "GraphQuery.symbol",
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.symbol",
+            "representation": "source",
+            "diagnostic": {
+              "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.symbol",
+              "score": 0.6799999999999999,
+              "rank": 1,
+              "seed": true,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "selected",
+              "representations": [
+                {
+                  "kind": "summary",
+                  "cost": 38,
+                  "utility": 0.306
+                },
+                {
+                  "kind": "signature",
+                  "cost": 44,
+                  "utility": 0.6799999999999999
+                },
+                {
+                  "kind": "source",
+                  "cost": 219,
+                  "utility": 0.9859999999999999
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "debug",
+      "cohort": "known self-repository diagnostic",
+      "request": {
+        "task": "Why does reading an indexed implementation reject source that has changed on disk?",
+        "maxTokens": 1500,
+        "options": {
+          "format": "markdown"
+        }
+      },
+      "requiredSymbols": ["GraphQuery.slice", "GraphQuery.fileSlice"],
+      "baseline": {
+        "tokens": 1500,
+        "latencyMs": 376,
+        "selected": [
+          {
+            "id": "typescript:tests/power.test.ts:returns targeted, verified excerpts from large declarations and rejects stale source",
+            "symbol": "returns targeted, verified excerpts from large declarations and rejects stale source",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/security.test.ts:handles hostile tokenizer strings and rejects impossible envelopes",
+            "symbol": "handles hostile tokenizer strings and rejects impossible envelopes",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-tools/src/index.ts:dispatchTool",
+            "symbol": "dispatchTool",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/power.test.ts:fixture",
+            "symbol": "fixture",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.excerpt",
+            "symbol": "GraphQuery.excerpt",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.context",
+            "symbol": "PGraph.context",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.index",
+            "symbol": "PGraph.index",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:TokenCounter.count",
+            "symbol": "TokenCounter.count",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/security.test.ts:root",
+            "symbol": "root",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.spec.ts:login rejects unknown accounts",
+            "symbol": "login rejects unknown accounts",
+            "representation": "source"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "GraphQuery.slice",
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.slice",
+            "representation": null
+          },
+          {
+            "symbol": "GraphQuery.fileSlice",
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.fileSlice",
+            "representation": null
+          }
+        ]
+      },
+      "current": {
+        "tokens": 1495,
+        "latencyMs": 361,
+        "selected": [
+          {
+            "id": "typescript:tests/power.test.ts:returns targeted, verified excerpts from large declarations and rejects stale source",
+            "symbol": "returns targeted, verified excerpts from large declarations and rejects stale source",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/security.test.ts:handles hostile tokenizer strings and rejects impossible envelopes",
+            "symbol": "handles hostile tokenizer strings and rejects impossible envelopes",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.index",
+            "symbol": "PGraph.index",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-indexer/src/index.ts:GraphIndexer.index",
+            "symbol": "GraphIndexer.index",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/daily.test.ts:distinguishes staged and branch snapshots and rejects mismatched working-source mapping",
+            "symbol": "distinguishes staged and branch snapshots and rejects mismatched working-source mapping",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/workspace-context.test.ts:rejects stale source, independent receipts, missing indexes and duplicate or mismatched roots",
+            "symbol": "rejects stale source, independent receipts, missing indexes and duplicate or mismatched roots",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.implementations",
+            "symbol": "GraphQuery.implementations",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-tools/src/index.ts:dispatchTool",
+            "symbol": "dispatchTool",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.excerpt",
+            "symbol": "GraphQuery.excerpt",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.slice",
+            "symbol": "GraphQuery.slice",
+            "representation": "summary"
+          },
+          {
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.context",
+            "symbol": "PGraph.context",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:TokenCounter.count",
+            "symbol": "TokenCounter.count",
+            "representation": "source"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "GraphQuery.slice",
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.slice",
+            "representation": "summary",
+            "diagnostic": {
+              "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.slice",
+              "score": 0.34285714285714286,
+              "rank": 10,
+              "seed": false,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "selected",
+              "representations": [
+                {
+                  "kind": "summary",
+                  "cost": 38,
+                  "utility": 0.1542857142857143
+                },
+                {
+                  "kind": "signature",
+                  "cost": 52,
+                  "utility": 0.34285714285714286
+                },
+                {
+                  "kind": "source",
+                  "cost": 230,
+                  "utility": 0.8228571428571428
+                },
+                {
+                  "kind": "excerpt",
+                  "cost": 241,
+                  "utility": 0.6514285714285714
+                }
+              ]
+            }
+          },
+          {
+            "symbol": "GraphQuery.fileSlice",
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.fileSlice",
+            "representation": null,
+            "diagnostic": {
+              "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.fileSlice",
+              "score": 0.24994999999999995,
+              "rank": 56,
+              "seed": false,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "shortlist limit"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "single",
+      "cohort": "known self-repository diagnostic",
+      "request": {
+        "task": "Improve how the context budget chooses between summaries, signatures and implementation source.",
+        "maxTokens": 1500,
+        "options": {
+          "format": "markdown"
+        }
+      },
+      "requiredSymbols": ["optimizeBudget"],
+      "baseline": {
+        "tokens": 1494,
+        "latencyMs": 332,
+        "selected": [
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context",
+            "symbol": "ContextEngine.context",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.context",
+            "symbol": "PGraph.context",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/extension.ts:activate.invoke",
+            "symbol": "activate.invoke",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/power.test.ts:keeps the target implementation and an evidenced test in task context",
+            "symbol": "keeps the target implementation and an evidenced test in task context",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.semanticInput",
+            "symbol": "PGraph.semanticInput",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextRequest",
+            "symbol": "ContextRequest",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextResult",
+            "symbol": "ContextResult",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-tools/src/index.ts:dispatchTool",
+            "symbol": "dispatchTool",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/engine.test.ts:enforces complete JSON and Markdown BPE budgets and caches by revision",
+            "symbol": "enforces complete JSON and Markdown BPE budgets and caches by revision",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/power.test.ts:returns targeted, verified excerpts from large declarations and rejects stale source",
+            "symbol": "returns targeted, verified excerpts from large declarations and rejects stale source",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-benchmark/src/index.ts:runBenchmark",
+            "symbol": "runBenchmark",
+            "representation": "signature"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "optimizeBudget",
+            "id": "typescript:packages/graph-context/src/budget.ts:optimizeBudget",
+            "representation": null
+          }
+        ]
+      },
+      "current": {
+        "tokens": 1436,
+        "latencyMs": 191,
+        "selected": [
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context",
+            "symbol": "ContextEngine.context",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.context",
+            "symbol": "PGraph.context",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/extension.ts:activate.invoke",
+            "symbol": "activate.invoke",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/power.test.ts:keeps the target implementation and an evidenced test in task context",
+            "symbol": "keeps the target implementation and an evidenced test in task context",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.semanticInput",
+            "symbol": "PGraph.semanticInput",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.implementations",
+            "symbol": "GraphQuery.implementations",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/budget.ts:optimizeBudget",
+            "symbol": "optimizeBudget",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:renderContext",
+            "symbol": "renderContext",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.assertFresh",
+            "symbol": "ContextEngine.assertFresh",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context.attempt",
+            "symbol": "ContextEngine.context.attempt",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context.omit",
+            "symbol": "ContextEngine.context.omit",
+            "representation": "source"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "optimizeBudget",
+            "id": "typescript:packages/graph-context/src/budget.ts:optimizeBudget",
+            "representation": "signature",
+            "diagnostic": {
+              "id": "typescript:packages/graph-context/src/budget.ts:optimizeBudget",
+              "score": 0.36092499999999994,
+              "rank": 7,
+              "seed": false,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "selected",
+              "representations": [
+                {
+                  "kind": "summary",
+                  "cost": 39,
+                  "utility": 0.16241624999999998
+                },
+                {
+                  "kind": "signature",
+                  "cost": 56,
+                  "utility": 0.36092499999999994
+                },
+                {
+                  "kind": "source",
+                  "cost": 448,
+                  "utility": 0.8662199999999999
+                },
+                {
+                  "kind": "excerpt",
+                  "cost": 214,
+                  "utility": 0.6857574999999999
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "multi",
+      "cohort": "known self-repository diagnostic",
+      "request": {
+        "task": "Add a new query tool available to both coding agents and editor users.",
+        "maxTokens": 1500,
+        "options": {
+          "format": "markdown"
+        }
+      },
+      "requiredSymbols": ["dispatchTool"],
+      "baseline": {
+        "tokens": 1492,
+        "latencyMs": 345,
+        "selected": [
+          {
+            "id": "typescript:tests/daily.test.ts:exposes daily queries through one bounded agent tool and rejects execution requests",
+            "symbol": "exposes daily queries through one bounded agent tool and rejects execution requests",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-git/src/index.ts:gitReader",
+            "symbol": "gitReader",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/daily.ts:registerDaily.query",
+            "symbol": "registerDaily.query",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-tools/src/index.ts:dispatchTool",
+            "symbol": "dispatchTool",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/daily.test.ts:fixture",
+            "symbol": "fixture",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:TokenCounter.count",
+            "symbol": "TokenCounter.count",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/daily.test.ts:records selected check outcomes and invalidates them after code, config and newly discovered file changes",
+            "symbol": "records selected check outcomes and invalidates them after code, config and newly discovered file changes",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-git/src/index.ts:readChangedFiles",
+            "symbol": "readChangedFiles",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/workspace-context.ts:requestWorkspaceContext.controlEngine",
+            "symbol": "requestWorkspaceContext.controlEngine",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/daily.test.ts:distinguishes staged and branch snapshots and rejects mismatched working-source mapping",
+            "symbol": "distinguishes staged and branch snapshots and rejects mismatched working-source mapping",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/daily.test.ts:keeps nested Git-root mappings inside the selected repository",
+            "symbol": "keeps nested Git-root mappings inside the selected repository",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/daily.test.ts:maps a changed hunk to its declaration and does not pull in unrelated siblings",
+            "symbol": "maps a changed hunk to its declaration and does not pull in unrelated siblings",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/daily.test.ts:reports removed files and zero-line deletion uncertainty",
+            "symbol": "reports removed files and zero-line deletion uncertainty",
+            "representation": "source"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "dispatchTool",
+            "id": "typescript:packages/graph-tools/src/index.ts:dispatchTool",
+            "representation": "signature"
+          }
+        ]
+      },
+      "current": {
+        "tokens": 1494,
+        "latencyMs": 255,
+        "selected": [
+          {
+            "id": "typescript:tests/daily.test.ts:exposes daily queries through one bounded agent tool and rejects execution requests",
+            "symbol": "exposes daily queries through one bounded agent tool and rejects execution requests",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-git/src/index.ts:gitReader",
+            "symbol": "gitReader",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/daily.test.ts:records selected check outcomes and invalidates them after code, config and newly discovered file changes",
+            "symbol": "records selected check outcomes and invalidates them after code, config and newly discovered file changes",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/workspace-context.ts:requestWorkspaceContext.controlEngine",
+            "symbol": "requestWorkspaceContext.controlEngine",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/daily.ts:registerDaily.query",
+            "symbol": "registerDaily.query",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-tools/src/index.ts:dispatchTool",
+            "symbol": "dispatchTool",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/extension.ts:activate.client",
+            "symbol": "activate.client",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/daily.test.ts:fixture",
+            "symbol": "fixture",
+            "representation": "excerpt"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:TokenCounter.count",
+            "symbol": "TokenCounter.count",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:User",
+            "symbol": "User",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/adapters.test.ts:negotiates real MCP stdio, lists tools and performs a query",
+            "symbol": "negotiates real MCP stdio, lists tools and performs a query",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/daily-report.ts:dailyReport",
+            "symbol": "dailyReport",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/daily.ts:registerDaily",
+            "symbol": "registerDaily",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-git/src/index.ts:readChangeHunks",
+            "symbol": "readChangeHunks",
+            "representation": "summary"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "dispatchTool",
+            "id": "typescript:packages/graph-tools/src/index.ts:dispatchTool",
+            "representation": "signature",
+            "diagnostic": {
+              "id": "typescript:packages/graph-tools/src/index.ts:dispatchTool",
+              "score": 0.36017499999999997,
+              "rank": 6,
+              "seed": false,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "selected",
+              "representations": [
+                {
+                  "kind": "summary",
+                  "cost": 38,
+                  "utility": 0.16207875
+                },
+                {
+                  "kind": "signature",
+                  "cost": 54,
+                  "utility": 0.36017499999999997
+                },
+                {
+                  "kind": "source",
+                  "cost": 1269,
+                  "utility": 0.8644199999999999
+                },
+                {
+                  "kind": "excerpt",
+                  "cost": 232,
+                  "utility": 0.6843324999999999
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "monorepo",
+      "cohort": "known self-repository diagnostic",
+      "request": {
+        "task": "How are workspace path aliases resolved when parsing multiple TypeScript projects?",
+        "maxTokens": 1500,
+        "options": {
+          "format": "markdown"
+        }
+      },
+      "requiredSymbols": ["TypeScriptAdapter.parse"],
+      "baseline": {
+        "tokens": 1492,
+        "latencyMs": 205,
+        "selected": [
+          {
+            "id": "typescript:tests/frameworks.test.ts:resolves multiple tsconfigs, inherited path aliases and workspace dependencies",
+            "symbol": "resolves multiple tsconfigs, inherited path aliases and workspace dependencies",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-typescript/src/project-resolution.ts:projectSourceResolution.local",
+            "symbol": "projectSourceResolution.local",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/daily.ts:DailyHost.projects",
+            "symbol": "DailyHost.projects",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/explorer.ts:ExplorerHost.workspace",
+            "symbol": "ExplorerHost.workspace",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/frameworks.test.ts:fixture",
+            "symbol": "fixture",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.callees",
+            "symbol": "GraphQuery.callees",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.dependencies",
+            "symbol": "GraphQuery.dependencies",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.implementations",
+            "symbol": "GraphQuery.implementations",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-ir/src/index.ts:IndexProgress",
+            "symbol": "IndexProgress",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.index",
+            "symbol": "PGraph.index",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-typescript/src/project-resolution.ts:contains",
+            "symbol": "contains",
+            "representation": "source"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "TypeScriptAdapter.parse",
+            "id": "typescript:packages/graph-typescript/src/index.ts:TypeScriptAdapter.parse",
+            "representation": null
+          }
+        ]
+      },
+      "current": {
+        "tokens": 1482,
+        "latencyMs": 465,
+        "selected": [
+          {
+            "id": "typescript:tests/frameworks.test.ts:resolves multiple tsconfigs, inherited path aliases and workspace dependencies",
+            "symbol": "resolves multiple tsconfigs, inherited path aliases and workspace dependencies",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-typescript/src/project-resolution.ts:projectSourceResolution.local",
+            "symbol": "projectSourceResolution.local",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/daily.ts:DailyHost.projects",
+            "symbol": "DailyHost.projects",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/project-resolution.test.ts:resolves a referenced package's internal aliases using its own compiler configuration",
+            "symbol": "resolves a referenced package's internal aliases using its own compiler configuration",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/explorer.ts:ExplorerHost.workspace",
+            "symbol": "ExplorerHost.workspace",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:apps/vscode-extension/src/extension.ts:activate.projects",
+            "symbol": "activate.projects",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/language.test.ts:supports JavaScript, arrow/default exports, aliases, generics, enums and property impact",
+            "symbol": "supports JavaScript, arrow/default exports, aliases, generics, enums and property impact",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-store/src/index.ts:GraphStore.resolve",
+            "symbol": "GraphStore.resolve",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-typescript/src/index.ts:TypeScriptAdapter.parse",
+            "symbol": "TypeScriptAdapter.parse",
+            "representation": "summary"
+          },
+          {
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.index",
+            "symbol": "PGraph.index",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.callees",
+            "symbol": "GraphQuery.callees",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.dependencies",
+            "symbol": "GraphQuery.dependencies",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.implementations",
+            "symbol": "GraphQuery.implementations",
+            "representation": "source"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "TypeScriptAdapter.parse",
+            "id": "typescript:packages/graph-typescript/src/index.ts:TypeScriptAdapter.parse",
+            "representation": "summary",
+            "diagnostic": {
+              "id": "typescript:packages/graph-typescript/src/index.ts:TypeScriptAdapter.parse",
+              "score": 0.33866818181818176,
+              "rank": 10,
+              "seed": false,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "selected",
+              "representations": [
+                {
+                  "kind": "summary",
+                  "cost": 40,
+                  "utility": 0.15240068181818178
+                },
+                {
+                  "kind": "signature",
+                  "cost": 70,
+                  "utility": 0.33866818181818176
+                },
+                {
+                  "kind": "excerpt",
+                  "cost": 206,
+                  "utility": 0.6434695454545453
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "tests",
+      "cohort": "known self-repository diagnostic",
+      "request": {
+        "task": "Find tests for rejecting stale implementation reads and selecting task-specific context.",
+        "maxTokens": 1800,
+        "options": {
+          "format": "markdown"
+        }
+      },
+      "requiredSymbols": ["GraphQuery.slice", "ContextEngine.context"],
+      "baseline": {
+        "tokens": 1797,
+        "latencyMs": 523,
+        "selected": [
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context",
+            "symbol": "ContextEngine.context",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.context",
+            "symbol": "PGraph.context",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/power.test.ts:keeps the target implementation and an evidenced test in task context",
+            "symbol": "keeps the target implementation and an evidenced test in task context",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/v2.test.ts:anchors ambiguous names to the cursor and rejects stale, external or contradictory focus",
+            "symbol": "anchors ambiguous names to the cursor and rejects stale, external or contradictory focus",
+            "representation": "excerpt"
+          },
+          {
+            "id": "typescript:tests/workspace-context.test.ts:rejects stale source, independent receipts, missing indexes and duplicate or mismatched roots",
+            "symbol": "rejects stale source, independent receipts, missing indexes and duplicate or mismatched roots",
+            "representation": "excerpt"
+          },
+          {
+            "id": "typescript:tests/project-resolution.test.ts:connects package exports, barrels, methods, consumers and candidate tests to source before building",
+            "symbol": "connects package exports, barrels, methods, consumers and candidate tests to source before building",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextRequest",
+            "symbol": "ContextRequest",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextResult",
+            "symbol": "ContextResult",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-tools/src/index.ts:dispatchTool",
+            "symbol": "dispatchTool",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/engine.test.ts:enforces complete JSON and Markdown BPE budgets and caches by revision",
+            "symbol": "enforces complete JSON and Markdown BPE budgets and caches by revision",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/power.test.ts:falls back to full evidence after a worker restart and isolates evidence modes",
+            "symbol": "falls back to full evidence after a worker restart and isolates evidence modes",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/power.test.ts:returns targeted, verified excerpts from large declarations and rejects stale source",
+            "symbol": "returns targeted, verified excerpts from large declarations and rejects stale source",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-benchmark/src/index.ts:runBenchmark",
+            "symbol": "runBenchmark",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/power.test.ts:uses small receipts to reuse unchanged context and refreshes modified source",
+            "symbol": "uses small receipts to reuse unchanged context and refreshes modified source",
+            "representation": "signature"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "GraphQuery.slice",
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.slice",
+            "representation": null
+          },
+          {
+            "symbol": "ContextEngine.context",
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context",
+            "representation": "signature"
+          }
+        ]
+      },
+      "current": {
+        "tokens": 1797,
+        "latencyMs": 430,
+        "selected": [
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context",
+            "symbol": "ContextEngine.context",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-core/src/index.ts:PGraph.context",
+            "symbol": "PGraph.context",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/power.test.ts:keeps the target implementation and an evidenced test in task context",
+            "symbol": "keeps the target implementation and an evidenced test in task context",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/v2.test.ts:anchors ambiguous names to the cursor and rejects stale, external or contradictory focus",
+            "symbol": "anchors ambiguous names to the cursor and rejects stale, external or contradictory focus",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/workspace-context.test.ts:rejects stale source, independent receipts, missing indexes and duplicate or mismatched roots",
+            "symbol": "rejects stale source, independent receipts, missing indexes and duplicate or mismatched roots",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/power.test.ts:returns targeted, verified excerpts from large declarations and rejects stale source",
+            "symbol": "returns targeted, verified excerpts from large declarations and rejects stale source",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.implementations",
+            "symbol": "GraphQuery.implementations",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:renderContext",
+            "symbol": "renderContext",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-ranking/src/index.ts:classifyTask",
+            "symbol": "classifyTask",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/shared/src/index.ts:readLocal",
+            "symbol": "readLocal",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.assertFresh",
+            "symbol": "ContextEngine.assertFresh",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.reuse",
+            "symbol": "ContextEngine.reuse",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context.add",
+            "symbol": "ContextEngine.context.add",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context.attempt",
+            "symbol": "ContextEngine.context.attempt",
+            "representation": "source"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "GraphQuery.slice",
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.slice",
+            "representation": null,
+            "diagnostic": {
+              "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.slice",
+              "score": 0.3283,
+              "rank": 30,
+              "seed": false,
+              "reasons": [
+                "outgoing CALLS at dispatchTool",
+                "outgoing CALLS at ContextEngine.context"
+              ],
+              "stage": "shortlist limit"
+            }
+          },
+          {
+            "symbol": "ContextEngine.context",
+            "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context",
+            "representation": "signature",
+            "diagnostic": {
+              "id": "typescript:packages/graph-context/src/index.ts:ContextEngine.context",
+              "score": 0.6044499999999999,
+              "rank": 1,
+              "seed": false,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "selected",
+              "representations": [
+                {
+                  "kind": "summary",
+                  "cost": 38,
+                  "utility": 0.2720025
+                },
+                {
+                  "kind": "signature",
+                  "cost": 45,
+                  "utility": 0.6044499999999999
+                },
+                {
+                  "kind": "excerpt",
+                  "cost": 271,
+                  "utility": 1.1484549999999998
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "refactor",
+      "cohort": "known self-repository diagnostic",
+      "request": {
+        "task": "Refactor database neighbor queries and dependency path traversal together.",
+        "maxTokens": 1800,
+        "options": {
+          "format": "markdown"
+        }
+      },
+      "requiredSymbols": ["SqliteGraphStore.neighbors", "GraphQuery.path"],
+      "baseline": {
+        "tokens": 1798,
+        "latencyMs": 333,
+        "selected": [
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.path",
+            "symbol": "GraphQuery.path",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.impact",
+            "symbol": "GraphQuery.impact",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-ir/src/index.ts:Neighbor",
+            "symbol": "Neighbor",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/workspace.test.ts:bounds symbol traversal and reports omitted neighbors without dangling edges",
+            "symbol": "bounds symbol traversal and reports omitted neighbors without dangling edges",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/shared/src/index.ts:bounded",
+            "symbol": "bounded",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-tools/src/index.ts:dispatchTool",
+            "symbol": "dispatchTool",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-ir/src/index.ts:GraphNode",
+            "symbol": "GraphNode",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.symbol",
+            "symbol": "GraphQuery.symbol",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-store/src/index.ts:GraphStore.neighbors",
+            "symbol": "GraphStore.neighbors",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/engine.test.ts:persists symbols and resolves cross-file calls, paths, tests and slices",
+            "symbol": "persists symbols and resolves cross-file calls, paths, tests and slices",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/daily.test.ts:exposes daily queries through one bounded agent tool and rejects execution requests",
+            "symbol": "exposes daily queries through one bounded agent tool and rejects execution requests",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/adapters.test.ts:limits MCP discovery and calls to the selected profile without changing evidence",
+            "symbol": "limits MCP discovery and calls to the selected profile without changing evidence",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/adapters.test.ts:runs actual CLI processes against persistent storage",
+            "symbol": "runs actual CLI processes against persistent storage",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:tests/adapters.test.ts:validates schemas and keeps every tool output bounded",
+            "symbol": "validates schemas and keeps every tool output bounded",
+            "representation": "signature"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "SqliteGraphStore.neighbors",
+            "id": "typescript:packages/graph-store-sqlite/src/index.ts:SqliteGraphStore.neighbors",
+            "representation": null
+          },
+          {
+            "symbol": "GraphQuery.path",
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.path",
+            "representation": "source"
+          }
+        ]
+      },
+      "current": {
+        "tokens": 1800,
+        "latencyMs": 397,
+        "selected": [
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.path",
+            "symbol": "GraphQuery.path",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-store/src/index.ts:GraphStore.neighbors",
+            "symbol": "GraphStore.neighbors",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-ir/src/index.ts:Neighbor",
+            "symbol": "Neighbor",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.impact",
+            "symbol": "GraphQuery.impact",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-store-sqlite/src/index.ts:SqliteGraphStore.neighbors",
+            "symbol": "SqliteGraphStore.neighbors",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.dependencies",
+            "symbol": "GraphQuery.dependencies",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/engine.test.ts:persists symbols and resolves cross-file calls, paths, tests and slices",
+            "symbol": "persists symbols and resolves cross-file calls, paths, tests and slices",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.symbol",
+            "symbol": "GraphQuery.symbol",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/workspace.test.ts:bounds symbol traversal and reports omitted neighbors without dangling edges",
+            "symbol": "bounds symbol traversal and reports omitted neighbors without dangling edges",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/shared/src/index.ts:bounded",
+            "symbol": "bounded",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:packages/graph-tools/src/index.ts:dispatchTool",
+            "symbol": "dispatchTool",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.skeleton",
+            "symbol": "GraphQuery.skeleton",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.dependents",
+            "symbol": "GraphQuery.dependents",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:tests/power.test.ts:links declared interface members and distinguishes direct test paths from possible dispatch",
+            "symbol": "links declared interface members and distinguishes direct test paths from possible dispatch",
+            "representation": "signature"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "SqliteGraphStore.neighbors",
+            "id": "typescript:packages/graph-store-sqlite/src/index.ts:SqliteGraphStore.neighbors",
+            "representation": "source",
+            "diagnostic": {
+              "id": "typescript:packages/graph-store-sqlite/src/index.ts:SqliteGraphStore.neighbors",
+              "score": 0.464,
+              "rank": 5,
+              "seed": false,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "selected",
+              "representations": [
+                {
+                  "kind": "summary",
+                  "cost": 43,
+                  "utility": 0.2088
+                },
+                {
+                  "kind": "signature",
+                  "cost": 67,
+                  "utility": 0.464
+                },
+                {
+                  "kind": "source",
+                  "cost": 256,
+                  "utility": 0.6728000000000001
+                },
+                {
+                  "kind": "excerpt",
+                  "cost": 244,
+                  "utility": 0.5800000000000001
+                }
+              ]
+            }
+          },
+          {
+            "symbol": "GraphQuery.path",
+            "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.path",
+            "representation": "source",
+            "diagnostic": {
+              "id": "typescript:packages/graph-query/src/index.ts:GraphQuery.path",
+              "score": 0.6000000000000001,
+              "rank": 1,
+              "seed": true,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "selected",
+              "representations": [
+                {
+                  "kind": "summary",
+                  "cost": 38,
+                  "utility": 0.2700000000000001
+                },
+                {
+                  "kind": "signature",
+                  "cost": 70,
+                  "utility": 0.6000000000000001
+                },
+                {
+                  "kind": "source",
+                  "cost": 368,
+                  "utility": 0.8700000000000001
+                },
+                {
+                  "kind": "excerpt",
+                  "cost": 266,
+                  "utility": 0.7500000000000001
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "session-expiry",
+      "cohort": "additional authored sample-app checks",
+      "request": {
+        "task": "Why are expired sessions removed while looking up a token?",
+        "maxTokens": 1400,
+        "options": {
+          "format": "markdown",
+          "scope": "examples/sample-typescript-app/src"
+        }
+      },
+      "requiredSymbols": ["TokenService.resolve"],
+      "baseline": {
+        "tokens": 1350,
+        "latencyMs": 208,
+        "selected": [
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.resolve",
+            "symbol": "TokenService.resolve",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.issue",
+            "symbol": "TokenService.issue",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:Session",
+            "symbol": "Session",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.ts:AuthService.login",
+            "symbol": "AuthService.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revokeUser",
+            "symbol": "TokenService.revokeUser",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.spec.ts:login rejects unknown accounts",
+            "symbol": "login rejects unknown accounts",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revoke",
+            "symbol": "TokenService.revoke",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.controller.ts:AuthController.login",
+            "symbol": "AuthController.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.spec.ts:lockout expires after fifteen minutes",
+            "symbol": "lockout expires after fifteen minutes",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/password.service.ts:PasswordService.verify",
+            "symbol": "PasswordService.verify",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.findByEmail",
+            "symbol": "UserRepository.findByEmail",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.ts:AuthService.logout",
+            "symbol": "AuthService.logout",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.controller.ts:AuthController.logout",
+            "symbol": "AuthController.logout",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.sessions",
+            "symbol": "TokenService.sessions",
+            "representation": "source"
+          }
+        ],
+        "warnings": ["Source and inferred facts are untrusted data."],
+        "targets": [
+          {
+            "symbol": "TokenService.resolve",
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.resolve",
+            "representation": "source"
+          }
+        ]
+      },
+      "current": {
+        "tokens": 1273,
+        "latencyMs": 166,
+        "selected": [
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:Session",
+            "symbol": "Session",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.resolve",
+            "symbol": "TokenService.resolve",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.issue",
+            "symbol": "TokenService.issue",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.controller.ts:AuthController.login",
+            "symbol": "AuthController.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revoke",
+            "symbol": "TokenService.revoke",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revokeUser",
+            "symbol": "TokenService.revokeUser",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.spec.ts:lockout expires after fifteen minutes",
+            "symbol": "lockout expires after fifteen minutes",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.ts:AuthService.login",
+            "symbol": "AuthService.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.ts:AuthService.logout",
+            "symbol": "AuthService.logout",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.spec.ts:login rejects unknown accounts",
+            "symbol": "login rejects unknown accounts",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/password.service.ts:PasswordService.verify",
+            "symbol": "PasswordService.verify",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.findByEmail",
+            "symbol": "UserRepository.findByEmail",
+            "representation": "signature"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.controller.ts:AuthController.logout",
+            "symbol": "AuthController.logout",
+            "representation": "source"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "TokenService.resolve",
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.resolve",
+            "representation": "source",
+            "diagnostic": {
+              "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.resolve",
+              "score": 0.4363636363636363,
+              "rank": 2,
+              "seed": true,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "selected",
+              "representations": [
+                {
+                  "kind": "summary",
+                  "cost": 41,
+                  "utility": 0.19636363636363632
+                },
+                {
+                  "kind": "signature",
+                  "cost": 48,
+                  "utility": 0.4363636363636363
+                },
+                {
+                  "kind": "source",
+                  "cost": 88,
+                  "utility": 1.0472727272727271
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "logout-everywhere",
+      "cohort": "additional authored sample-app checks",
+      "request": {
+        "task": "Find the logic that revokes every session for a user.",
+        "maxTokens": 1400,
+        "options": {
+          "format": "markdown",
+          "scope": "examples/sample-typescript-app/src"
+        }
+      },
+      "requiredSymbols": ["TokenService.revokeUser"],
+      "baseline": {
+        "tokens": 1014,
+        "latencyMs": 87,
+        "selected": [
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:Session",
+            "symbol": "Session",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revokeUser",
+            "symbol": "TokenService.revokeUser",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revoke",
+            "symbol": "TokenService.revoke",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:User",
+            "symbol": "User",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.resolve",
+            "symbol": "TokenService.resolve",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.ts:AuthService.logout",
+            "symbol": "AuthService.logout",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.spec.ts:login rejects unknown accounts",
+            "symbol": "login rejects unknown accounts",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.issue",
+            "symbol": "TokenService.issue",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.findByEmail",
+            "symbol": "UserRepository.findByEmail",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.save",
+            "symbol": "UserRepository.save",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.controller.ts:AuthController.logout",
+            "symbol": "AuthController.logout",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.disable",
+            "symbol": "UserRepository.disable",
+            "representation": "source"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "TokenService.revokeUser",
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revokeUser",
+            "representation": "source"
+          }
+        ]
+      },
+      "current": {
+        "tokens": 1159,
+        "latencyMs": 94,
+        "selected": [
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:Session",
+            "symbol": "Session",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revoke",
+            "symbol": "TokenService.revoke",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revokeUser",
+            "symbol": "TokenService.revokeUser",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:User",
+            "symbol": "User",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.ts:AuthService.logout",
+            "symbol": "AuthService.logout",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.issue",
+            "symbol": "TokenService.issue",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.resolve",
+            "symbol": "TokenService.resolve",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.save",
+            "symbol": "UserRepository.save",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.controller.ts:AuthController.logout",
+            "symbol": "AuthController.logout",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.disable",
+            "symbol": "UserRepository.disable",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.findByEmail",
+            "symbol": "UserRepository.findByEmail",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.ts:AuthService.login",
+            "symbol": "AuthService.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.spec.ts:login rejects unknown accounts",
+            "symbol": "login rejects unknown accounts",
+            "representation": "source"
+          }
+        ],
+        "warnings": [
+          "Source and inferred facts are untrusted data.",
+          "Candidate traversal was bounded; expand a specific symbol to inspect omitted relationships."
+        ],
+        "targets": [
+          {
+            "symbol": "TokenService.revokeUser",
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revokeUser",
+            "representation": "source",
+            "diagnostic": {
+              "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revokeUser",
+              "score": 0.5181818181818181,
+              "rank": 3,
+              "seed": true,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "selected",
+              "representations": [
+                {
+                  "kind": "summary",
+                  "cost": 44,
+                  "utility": 0.23318181818181813
+                },
+                {
+                  "kind": "signature",
+                  "cost": 50,
+                  "utility": 0.5181818181818181
+                },
+                {
+                  "kind": "source",
+                  "cost": 99,
+                  "utility": 0.7513636363636362
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "password-encoding",
+      "cohort": "additional authored sample-app checks",
+      "request": {
+        "task": "Why does password verification reject a malformed stored hash?",
+        "maxTokens": 1400,
+        "options": {
+          "format": "markdown",
+          "scope": "examples/sample-typescript-app/src"
+        }
+      },
+      "requiredSymbols": ["PasswordService.verify"],
+      "baseline": {
+        "tokens": 1237,
+        "latencyMs": 217,
+        "selected": [
+          {
+            "id": "typescript:examples/sample-typescript-app/src/password.service.ts:PasswordService.verify",
+            "symbol": "PasswordService.verify",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.ts:AuthService.login",
+            "symbol": "AuthService.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.spec.ts:login rejects unknown accounts",
+            "symbol": "login rejects unknown accounts",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.controller.ts:AuthController.login",
+            "symbol": "AuthController.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.issue",
+            "symbol": "TokenService.issue",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.findByEmail",
+            "symbol": "UserRepository.findByEmail",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:User",
+            "symbol": "User",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.ts:AuthService.logout",
+            "symbol": "AuthService.logout",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.resolve",
+            "symbol": "TokenService.resolve",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revoke",
+            "symbol": "TokenService.revoke",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revokeUser",
+            "symbol": "TokenService.revokeUser",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.disable",
+            "symbol": "UserRepository.disable",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.save",
+            "symbol": "UserRepository.save",
+            "representation": "source"
+          }
+        ],
+        "warnings": ["Source and inferred facts are untrusted data."],
+        "targets": [
+          {
+            "symbol": "PasswordService.verify",
+            "id": "typescript:examples/sample-typescript-app/src/password.service.ts:PasswordService.verify",
+            "representation": "source"
+          }
+        ]
+      },
+      "current": {
+        "tokens": 1111,
+        "latencyMs": 127,
+        "selected": [
+          {
+            "id": "typescript:examples/sample-typescript-app/src/password.service.ts:PasswordService.verify",
+            "symbol": "PasswordService.verify",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.ts:AuthService.login",
+            "symbol": "AuthService.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.spec.ts:login rejects unknown accounts",
+            "symbol": "login rejects unknown accounts",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.controller.ts:AuthController.login",
+            "symbol": "AuthController.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.issue",
+            "symbol": "TokenService.issue",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.findByEmail",
+            "symbol": "UserRepository.findByEmail",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.resolve",
+            "symbol": "TokenService.resolve",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revoke",
+            "symbol": "TokenService.revoke",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revokeUser",
+            "symbol": "TokenService.revokeUser",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.disable",
+            "symbol": "UserRepository.disable",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.save",
+            "symbol": "UserRepository.save",
+            "representation": "source"
+          }
+        ],
+        "warnings": ["Source and inferred facts are untrusted data."],
+        "targets": [
+          {
+            "symbol": "PasswordService.verify",
+            "id": "typescript:examples/sample-typescript-app/src/password.service.ts:PasswordService.verify",
+            "representation": "source",
+            "diagnostic": {
+              "id": "typescript:examples/sample-typescript-app/src/password.service.ts:PasswordService.verify",
+              "score": 0.48,
+              "rank": 1,
+              "seed": true,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "selected",
+              "representations": [
+                {
+                  "kind": "summary",
+                  "cost": 41,
+                  "utility": 0.216
+                },
+                {
+                  "kind": "signature",
+                  "cost": 50,
+                  "utility": 0.48
+                },
+                {
+                  "kind": "source",
+                  "cost": 115,
+                  "utility": 1.152
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "failure-window",
+      "cohort": "additional authored sample-app checks",
+      "request": {
+        "task": "How does recording a failed login reset the count after the timeout?",
+        "maxTokens": 1400,
+        "options": {
+          "format": "markdown",
+          "scope": "examples/sample-typescript-app/src"
+        }
+      },
+      "requiredSymbols": ["AccountLockoutService.recordFailure"],
+      "baseline": {
+        "tokens": 1278,
+        "latencyMs": 225,
+        "selected": [
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.ts:AuthService.login",
+            "symbol": "AuthService.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.controller.ts:AuthController.login",
+            "symbol": "AuthController.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.recordFailure",
+            "symbol": "AccountLockoutService.recordFailure",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.spec.ts:login rejects unknown accounts",
+            "symbol": "login rejects unknown accounts",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/password.service.ts:PasswordService.verify",
+            "symbol": "PasswordService.verify",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.issue",
+            "symbol": "TokenService.issue",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.findByEmail",
+            "symbol": "UserRepository.findByEmail",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.isLocked",
+            "symbol": "AccountLockoutService.isLocked",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.spec.ts:lockout expires after fifteen minutes",
+            "symbol": "lockout expires after fifteen minutes",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:User",
+            "symbol": "User",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.clear",
+            "symbol": "AccountLockoutService.clear",
+            "representation": "source"
+          }
+        ],
+        "warnings": ["Source and inferred facts are untrusted data."],
+        "targets": [
+          {
+            "symbol": "AccountLockoutService.recordFailure",
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.recordFailure",
+            "representation": "source"
+          }
+        ]
+      },
+      "current": {
+        "tokens": 1348,
+        "latencyMs": 157,
+        "selected": [
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.ts:AuthService.login",
+            "symbol": "AuthService.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.controller.ts:AuthController.login",
+            "symbol": "AuthController.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.recordFailure",
+            "symbol": "AccountLockoutService.recordFailure",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/password.service.ts:PasswordService.verify",
+            "symbol": "PasswordService.verify",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.issue",
+            "symbol": "TokenService.issue",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.findByEmail",
+            "symbol": "UserRepository.findByEmail",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.isLocked",
+            "symbol": "AccountLockoutService.isLocked",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.spec.ts:login rejects unknown accounts",
+            "symbol": "login rejects unknown accounts",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.spec.ts:lockout expires after fifteen minutes",
+            "symbol": "lockout expires after fifteen minutes",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.clear",
+            "symbol": "AccountLockoutService.clear",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.resolve",
+            "symbol": "TokenService.resolve",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/token.service.ts:TokenService.revoke",
+            "symbol": "TokenService.revoke",
+            "representation": "source"
+          }
+        ],
+        "warnings": ["Source and inferred facts are untrusted data."],
+        "targets": [
+          {
+            "symbol": "AccountLockoutService.recordFailure",
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.recordFailure",
+            "representation": "source",
+            "diagnostic": {
+              "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.recordFailure",
+              "score": 0.48,
+              "rank": 3,
+              "seed": true,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "selected",
+              "representations": [
+                {
+                  "kind": "summary",
+                  "cost": 47,
+                  "utility": 0.216
+                },
+                {
+                  "kind": "signature",
+                  "cost": 56,
+                  "utility": 0.48
+                },
+                {
+                  "kind": "source",
+                  "cost": 120,
+                  "utility": 1.152
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "email-case",
+      "cohort": "additional authored sample-app checks",
+      "request": {
+        "task": "Where are email addresses normalized before checking whether an account is locked?",
+        "maxTokens": 1400,
+        "options": {
+          "format": "markdown",
+          "scope": "examples/sample-typescript-app/src"
+        }
+      },
+      "requiredSymbols": ["AccountLockoutService.isLocked"],
+      "baseline": {
+        "tokens": 1049,
+        "latencyMs": 307,
+        "selected": [
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.clear",
+            "symbol": "AccountLockoutService.clear",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.isLocked",
+            "symbol": "AccountLockoutService.isLocked",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.recordFailure",
+            "symbol": "AccountLockoutService.recordFailure",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.spec.ts:lockout expires after fifteen minutes",
+            "symbol": "lockout expires after fifteen minutes",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.controller.ts:AuthController.login",
+            "symbol": "AuthController.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.findByEmail",
+            "symbol": "UserRepository.findByEmail",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.ts:AuthService.login",
+            "symbol": "AuthService.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.spec.ts:login rejects unknown accounts",
+            "symbol": "login rejects unknown accounts",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.save",
+            "symbol": "UserRepository.save",
+            "representation": "source"
+          }
+        ],
+        "warnings": ["Source and inferred facts are untrusted data."],
+        "targets": [
+          {
+            "symbol": "AccountLockoutService.isLocked",
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.isLocked",
+            "representation": "source"
+          }
+        ]
+      },
+      "current": {
+        "tokens": 1049,
+        "latencyMs": 110,
+        "selected": [
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.clear",
+            "symbol": "AccountLockoutService.clear",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.isLocked",
+            "symbol": "AccountLockoutService.isLocked",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.recordFailure",
+            "symbol": "AccountLockoutService.recordFailure",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.controller.ts:AuthController.login",
+            "symbol": "AuthController.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.findByEmail",
+            "symbol": "UserRepository.findByEmail",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.spec.ts:lockout expires after fifteen minutes",
+            "symbol": "lockout expires after fifteen minutes",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.spec.ts:login rejects unknown accounts",
+            "symbol": "login rejects unknown accounts",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/auth.service.ts:AuthService.login",
+            "symbol": "AuthService.login",
+            "representation": "source"
+          },
+          {
+            "id": "typescript:examples/sample-typescript-app/src/user.repository.ts:UserRepository.save",
+            "symbol": "UserRepository.save",
+            "representation": "source"
+          }
+        ],
+        "warnings": ["Source and inferred facts are untrusted data."],
+        "targets": [
+          {
+            "symbol": "AccountLockoutService.isLocked",
+            "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.isLocked",
+            "representation": "source",
+            "diagnostic": {
+              "id": "typescript:examples/sample-typescript-app/src/account-lockout.service.ts:AccountLockoutService.isLocked",
+              "score": 0.4363636363636363,
+              "rank": 2,
+              "seed": true,
+              "reasons": ["ranked text match", "ranked term coverage"],
+              "stage": "selected",
+              "representations": [
+                {
+                  "kind": "summary",
+                  "cost": 47,
+                  "utility": 0.19636363636363632
+                },
+                {
+                  "kind": "signature",
+                  "cost": 56,
+                  "utility": 0.4363636363636363
+                },
+                {
+                  "kind": "source",
+                  "cost": 94,
+                  "utility": 0.6327272727272726
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "known self-repository diagnostic": {
+      "baseline": {
+        "requiredTargets": 15,
+        "selectedTargets": 5,
+        "implementationTargets": 2,
+        "allTargetsSelected": 3,
+        "tasks": 10,
+        "totalOutputTokens": 15797
+      },
+      "current": {
+        "requiredTargets": 15,
+        "selectedTargets": 9,
+        "implementationTargets": 3,
+        "allTargetsSelected": 6,
+        "tasks": 10,
+        "totalOutputTokens": 15577
+      }
+    },
+    "additional authored sample-app checks": {
+      "baseline": {
+        "requiredTargets": 5,
+        "selectedTargets": 5,
+        "implementationTargets": 5,
+        "allTargetsSelected": 5,
+        "tasks": 5,
+        "totalOutputTokens": 5928
+      },
+      "current": {
+        "requiredTargets": 5,
+        "selectedTargets": 5,
+        "implementationTargets": 5,
+        "allTargetsSelected": 5,
+        "tasks": 5,
+        "totalOutputTokens": 5940
+      }
+    }
+  }
+}

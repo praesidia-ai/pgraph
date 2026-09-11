@@ -2,7 +2,7 @@
 
 <img src="docs/brand/pgraph-mark.png" alt="PGraph connected p monogram" width="160" />
 
-**Give coding agents the minimum code necessary to solve the task.**
+**Local code context for TypeScript developers and coding agents.**
 
 PGraph builds a persistent local graph of your repository. Agents retrieve
 symbols, callers, dependencies, tests, signatures and selected source ranges with
@@ -10,6 +10,81 @@ an explicit token budget, instead of repeatedly opening whole files.
 
 The engine is an independent TypeScript library. CLI, MCP, and VS Code/Copilot are
 adapters. Indexing needs **no AI account, external API key, cloud database, or Docker**.
+
+Start with a real error, unfamiliar symbol or working change. The
+[first-use guide](docs/FIRST_VALUE.md) takes you from installing the preview to
+source evidence and an applicable check, with separate paths for developers and
+agents. The [user-gap research](docs/USER_GAP_RESEARCH.md) explains the problems,
+existing alternatives and remaining validation needed before broader adoption.
+
+## V2 preview: a daily workflow for understanding and checking changes
+
+The **0.6.0 preview** adds **Workspace Impact for Current Symbol**. It follows
+supported HTTP/Azure communication sites to handlers and candidate tests in other
+open projects, retaining source hashes, ambiguous candidates and project failures.
+The existing agent impact tool supports the same workspace query. See the
+[reproduction, usage and limits](docs/WORKSPACE_IMPACT.md). No AI is required.
+
+The **0.5.5 preview** keeps removed APIs reachable when a review contains many
+changes. It prioritizes changes before output limits, reports scoped counts and
+adds **Continue Historical Review** for pages tied to the same snapshot. Agents
+use the existing workflow tool. [The paired reproduction](docs/HISTORICAL_REVIEW_PAGING.md)
+documents missing evidence in 0.5.4 and the new continuation behavior.
+
+The **0.5.4 preview** adds **Review Historical Impact**: compare working, staged or
+committed declarations with their Git baseline, including old consumers of deleted
+APIs and candidate test paths. Project and Workspace scopes retain separate Git
+histories. [The evidence and limits](docs/HISTORICAL_IMPACT.md) distinguish declared
+signature changes from compatibility checks. No model is required.
+
+The **0.5.3 preview** improves local task selection: declaration filtering before
+search limits, English inflections, term coverage and more selective graph traversal.
+The [controlled selection investigation](docs/SELECTION_QUALITY.md) records better
+target recall on a frozen development corpus and the substantial remaining gaps.
+No query-time model call is required.
+
+The **0.5.2 preview** fixes missing callers, callees and candidate test paths across
+local TypeScript project references. Public package exports can resolve to current
+indexed source before a build, including re-exports and class methods. Reindex
+after upgrading. See [the source-resolution evidence and limits](docs/PROJECT_SOURCE_RESOLUTION.md).
+
+The **0.5.1 preview** adds Project and Workspace scopes, including discovery of
+direct child repositories when opening a parent folder. Run **PGraph: Choose
+Scope**, then **Index Workspace** to build separate project indexes. Daily queries
+group results and errors by project; a parent without `.git` is no longer used as
+the Git baseline for all its children. See [workspace behavior and limits](docs/WORKSPACE_GRAPH.md).
+
+Workspace task context now uses one output budget and retains each project's
+identity, revision and source hashes. Agents can use the returned project IDs to
+read additional source from the correct repository. Failed/stale projects remain
+visible alongside successful evidence. The 0.6.0 impact command adds bounded static
+paths; runtime delivery and contract compatibility remain open.
+
+The **0.4.0 preview** adds eleven daily capabilities: live freshness checks, exact
+source search, stack-frame lookup, file consumers, dependency cycles, changed
+declaration mapping, staged/branch comparisons, test-gap candidates, package-check
+discovery, recorded check execution and saved investigations. Open **PGraph: Daily
+Workflow** from the status bar or command palette. See [the workflow guide](docs/DAILY_WORKFLOWS.md)
+and [the cited product research](docs/DAILY_DEVELOPER_RESEARCH.md).
+
+Version 0.2.0 adds **Context for Current Symbol** and **Review My Changes** in VS Code.
+The first anchors a task to the cursor; the second refreshes the selected index and
+shows conservative affected code, candidate tests and suggested checks for current
+Git changes. It does not execute tests or reconstruct deleted-symbol history.
+
+The **0.3.0 preview** adds query/cursor-targeted source excerpts, explained test
+paths through declared interface members, context receipts for retained evidence,
+selection diagnostics and dependency-lockfile invalidation. These all work without
+AI. See the [agent workflow, compatibility notes and measured tradeoffs](docs/AGENT_CONTEXT.md).
+
+Retrieval searches documentation, identifiers and error text with weighted local
+FTS ranking. Context returns symbol IDs, selection reasons and short implementations
+within the requested budget. **PGraph: Evidence Mode** defaults to `local`, which
+excludes cached AI facts. `assisted` explicitly includes existing inferred evidence;
+neither mode invokes a model. Semantic generation remains a separate explicit action.
+
+This is a preview with [explicit remaining v2 release gates](docs/V2_DELIVERY.md).
+After upgrading, run **PGraph: Index Repository** to migrate and refresh the index.
 
 ## Workspace relationship explorer
 
@@ -19,7 +94,7 @@ filter directed relationships, inspect evidence and open source. HTTP, Azure que
 and Event Grid candidates use explicit URL/resource mappings; unknown targets stay
 unresolved. See [setup and supported patterns](docs/WORKSPACE_GRAPH.md).
 
-## Try it in one minute
+## Build from source
 
 Requires Node.js **22.18+** (24 LTS recommended) and npm.
 
@@ -37,7 +112,9 @@ node packages/graph-cli/dist/main.js context "Add account lockout to login" \
 
 For your repository, replace the `--root` value. Indexes stay in its `.pgraph/`
 directory. Add `.pgraph/` to that repository's `.gitignore` before committing.
-PGraph does not edit agent instructions, install hooks, or run repository scripts.
+PGraph does not edit agent instructions or install hooks. Indexing and query tools
+run no repository scripts. The explicit **Run Repository Check** editor command
+executes a selected package script through VS Code tasks.
 
 The workspace also exposes `./node_modules/.bin/pgraph` after building.
 Packages are prepared for publishing; this checkout does not assume they already
@@ -103,10 +180,10 @@ Build a local installable extension:
 npm run package:extension
 ```
 
-Install `artifacts/pgraph-0.1.0.vsix` using **Extensions → Install from VSIX**.
+Install `artifacts/pgraph-0.6.0.vsix` using **Extensions → Install from VSIX**.
 Open a trusted repository and run **PGraph: Index Repository**. For multiple
-microservices, add their folders to one VS Code workspace and run **PGraph: Index
-Workspace** to index every open folder. Use the PGraph sidebar or enable its tools
+microservices, open their parent folder or add their folders to one VS Code workspace
+and run **PGraph: Index Workspace** to index every detected project. Use the PGraph sidebar or enable its tools
 in Copilot Agent Mode. `#pgraph_context` explicitly
 requests compact context; tool descriptions encourage agents to use it first.
 Automatic selection is ultimately the agent's decision.
@@ -149,7 +226,9 @@ Index first, then configure your client to launch the fixed-root stdio server:
       "command": "node",
       "args": [
         "/absolute/pgraph/packages/graph-mcp/dist/main.js",
-        "/absolute/repository"
+        "/absolute/repository",
+        "--tool-profile",
+        "essential"
       ]
     }
   }
@@ -157,6 +236,8 @@ Index first, then configure your client to launch the fixed-root stdio server:
 ```
 
 Client configuration envelopes differ; the command and arguments are portable.
+The optional `essential` profile exposes six investigation tools. Omit the profile
+option for all 21 tools. See [profile tradeoffs and measurements](docs/integrations.md#mcp).
 The server exposes query tools only. Its process has access to the chosen repository;
 configure it only for clients you authorize to read that code.
 
@@ -202,6 +283,6 @@ The command is `pgraph`, the public class is `PGraph`, packages use
 settings live in `.pgraph.json`; indexes live in `.pgraph/`. Run `pgraph index`
 to create or update the index.
 
-Install `artifacts/pgraph-0.1.0.vsix` to use the `praesidia.pgraph` extension.
+Install `artifacts/pgraph-0.6.0.vsix` to use the `praesidia.pgraph` extension.
 Editor settings use `pgraph.*`. Package and Marketplace publishing remains a
 separate release step.

@@ -27,6 +27,16 @@ const hardDirectories = new Set([
 ]);
 const sensitive =
   /(^|\/)(\.env(?:\..*)?|.*\.(?:pem|key|p12|pfx)|credentials(?:\..*)?|secrets?(?:\..*)?)$/i;
+/** Candidate snapshot inputs; discover() applies config and .gitignore rules afterward. */
+export function snapshotInput(path: string): boolean {
+  return (
+    !sensitive.test(path) &&
+    !path.split("/").some((part) => hardDirectories.has(part.toLowerCase())) &&
+    !/\.min\.js$|\.generated\.[jt]s$/.test(path) &&
+    (/\.(?:[cm]?[jt]sx?|json)$/.test(path) ||
+      /(^|\/)(?:\.gitignore|yarn\.lock|pnpm-lock\.yaml|bun\.lock)$/.test(path))
+  );
+}
 const createIgnore = ignoreImport as unknown as () => Ignore;
 export interface Discovery {
   sources: FileRecord[];
@@ -84,7 +94,14 @@ export function discover(root: string, config: Config): Discovery {
         /^(?:tsconfig[^/]*|jsconfig|package)\.json$/.test(entry.name) ||
         entry.name === ".pgraph.json" ||
         entry.name === "function.json" ||
-        entry.name === "host.json";
+        entry.name === "host.json" ||
+        [
+          "package-lock.json",
+          "npm-shrinkwrap.json",
+          "yarn.lock",
+          "pnpm-lock.yaml",
+          "bun.lock",
+        ].includes(entry.name);
       const isSource =
         /\.[cm]?[jt]sx?$/.test(path) &&
         !/\.min\.js$/.test(path) &&

@@ -1,6 +1,6 @@
 {
   "name": "@praesidia/pgraph-typescript",
-  "version": "0.1.0",
+  "version": "0.6.1",
   "type": "module",
   "license": "MIT",
   "engines": {
@@ -20,8 +20,8 @@
     "dist/**/*.map"
   ],
   "dependencies": {
-    "@praesidia/pgraph-ir": "0.1.0",
-    "@praesidia/pgraph-shared": "0.1.0",
+    "@praesidia/pgraph-ir": "0.6.1",
+    "@praesidia/pgraph-shared": "0.6.1",
     "typescript": "~5.9.3"
   },
   "description": "PGraph graph typescript: local graph-native repository context infrastructure.",

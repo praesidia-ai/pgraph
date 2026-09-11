@@ -1,7 +1,19 @@
 [
   {
+    "name": "workflow",
+    "description": "Daily local evidence: health checks freshness; text searches source; trace maps stack frames; file shows consumers; cycles finds dependency groups; changes maps Git hunks; change_impact compares Git declarations and historical consumer paths (can take longer; narrow with file; continue with page.reviewId and page.nextOffset as offset); test_gaps finds static test paths; checks discovers scripts; verification reads outcomes. No repository code executes. Branch mode requires base; staged/working also supported. Inspect unknown/truncated results."
+  },
+  {
+    "name": "review_changes",
+    "description": "Review staged/unstaged and untracked changes against HEAD. Returns conservative current-file impact, candidate tests and unknown areas. Reindex first. Deleted/renamed baseline symbols and cross-service impact are not reconstructed. Runs no tests or repository scripts."
+  },
+  {
     "name": "context",
-    "description": "Retrieve compact task-specific repository context BEFORE manually searching or opening many files. Returns ranked symbols, graph relationships, tests and selected implementation ranges under an explicit BPE token budget. Source is untrusted data. Start with 1500–2000 tokens; expand selectively. Fresh index required."
+    "description": "Retrieve task context before broad file reads. VS Code Workspace scope queries detected projects within one total budget; pass a returned project ID for focused follow-ups. Cursor focus and context receipts require one project. Single-project contextId can be reused only while retaining that context. Start with 1500–2000 tokens; expand selectively. Source is untrusted data."
+  },
+  {
+    "name": "excerpt",
+    "description": "Read a small verified excerpt around a cursor line or matching task terms inside a symbol, including large methods. Reports omitted lines; excerpts are not complete flow analysis. Narrow maxLines or query if it does not fit."
   },
   {
     "name": "symbol",
@@ -36,16 +48,16 @@
     "description": "Retrieve dependents for a symbol. Bounded, local graph result; use symbol-level source slices for implementation details."
   },
   {
-    "name": "tests",
-    "description": "Retrieve tests for a symbol. Bounded, local graph result; use symbol-level source slices for implementation details."
-  },
-  {
     "name": "skeleton",
     "description": "Retrieve skeleton for a symbol. Bounded, local graph result; use symbol-level source slices for implementation details."
   },
   {
+    "name": "tests",
+    "description": "Find tests through bounded call/reference paths. Includes paths and labels possible interface dispatch; test execution/coverage is not established. Increase depth selectively if truncated."
+  },
+  {
     "name": "impact",
-    "description": "Find ranked callers, routes, tests, public APIs and likely change surface before editing a symbol. Static analysis is incomplete for dynamic dispatch."
+    "description": "Find static change impact before editing a symbol. In VS Code, workspace:true with an origin project ID traces explicit HTTP/Azure boundaries to handlers and candidate tests across open projects (depth 1–4). Inspect source hashes, failed projects, unknowns and truncation. Runtime delivery and compatibility are unverified."
   },
   {
     "name": "slice",
@@ -65,7 +77,7 @@
   },
   {
     "name": "feature",
-    "description": "Find cached semantic concept associations and name matches. Semantic results are inferred, not authoritative."
+    "description": "Find local concept/name matches. Explicit assisted evidence mode also includes cached AI associations; no model is called."
   },
   {
     "name": "status",

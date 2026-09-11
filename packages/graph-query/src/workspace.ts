@@ -134,6 +134,7 @@ function requestURL(
 /** Pure composition of committed per-root snapshots. Never discovers roots or contacts services. */
 export function composeWorkspace(
   snapshots: RepositoryTopology[],
+  options: { omitUnresolved?: boolean } = {},
 ): ExplorerGraph {
   if (snapshots.length > 64)
     throw new Error(
@@ -206,6 +207,9 @@ export function composeWorkspace(
     }
     const service = point.service!;
     const endpoint = point.endpoint;
+    const channelAddress = endpoint.addressSetting
+      ? service.definition.channels?.[endpoint.addressSetting]
+      : endpoint.address;
     const url =
       endpoint.protocol === "http"
         ? requestURL(endpoint, service.definition)
@@ -225,10 +229,13 @@ export function composeWorkspace(
       }
       if (
         endpoint.protocol !== target.endpoint.protocol ||
-        (!endpoint.address && endpoint.protocol !== "http")
+        (!channelAddress && endpoint.protocol !== "http")
       )
         continue;
       const other = target.endpoint;
+      const otherAddress = other.addressSetting
+        ? target.service!.definition.channels?.[other.addressSetting]
+        : other.address;
       if (endpoint.protocol === "http") {
         if (
           !url ||
@@ -265,7 +272,7 @@ export function composeWorkspace(
         if (
           resource &&
           resource === otherResource &&
-          endpoint.address === other.address &&
+          channelAddress === otherAddress &&
           !(
             endpoint.channelKind &&
             other.channelKind &&
@@ -304,7 +311,14 @@ export function composeWorkspace(
               ? "ambiguous candidate"
               : "inferred from declarations",
           confidence: matches.length > 1 ? 0.5 : 0.85,
-          detail: `${endpoint.method ?? ""} ${endpoint.protocol === "http" ? (url?.pathname ?? "?") : (endpoint.address ?? "?")}\n${endpoint.provenance.source} → ${other.provenance.source}\nMatched explicit ${endpoint.protocol === "http" ? "URL and route" : "resource identity and channel"}; runtime delivery is unverified.`,
+          detail: `${endpoint.method ?? ""} ${endpoint.protocol === "http" ? (url?.pathname ?? "?") : (channelAddress ?? "?")}\n${endpoint.provenance.source} → ${other.provenance.source}\nMatched explicit ${endpoint.protocol === "http" ? "URL and route" : "resource identity and channel"}; runtime delivery is unverified.`,
+          communication: {
+            from: { project: service.snapshot.rootId, endpoint: endpoint.id },
+            to: {
+              project: target.service!.snapshot.rootId,
+              endpoint: other.id,
+            },
+          },
           sources: [
             source,
             {
@@ -318,6 +332,7 @@ export function composeWorkspace(
       }
     } else {
       unresolved++;
+      if (options.omitUnresolved) continue;
       if (result.nodes.length >= 200) {
         result.truncated = true;
         continue;
@@ -346,6 +361,9 @@ export function composeWorkspace(
         evidence: "unresolved",
         detail:
           "Destination unresolved; no service-to-service relationship has been established.",
+        communication: {
+          from: { project: service.snapshot.rootId, endpoint: endpoint.id },
+        },
         sources: [source],
       });
     }

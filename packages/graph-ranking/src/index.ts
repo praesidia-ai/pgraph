@@ -1,4 +1,10 @@
 import type { GraphNode } from "@praesidia/pgraph-ir";
+import { words } from "@praesidia/pgraph-shared";
+import { stemmer } from "stemmer";
+
+/** English inflections only. Symbol identity and exact resolution remain unchanged. */
+export const termStem = (word: string): string =>
+  /^[a-z]+$/.test(word) ? stemmer(word) : word;
 export type TaskStrategy =
   "locate" | "impact" | "debug" | "change" | "architecture" | "tests";
 export interface RankingWeights {
@@ -24,9 +30,10 @@ export const defaultWeights: RankingWeights = {
   git: 0.02,
 };
 export function classifyTask(task: string): TaskStrategy {
+  if (/\b(why|bug|fail|fails|failing|debug|error)\b/i.test(task))
+    return "debug";
   if (/\b(test|tests|coverage)\b/i.test(task)) return "tests";
-  if (/\b(impact|rename|refactor|type|break)\b/i.test(task)) return "impact";
-  if (/\b(why|bug|fail|fails|debug|error)\b/i.test(task)) return "debug";
+  if (/\b(impact|rename|refactor|break)\b/i.test(task)) return "impact";
   if (/\b(architecture|flow|explain|overview)\b/i.test(task))
     return "architecture";
   if (/\b(where|find|locate)\b/i.test(task)) return "locate";
@@ -44,9 +51,18 @@ export function rank(
   signals: RankingSignals,
   weights: RankingWeights = defaultWeights,
 ): number {
-  const overlap = (text: string): number =>
-    signals.terms.filter((t) => text.toLowerCase().includes(t)).length /
-    Math.max(1, signals.terms.length);
+  const terms = [...new Set(signals.terms.map(termStem))];
+  const overlap = (text: string): number => {
+    const tokens = [...new Set(words(text.slice(0, 8000)).map(termStem))];
+    return (
+      terms.filter((term) =>
+        tokens.some(
+          (token) =>
+            token === term || (term.length >= 3 && token.startsWith(term)),
+        ),
+      ).length / Math.max(1, terms.length)
+    );
+  };
   const sum = Object.values(weights).reduce((a, b) => a + b, 0);
   if (!sum) return 0;
   const values: RankingWeights = {

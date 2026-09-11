@@ -1,0 +1,133 @@
+{
+  "generatedAt": "2026-09-10T18:50:25.060Z",
+  "platform": "darwin/arm64",
+  "node": "v22.22.0",
+  "baselineVersion": "0.5.5",
+  "currentVersion": "0.6.0",
+  "baselineArtifactSha256": "1005de6b5265ba65653fd21e4dabb731850c27fc715774f1c384816dbe2cdba9",
+  "currentWorkerSha256": "d7202a860d14fef72c2d0451867ffe5addf2281e4126a4b7eafc1f87ea5e572e",
+  "fixtureSha256": "936fa76d81a59c161262ff39ea57a4596021e80c11e1d251fe9385ff5052dc5a",
+  "runs": [
+    {
+      "label": "baseline",
+      "serviceEdges": 2,
+      "handlerExecutionIdentities": 0,
+      "localImpact": {
+        "target": {
+          "id": "typescript:index.ts:submit",
+          "symbol": "submit",
+          "kind": "function",
+          "at": "index.ts:1-1",
+          "signature": "export function submit(): Promise<Response>;"
+        },
+        "directCallers": [],
+        "indirectCallers": [],
+        "routes": [],
+        "tests": [],
+        "dependentModules": [],
+        "publicAPIs": [
+          {
+            "id": "typescript:index.ts:submit",
+            "symbol": "submit",
+            "kind": "function",
+            "at": "index.ts:1-1",
+            "signature": "export function submit(): Promise<Response>;"
+          }
+        ],
+        "databaseEffects": [],
+        "events": [],
+        "likelyChangeSurface": [
+          {
+            "node": {
+              "id": "typescript:index.ts:submit",
+              "symbol": "submit",
+              "kind": "function",
+              "at": "index.ts:1-1",
+              "signature": "export function submit(): Promise<Response>;"
+            },
+            "distance": 0,
+            "score": 1,
+            "potentialDispatch": false
+          }
+        ],
+        "truncated": false,
+        "warnings": []
+      },
+      "queryMilliseconds": 927,
+      "interpretation": "Service map identifies HTTP and Service Bus declarations. Local impact does not compose executable handler paths across roots."
+    },
+    {
+      "label": "current",
+      "queryMilliseconds": 643,
+      "responseTokens": 1710,
+      "paths": [
+        {
+          "bridges": 1,
+          "names": ["submit", "pay"],
+          "protocols": ["http"]
+        },
+        {
+          "bridges": 2,
+          "names": ["submit", "pay", "archive", "persist"],
+          "protocols": ["http", "service-bus"]
+        }
+      ],
+      "sourceIdentities": 5,
+      "candidateTests": 1,
+      "budgets": [
+        {
+          "maxTokens": 128,
+          "actualTokens": 24,
+          "paths": 0,
+          "error": "Workspace impact metadata needs 553 tokens. Increase maxTokens or open fewer projects."
+        },
+        {
+          "maxTokens": 1000,
+          "actualTokens": 843,
+          "paths": 1,
+          "omitted": {
+            "paths": 1,
+            "tests": 1
+          }
+        },
+        {
+          "maxTokens": 2000,
+          "actualTokens": 1710,
+          "paths": 2,
+          "omitted": {
+            "paths": 0,
+            "tests": 0
+          }
+        },
+        {
+          "maxTokens": 4000,
+          "actualTokens": 1710,
+          "paths": 2,
+          "omitted": {
+            "paths": 0,
+            "tests": 0
+          }
+        }
+      ],
+      "partialFailureCheck": {
+        "failedProjects": [
+          {
+            "name": "archive",
+            "error": "Project index is stale; reindex before workspace impact"
+          },
+          {
+            "name": "unindexed",
+            "error": "No graph index. Run pgraph index first."
+          }
+        ],
+        "healthyHandlerRetained": true,
+        "unindexedRootNotWritten": true
+      }
+    }
+  ],
+  "limitations": [
+    "Authored three-service synthetic fixture, not held-out company tasks or runtime delivery.",
+    "The two outputs serve different purposes. No task-success, token-savings or latency-improvement claim.",
+    "Per-project source/config freshness is checked; a workspace snapshot is not atomic."
+  ]
+}

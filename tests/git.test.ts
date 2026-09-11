@@ -3,7 +3,27 @@ import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { execFileSync } from "node:child_process";
-import { readGitSignals } from "@praesidia/pgraph-git";
+import {
+  readGitSignals,
+  readChangedFiles,
+  readChangeHunks,
+} from "@praesidia/pgraph-git";
+it("distinguishes a parent folder from a repository without HEAD and never creates a commit", () => {
+  const root = mkdtempSync(join(tmpdir(), "pgraph-git-state-"));
+  try {
+    for (const read of [readChangedFiles, readChangeHunks]) {
+      expect(() => read(root)).toThrow("not a Git repository");
+      expect(() => read(root)).toThrow("child project");
+    }
+    execFileSync("git", ["-C", root, "init"], { stdio: "ignore" });
+    writeFileSync(join(root, "new.ts"), "export const fresh = true;");
+    for (const read of [readChangedFiles, readChangeHunks])
+      expect(() => read(root)).toThrow("initial commit");
+    expect(readGitSignals(root)).toBeUndefined();
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
 it("collects bounded co-change metadata without author identity", () => {
   const root = mkdtempSync(join(tmpdir(), "pgraph-git-"));
   try {

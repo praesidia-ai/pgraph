@@ -1,0 +1,133 @@
+{
+  "generatedAt": "2026-09-10T17:38:08.192Z",
+  "tokenizer": "cl100k_base",
+  "node": "v22.22.0",
+  "sourceSha256": {
+    "packages/graph-mcp/src/index.ts": "6a2d6c34b0b1c45cc3d151eee587ffc2c936032a99275d48f91f971c2c43a5d4",
+    "packages/graph-mcp/src/main.ts": "b3d5f4e2dc2c949ebec9449cef100e4b79bcac8bff196ae204b9ffdc3f4c3a27",
+    "packages/graph-tools/src/index.ts": "a9377f8c6749003d878559c4a4a38363cfef22125924ae146e916f72130b5095"
+  },
+  "method": "Actual MCP stdio tools/list array, server instructions, and three identical query request/result JSON values. Definitions and instructions counted once. No model or billing measurement.",
+  "profiles": {
+    "full": {
+      "toolCount": 21,
+      "names": [
+        "workflow",
+        "review_changes",
+        "context",
+        "excerpt",
+        "symbol",
+        "search",
+        "callers",
+        "callees",
+        "references",
+        "implementations",
+        "dependencies",
+        "dependents",
+        "skeleton",
+        "tests",
+        "impact",
+        "slice",
+        "file_slice",
+        "path",
+        "architecture",
+        "feature",
+        "status"
+      ],
+      "toolsListJsonTokens": 3580,
+      "instructionsTokens": 64,
+      "calls": [
+        {
+          "request": {
+            "name": "search",
+            "arguments": {
+              "query": "AuthService.login",
+              "maxTokens": 500
+            }
+          },
+          "requestTokens": 17,
+          "responseTokens": 497,
+          "responseSha256": "b8d7851fe4885500e34aad7832d07f9d28cbbd105c41c53a7517c857d348490b"
+        },
+        {
+          "request": {
+            "name": "excerpt",
+            "arguments": {
+              "symbol": "AuthService.login",
+              "maxTokens": 1000
+            }
+          },
+          "requestTokens": 18,
+          "responseTokens": 195,
+          "responseSha256": "2280338b982878ef89ccd707207e1e1c09e982460ff96c282e6b87de5795f628"
+        },
+        {
+          "request": {
+            "name": "impact",
+            "arguments": {
+              "symbol": "AuthService.login",
+              "maxTokens": 1000
+            }
+          },
+          "requestTokens": 18,
+          "responseTokens": 498,
+          "responseSha256": "c512d48ebed7386440ae8faae2f3bc208a64de27a62d0ac6b07eb4c9ca1a283a"
+        }
+      ]
+    },
+    "essential": {
+      "toolCount": 6,
+      "names": [
+        "workflow",
+        "context",
+        "excerpt",
+        "search",
+        "impact",
+        "file_slice"
+      ],
+      "toolsListJsonTokens": 1438,
+      "instructionsTokens": 100,
+      "calls": [
+        {
+          "request": {
+            "name": "search",
+            "arguments": {
+              "query": "AuthService.login",
+              "maxTokens": 500
+            }
+          },
+          "requestTokens": 17,
+          "responseTokens": 497,
+          "responseSha256": "b8d7851fe4885500e34aad7832d07f9d28cbbd105c41c53a7517c857d348490b"
+        },
+        {
+          "request": {
+            "name": "excerpt",
+            "arguments": {
+              "symbol": "AuthService.login",
+              "maxTokens": 1000
+            }
+          },
+          "requestTokens": 18,
+          "responseTokens": 195,
+          "responseSha256": "2280338b982878ef89ccd707207e1e1c09e982460ff96c282e6b87de5795f628"
+        },
+        {
+          "request": {
+            "name": "impact",
+            "arguments": {
+              "symbol": "AuthService.login",
+              "maxTokens": 1000
+            }
+          },
+          "requestTokens": 18,
+          "responseTokens": 498,
+          "responseSha256": "c512d48ebed7386440ae8faae2f3bc208a64de27a62d0ac6b07eb4c9ca1a283a"
+        }
+      ]
+    }
+  },
+  "sharedQueryResponsesIdentical": true,
+  "schemaReductionPercent": 59.832402234636874,
+  "limitation": "Fewer exposed tools restricts available operations; full remains the compatibility default. Host framing, tool deferral, caching, repeated schemas, reasoning, task completion and paid tokens are not measured."
+}

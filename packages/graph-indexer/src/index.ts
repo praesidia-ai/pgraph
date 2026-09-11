@@ -10,6 +10,7 @@ import type {
   ParsedFile,
 } from "@praesidia/pgraph-ir";
 import { TypeScriptAdapter } from "@praesidia/pgraph-typescript";
+import { EXTRACTION_VERSION } from "@praesidia/pgraph-ir";
 import { readGitSignals } from "@praesidia/pgraph-git";
 import {
   hash,
@@ -18,7 +19,7 @@ import {
   type Config,
 } from "@praesidia/pgraph-shared";
 import { discover } from "./discovery.js";
-export { discover } from "./discovery.js";
+export { discover, snapshotInput } from "./discovery.js";
 
 export class GraphIndexer {
   constructor(
@@ -46,6 +47,7 @@ export class GraphIndexer {
     const deleted = old.filter((f) => !current.has(f.path)).map((f) => f.path);
     const configChanged =
       this.store.getMeta<string>("configHash") !== discovery.configHash ||
+      this.store.getMeta<number>("retrievalVersion") !== EXTRACTION_VERSION ||
       this.store.getMeta<number>("communicationVersion") !== 1;
     const added = records.some((f) => !this.store.file(f.path));
     const affected = new Set([...changed, ...deleted]);
@@ -225,6 +227,7 @@ export class GraphIndexer {
       this.store.setMeta("configHash", discovery.configHash);
       this.store.setMeta("topologyServices", this.config.topology.services);
       this.store.setMeta("communicationVersion", 1);
+      this.store.setMeta("retrievalVersion", EXTRACTION_VERSION);
       const stats = this.store.stats();
       const result: IndexResult = {
         files: records.length,

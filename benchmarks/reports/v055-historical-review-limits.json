@@ -1,0 +1,4082 @@
+{
+  "generatedAt": "2026-09-10T18:07:35.679Z",
+  "node": "v22.22.0",
+  "platform": "darwin/arm64",
+  "baselineArtifactSha256": "acb42f0408289902a43e26969b32d5fa5a30acd33182a58e3ffbc2cad611aa02",
+  "currentWorkerSha256": "ac7a2b5f6dfe490edcb6052ac2ea571ab0db6a6ebd58dbcc3258444e09ebe639",
+  "currentVersion": "0.5.5",
+  "compiler": "5.9.3",
+  "fixtures": {
+    ".gitignore": ".pgraph/\n",
+    "package.json": "{\"name\":\"historical-review-limits\",\"type\":\"module\"}",
+    "tsconfig.json": "{\"compilerOptions\":{\"module\":\"NodeNext\",\"target\":\"ES2022\",\"noEmit\":true,\"strict\":true,\"types\":[]},\"include\":[\"*.ts\"]}",
+    "api.ts": "export function helper0(): number { return 1; }\nexport function helper1(): number { return 1; }\nexport function helper2(): number { return 1; }\nexport function helper3(): number { return 1; }\nexport function helper4(): number { return 1; }\nexport function helper5(): number { return 1; }\nexport function helper6(): number { return 1; }\nexport function helper7(): number { return 1; }\nexport function helper8(): number { return 1; }\nexport function helper9(): number { return 1; }\nexport function helper10(): number { return 1; }\nexport function helper11(): number { return 1; }\nexport function helper12(): number { return 1; }\nexport function helper13(): number { return 1; }\nexport function helper14(): number { return 1; }\nexport function helper15(): number { return 1; }\nexport function helper16(): number { return 1; }\nexport function helper17(): number { return 1; }\nexport function helper18(): number { return 1; }\nexport function helper19(): number { return 1; }\nexport function helper20(): number { return 1; }\nexport function helper21(): number { return 1; }\nexport function helper22(): number { return 1; }\nexport function helper23(): number { return 1; }\nexport function helper24(): number { return 1; }\nexport function helper25(): number { return 1; }\nexport function helper26(): number { return 1; }\nexport function helper27(): number { return 1; }\nexport function helper28(): number { return 1; }\nexport function helper29(): number { return 1; }\nexport function helper30(): number { return 1; }\nexport function helper31(): number { return 1; }\nexport function helper32(): number { return 1; }\nexport function helper33(): number { return 1; }\nexport function helper34(): number { return 1; }\nexport function helper35(): number { return 1; }\nexport function helper36(): number { return 1; }\nexport function helper37(): number { return 1; }\nexport function helper38(): number { return 1; }\nexport function helper39(): number { return 1; }\nexport function helper40(): number { return 1; }\nexport function helper41(): number { return 1; }\nexport function helper42(): number { return 1; }\nexport function helper43(): number { return 1; }\nexport function helper44(): number { return 1; }\nexport function helper45(): number { return 1; }\nexport function helper46(): number { return 1; }\nexport function helper47(): number { return 1; }\nexport function helper48(): number { return 1; }\nexport function helper49(): number { return 1; }\nexport function helper50(): number { return 1; }\nexport function helper51(): number { return 1; }\nexport function helper52(): number { return 1; }\nexport function helper53(): number { return 1; }\nexport function helper54(): number { return 1; }\nexport function helper55(): number { return 1; }\nexport function helper56(): number { return 1; }\nexport function helper57(): number { return 1; }\nexport function helper58(): number { return 1; }\nexport function helper59(): number { return 1; }\nexport function helper60(): number { return 1; }\nexport function helper61(): number { return 1; }\nexport function helper62(): number { return 1; }\nexport function helper63(): number { return 1; }\nexport function helper64(): number { return 1; }\nexport function helper65(): number { return 1; }\nexport function helper66(): number { return 1; }\nexport function helper67(): number { return 1; }\nexport function helper68(): number { return 1; }\nexport function helper69(): number { return 1; }\nexport function helper70(): number { return 1; }\nexport function helper71(): number { return 1; }\nexport function helper72(): number { return 1; }\nexport function helper73(): number { return 1; }\nexport function helper74(): number { return 1; }\nexport function helper75(): number { return 1; }\nexport function helper76(): number { return 1; }\nexport function helper77(): number { return 1; }\nexport function helper78(): number { return 1; }\nexport function helper79(): number { return 1; }\nexport function helper80(): number { return 1; }\nexport function helper81(): number { return 1; }\nexport function helper82(): number { return 1; }\nexport function helper83(): number { return 1; }\nexport function helper84(): number { return 1; }\nexport function helper85(): number { return 1; }\nexport function helper86(): number { return 1; }\nexport function helper87(): number { return 1; }\nexport function helper88(): number { return 1; }\nexport function helper89(): number { return 1; }\nexport function helper90(): number { return 1; }\nexport function helper91(): number { return 1; }\nexport function helper92(): number { return 1; }\nexport function helper93(): number { return 1; }\nexport function helper94(): number { return 1; }\nexport function helper95(): number { return 1; }\nexport function helper96(): number { return 1; }\nexport function helper97(): number { return 1; }\nexport function helper98(): number { return 1; }\nexport function helper99(): number { return 1; }\nexport function helper100(): number { return 1; }\nexport function helper101(): number { return 1; }\nexport function helper102(): number { return 1; }\nexport function helper103(): number { return 1; }\nexport function helper104(): number { return 1; }\nexport function helper105(): number { return 1; }\nexport function helper106(): number { return 1; }\nexport function helper107(): number { return 1; }\nexport function helper108(): number { return 1; }\nexport function helper109(): number { return 1; }\nexport function helper110(): number { return 1; }\nexport function helper111(): number { return 1; }\nexport function helper112(): number { return 1; }\nexport function helper113(): number { return 1; }\nexport function helper114(): number { return 1; }\nexport function helper115(): number { return 1; }\nexport function helper116(): number { return 1; }\nexport function helper117(): number { return 1; }\nexport function helper118(): number { return 1; }\nexport function helper119(): number { return 1; }\nexport function removedApi(): number { return 1; }\nexport function contract(value: number): number { return value; }\n",
+    "consumer.ts": "import {removedApi,contract} from './api.js'; export function consumer(){return contract(removedApi()) + contract(1);}\n"
+  },
+  "editedSource": "export function helper0(): number { return 2; }\nexport function helper1(): number { return 2; }\nexport function helper2(): number { return 2; }\nexport function helper3(): number { return 2; }\nexport function helper4(): number { return 2; }\nexport function helper5(): number { return 2; }\nexport function helper6(): number { return 2; }\nexport function helper7(): number { return 2; }\nexport function helper8(): number { return 2; }\nexport function helper9(): number { return 2; }\nexport function helper10(): number { return 2; }\nexport function helper11(): number { return 2; }\nexport function helper12(): number { return 2; }\nexport function helper13(): number { return 2; }\nexport function helper14(): number { return 2; }\nexport function helper15(): number { return 2; }\nexport function helper16(): number { return 2; }\nexport function helper17(): number { return 2; }\nexport function helper18(): number { return 2; }\nexport function helper19(): number { return 2; }\nexport function helper20(): number { return 2; }\nexport function helper21(): number { return 2; }\nexport function helper22(): number { return 2; }\nexport function helper23(): number { return 2; }\nexport function helper24(): number { return 2; }\nexport function helper25(): number { return 2; }\nexport function helper26(): number { return 2; }\nexport function helper27(): number { return 2; }\nexport function helper28(): number { return 2; }\nexport function helper29(): number { return 2; }\nexport function helper30(): number { return 2; }\nexport function helper31(): number { return 2; }\nexport function helper32(): number { return 2; }\nexport function helper33(): number { return 2; }\nexport function helper34(): number { return 2; }\nexport function helper35(): number { return 2; }\nexport function helper36(): number { return 2; }\nexport function helper37(): number { return 2; }\nexport function helper38(): number { return 2; }\nexport function helper39(): number { return 2; }\nexport function helper40(): number { return 2; }\nexport function helper41(): number { return 2; }\nexport function helper42(): number { return 2; }\nexport function helper43(): number { return 2; }\nexport function helper44(): number { return 2; }\nexport function helper45(): number { return 2; }\nexport function helper46(): number { return 2; }\nexport function helper47(): number { return 2; }\nexport function helper48(): number { return 2; }\nexport function helper49(): number { return 2; }\nexport function helper50(): number { return 2; }\nexport function helper51(): number { return 2; }\nexport function helper52(): number { return 2; }\nexport function helper53(): number { return 2; }\nexport function helper54(): number { return 2; }\nexport function helper55(): number { return 2; }\nexport function helper56(): number { return 2; }\nexport function helper57(): number { return 2; }\nexport function helper58(): number { return 2; }\nexport function helper59(): number { return 2; }\nexport function helper60(): number { return 2; }\nexport function helper61(): number { return 2; }\nexport function helper62(): number { return 2; }\nexport function helper63(): number { return 2; }\nexport function helper64(): number { return 2; }\nexport function helper65(): number { return 2; }\nexport function helper66(): number { return 2; }\nexport function helper67(): number { return 2; }\nexport function helper68(): number { return 2; }\nexport function helper69(): number { return 2; }\nexport function helper70(): number { return 2; }\nexport function helper71(): number { return 2; }\nexport function helper72(): number { return 2; }\nexport function helper73(): number { return 2; }\nexport function helper74(): number { return 2; }\nexport function helper75(): number { return 2; }\nexport function helper76(): number { return 2; }\nexport function helper77(): number { return 2; }\nexport function helper78(): number { return 2; }\nexport function helper79(): number { return 2; }\nexport function helper80(): number { return 2; }\nexport function helper81(): number { return 2; }\nexport function helper82(): number { return 2; }\nexport function helper83(): number { return 2; }\nexport function helper84(): number { return 2; }\nexport function helper85(): number { return 2; }\nexport function helper86(): number { return 2; }\nexport function helper87(): number { return 2; }\nexport function helper88(): number { return 2; }\nexport function helper89(): number { return 2; }\nexport function helper90(): number { return 2; }\nexport function helper91(): number { return 2; }\nexport function helper92(): number { return 2; }\nexport function helper93(): number { return 2; }\nexport function helper94(): number { return 2; }\nexport function helper95(): number { return 2; }\nexport function helper96(): number { return 2; }\nexport function helper97(): number { return 2; }\nexport function helper98(): number { return 2; }\nexport function helper99(): number { return 2; }\nexport function helper100(): number { return 2; }\nexport function helper101(): number { return 2; }\nexport function helper102(): number { return 2; }\nexport function helper103(): number { return 2; }\nexport function helper104(): number { return 2; }\nexport function helper105(): number { return 2; }\nexport function helper106(): number { return 2; }\nexport function helper107(): number { return 2; }\nexport function helper108(): number { return 2; }\nexport function helper109(): number { return 2; }\nexport function helper110(): number { return 2; }\nexport function helper111(): number { return 2; }\nexport function helper112(): number { return 2; }\nexport function helper113(): number { return 2; }\nexport function helper114(): number { return 2; }\nexport function helper115(): number { return 2; }\nexport function helper116(): number { return 2; }\nexport function helper117(): number { return 2; }\nexport function helper118(): number { return 2; }\nexport function helper119(): number { return 2; }\nexport function contract(value: string): number { return value.length; }\n",
+  "fixtureHash": "c34bbe99a7e244f8aa92df7373e90d7f6140fdc888b988766a97efacd5b0a09b",
+  "expectedChanges": [
+    "removedApi",
+    "contract",
+    "helper0",
+    "helper1",
+    "helper2",
+    "helper3",
+    "helper4",
+    "helper5",
+    "helper6",
+    "helper7",
+    "helper8",
+    "helper9",
+    "helper10",
+    "helper11",
+    "helper12",
+    "helper13",
+    "helper14",
+    "helper15",
+    "helper16",
+    "helper17",
+    "helper18",
+    "helper19",
+    "helper20",
+    "helper21",
+    "helper22",
+    "helper23",
+    "helper24",
+    "helper25",
+    "helper26",
+    "helper27",
+    "helper28",
+    "helper29",
+    "helper30",
+    "helper31",
+    "helper32",
+    "helper33",
+    "helper34",
+    "helper35",
+    "helper36",
+    "helper37",
+    "helper38",
+    "helper39",
+    "helper40",
+    "helper41",
+    "helper42",
+    "helper43",
+    "helper44",
+    "helper45",
+    "helper46",
+    "helper47",
+    "helper48",
+    "helper49",
+    "helper50",
+    "helper51",
+    "helper52",
+    "helper53",
+    "helper54",
+    "helper55",
+    "helper56",
+    "helper57",
+    "helper58",
+    "helper59",
+    "helper60",
+    "helper61",
+    "helper62",
+    "helper63",
+    "helper64",
+    "helper65",
+    "helper66",
+    "helper67",
+    "helper68",
+    "helper69",
+    "helper70",
+    "helper71",
+    "helper72",
+    "helper73",
+    "helper74",
+    "helper75",
+    "helper76",
+    "helper77",
+    "helper78",
+    "helper79",
+    "helper80",
+    "helper81",
+    "helper82",
+    "helper83",
+    "helper84",
+    "helper85",
+    "helper86",
+    "helper87",
+    "helper88",
+    "helper89",
+    "helper90",
+    "helper91",
+    "helper92",
+    "helper93",
+    "helper94",
+    "helper95",
+    "helper96",
+    "helper97",
+    "helper98",
+    "helper99",
+    "helper100",
+    "helper101",
+    "helper102",
+    "helper103",
+    "helper104",
+    "helper105",
+    "helper106",
+    "helper107",
+    "helper108",
+    "helper109",
+    "helper110",
+    "helper111",
+    "helper112",
+    "helper113",
+    "helper114",
+    "helper115",
+    "helper116",
+    "helper117",
+    "helper118",
+    "helper119"
+  ],
+  "tokenizer": "cl100k_base",
+  "method": "Retained 0.5.4 and current workers analyze identical synthetic Git snapshots with 120 body edits, one removal and one signature change. Separate TypeScript noEmit checks the fixture. Record first page, a same-page cached repeat, then every offered continuation until exhaustion. Request/response traffic excludes indexing, discovery, IPC, compiler checks and the duplicate repeat. Baseline and current can return different evidence; no complete-task, runtime-test or paid-token saving is claimed. Timings are one local run, not latency percentiles.",
+  "runs": [
+    {
+      "version": "baseline",
+      "before": {
+        "exitCode": 0,
+        "diagnostics": "",
+        "codes": []
+      },
+      "after": {
+        "exitCode": 2,
+        "diagnostics": "../../../..<fixture>/consumer.ts(1,9): error TS2305: Module '\"./api.js\"' has no exported member 'removedApi'.\n../../../..<fixture>/consumer.ts(1,115): error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.\n",
+        "codes": [2305, 2345]
+      },
+      "indexMs": 399,
+      "pages": [
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "head": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "6680921e83c182869053b2331ed98399ebfbfef4",
+              "identity": "442f9b3b17a6177ab2752089daa4ddda3734c8e057b62f6d0a19469e687b400e"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ec689896b48d13e7d2de9ffa77356839c62aa9a5e54068c94569b2b278d7cf8b"
+            },
+            "totalFiles": 1,
+            "changes": [
+              {
+                "change": "signature",
+                "before": {
+                  "id": "typescript:api.ts:contract",
+                  "symbol": "contract",
+                  "kind": "function",
+                  "at": "api.ts:122-122",
+                  "signature": "export function contract(value: number): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:contract",
+                  "symbol": "contract",
+                  "kind": "function",
+                  "at": "api.ts:121-121",
+                  "signature": "export function contract(value: string): number;"
+                },
+                "reasons": [
+                  "Declared header, visibility, export flag or declaration kind changed; compatibility requires verification"
+                ],
+                "renderedSignatureChanged": true,
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [
+                  {
+                    "node": {
+                      "id": "typescript:consumer.ts:consumer",
+                      "symbol": "consumer",
+                      "kind": "function",
+                      "at": "consumer.ts:1-1",
+                      "signature": "export function consumer(): number;"
+                    },
+                    "path": [
+                      {
+                        "symbol": "contract",
+                        "at": "api.ts:122"
+                      },
+                      {
+                        "symbol": "consumer",
+                        "at": "consumer.ts:1",
+                        "edge": "CALLS",
+                        "direction": "in"
+                      }
+                    ],
+                    "potentialDispatch": false,
+                    "snapshot": "before",
+                    "afterState": "same source"
+                  },
+                  {
+                    "node": {
+                      "id": "typescript:consumer.ts:consumer",
+                      "symbol": "consumer",
+                      "kind": "function",
+                      "at": "consumer.ts:1-1",
+                      "signature": "export function consumer(): number;"
+                    },
+                    "path": [
+                      {
+                        "symbol": "contract",
+                        "at": "api.ts:121"
+                      },
+                      {
+                        "symbol": "consumer",
+                        "at": "consumer.ts:1",
+                        "edge": "CALLS",
+                        "direction": "in"
+                      }
+                    ],
+                    "potentialDispatch": false,
+                    "snapshot": "after"
+                  }
+                ],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper0",
+                  "symbol": "helper0",
+                  "kind": "function",
+                  "at": "api.ts:1-1",
+                  "signature": "export function helper0(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper0",
+                  "symbol": "helper0",
+                  "kind": "function",
+                  "at": "api.ts:1-1",
+                  "signature": "export function helper0(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper1",
+                  "symbol": "helper1",
+                  "kind": "function",
+                  "at": "api.ts:2-2",
+                  "signature": "export function helper1(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper1",
+                  "symbol": "helper1",
+                  "kind": "function",
+                  "at": "api.ts:2-2",
+                  "signature": "export function helper1(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper10",
+                  "symbol": "helper10",
+                  "kind": "function",
+                  "at": "api.ts:11-11",
+                  "signature": "export function helper10(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper10",
+                  "symbol": "helper10",
+                  "kind": "function",
+                  "at": "api.ts:11-11",
+                  "signature": "export function helper10(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper100",
+                  "symbol": "helper100",
+                  "kind": "function",
+                  "at": "api.ts:101-101",
+                  "signature": "export function helper100(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper100",
+                  "symbol": "helper100",
+                  "kind": "function",
+                  "at": "api.ts:101-101",
+                  "signature": "export function helper100(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper101",
+                  "symbol": "helper101",
+                  "kind": "function",
+                  "at": "api.ts:102-102",
+                  "signature": "export function helper101(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper101",
+                  "symbol": "helper101",
+                  "kind": "function",
+                  "at": "api.ts:102-102",
+                  "signature": "export function helper101(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper102",
+                  "symbol": "helper102",
+                  "kind": "function",
+                  "at": "api.ts:103-103",
+                  "signature": "export function helper102(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper102",
+                  "symbol": "helper102",
+                  "kind": "function",
+                  "at": "api.ts:103-103",
+                  "signature": "export function helper102(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper103",
+                  "symbol": "helper103",
+                  "kind": "function",
+                  "at": "api.ts:104-104",
+                  "signature": "export function helper103(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper103",
+                  "symbol": "helper103",
+                  "kind": "function",
+                  "at": "api.ts:104-104",
+                  "signature": "export function helper103(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": true,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 1514,
+          "requestTokens": 19,
+          "responseTokens": 1899
+        }
+      ],
+      "repeat": {
+        "elapsedMs": 840,
+        "identicalResponse": true
+      },
+      "returnedUniqueChanges": 8,
+      "missing": [
+        "removedApi",
+        "helper2",
+        "helper3",
+        "helper4",
+        "helper5",
+        "helper6",
+        "helper7",
+        "helper8",
+        "helper9",
+        "helper11",
+        "helper12",
+        "helper13",
+        "helper14",
+        "helper15",
+        "helper16",
+        "helper17",
+        "helper18",
+        "helper19",
+        "helper20",
+        "helper21",
+        "helper22",
+        "helper23",
+        "helper24",
+        "helper25",
+        "helper26",
+        "helper27",
+        "helper28",
+        "helper29",
+        "helper30",
+        "helper31",
+        "helper32",
+        "helper33",
+        "helper34",
+        "helper35",
+        "helper36",
+        "helper37",
+        "helper38",
+        "helper39",
+        "helper40",
+        "helper41",
+        "helper42",
+        "helper43",
+        "helper44",
+        "helper45",
+        "helper46",
+        "helper47",
+        "helper48",
+        "helper49",
+        "helper50",
+        "helper51",
+        "helper52",
+        "helper53",
+        "helper54",
+        "helper55",
+        "helper56",
+        "helper57",
+        "helper58",
+        "helper59",
+        "helper60",
+        "helper61",
+        "helper62",
+        "helper63",
+        "helper64",
+        "helper65",
+        "helper66",
+        "helper67",
+        "helper68",
+        "helper69",
+        "helper70",
+        "helper71",
+        "helper72",
+        "helper73",
+        "helper74",
+        "helper75",
+        "helper76",
+        "helper77",
+        "helper78",
+        "helper79",
+        "helper80",
+        "helper81",
+        "helper82",
+        "helper83",
+        "helper84",
+        "helper85",
+        "helper86",
+        "helper87",
+        "helper88",
+        "helper89",
+        "helper90",
+        "helper91",
+        "helper92",
+        "helper93",
+        "helper94",
+        "helper95",
+        "helper96",
+        "helper97",
+        "helper98",
+        "helper99",
+        "helper104",
+        "helper105",
+        "helper106",
+        "helper107",
+        "helper108",
+        "helper109",
+        "helper110",
+        "helper111",
+        "helper112",
+        "helper113",
+        "helper114",
+        "helper115",
+        "helper116",
+        "helper117",
+        "helper118",
+        "helper119"
+      ],
+      "duplicateRows": 0,
+      "trafficTokens": 1918
+    },
+    {
+      "version": "current",
+      "before": {
+        "exitCode": 0,
+        "diagnostics": "",
+        "codes": []
+      },
+      "after": {
+        "exitCode": 2,
+        "diagnostics": "../../../..<fixture>/consumer.ts(1,9): error TS2305: Module '\"./api.js\"' has no exported member 'removedApi'.\n../../../..<fixture>/consumer.ts(1,115): error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.\n",
+        "codes": [2305, 2345]
+      },
+      "indexMs": 452,
+      "pages": [
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "head": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "6680921e83c182869053b2331ed98399ebfbfef4",
+              "identity": "442f9b3b17a6177ab2752089daa4ddda3734c8e057b62f6d0a19469e687b400e"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ec689896b48d13e7d2de9ffa77356839c62aa9a5e54068c94569b2b278d7cf8b"
+            },
+            "totalFiles": 1,
+            "filesSelected": 1,
+            "page": {
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705",
+              "offset": 0,
+              "returned": 8,
+              "total": 122,
+              "nextOffset": 8
+            },
+            "counts": {
+              "removed": 1,
+              "signature": 1,
+              "modified": 120
+            },
+            "changes": [
+              {
+                "change": "removed",
+                "before": {
+                  "id": "typescript:api.ts:removedApi",
+                  "symbol": "removedApi",
+                  "kind": "function",
+                  "at": "api.ts:121-121",
+                  "signature": "export function removedApi(): number;"
+                },
+                "reasons": [
+                  "Declaration absent at its previous path/name in the selected after snapshot"
+                ],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "consumers": [
+                  {
+                    "node": {
+                      "id": "typescript:consumer.ts:consumer",
+                      "symbol": "consumer",
+                      "kind": "function",
+                      "at": "consumer.ts:1-1",
+                      "signature": "export function consumer(): number;"
+                    },
+                    "path": [
+                      {
+                        "symbol": "removedApi",
+                        "at": "api.ts:121"
+                      },
+                      {
+                        "symbol": "consumer",
+                        "at": "consumer.ts:1",
+                        "edge": "CALLS",
+                        "direction": "in"
+                      }
+                    ],
+                    "potentialDispatch": false,
+                    "snapshot": "before",
+                    "afterState": "same source"
+                  }
+                ],
+                "truncated": false
+              },
+              {
+                "change": "signature",
+                "before": {
+                  "id": "typescript:api.ts:contract",
+                  "symbol": "contract",
+                  "kind": "function",
+                  "at": "api.ts:122-122",
+                  "signature": "export function contract(value: number): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:contract",
+                  "symbol": "contract",
+                  "kind": "function",
+                  "at": "api.ts:121-121",
+                  "signature": "export function contract(value: string): number;"
+                },
+                "reasons": [
+                  "Declared header, visibility, export flag or declaration kind changed; compatibility requires verification"
+                ],
+                "renderedSignatureChanged": true,
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [
+                  {
+                    "node": {
+                      "id": "typescript:consumer.ts:consumer",
+                      "symbol": "consumer",
+                      "kind": "function",
+                      "at": "consumer.ts:1-1",
+                      "signature": "export function consumer(): number;"
+                    },
+                    "path": [
+                      {
+                        "symbol": "contract",
+                        "at": "api.ts:122"
+                      },
+                      {
+                        "symbol": "consumer",
+                        "at": "consumer.ts:1",
+                        "edge": "CALLS",
+                        "direction": "in"
+                      }
+                    ],
+                    "potentialDispatch": false,
+                    "snapshot": "before",
+                    "afterState": "same source"
+                  },
+                  {
+                    "node": {
+                      "id": "typescript:consumer.ts:consumer",
+                      "symbol": "consumer",
+                      "kind": "function",
+                      "at": "consumer.ts:1-1",
+                      "signature": "export function consumer(): number;"
+                    },
+                    "path": [
+                      {
+                        "symbol": "contract",
+                        "at": "api.ts:121"
+                      },
+                      {
+                        "symbol": "consumer",
+                        "at": "consumer.ts:1",
+                        "edge": "CALLS",
+                        "direction": "in"
+                      }
+                    ],
+                    "potentialDispatch": false,
+                    "snapshot": "after"
+                  }
+                ],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper0",
+                  "symbol": "helper0",
+                  "kind": "function",
+                  "at": "api.ts:1-1",
+                  "signature": "export function helper0(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper0",
+                  "symbol": "helper0",
+                  "kind": "function",
+                  "at": "api.ts:1-1",
+                  "signature": "export function helper0(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper1",
+                  "symbol": "helper1",
+                  "kind": "function",
+                  "at": "api.ts:2-2",
+                  "signature": "export function helper1(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper1",
+                  "symbol": "helper1",
+                  "kind": "function",
+                  "at": "api.ts:2-2",
+                  "signature": "export function helper1(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper10",
+                  "symbol": "helper10",
+                  "kind": "function",
+                  "at": "api.ts:11-11",
+                  "signature": "export function helper10(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper10",
+                  "symbol": "helper10",
+                  "kind": "function",
+                  "at": "api.ts:11-11",
+                  "signature": "export function helper10(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper100",
+                  "symbol": "helper100",
+                  "kind": "function",
+                  "at": "api.ts:101-101",
+                  "signature": "export function helper100(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper100",
+                  "symbol": "helper100",
+                  "kind": "function",
+                  "at": "api.ts:101-101",
+                  "signature": "export function helper100(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper101",
+                  "symbol": "helper101",
+                  "kind": "function",
+                  "at": "api.ts:102-102",
+                  "signature": "export function helper101(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper101",
+                  "symbol": "helper101",
+                  "kind": "function",
+                  "at": "api.ts:102-102",
+                  "signature": "export function helper101(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper102",
+                  "symbol": "helper102",
+                  "kind": "function",
+                  "at": "api.ts:103-103",
+                  "signature": "export function helper102(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper102",
+                  "symbol": "helper102",
+                  "kind": "function",
+                  "at": "api.ts:103-103",
+                  "signature": "export function helper102(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": true,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 713,
+          "requestTokens": 19,
+          "responseTokens": 1998
+        },
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000,
+              "offset": 8,
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705"
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "head": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "6680921e83c182869053b2331ed98399ebfbfef4",
+              "identity": "442f9b3b17a6177ab2752089daa4ddda3734c8e057b62f6d0a19469e687b400e"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ec689896b48d13e7d2de9ffa77356839c62aa9a5e54068c94569b2b278d7cf8b"
+            },
+            "totalFiles": 1,
+            "filesSelected": 1,
+            "page": {
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705",
+              "offset": 8,
+              "returned": 9,
+              "total": 122,
+              "nextOffset": 17
+            },
+            "counts": {
+              "removed": 1,
+              "signature": 1,
+              "modified": 120
+            },
+            "changes": [
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper103",
+                  "symbol": "helper103",
+                  "kind": "function",
+                  "at": "api.ts:104-104",
+                  "signature": "export function helper103(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper103",
+                  "symbol": "helper103",
+                  "kind": "function",
+                  "at": "api.ts:104-104",
+                  "signature": "export function helper103(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper104",
+                  "symbol": "helper104",
+                  "kind": "function",
+                  "at": "api.ts:105-105",
+                  "signature": "export function helper104(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper104",
+                  "symbol": "helper104",
+                  "kind": "function",
+                  "at": "api.ts:105-105",
+                  "signature": "export function helper104(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper105",
+                  "symbol": "helper105",
+                  "kind": "function",
+                  "at": "api.ts:106-106",
+                  "signature": "export function helper105(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper105",
+                  "symbol": "helper105",
+                  "kind": "function",
+                  "at": "api.ts:106-106",
+                  "signature": "export function helper105(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper106",
+                  "symbol": "helper106",
+                  "kind": "function",
+                  "at": "api.ts:107-107",
+                  "signature": "export function helper106(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper106",
+                  "symbol": "helper106",
+                  "kind": "function",
+                  "at": "api.ts:107-107",
+                  "signature": "export function helper106(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper107",
+                  "symbol": "helper107",
+                  "kind": "function",
+                  "at": "api.ts:108-108",
+                  "signature": "export function helper107(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper107",
+                  "symbol": "helper107",
+                  "kind": "function",
+                  "at": "api.ts:108-108",
+                  "signature": "export function helper107(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper108",
+                  "symbol": "helper108",
+                  "kind": "function",
+                  "at": "api.ts:109-109",
+                  "signature": "export function helper108(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper108",
+                  "symbol": "helper108",
+                  "kind": "function",
+                  "at": "api.ts:109-109",
+                  "signature": "export function helper108(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper109",
+                  "symbol": "helper109",
+                  "kind": "function",
+                  "at": "api.ts:110-110",
+                  "signature": "export function helper109(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper109",
+                  "symbol": "helper109",
+                  "kind": "function",
+                  "at": "api.ts:110-110",
+                  "signature": "export function helper109(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper11",
+                  "symbol": "helper11",
+                  "kind": "function",
+                  "at": "api.ts:12-12",
+                  "signature": "export function helper11(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper11",
+                  "symbol": "helper11",
+                  "kind": "function",
+                  "at": "api.ts:12-12",
+                  "signature": "export function helper11(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper110",
+                  "symbol": "helper110",
+                  "kind": "function",
+                  "at": "api.ts:111-111",
+                  "signature": "export function helper110(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper110",
+                  "symbol": "helper110",
+                  "kind": "function",
+                  "at": "api.ts:111-111",
+                  "signature": "export function helper110(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": true,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 650,
+          "requestTokens": 66,
+          "responseTokens": 1972
+        },
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000,
+              "offset": 17,
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705"
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "head": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "6680921e83c182869053b2331ed98399ebfbfef4",
+              "identity": "442f9b3b17a6177ab2752089daa4ddda3734c8e057b62f6d0a19469e687b400e"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ec689896b48d13e7d2de9ffa77356839c62aa9a5e54068c94569b2b278d7cf8b"
+            },
+            "totalFiles": 1,
+            "filesSelected": 1,
+            "page": {
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705",
+              "offset": 17,
+              "returned": 9,
+              "total": 122,
+              "nextOffset": 26
+            },
+            "counts": {
+              "removed": 1,
+              "signature": 1,
+              "modified": 120
+            },
+            "changes": [
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper111",
+                  "symbol": "helper111",
+                  "kind": "function",
+                  "at": "api.ts:112-112",
+                  "signature": "export function helper111(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper111",
+                  "symbol": "helper111",
+                  "kind": "function",
+                  "at": "api.ts:112-112",
+                  "signature": "export function helper111(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper112",
+                  "symbol": "helper112",
+                  "kind": "function",
+                  "at": "api.ts:113-113",
+                  "signature": "export function helper112(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper112",
+                  "symbol": "helper112",
+                  "kind": "function",
+                  "at": "api.ts:113-113",
+                  "signature": "export function helper112(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper113",
+                  "symbol": "helper113",
+                  "kind": "function",
+                  "at": "api.ts:114-114",
+                  "signature": "export function helper113(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper113",
+                  "symbol": "helper113",
+                  "kind": "function",
+                  "at": "api.ts:114-114",
+                  "signature": "export function helper113(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper114",
+                  "symbol": "helper114",
+                  "kind": "function",
+                  "at": "api.ts:115-115",
+                  "signature": "export function helper114(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper114",
+                  "symbol": "helper114",
+                  "kind": "function",
+                  "at": "api.ts:115-115",
+                  "signature": "export function helper114(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper115",
+                  "symbol": "helper115",
+                  "kind": "function",
+                  "at": "api.ts:116-116",
+                  "signature": "export function helper115(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper115",
+                  "symbol": "helper115",
+                  "kind": "function",
+                  "at": "api.ts:116-116",
+                  "signature": "export function helper115(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper116",
+                  "symbol": "helper116",
+                  "kind": "function",
+                  "at": "api.ts:117-117",
+                  "signature": "export function helper116(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper116",
+                  "symbol": "helper116",
+                  "kind": "function",
+                  "at": "api.ts:117-117",
+                  "signature": "export function helper116(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper117",
+                  "symbol": "helper117",
+                  "kind": "function",
+                  "at": "api.ts:118-118",
+                  "signature": "export function helper117(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper117",
+                  "symbol": "helper117",
+                  "kind": "function",
+                  "at": "api.ts:118-118",
+                  "signature": "export function helper117(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper118",
+                  "symbol": "helper118",
+                  "kind": "function",
+                  "at": "api.ts:119-119",
+                  "signature": "export function helper118(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper118",
+                  "symbol": "helper118",
+                  "kind": "function",
+                  "at": "api.ts:119-119",
+                  "signature": "export function helper118(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper119",
+                  "symbol": "helper119",
+                  "kind": "function",
+                  "at": "api.ts:120-120",
+                  "signature": "export function helper119(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper119",
+                  "symbol": "helper119",
+                  "kind": "function",
+                  "at": "api.ts:120-120",
+                  "signature": "export function helper119(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": true,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 544,
+          "requestTokens": 66,
+          "responseTokens": 1972
+        },
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000,
+              "offset": 26,
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705"
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "head": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "6680921e83c182869053b2331ed98399ebfbfef4",
+              "identity": "442f9b3b17a6177ab2752089daa4ddda3734c8e057b62f6d0a19469e687b400e"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ec689896b48d13e7d2de9ffa77356839c62aa9a5e54068c94569b2b278d7cf8b"
+            },
+            "totalFiles": 1,
+            "filesSelected": 1,
+            "page": {
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705",
+              "offset": 26,
+              "returned": 9,
+              "total": 122,
+              "nextOffset": 35
+            },
+            "counts": {
+              "removed": 1,
+              "signature": 1,
+              "modified": 120
+            },
+            "changes": [
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper12",
+                  "symbol": "helper12",
+                  "kind": "function",
+                  "at": "api.ts:13-13",
+                  "signature": "export function helper12(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper12",
+                  "symbol": "helper12",
+                  "kind": "function",
+                  "at": "api.ts:13-13",
+                  "signature": "export function helper12(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper13",
+                  "symbol": "helper13",
+                  "kind": "function",
+                  "at": "api.ts:14-14",
+                  "signature": "export function helper13(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper13",
+                  "symbol": "helper13",
+                  "kind": "function",
+                  "at": "api.ts:14-14",
+                  "signature": "export function helper13(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper14",
+                  "symbol": "helper14",
+                  "kind": "function",
+                  "at": "api.ts:15-15",
+                  "signature": "export function helper14(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper14",
+                  "symbol": "helper14",
+                  "kind": "function",
+                  "at": "api.ts:15-15",
+                  "signature": "export function helper14(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper15",
+                  "symbol": "helper15",
+                  "kind": "function",
+                  "at": "api.ts:16-16",
+                  "signature": "export function helper15(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper15",
+                  "symbol": "helper15",
+                  "kind": "function",
+                  "at": "api.ts:16-16",
+                  "signature": "export function helper15(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper16",
+                  "symbol": "helper16",
+                  "kind": "function",
+                  "at": "api.ts:17-17",
+                  "signature": "export function helper16(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper16",
+                  "symbol": "helper16",
+                  "kind": "function",
+                  "at": "api.ts:17-17",
+                  "signature": "export function helper16(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper17",
+                  "symbol": "helper17",
+                  "kind": "function",
+                  "at": "api.ts:18-18",
+                  "signature": "export function helper17(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper17",
+                  "symbol": "helper17",
+                  "kind": "function",
+                  "at": "api.ts:18-18",
+                  "signature": "export function helper17(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper18",
+                  "symbol": "helper18",
+                  "kind": "function",
+                  "at": "api.ts:19-19",
+                  "signature": "export function helper18(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper18",
+                  "symbol": "helper18",
+                  "kind": "function",
+                  "at": "api.ts:19-19",
+                  "signature": "export function helper18(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper19",
+                  "symbol": "helper19",
+                  "kind": "function",
+                  "at": "api.ts:20-20",
+                  "signature": "export function helper19(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper19",
+                  "symbol": "helper19",
+                  "kind": "function",
+                  "at": "api.ts:20-20",
+                  "signature": "export function helper19(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper2",
+                  "symbol": "helper2",
+                  "kind": "function",
+                  "at": "api.ts:3-3",
+                  "signature": "export function helper2(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper2",
+                  "symbol": "helper2",
+                  "kind": "function",
+                  "at": "api.ts:3-3",
+                  "signature": "export function helper2(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": true,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 525,
+          "requestTokens": 66,
+          "responseTokens": 1972
+        },
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000,
+              "offset": 35,
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705"
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "head": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "6680921e83c182869053b2331ed98399ebfbfef4",
+              "identity": "442f9b3b17a6177ab2752089daa4ddda3734c8e057b62f6d0a19469e687b400e"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ec689896b48d13e7d2de9ffa77356839c62aa9a5e54068c94569b2b278d7cf8b"
+            },
+            "totalFiles": 1,
+            "filesSelected": 1,
+            "page": {
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705",
+              "offset": 35,
+              "returned": 9,
+              "total": 122,
+              "nextOffset": 44
+            },
+            "counts": {
+              "removed": 1,
+              "signature": 1,
+              "modified": 120
+            },
+            "changes": [
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper20",
+                  "symbol": "helper20",
+                  "kind": "function",
+                  "at": "api.ts:21-21",
+                  "signature": "export function helper20(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper20",
+                  "symbol": "helper20",
+                  "kind": "function",
+                  "at": "api.ts:21-21",
+                  "signature": "export function helper20(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper21",
+                  "symbol": "helper21",
+                  "kind": "function",
+                  "at": "api.ts:22-22",
+                  "signature": "export function helper21(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper21",
+                  "symbol": "helper21",
+                  "kind": "function",
+                  "at": "api.ts:22-22",
+                  "signature": "export function helper21(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper22",
+                  "symbol": "helper22",
+                  "kind": "function",
+                  "at": "api.ts:23-23",
+                  "signature": "export function helper22(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper22",
+                  "symbol": "helper22",
+                  "kind": "function",
+                  "at": "api.ts:23-23",
+                  "signature": "export function helper22(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper23",
+                  "symbol": "helper23",
+                  "kind": "function",
+                  "at": "api.ts:24-24",
+                  "signature": "export function helper23(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper23",
+                  "symbol": "helper23",
+                  "kind": "function",
+                  "at": "api.ts:24-24",
+                  "signature": "export function helper23(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper24",
+                  "symbol": "helper24",
+                  "kind": "function",
+                  "at": "api.ts:25-25",
+                  "signature": "export function helper24(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper24",
+                  "symbol": "helper24",
+                  "kind": "function",
+                  "at": "api.ts:25-25",
+                  "signature": "export function helper24(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper25",
+                  "symbol": "helper25",
+                  "kind": "function",
+                  "at": "api.ts:26-26",
+                  "signature": "export function helper25(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper25",
+                  "symbol": "helper25",
+                  "kind": "function",
+                  "at": "api.ts:26-26",
+                  "signature": "export function helper25(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper26",
+                  "symbol": "helper26",
+                  "kind": "function",
+                  "at": "api.ts:27-27",
+                  "signature": "export function helper26(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper26",
+                  "symbol": "helper26",
+                  "kind": "function",
+                  "at": "api.ts:27-27",
+                  "signature": "export function helper26(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper27",
+                  "symbol": "helper27",
+                  "kind": "function",
+                  "at": "api.ts:28-28",
+                  "signature": "export function helper27(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper27",
+                  "symbol": "helper27",
+                  "kind": "function",
+                  "at": "api.ts:28-28",
+                  "signature": "export function helper27(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper28",
+                  "symbol": "helper28",
+                  "kind": "function",
+                  "at": "api.ts:29-29",
+                  "signature": "export function helper28(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper28",
+                  "symbol": "helper28",
+                  "kind": "function",
+                  "at": "api.ts:29-29",
+                  "signature": "export function helper28(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": true,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 685,
+          "requestTokens": 66,
+          "responseTokens": 1972
+        },
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000,
+              "offset": 44,
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705"
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "head": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "6680921e83c182869053b2331ed98399ebfbfef4",
+              "identity": "442f9b3b17a6177ab2752089daa4ddda3734c8e057b62f6d0a19469e687b400e"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ec689896b48d13e7d2de9ffa77356839c62aa9a5e54068c94569b2b278d7cf8b"
+            },
+            "totalFiles": 1,
+            "filesSelected": 1,
+            "page": {
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705",
+              "offset": 44,
+              "returned": 9,
+              "total": 122,
+              "nextOffset": 53
+            },
+            "counts": {
+              "removed": 1,
+              "signature": 1,
+              "modified": 120
+            },
+            "changes": [
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper29",
+                  "symbol": "helper29",
+                  "kind": "function",
+                  "at": "api.ts:30-30",
+                  "signature": "export function helper29(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper29",
+                  "symbol": "helper29",
+                  "kind": "function",
+                  "at": "api.ts:30-30",
+                  "signature": "export function helper29(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper3",
+                  "symbol": "helper3",
+                  "kind": "function",
+                  "at": "api.ts:4-4",
+                  "signature": "export function helper3(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper3",
+                  "symbol": "helper3",
+                  "kind": "function",
+                  "at": "api.ts:4-4",
+                  "signature": "export function helper3(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper30",
+                  "symbol": "helper30",
+                  "kind": "function",
+                  "at": "api.ts:31-31",
+                  "signature": "export function helper30(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper30",
+                  "symbol": "helper30",
+                  "kind": "function",
+                  "at": "api.ts:31-31",
+                  "signature": "export function helper30(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper31",
+                  "symbol": "helper31",
+                  "kind": "function",
+                  "at": "api.ts:32-32",
+                  "signature": "export function helper31(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper31",
+                  "symbol": "helper31",
+                  "kind": "function",
+                  "at": "api.ts:32-32",
+                  "signature": "export function helper31(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper32",
+                  "symbol": "helper32",
+                  "kind": "function",
+                  "at": "api.ts:33-33",
+                  "signature": "export function helper32(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper32",
+                  "symbol": "helper32",
+                  "kind": "function",
+                  "at": "api.ts:33-33",
+                  "signature": "export function helper32(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper33",
+                  "symbol": "helper33",
+                  "kind": "function",
+                  "at": "api.ts:34-34",
+                  "signature": "export function helper33(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper33",
+                  "symbol": "helper33",
+                  "kind": "function",
+                  "at": "api.ts:34-34",
+                  "signature": "export function helper33(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper34",
+                  "symbol": "helper34",
+                  "kind": "function",
+                  "at": "api.ts:35-35",
+                  "signature": "export function helper34(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper34",
+                  "symbol": "helper34",
+                  "kind": "function",
+                  "at": "api.ts:35-35",
+                  "signature": "export function helper34(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper35",
+                  "symbol": "helper35",
+                  "kind": "function",
+                  "at": "api.ts:36-36",
+                  "signature": "export function helper35(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper35",
+                  "symbol": "helper35",
+                  "kind": "function",
+                  "at": "api.ts:36-36",
+                  "signature": "export function helper35(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper36",
+                  "symbol": "helper36",
+                  "kind": "function",
+                  "at": "api.ts:37-37",
+                  "signature": "export function helper36(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper36",
+                  "symbol": "helper36",
+                  "kind": "function",
+                  "at": "api.ts:37-37",
+                  "signature": "export function helper36(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": true,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 789,
+          "requestTokens": 66,
+          "responseTokens": 1972
+        },
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000,
+              "offset": 53,
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705"
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "head": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "6680921e83c182869053b2331ed98399ebfbfef4",
+              "identity": "442f9b3b17a6177ab2752089daa4ddda3734c8e057b62f6d0a19469e687b400e"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ec689896b48d13e7d2de9ffa77356839c62aa9a5e54068c94569b2b278d7cf8b"
+            },
+            "totalFiles": 1,
+            "filesSelected": 1,
+            "page": {
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705",
+              "offset": 53,
+              "returned": 9,
+              "total": 122,
+              "nextOffset": 62
+            },
+            "counts": {
+              "removed": 1,
+              "signature": 1,
+              "modified": 120
+            },
+            "changes": [
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper37",
+                  "symbol": "helper37",
+                  "kind": "function",
+                  "at": "api.ts:38-38",
+                  "signature": "export function helper37(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper37",
+                  "symbol": "helper37",
+                  "kind": "function",
+                  "at": "api.ts:38-38",
+                  "signature": "export function helper37(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper38",
+                  "symbol": "helper38",
+                  "kind": "function",
+                  "at": "api.ts:39-39",
+                  "signature": "export function helper38(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper38",
+                  "symbol": "helper38",
+                  "kind": "function",
+                  "at": "api.ts:39-39",
+                  "signature": "export function helper38(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper39",
+                  "symbol": "helper39",
+                  "kind": "function",
+                  "at": "api.ts:40-40",
+                  "signature": "export function helper39(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper39",
+                  "symbol": "helper39",
+                  "kind": "function",
+                  "at": "api.ts:40-40",
+                  "signature": "export function helper39(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper4",
+                  "symbol": "helper4",
+                  "kind": "function",
+                  "at": "api.ts:5-5",
+                  "signature": "export function helper4(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper4",
+                  "symbol": "helper4",
+                  "kind": "function",
+                  "at": "api.ts:5-5",
+                  "signature": "export function helper4(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper40",
+                  "symbol": "helper40",
+                  "kind": "function",
+                  "at": "api.ts:41-41",
+                  "signature": "export function helper40(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper40",
+                  "symbol": "helper40",
+                  "kind": "function",
+                  "at": "api.ts:41-41",
+                  "signature": "export function helper40(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper41",
+                  "symbol": "helper41",
+                  "kind": "function",
+                  "at": "api.ts:42-42",
+                  "signature": "export function helper41(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper41",
+                  "symbol": "helper41",
+                  "kind": "function",
+                  "at": "api.ts:42-42",
+                  "signature": "export function helper41(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper42",
+                  "symbol": "helper42",
+                  "kind": "function",
+                  "at": "api.ts:43-43",
+                  "signature": "export function helper42(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper42",
+                  "symbol": "helper42",
+                  "kind": "function",
+                  "at": "api.ts:43-43",
+                  "signature": "export function helper42(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper43",
+                  "symbol": "helper43",
+                  "kind": "function",
+                  "at": "api.ts:44-44",
+                  "signature": "export function helper43(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper43",
+                  "symbol": "helper43",
+                  "kind": "function",
+                  "at": "api.ts:44-44",
+                  "signature": "export function helper43(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper44",
+                  "symbol": "helper44",
+                  "kind": "function",
+                  "at": "api.ts:45-45",
+                  "signature": "export function helper44(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper44",
+                  "symbol": "helper44",
+                  "kind": "function",
+                  "at": "api.ts:45-45",
+                  "signature": "export function helper44(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": true,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 559,
+          "requestTokens": 66,
+          "responseTokens": 1972
+        },
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000,
+              "offset": 62,
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705"
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "head": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "6680921e83c182869053b2331ed98399ebfbfef4",
+              "identity": "442f9b3b17a6177ab2752089daa4ddda3734c8e057b62f6d0a19469e687b400e"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ec689896b48d13e7d2de9ffa77356839c62aa9a5e54068c94569b2b278d7cf8b"
+            },
+            "totalFiles": 1,
+            "filesSelected": 1,
+            "page": {
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705",
+              "offset": 62,
+              "returned": 9,
+              "total": 122,
+              "nextOffset": 71
+            },
+            "counts": {
+              "removed": 1,
+              "signature": 1,
+              "modified": 120
+            },
+            "changes": [
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper45",
+                  "symbol": "helper45",
+                  "kind": "function",
+                  "at": "api.ts:46-46",
+                  "signature": "export function helper45(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper45",
+                  "symbol": "helper45",
+                  "kind": "function",
+                  "at": "api.ts:46-46",
+                  "signature": "export function helper45(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper46",
+                  "symbol": "helper46",
+                  "kind": "function",
+                  "at": "api.ts:47-47",
+                  "signature": "export function helper46(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper46",
+                  "symbol": "helper46",
+                  "kind": "function",
+                  "at": "api.ts:47-47",
+                  "signature": "export function helper46(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper47",
+                  "symbol": "helper47",
+                  "kind": "function",
+                  "at": "api.ts:48-48",
+                  "signature": "export function helper47(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper47",
+                  "symbol": "helper47",
+                  "kind": "function",
+                  "at": "api.ts:48-48",
+                  "signature": "export function helper47(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper48",
+                  "symbol": "helper48",
+                  "kind": "function",
+                  "at": "api.ts:49-49",
+                  "signature": "export function helper48(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper48",
+                  "symbol": "helper48",
+                  "kind": "function",
+                  "at": "api.ts:49-49",
+                  "signature": "export function helper48(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper49",
+                  "symbol": "helper49",
+                  "kind": "function",
+                  "at": "api.ts:50-50",
+                  "signature": "export function helper49(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper49",
+                  "symbol": "helper49",
+                  "kind": "function",
+                  "at": "api.ts:50-50",
+                  "signature": "export function helper49(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper5",
+                  "symbol": "helper5",
+                  "kind": "function",
+                  "at": "api.ts:6-6",
+                  "signature": "export function helper5(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper5",
+                  "symbol": "helper5",
+                  "kind": "function",
+                  "at": "api.ts:6-6",
+                  "signature": "export function helper5(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper50",
+                  "symbol": "helper50",
+                  "kind": "function",
+                  "at": "api.ts:51-51",
+                  "signature": "export function helper50(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper50",
+                  "symbol": "helper50",
+                  "kind": "function",
+                  "at": "api.ts:51-51",
+                  "signature": "export function helper50(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper51",
+                  "symbol": "helper51",
+                  "kind": "function",
+                  "at": "api.ts:52-52",
+                  "signature": "export function helper51(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper51",
+                  "symbol": "helper51",
+                  "kind": "function",
+                  "at": "api.ts:52-52",
+                  "signature": "export function helper51(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper52",
+                  "symbol": "helper52",
+                  "kind": "function",
+                  "at": "api.ts:53-53",
+                  "signature": "export function helper52(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper52",
+                  "symbol": "helper52",
+                  "kind": "function",
+                  "at": "api.ts:53-53",
+                  "signature": "export function helper52(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": true,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 529,
+          "requestTokens": 66,
+          "responseTokens": 1972
+        },
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000,
+              "offset": 71,
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705"
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "head": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "6680921e83c182869053b2331ed98399ebfbfef4",
+              "identity": "442f9b3b17a6177ab2752089daa4ddda3734c8e057b62f6d0a19469e687b400e"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ec689896b48d13e7d2de9ffa77356839c62aa9a5e54068c94569b2b278d7cf8b"
+            },
+            "totalFiles": 1,
+            "filesSelected": 1,
+            "page": {
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705",
+              "offset": 71,
+              "returned": 9,
+              "total": 122,
+              "nextOffset": 80
+            },
+            "counts": {
+              "removed": 1,
+              "signature": 1,
+              "modified": 120
+            },
+            "changes": [
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper53",
+                  "symbol": "helper53",
+                  "kind": "function",
+                  "at": "api.ts:54-54",
+                  "signature": "export function helper53(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper53",
+                  "symbol": "helper53",
+                  "kind": "function",
+                  "at": "api.ts:54-54",
+                  "signature": "export function helper53(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper54",
+                  "symbol": "helper54",
+                  "kind": "function",
+                  "at": "api.ts:55-55",
+                  "signature": "export function helper54(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper54",
+                  "symbol": "helper54",
+                  "kind": "function",
+                  "at": "api.ts:55-55",
+                  "signature": "export function helper54(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper55",
+                  "symbol": "helper55",
+                  "kind": "function",
+                  "at": "api.ts:56-56",
+                  "signature": "export function helper55(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper55",
+                  "symbol": "helper55",
+                  "kind": "function",
+                  "at": "api.ts:56-56",
+                  "signature": "export function helper55(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper56",
+                  "symbol": "helper56",
+                  "kind": "function",
+                  "at": "api.ts:57-57",
+                  "signature": "export function helper56(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper56",
+                  "symbol": "helper56",
+                  "kind": "function",
+                  "at": "api.ts:57-57",
+                  "signature": "export function helper56(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper57",
+                  "symbol": "helper57",
+                  "kind": "function",
+                  "at": "api.ts:58-58",
+                  "signature": "export function helper57(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper57",
+                  "symbol": "helper57",
+                  "kind": "function",
+                  "at": "api.ts:58-58",
+                  "signature": "export function helper57(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper58",
+                  "symbol": "helper58",
+                  "kind": "function",
+                  "at": "api.ts:59-59",
+                  "signature": "export function helper58(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper58",
+                  "symbol": "helper58",
+                  "kind": "function",
+                  "at": "api.ts:59-59",
+                  "signature": "export function helper58(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper59",
+                  "symbol": "helper59",
+                  "kind": "function",
+                  "at": "api.ts:60-60",
+                  "signature": "export function helper59(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper59",
+                  "symbol": "helper59",
+                  "kind": "function",
+                  "at": "api.ts:60-60",
+                  "signature": "export function helper59(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper6",
+                  "symbol": "helper6",
+                  "kind": "function",
+                  "at": "api.ts:7-7",
+                  "signature": "export function helper6(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper6",
+                  "symbol": "helper6",
+                  "kind": "function",
+                  "at": "api.ts:7-7",
+                  "signature": "export function helper6(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper60",
+                  "symbol": "helper60",
+                  "kind": "function",
+                  "at": "api.ts:61-61",
+                  "signature": "export function helper60(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper60",
+                  "symbol": "helper60",
+                  "kind": "function",
+                  "at": "api.ts:61-61",
+                  "signature": "export function helper60(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": true,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 707,
+          "requestTokens": 66,
+          "responseTokens": 1972
+        },
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000,
+              "offset": 80,
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705"
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "head": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "6680921e83c182869053b2331ed98399ebfbfef4",
+              "identity": "442f9b3b17a6177ab2752089daa4ddda3734c8e057b62f6d0a19469e687b400e"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ec689896b48d13e7d2de9ffa77356839c62aa9a5e54068c94569b2b278d7cf8b"
+            },
+            "totalFiles": 1,
+            "filesSelected": 1,
+            "page": {
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705",
+              "offset": 80,
+              "returned": 9,
+              "total": 122,
+              "nextOffset": 89
+            },
+            "counts": {
+              "removed": 1,
+              "signature": 1,
+              "modified": 120
+            },
+            "changes": [
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper61",
+                  "symbol": "helper61",
+                  "kind": "function",
+                  "at": "api.ts:62-62",
+                  "signature": "export function helper61(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper61",
+                  "symbol": "helper61",
+                  "kind": "function",
+                  "at": "api.ts:62-62",
+                  "signature": "export function helper61(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper62",
+                  "symbol": "helper62",
+                  "kind": "function",
+                  "at": "api.ts:63-63",
+                  "signature": "export function helper62(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper62",
+                  "symbol": "helper62",
+                  "kind": "function",
+                  "at": "api.ts:63-63",
+                  "signature": "export function helper62(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper63",
+                  "symbol": "helper63",
+                  "kind": "function",
+                  "at": "api.ts:64-64",
+                  "signature": "export function helper63(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper63",
+                  "symbol": "helper63",
+                  "kind": "function",
+                  "at": "api.ts:64-64",
+                  "signature": "export function helper63(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper64",
+                  "symbol": "helper64",
+                  "kind": "function",
+                  "at": "api.ts:65-65",
+                  "signature": "export function helper64(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper64",
+                  "symbol": "helper64",
+                  "kind": "function",
+                  "at": "api.ts:65-65",
+                  "signature": "export function helper64(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper65",
+                  "symbol": "helper65",
+                  "kind": "function",
+                  "at": "api.ts:66-66",
+                  "signature": "export function helper65(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper65",
+                  "symbol": "helper65",
+                  "kind": "function",
+                  "at": "api.ts:66-66",
+                  "signature": "export function helper65(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper66",
+                  "symbol": "helper66",
+                  "kind": "function",
+                  "at": "api.ts:67-67",
+                  "signature": "export function helper66(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper66",
+                  "symbol": "helper66",
+                  "kind": "function",
+                  "at": "api.ts:67-67",
+                  "signature": "export function helper66(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper67",
+                  "symbol": "helper67",
+                  "kind": "function",
+                  "at": "api.ts:68-68",
+                  "signature": "export function helper67(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper67",
+                  "symbol": "helper67",
+                  "kind": "function",
+                  "at": "api.ts:68-68",
+                  "signature": "export function helper67(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper68",
+                  "symbol": "helper68",
+                  "kind": "function",
+                  "at": "api.ts:69-69",
+                  "signature": "export function helper68(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper68",
+                  "symbol": "helper68",
+                  "kind": "function",
+                  "at": "api.ts:69-69",
+                  "signature": "export function helper68(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper69",
+                  "symbol": "helper69",
+                  "kind": "function",
+                  "at": "api.ts:70-70",
+                  "signature": "export function helper69(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper69",
+                  "symbol": "helper69",
+                  "kind": "function",
+                  "at": "api.ts:70-70",
+                  "signature": "export function helper69(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": true,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 776,
+          "requestTokens": 66,
+          "responseTokens": 1972
+        },
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000,
+              "offset": 89,
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705"
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "head": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "6680921e83c182869053b2331ed98399ebfbfef4",
+              "identity": "442f9b3b17a6177ab2752089daa4ddda3734c8e057b62f6d0a19469e687b400e"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ec689896b48d13e7d2de9ffa77356839c62aa9a5e54068c94569b2b278d7cf8b"
+            },
+            "totalFiles": 1,
+            "filesSelected": 1,
+            "page": {
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705",
+              "offset": 89,
+              "returned": 9,
+              "total": 122,
+              "nextOffset": 98
+            },
+            "counts": {
+              "removed": 1,
+              "signature": 1,
+              "modified": 120
+            },
+            "changes": [
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper7",
+                  "symbol": "helper7",
+                  "kind": "function",
+                  "at": "api.ts:8-8",
+                  "signature": "export function helper7(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper7",
+                  "symbol": "helper7",
+                  "kind": "function",
+                  "at": "api.ts:8-8",
+                  "signature": "export function helper7(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper70",
+                  "symbol": "helper70",
+                  "kind": "function",
+                  "at": "api.ts:71-71",
+                  "signature": "export function helper70(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper70",
+                  "symbol": "helper70",
+                  "kind": "function",
+                  "at": "api.ts:71-71",
+                  "signature": "export function helper70(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper71",
+                  "symbol": "helper71",
+                  "kind": "function",
+                  "at": "api.ts:72-72",
+                  "signature": "export function helper71(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper71",
+                  "symbol": "helper71",
+                  "kind": "function",
+                  "at": "api.ts:72-72",
+                  "signature": "export function helper71(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper72",
+                  "symbol": "helper72",
+                  "kind": "function",
+                  "at": "api.ts:73-73",
+                  "signature": "export function helper72(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper72",
+                  "symbol": "helper72",
+                  "kind": "function",
+                  "at": "api.ts:73-73",
+                  "signature": "export function helper72(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper73",
+                  "symbol": "helper73",
+                  "kind": "function",
+                  "at": "api.ts:74-74",
+                  "signature": "export function helper73(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper73",
+                  "symbol": "helper73",
+                  "kind": "function",
+                  "at": "api.ts:74-74",
+                  "signature": "export function helper73(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper74",
+                  "symbol": "helper74",
+                  "kind": "function",
+                  "at": "api.ts:75-75",
+                  "signature": "export function helper74(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper74",
+                  "symbol": "helper74",
+                  "kind": "function",
+                  "at": "api.ts:75-75",
+                  "signature": "export function helper74(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper75",
+                  "symbol": "helper75",
+                  "kind": "function",
+                  "at": "api.ts:76-76",
+                  "signature": "export function helper75(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper75",
+                  "symbol": "helper75",
+                  "kind": "function",
+                  "at": "api.ts:76-76",
+                  "signature": "export function helper75(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper76",
+                  "symbol": "helper76",
+                  "kind": "function",
+                  "at": "api.ts:77-77",
+                  "signature": "export function helper76(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper76",
+                  "symbol": "helper76",
+                  "kind": "function",
+                  "at": "api.ts:77-77",
+                  "signature": "export function helper76(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper77",
+                  "symbol": "helper77",
+                  "kind": "function",
+                  "at": "api.ts:78-78",
+                  "signature": "export function helper77(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper77",
+                  "symbol": "helper77",
+                  "kind": "function",
+                  "at": "api.ts:78-78",
+                  "signature": "export function helper77(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": true,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 592,
+          "requestTokens": 66,
+          "responseTokens": 1972
+        },
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000,
+              "offset": 98,
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705"
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "head": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "6680921e83c182869053b2331ed98399ebfbfef4",
+              "identity": "442f9b3b17a6177ab2752089daa4ddda3734c8e057b62f6d0a19469e687b400e"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ec689896b48d13e7d2de9ffa77356839c62aa9a5e54068c94569b2b278d7cf8b"
+            },
+            "totalFiles": 1,
+            "filesSelected": 1,
+            "page": {
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705",
+              "offset": 98,
+              "returned": 9,
+              "total": 122,
+              "nextOffset": 107
+            },
+            "counts": {
+              "removed": 1,
+              "signature": 1,
+              "modified": 120
+            },
+            "changes": [
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper78",
+                  "symbol": "helper78",
+                  "kind": "function",
+                  "at": "api.ts:79-79",
+                  "signature": "export function helper78(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper78",
+                  "symbol": "helper78",
+                  "kind": "function",
+                  "at": "api.ts:79-79",
+                  "signature": "export function helper78(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper79",
+                  "symbol": "helper79",
+                  "kind": "function",
+                  "at": "api.ts:80-80",
+                  "signature": "export function helper79(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper79",
+                  "symbol": "helper79",
+                  "kind": "function",
+                  "at": "api.ts:80-80",
+                  "signature": "export function helper79(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper8",
+                  "symbol": "helper8",
+                  "kind": "function",
+                  "at": "api.ts:9-9",
+                  "signature": "export function helper8(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper8",
+                  "symbol": "helper8",
+                  "kind": "function",
+                  "at": "api.ts:9-9",
+                  "signature": "export function helper8(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper80",
+                  "symbol": "helper80",
+                  "kind": "function",
+                  "at": "api.ts:81-81",
+                  "signature": "export function helper80(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper80",
+                  "symbol": "helper80",
+                  "kind": "function",
+                  "at": "api.ts:81-81",
+                  "signature": "export function helper80(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper81",
+                  "symbol": "helper81",
+                  "kind": "function",
+                  "at": "api.ts:82-82",
+                  "signature": "export function helper81(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper81",
+                  "symbol": "helper81",
+                  "kind": "function",
+                  "at": "api.ts:82-82",
+                  "signature": "export function helper81(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper82",
+                  "symbol": "helper82",
+                  "kind": "function",
+                  "at": "api.ts:83-83",
+                  "signature": "export function helper82(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper82",
+                  "symbol": "helper82",
+                  "kind": "function",
+                  "at": "api.ts:83-83",
+                  "signature": "export function helper82(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper83",
+                  "symbol": "helper83",
+                  "kind": "function",
+                  "at": "api.ts:84-84",
+                  "signature": "export function helper83(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper83",
+                  "symbol": "helper83",
+                  "kind": "function",
+                  "at": "api.ts:84-84",
+                  "signature": "export function helper83(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper84",
+                  "symbol": "helper84",
+                  "kind": "function",
+                  "at": "api.ts:85-85",
+                  "signature": "export function helper84(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper84",
+                  "symbol": "helper84",
+                  "kind": "function",
+                  "at": "api.ts:85-85",
+                  "signature": "export function helper84(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper85",
+                  "symbol": "helper85",
+                  "kind": "function",
+                  "at": "api.ts:86-86",
+                  "signature": "export function helper85(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper85",
+                  "symbol": "helper85",
+                  "kind": "function",
+                  "at": "api.ts:86-86",
+                  "signature": "export function helper85(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": true,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 1011,
+          "requestTokens": 66,
+          "responseTokens": 1972
+        },
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000,
+              "offset": 107,
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705"
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "head": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "6680921e83c182869053b2331ed98399ebfbfef4",
+              "identity": "442f9b3b17a6177ab2752089daa4ddda3734c8e057b62f6d0a19469e687b400e"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ec689896b48d13e7d2de9ffa77356839c62aa9a5e54068c94569b2b278d7cf8b"
+            },
+            "totalFiles": 1,
+            "filesSelected": 1,
+            "page": {
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705",
+              "offset": 107,
+              "returned": 9,
+              "total": 122,
+              "nextOffset": 116
+            },
+            "counts": {
+              "removed": 1,
+              "signature": 1,
+              "modified": 120
+            },
+            "changes": [
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper86",
+                  "symbol": "helper86",
+                  "kind": "function",
+                  "at": "api.ts:87-87",
+                  "signature": "export function helper86(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper86",
+                  "symbol": "helper86",
+                  "kind": "function",
+                  "at": "api.ts:87-87",
+                  "signature": "export function helper86(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper87",
+                  "symbol": "helper87",
+                  "kind": "function",
+                  "at": "api.ts:88-88",
+                  "signature": "export function helper87(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper87",
+                  "symbol": "helper87",
+                  "kind": "function",
+                  "at": "api.ts:88-88",
+                  "signature": "export function helper87(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper88",
+                  "symbol": "helper88",
+                  "kind": "function",
+                  "at": "api.ts:89-89",
+                  "signature": "export function helper88(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper88",
+                  "symbol": "helper88",
+                  "kind": "function",
+                  "at": "api.ts:89-89",
+                  "signature": "export function helper88(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper89",
+                  "symbol": "helper89",
+                  "kind": "function",
+                  "at": "api.ts:90-90",
+                  "signature": "export function helper89(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper89",
+                  "symbol": "helper89",
+                  "kind": "function",
+                  "at": "api.ts:90-90",
+                  "signature": "export function helper89(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper9",
+                  "symbol": "helper9",
+                  "kind": "function",
+                  "at": "api.ts:10-10",
+                  "signature": "export function helper9(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper9",
+                  "symbol": "helper9",
+                  "kind": "function",
+                  "at": "api.ts:10-10",
+                  "signature": "export function helper9(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper90",
+                  "symbol": "helper90",
+                  "kind": "function",
+                  "at": "api.ts:91-91",
+                  "signature": "export function helper90(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper90",
+                  "symbol": "helper90",
+                  "kind": "function",
+                  "at": "api.ts:91-91",
+                  "signature": "export function helper90(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper91",
+                  "symbol": "helper91",
+                  "kind": "function",
+                  "at": "api.ts:92-92",
+                  "signature": "export function helper91(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper91",
+                  "symbol": "helper91",
+                  "kind": "function",
+                  "at": "api.ts:92-92",
+                  "signature": "export function helper91(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper92",
+                  "symbol": "helper92",
+                  "kind": "function",
+                  "at": "api.ts:93-93",
+                  "signature": "export function helper92(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper92",
+                  "symbol": "helper92",
+                  "kind": "function",
+                  "at": "api.ts:93-93",
+                  "signature": "export function helper92(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper93",
+                  "symbol": "helper93",
+                  "kind": "function",
+                  "at": "api.ts:94-94",
+                  "signature": "export function helper93(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper93",
+                  "symbol": "helper93",
+                  "kind": "function",
+                  "at": "api.ts:94-94",
+                  "signature": "export function helper93(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": true,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 1042,
+          "requestTokens": 66,
+          "responseTokens": 1972
+        },
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000,
+              "offset": 116,
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705"
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "head": "6680921e83c182869053b2331ed98399ebfbfef4",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "6680921e83c182869053b2331ed98399ebfbfef4",
+              "identity": "442f9b3b17a6177ab2752089daa4ddda3734c8e057b62f6d0a19469e687b400e"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ec689896b48d13e7d2de9ffa77356839c62aa9a5e54068c94569b2b278d7cf8b"
+            },
+            "totalFiles": 1,
+            "filesSelected": 1,
+            "page": {
+              "reviewId": "0ef2151409af7cb5aafdb6df6539db4c73d0cf26fc4a4b2354df54542e1a5705",
+              "offset": 116,
+              "returned": 6,
+              "total": 122
+            },
+            "counts": {
+              "removed": 1,
+              "signature": 1,
+              "modified": 120
+            },
+            "changes": [
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper94",
+                  "symbol": "helper94",
+                  "kind": "function",
+                  "at": "api.ts:95-95",
+                  "signature": "export function helper94(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper94",
+                  "symbol": "helper94",
+                  "kind": "function",
+                  "at": "api.ts:95-95",
+                  "signature": "export function helper94(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper95",
+                  "symbol": "helper95",
+                  "kind": "function",
+                  "at": "api.ts:96-96",
+                  "signature": "export function helper95(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper95",
+                  "symbol": "helper95",
+                  "kind": "function",
+                  "at": "api.ts:96-96",
+                  "signature": "export function helper95(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper96",
+                  "symbol": "helper96",
+                  "kind": "function",
+                  "at": "api.ts:97-97",
+                  "signature": "export function helper96(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper96",
+                  "symbol": "helper96",
+                  "kind": "function",
+                  "at": "api.ts:97-97",
+                  "signature": "export function helper96(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper97",
+                  "symbol": "helper97",
+                  "kind": "function",
+                  "at": "api.ts:98-98",
+                  "signature": "export function helper97(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper97",
+                  "symbol": "helper97",
+                  "kind": "function",
+                  "at": "api.ts:98-98",
+                  "signature": "export function helper97(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper98",
+                  "symbol": "helper98",
+                  "kind": "function",
+                  "at": "api.ts:99-99",
+                  "signature": "export function helper98(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper98",
+                  "symbol": "helper98",
+                  "kind": "function",
+                  "at": "api.ts:99-99",
+                  "signature": "export function helper98(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              },
+              {
+                "change": "modified",
+                "before": {
+                  "id": "typescript:api.ts:helper99",
+                  "symbol": "helper99",
+                  "kind": "function",
+                  "at": "api.ts:100-100",
+                  "signature": "export function helper99(): number;"
+                },
+                "after": {
+                  "id": "typescript:api.ts:helper99",
+                  "symbol": "helper99",
+                  "kind": "function",
+                  "at": "api.ts:100-100",
+                  "signature": "export function helper99(): number;"
+                },
+                "reasons": ["Declaration source changed"],
+                "beforeHash": "55895fced1cf3fd654511b09b61f12e8bd8d40621ac39f471708c760e51aa97e",
+                "afterHash": "55919d2814624b2087441eaff1ec215da7975c8c19575f4b1db486267a69163b",
+                "consumers": [],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": false,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 534,
+          "requestTokens": 66,
+          "responseTokens": 1436
+        }
+      ],
+      "repeat": {
+        "elapsedMs": 171,
+        "identicalResponse": true
+      },
+      "returnedUniqueChanges": 122,
+      "missing": [],
+      "duplicateRows": 0,
+      "trafficTokens": 27975
+    }
+  ]
+}

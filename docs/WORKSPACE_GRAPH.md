@@ -1,7 +1,12 @@
 # Explore a workspace with PGraph
 
-Install the current VSIX, add every relevant local repository to the **same VS Code
-workspace** (File → Add Folder to Workspace), then run:
+The 0.5.0 preview supports one project, multiple open project folders, and a parent
+folder containing separate Git repositories. For example, opening `frontier/`
+discovers its direct child repositories; `frontier/` itself does not need a Git
+history. A folder with its own `.git` remains one project, including a monorepo.
+
+Install `pgraph-0.6.0.vsix`, open a trusted folder or add project folders to the
+**same VS Code workspace** (File → Add Folder to Workspace), then run:
 
 1. **PGraph: Index Workspace** — updates each repository's `.pgraph/graph.db`.
 2. **PGraph: Explore Relationships** — opens the interactive service map.
@@ -14,6 +19,73 @@ workspace** (File → Add Folder to Workspace), then run:
 The node and relationship lists support keyboard navigation alongside the canvas.
 The renderer is bundled Cytoscape.js; it makes no network requests. This release
 indexes folders in the current window's workspace, not folders open in other windows.
+
+## Project and Workspace scopes
+
+The 0.6.0 **Workspace Impact for Current Symbol** command connects supported
+HTTP/Azure operations to indexed handlers and candidate tests across these roots.
+It uses the source cursor as the origin and one total response budget. Ordinary
+**Impact Analysis** remains local. See [workspace impact](WORKSPACE_IMPACT.md) for
+setup, agent arguments, static evidence, unknowns and limits.
+
+**PGraph: Choose Scope** offers the whole workspace or a specific detected project.
+The status bar, sidebar and Daily Workflow picker display the selected scope.
+One detected project defaults to Project; multiple projects default to Workspace.
+An explicit choice is saved with the workspace. A pinned project remains selected
+when another project's editor gains focus.
+
+In Workspace scope, the daily source-text, stack-trace, freshness, cycle,
+changed-declaration, historical-impact, staged/branch, test-gap, available-check and recorded-check
+reports query each detected project and group evidence by project. Errors appear
+beside the affected project, so one missing index, initial commit or branch reference
+does not discard successful results elsewhere. Queries show progress and can be
+cancelled. Branch mode uses the explicitly supplied base independently in each repo.
+
+**Review Historical Impact** in 0.5.4 reconstructs the selected Git baseline for
+each project, including old consumers of removed declarations. Staged and committed
+after snapshots can differ from working source. See [snapshot semantics and
+limits](HISTORICAL_IMPACT.md); grouped historical reports do not prove cross-service
+compatibility and use a separate output budget per project.
+In 0.5.5, **Continue Historical Review** lists projects with pending declaration
+pages and queries the chosen project's captured comparison. It preserves that
+project's review identity and rejects changed inputs. [Paging limits](HISTORICAL_REVIEW_PAGING.md)
+remain independent of the cross-service impact gate.
+
+**Run Repository Check** offers scripts labeled by project and executes only the
+one deliberately selected. Saved investigations can be resumed across detected
+projects in Workspace scope. File and cursor actions resolve the project owning
+the source. In 0.5.1, **Find Relevant Context** and the `pgraph_context` agent tool
+retrieve across detected projects in Workspace scope. Other agent queries need a
+returned `project` ID or a pinned Project scope. Follow-up source reads therefore
+keep their repository identity even when another editor gains focus.
+
+**Review My Changes** refreshes all detected projects in Workspace scope and opens
+the grouped changed-declaration report. In Project scope it retains the conservative
+file-level review. **Index Repository** always targets one project; **Index
+Workspace** always indexes all detected projects, even when a project is pinned.
+Each project has its own `.pgraph` index, source paths and Git baseline.
+
+Run **PGraph: Refresh Workspace Projects** after adding or removing child
+repositories on disk. Discovery checks direct child folders of a non-Git parent;
+it does not recurse arbitrarily or follow child directory symlinks. It checks at
+most 256 child directories per open folder and retains at most 64 projects.
+Limits and unreadable folders are reported by Refresh Workspace Projects and the
+workspace reports. Deeper repositories can be added as open workspace folders.
+When child repositories are discovered, loose files beside them are not a project;
+open their containing folder separately if they need indexing.
+
+A plain source folder remains usable for supported TS/JS indexing and search.
+Git review requires a Git working tree with a resolvable initial commit. PGraph
+now distinguishes a non-Git folder from unavailable HEAD and gives a recovery
+message rather than displaying the raw failed command. It does not create a Git
+repository, make a commit or rewrite a parent's existing index to resolve this.
+
+Validation includes unit tests for container discovery, monorepo preservation,
+worktree markers, duplicates, symlinks and limits, plus an isolated real VS Code
+workspace with ordinary roots and a parent containing two child repositories.
+The host test checks separate indexes, grouped source matches, partial Git errors,
+child-source navigation/bookmarks and project pinning. It does not measure scale
+or full semantic impact across real services.
 
 ## Declare service identities without secrets
 
@@ -127,9 +199,52 @@ sets an explicit partial-view flag; a depth-limited neighborhood is intentional.
 The panel warns after edits or workspace-folder changes. Source navigation validates
 that the symbol belongs to the current displayed graph, its repository remains open,
 the index revision matches, and the source file still matches its indexed hash.
-Reindex then refresh if navigation reports stale evidence. CLI/MCP/Copilot context
-tools still query one root; cross-root context packing and impact ranking are future
-work.
+Reindex then refresh if navigation reports stale evidence. CLI and MCP servers
+remain bound to one configured root. Cross-service impact ranking remains future work.
+
+## Workspace context for developers and agents
+
+The 0.5.1 editor context response contains project IDs, names, index revisions,
+observation times, source hashes and selected symbols. Duplicate names and relative
+paths in different projects remain distinct. Sources are checked against their
+indexed hash when retrieved. Projects are queried sequentially; this is not an
+atomic snapshot, so edits after retrieval still require reindexing and fresh reads.
+
+An agent can start with:
+
+```json
+{
+  "task": "Investigate submitOrder failures",
+  "format": "json",
+  "maxTokens": 4000
+}
+```
+
+Then call `pgraph_excerpt`, `pgraph_file_slice`, `pgraph_impact` or another existing
+tool with **both** the returned `project` ID and the relevant symbol/file arguments.
+Project IDs are local to the canonical repository path. Closed or unknown projects
+are rejected; passing an arbitrary root path is unsupported. A standalone MCP
+server does not expose the editor's `project` field and never opens another repository.
+
+The final JSON or Markdown result, including metadata and errors, is counted with
+`cl100k_base` against one `maxTokens` budget. The agent adapter also checks its host
+model's token count when available. If even the project inventory cannot fit, the
+result requests a larger budget or a narrower Project scope. The editor command
+uses a ceiling of 2,000 tokens or 500 per project, whichever is larger (at most
+32,000). A tool request keeps the caller's explicit ceiling.
+
+Each worker retrieves at most 2,000 tokens of local candidate context. Packing
+visits local ranks in project order and considers at most 256 candidates. Scores
+from separate repositories are not treated as comparable. Whole symbol entries
+are retained or omitted; source text is never silently cut. `omittedSymbols`
+counts candidates dropped during workspace packing, not all unselected repository
+symbols. Project errors, local warnings and discovery limits remain visible.
+
+This is bounded project retrieval, not a proof of cross-service dependency or
+complete task recall. Workspace responses have no reusable receipt; `focus` and
+`previousContextId` require an explicit `project` or a pinned Project scope.
+Cursor commands still use the actual source project. No model is called, and the
+machine's Local/Assisted evidence setting still takes precedence over agent input.
 
 ## Library API
 

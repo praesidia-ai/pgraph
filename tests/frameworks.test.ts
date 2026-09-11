@@ -119,7 +119,9 @@ it("stores semantic provenance, rejects malformed/stale results and invalidates 
   const fact = graph.memory.accept(raw, input, "test-provider");
   expect(fact.evidence).toBe("semantic");
   expect(
-    graph.feature("authentication").symbols.map((n) => n.qualifiedName),
+    graph
+      .feature("authentication", "assisted")
+      .symbols.map((n) => n.qualifiedName),
   ).toContain("AuthService.login");
   expect(() =>
     graph.memory.accept('{"summary":"bad"}', input, "test-provider"),

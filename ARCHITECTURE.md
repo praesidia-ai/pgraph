@@ -33,6 +33,16 @@ Repository → discovery and hashes → TypeScript compiler → language-neutral
 - Context selection uses deterministic ranking and multiple representations per
   symbol. A real BPE tokenizer measures complete serialized output, including its
   envelope, with a final budget check. Consumers can inject their own tokenizer.
+- Schema 3 uses separate identity/signature/documentation/effect search fields with
+  weighted FTS ranking and English stemming. Bounded source identifiers, short
+  literals and JSDoc are indexed locally. Cursor anchors validate live hashes.
+- Context and feature queries default to local evidence, excluding cached model
+  facts. Explicit assisted queries include inferred evidence without invoking a
+  model. The editor's machine preference overrides agent query arguments.
+- Change review joins read-only Git file changes with current graph impact and
+  candidate tests. It is conservative file-level analysis; baseline deletions,
+  exact contract differences, cross-root impacts and test execution remain separate
+  work tracked by the v2 release gates.
 - Semantic memory is a separate, hash-keyed, untrusted layer with provenance,
   confidence and invalidation. Only an explicit VS Code command invokes Copilot.
   The core neither imports an AI SDK nor reads provider API keys.

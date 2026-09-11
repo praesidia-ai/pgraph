@@ -1,6 +1,6 @@
 {
   "name": "@praesidia/pgraph-git",
-  "version": "0.1.0",
+  "version": "0.6.1",
   "type": "module",
   "license": "MIT",
   "engines": {
@@ -20,8 +20,8 @@
     "dist/**/*.map"
   ],
   "dependencies": {
-    "@praesidia/pgraph-ir": "0.1.0",
-    "@praesidia/pgraph-shared": "0.1.0"
+    "@praesidia/pgraph-ir": "0.6.1",
+    "@praesidia/pgraph-shared": "0.6.1"
   },
   "description": "PGraph graph git: local graph-native repository context infrastructure.",
   "publishConfig": {

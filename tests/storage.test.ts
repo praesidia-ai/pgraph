@@ -23,7 +23,7 @@ it("migrates legacy FTS row IDs and maintains replacement search entries", () =>
     store.close();
     const old = new DatabaseSync(path);
     old.exec(
-      "DELETE FROM node_search; INSERT INTO node_search(rowid,id,text) VALUES(77,'before','before'); PRAGMA user_version=1;",
+      "DROP TABLE node_search; CREATE VIRTUAL TABLE node_search USING fts5(id UNINDEXED,text,tokenize='unicode61'); INSERT INTO node_search(rowid,id,text) VALUES(77,'before','before'); PRAGMA user_version=1;",
     );
     old.close();
     expect(() => new SqliteGraphStore(path, { readOnly: true })).toThrow(

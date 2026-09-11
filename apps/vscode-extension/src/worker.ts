@@ -1,6 +1,8 @@
 import { hash, safePath } from "@praesidia/pgraph-shared";
 import {
   PGraph,
+  workspaceImpact,
+  type WorkspaceImpactProject,
   relationships,
   topologySnapshot,
   composeWorkspace,
@@ -9,7 +11,14 @@ import {
   semanticPrompt,
   type SemanticInput,
 } from "@praesidia/pgraph-core";
-import { dispatchTool } from "@praesidia/pgraph-tools";
+import {
+  dispatchTool,
+  toolDefinitions,
+  workspaceCandidate,
+  packWorkspaceContext,
+  packWorkspaceImpact,
+  type WorkspaceProject,
+} from "@praesidia/pgraph-tools";
 let graph: PGraph | undefined;
 process.on("message", (message: unknown) => {
   if (!message || typeof message !== "object") return;
@@ -20,9 +29,116 @@ process.on("message", (message: unknown) => {
   };
   if (!Number.isSafeInteger(m.id) || typeof m.op !== "string") return;
   try {
+    // Validation/packing do not require the first project's index or configuration.
+    if (m.op === "validateTool" || m.op === "workspacePack") {
+      const result =
+        m.op === "validateTool"
+          ? toolDefinitions
+              .find((t) => t.name === m.args.name)
+              ?.schema.parse(m.args.input)
+          : packWorkspaceContext(
+              m.args.projects as WorkspaceProject[],
+              Number(m.args.maxTokens),
+              m.args.format as "json" | "markdown",
+              m.args.warnings as string[],
+            );
+      if (result === undefined) throw new Error("Unknown PGraph tool");
+      process.send?.({ id: m.id, result });
+      return;
+    }
+    if (m.op === "workspaceImpact") {
+      const input = toolDefinitions
+        .find((t) => t.name === "impact")!
+        .schema.parse(m.args.input) as {
+        project?: string;
+        symbol: string;
+        depth: number;
+        maxTokens: number;
+        workspace?: boolean;
+      };
+      const roots = m.args.projects as {
+        root: string;
+        project: string;
+        name: string;
+      }[];
+      if (
+        !input.project ||
+        !input.workspace ||
+        !Array.isArray(roots) ||
+        !roots.length ||
+        roots.length > 64
+      )
+        throw new Error(
+          "Workspace impact needs an origin project ID and 1–64 open projects",
+        );
+      const opened: WorkspaceImpactProject[] = [];
+      try {
+        for (const root of roots) {
+          const item: WorkspaceImpactProject = {
+            project: root.project,
+            name: root.name,
+          };
+          opened.push(item);
+          try {
+            item.graph = PGraph.open(root.root, {
+              requireIndex: true,
+              readOnly: true,
+            });
+          } catch (error) {
+            item.error =
+              error instanceof Error
+                ? error.message
+                : "Project index unavailable";
+          }
+        }
+        const result = workspaceImpact(opened, {
+          project: input.project,
+          symbol: input.symbol,
+          depth: input.depth,
+        });
+        result.warnings.push(
+          ...((m.args.warnings as string[] | undefined) ?? []),
+        );
+        process.send?.({
+          id: m.id,
+          result: packWorkspaceImpact(result, input.maxTokens),
+        });
+      } finally {
+        for (const item of opened) item.graph?.close();
+      }
+      return;
+    }
     graph ??= PGraph.open(process.argv[2]!);
     let result: unknown;
     switch (m.op) {
+      case "workspaceContext":
+        if (m.args.project !== hash(graph.root).slice(0, 24))
+          throw new Error(
+            "Project identity changed. Refresh Workspace Projects and reindex.",
+          );
+        result = workspaceCandidate(
+          graph,
+          m.args.input as Record<string, unknown>,
+        );
+        break;
+      case "focus":
+        result = graph.focus({
+          file: String(m.args.file),
+          line: Number(m.args.line),
+        });
+        break;
+      case "beginCheck":
+        result = graph.verification.begin(String(m.args.id));
+        break;
+      case "finishCheck":
+        result = graph.verification.finish(
+          String(m.args.id),
+          m.args.exitCode === null ? null : Number(m.args.exitCode),
+        );
+        break;
+      case "reviewChanges":
+        result = graph.reviewChanges();
+        break;
       case "init":
         result = graph.init();
         break;
@@ -33,7 +149,14 @@ process.on("message", (message: unknown) => {
         });
         break;
       case "tool":
-        if (!graph.status().revision && m.args.name !== "status")
+        if (
+          !graph.status().revision &&
+          m.args.name !== "status" &&
+          !(
+            m.args.name === "workflow" &&
+            (m.args.input as { action?: string })?.action === "health"
+          )
+        )
           throw new Error(
             "Index the repository first with PGraph: Index Repository",
           );

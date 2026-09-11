@@ -2,8 +2,10 @@
 
 Started 2026-09-08. The first delivered change addresses the reported company-repository
 indexing timeout. The workspace map and relationship browser are now delivered for the supported
-patterns in [the workspace guide](WORKSPACE_GRAPH.md). Ranking improvements remain
-planned.
+patterns in [the workspace guide](WORKSPACE_GRAPH.md). The 0.2.0 preview adds local
+evidence modes, richer retrieval, cursor context and conservative change review.
+Use [V2_DELIVERY.md](V2_DELIVERY.md) for delivered capabilities, remaining work and
+the gates before calling v2 complete.
 
 ## Research and choices
 

@@ -1,6 +1,6 @@
 {
   "name": "@praesidia/pgraph-cli",
-  "version": "0.1.0",
+  "version": "0.6.1",
   "type": "module",
   "license": "MIT",
   "engines": {
@@ -20,9 +20,9 @@
     "dist/**/*.map"
   ],
   "dependencies": {
-    "@praesidia/pgraph-core": "0.1.0",
-    "@praesidia/pgraph-tools": "0.1.0",
-    "@praesidia/pgraph-benchmark": "0.1.0"
+    "@praesidia/pgraph-core": "0.6.1",
+    "@praesidia/pgraph-tools": "0.6.1",
+    "@praesidia/pgraph-benchmark": "0.6.1"
   },
   "bin": {
     "pgraph": "./dist/main.js"

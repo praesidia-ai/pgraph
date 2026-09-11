@@ -1,6 +1,6 @@
 {
   "name": "@praesidia/pgraph-ranking",
-  "version": "0.1.0",
+  "version": "0.6.1",
   "type": "module",
   "license": "MIT",
   "engines": {
@@ -20,7 +20,9 @@
     "dist/**/*.map"
   ],
   "dependencies": {
-    "@praesidia/pgraph-ir": "0.1.0"
+    "@praesidia/pgraph-ir": "0.6.1",
+    "@praesidia/pgraph-shared": "0.6.1",
+    "stemmer": "2.0.1"
   },
   "description": "PGraph graph ranking: local graph-native repository context infrastructure.",
   "publishConfig": {

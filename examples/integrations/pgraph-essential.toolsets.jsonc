@@ -1,0 +1,17 @@
+// Optional VS Code user tool set. Add with Chat: Configure Tool Sets.
+// Select this group and deselect other PGraph tools in the chat tools picker.
+// This file does not configure anything merely by existing in the repository.
+{
+  "pgraph-essential": {
+    "tools": [
+      "pgraph_workflow",
+      "pgraph_context",
+      "pgraph_search",
+      "pgraph_excerpt",
+      "pgraph_file_slice",
+      "pgraph_impact",
+    ],
+    "description": "Find code, inspect bounded source and review impact using local PGraph evidence.",
+    "icon": "search",
+  },
+}

@@ -1,13 +1,20 @@
 import { RelationshipExplorer } from "./explorer.js";
+import { registerDaily } from "./daily.js";
+import { discoverProjects, containsPath } from "./projects.js";
+import { requestWorkspaceContext } from "./workspace-context.js";
+import { requestWorkspaceImpact } from "./workspace-impact.js";
 import * as vscode from "vscode";
 import { readFileSync } from "node:fs";
+import { relative } from "node:path";
 import { EngineClient, NodeLaunchError } from "./client.js";
 import type {
   GraphStats,
+  GraphNode,
   ExplorerGraph,
   RepositoryTopology,
   SemanticInput,
   IndexResult,
+  ChangeReview,
 } from "@praesidia/pgraph-core";
 
 interface ToolManifest {
@@ -19,6 +26,11 @@ class Overview implements vscode.TreeDataProvider<vscode.TreeItem> {
   readonly onDidChangeTreeData = this.changed.event;
   private stats: GraphStats | undefined;
   private recent = "Ready to index";
+  private scope = "Choose project or workspace";
+  updateScope(scope: string): void {
+    this.scope = scope;
+    this.changed.fire();
+  }
   update(stats?: GraphStats, message?: string): void {
     this.stats = stats;
     this.recent = message ?? this.recent;
@@ -33,8 +45,18 @@ class Overview implements vscode.TreeDataProvider<vscode.TreeItem> {
   }
   getChildren(): vscode.TreeItem[] {
     const rows: [string, string, string?][] = [
+      ["Scope", this.scope, "chooseScope"],
+      ["Daily workflow", "Find, understand and verify", "daily"],
+      [
+        "Changed declarations",
+        "Focus the review on edited code",
+        "changedDeclarations",
+      ],
+      ["Verification", "Run checks and inspect results", "runCheck"],
+      ["Resume work", "Saved investigations", "resumeInvestigation"],
       ["Workspace", "Index all open folders", "indexWorkspace"],
       ["Service map", "Explore relationships", "explore"],
+      ["Connection mappings", "Find missing settings", "connections"],
       [
         "Index health",
         this.stats?.revision ? "Indexed" : "Not indexed",
@@ -49,6 +71,13 @@ class Overview implements vscode.TreeDataProvider<vscode.TreeItem> {
         "architecture",
       ],
       ["Current task", "Find relevant context", "context"],
+      ["Current symbol", "Context at cursor", "contextHere"],
+      [
+        "Workspace impact",
+        "Trace this symbol across services",
+        "workspaceImpactHere",
+      ],
+      ["My changes", "Affected code and candidate tests", "reviewChanges"],
       ["Token savings", "Repository-context estimates", "savings"],
       ["Recent indexing", this.recent, "reindex"],
     ];
@@ -62,6 +91,7 @@ class Overview implements vscode.TreeDataProvider<vscode.TreeItem> {
 }
 export function activate(context: vscode.ExtensionContext): {
   request: (name: string, input: unknown) => Promise<string>;
+  projects: () => { name: string; root: string }[];
 } {
   const output = vscode.window.createOutputChannel("PGraph");
   context.subscriptions.push(output);
@@ -71,13 +101,50 @@ export function activate(context: vscode.ExtensionContext): {
     vscode.window.registerTreeDataProvider("pgraph.overview", overview),
   );
   let selectedFolder: vscode.WorkspaceFolder | undefined;
+  let discovery: ReturnType<typeof discoverProjects> | undefined;
+  const scopeChanged = new vscode.EventEmitter<void>();
+  context.subscriptions.push(scopeChanged);
+  let scope = context.workspaceState.get<"project" | "workspace">(
+    "pgraph.scope",
+  );
+  let pinnedProject = context.workspaceState.get<string>("pgraph.project");
+  const projects = (): (vscode.WorkspaceFolder & { project: string })[] => {
+    if (!vscode.workspace.isTrusted)
+      throw new Error("Trust the workspace before using PGraph");
+    discovery ??= discoverProjects(
+      (vscode.workspace.workspaceFolders ?? [])
+        .filter((f) => f.uri.scheme === "file")
+        .map((f) => ({ name: f.name, path: f.uri.fsPath })),
+    );
+    return discovery.projects.map((p, index) => ({
+      name: p.name,
+      project: p.project,
+      uri: vscode.Uri.file(p.path),
+      index,
+    }));
+  };
+  const discoveryWarnings = () => discovery?.warnings ?? [];
+  const projectAt = (uri: vscode.Uri): vscode.WorkspaceFolder | undefined =>
+    uri.scheme === "file"
+      ? projects()
+          .filter((p) => containsPath(p.uri.fsPath, uri.fsPath))
+          .sort((a, b) => b.uri.fsPath.length - a.uri.fsPath.length)[0]
+      : undefined;
+  const workspaceScope = () =>
+    (scope ?? (projects().length > 1 ? "workspace" : "project")) ===
+    "workspace";
+  const scopeLabel = () =>
+    workspaceScope()
+      ? `Workspace · ${projects().length} projects`
+      : `Project · ${projects().find((p) => p.uri.toString() === pinnedProject)?.name ?? selectedFolder?.name ?? projects()[0]?.name ?? "Choose project"}`;
   let explorer: RelationshipExplorer | undefined;
   const explorerRoots = new Map<string, vscode.WorkspaceFolder>();
   const engineFor = (folder: vscode.WorkspaceFolder): EngineClient => {
     if (!vscode.workspace.isTrusted)
       throw new Error("Trust the workspace before using PGraph");
     if (
-      !vscode.workspace.workspaceFolders?.some(
+      !vscode.workspace.getWorkspaceFolder(folder.uri) ||
+      !projects().some(
         (current) => current.uri.toString() === folder.uri.toString(),
       )
     )
@@ -99,22 +166,40 @@ export function activate(context: vscode.ExtensionContext): {
   const client = async (): Promise<EngineClient> => {
     if (!vscode.workspace.isTrusted)
       throw new Error("Trust the workspace before using PGraph");
-    const folders = vscode.workspace.workspaceFolders;
+    const folders = projects();
     if (!folders?.length)
       throw new Error("Open a local repository folder first");
     const editor = vscode.window.activeTextEditor;
-    let folder = editor
-      ? vscode.workspace.getWorkspaceFolder(editor.document.uri)
-      : undefined;
+    let folder: vscode.WorkspaceFolder | undefined =
+      scope === "project"
+        ? folders.find((p) => p.uri.toString() === pinnedProject)
+        : undefined;
+    folder ??= editor ? projectAt(editor.document.uri) : undefined;
+    if (
+      selectedFolder &&
+      !folders.some((p) => p.uri.toString() === selectedFolder!.uri.toString())
+    )
+      selectedFolder = undefined;
     folder ??= selectedFolder;
     folder ??=
       folders.length === 1
         ? folders[0]
-        : await vscode.window.showWorkspaceFolderPick({
-            placeHolder: "Choose the repository to query",
-          });
+        : (
+            await vscode.window.showQuickPick(
+              folders.map((project) => ({
+                label: project.name,
+                description: project.uri.fsPath,
+                project,
+              })),
+              {
+                placeHolder:
+                  "Choose the project for this symbol or source query",
+              },
+            )
+          )?.project;
     if (!folder) throw new vscode.CancellationError();
     selectedFolder = folder;
+    overview.updateScope(scopeLabel());
     return engineFor(folder);
   };
   const show = async (text: string, language = "markdown"): Promise<void> => {
@@ -129,7 +214,55 @@ export function activate(context: vscode.ExtensionContext): {
     input: unknown,
     token?: vscode.CancellationToken,
   ): Promise<string> => {
+    if (
+      name === "impact" &&
+      input &&
+      typeof input === "object" &&
+      (input as Record<string, unknown>).workspace === true
+    )
+      return requestWorkspaceImpact(
+        projects(),
+        engineFor,
+        input,
+        discoveryWarnings(),
+        token,
+      );
+    const project =
+      input && typeof input === "object"
+        ? (input as Record<string, unknown>).project
+        : undefined;
+    if (project !== undefined) {
+      const folder = projects().find((p) => p.project === project);
+      if (!folder)
+        throw new Error(
+          "Unknown or closed project. Get a current project ID from workspace context or Choose Scope.",
+        );
+      return requestFrom(engineFor(folder), name, input, token);
+    }
+    if (name === "context" && workspaceScope())
+      return requestWorkspaceContext(
+        projects(),
+        engineFor,
+        input,
+        discoveryWarnings(),
+        token,
+      );
     const engine = await client();
+    return requestFrom(engine, name, input, token);
+  };
+  const requestFrom = (
+    engine: EngineClient,
+    name: string,
+    input: unknown,
+    token?: vscode.CancellationToken,
+  ): Promise<string> => {
+    if (["context", "feature"].includes(name))
+      input = {
+        ...(input as Record<string, unknown>),
+        evidenceMode: vscode.workspace
+          .getConfiguration("pgraph")
+          .get<string>("evidenceMode", "local"),
+      };
     return engine.request<string>("tool", { name, input }, token);
   };
   const refresh = async (): Promise<void> => {
@@ -168,6 +301,85 @@ export function activate(context: vscode.ExtensionContext): {
       ),
     );
   };
+  registerDaily(context, {
+    client,
+    folder: () => selectedFolder,
+    command,
+    show,
+    projects,
+    engineFor,
+    workspaceScope,
+    scopeLabel,
+    onScopeChanged: scopeChanged.event,
+    projectAt,
+    warnings: discoveryWarnings,
+    rememberProject: (folder) => {
+      selectedFolder = folder;
+      overview.updateScope(scopeLabel());
+    },
+  });
+  command("chooseScope", async (arg) => {
+    const available = projects();
+    const choice =
+      arg ??
+      (
+        await vscode.window.showQuickPick(
+          [
+            {
+              label: "Workspace",
+              description: `Query all ${available.length} detected projects`,
+              value: "workspace",
+            },
+            ...available.map((p) => ({
+              label: p.name,
+              description: p.uri.fsPath,
+              value: p.uri.toString(),
+            })),
+          ],
+          { placeHolder: "Use the whole workspace or pin one project" },
+        )
+      )?.value;
+    if (!choice) return;
+    if (choice === "workspace") {
+      scope = "workspace";
+      pinnedProject = undefined;
+    } else {
+      const project = available.find((p) => p.uri.toString() === choice);
+      if (!project)
+        throw new Error(
+          "Choose a project currently detected in this workspace",
+        );
+      scope = "project";
+      pinnedProject = choice;
+      selectedFolder = project;
+    }
+    await context.workspaceState.update("pgraph.scope", scope);
+    await context.workspaceState.update("pgraph.project", pinnedProject);
+    overview.updateScope(scopeLabel());
+    scopeChanged.fire();
+    return { scope, project: pinnedProject, projects: available.length };
+  });
+  command("refreshProjects", async () => {
+    discovery = undefined;
+    const available = projects();
+    for (const [root, engine] of clients) {
+      if (!available.some((p) => p.uri.fsPath === root)) {
+        engine.dispose();
+        clients.delete(root);
+      }
+    }
+    overview.updateScope(scopeLabel());
+    scopeChanged.fire();
+    await show(
+      [
+        "# PGraph workspace projects",
+        ...available.map((p) => `- ${p.name}: ${p.uri.fsPath}`),
+        ...discoveryWarnings(),
+        "Choose Scope selects one project or the workspace. Index Workspace indexes the detected projects separately.",
+      ].join("\n\n"),
+    );
+    return available.map((p) => ({ name: p.name, root: p.uri.toString() }));
+  });
   const index = async (): Promise<unknown> =>
     vscode.window.withProgress(
       {
@@ -217,7 +429,7 @@ export function activate(context: vscode.ExtensionContext): {
   const indexWorkspace = async (): Promise<unknown> => {
     if (!vscode.workspace.isTrusted)
       throw new Error("Trust the workspace before using PGraph");
-    const folders = vscode.workspace.workspaceFolders;
+    const folders = projects();
     if (!folders?.length) throw new Error("Open repository folders first");
     const results: {
       root: string;
@@ -290,6 +502,7 @@ export function activate(context: vscode.ExtensionContext): {
       indexed: results.filter((root) => root.result).length,
       failed: results.filter((root) => root.error).length,
       roots: results,
+      warnings: discoveryWarnings(),
     };
     overview.updateRecent(
       `${summary.indexed}/${folders.length} workspace folders indexed; ${summary.failed} failed`,
@@ -305,7 +518,7 @@ export function activate(context: vscode.ExtensionContext): {
     return workspaceRun;
   });
   const workspaceGraph = async (): Promise<ExplorerGraph> => {
-    const folders = vscode.workspace.workspaceFolders ?? [];
+    const folders = projects();
     if (!folders.length) throw new Error("Open repository folders first");
     if (folders.length > 64)
       throw new Error("Select up to 64 workspace roots for this map");
@@ -423,6 +636,42 @@ export function activate(context: vscode.ExtensionContext): {
       await show(text, "json");
       return text;
     });
+  command("workspaceImpactHere", async () => {
+    const editor = vscode.window.activeTextEditor;
+    const folder = editor && projectAt(editor.document.uri);
+    if (!editor || !folder)
+      throw new Error(
+        "Open an indexed source file and place the cursor inside a symbol",
+      );
+    if (editor.document.isDirty)
+      throw new Error(
+        "Save and reindex before using workspace impact for this symbol",
+      );
+    const engine = engineFor(folder);
+    let focus: GraphNode;
+    try {
+      focus = await engine.request<GraphNode>("focus", {
+        file: relative(
+          folder.uri.fsPath,
+          editor.document.uri.fsPath,
+        ).replaceAll("\\", "/"),
+        line: editor.selection.active.line + 1,
+      });
+    } finally {
+      engine.releaseIdle();
+    }
+    const project = projects().find(
+      (p) => p.uri.toString() === folder.uri.toString(),
+    )?.project;
+    const text = await request("impact", {
+      workspace: true,
+      project,
+      symbol: focus.id,
+      maxTokens: Math.min(32000, Math.max(6000, projects().length * 500)),
+    });
+    await show(text, "json");
+    return text;
+  });
   command("context", async (arg) => {
     const task =
       arg ??
@@ -432,11 +681,98 @@ export function activate(context: vscode.ExtensionContext): {
     if (!task) return;
     const text = await request("context", {
       task,
+      maxTokens: workspaceScope()
+        ? Math.min(32000, Math.max(2000, projects().length * 500))
+        : 2000,
+      format: "markdown",
+    });
+    await show(text);
+    return text;
+  });
+  command("contextHere", async (arg) => {
+    const editor = vscode.window.activeTextEditor;
+    const folder = editor && projectAt(editor.document.uri);
+    if (!editor || !folder || editor.document.uri.scheme !== "file")
+      throw new Error(
+        "Open an indexed source file and place the cursor inside a symbol",
+      );
+    if (editor.document.isDirty)
+      throw new Error(
+        "Save and reindex before using indexed context for this symbol",
+      );
+    const focus = {
+      file: relative(folder.uri.fsPath, editor.document.uri.fsPath).replaceAll(
+        "\\",
+        "/",
+      ),
+      line: editor.selection.active.line + 1,
+    };
+    const task =
+      arg ??
+      (await vscode.window.showInputBox({
+        prompt: "What do you want to change or understand about this symbol?",
+      }));
+    if (!task) return;
+    selectedFolder = folder;
+    const text = await requestFrom(engineFor(folder), "context", {
+      task,
+      focus,
       maxTokens: 2000,
       format: "markdown",
     });
     await show(text);
     return text;
+  });
+  command("reviewChanges", async () => {
+    if (workspaceScope()) {
+      await vscode.commands.executeCommand("pgraph.indexWorkspace");
+      return vscode.commands.executeCommand("pgraph.changedDeclarations");
+    }
+    const engine = await client();
+    await vscode.window.withProgress(
+      {
+        location: vscode.ProgressLocation.Notification,
+        title: "PGraph: updating index for change review",
+        cancellable: true,
+      },
+      (progress, token) =>
+        engine.request("index", {}, token, (update) =>
+          progress.report({ message: update.message }),
+        ),
+    );
+    const review = await engine.request<ChangeReview>("reviewChanges");
+    const at = (node: ChangeReview["tests"][number]["node"]) =>
+      `${node.qualifiedName} — ${node.location?.file ?? "unknown"}:${node.location?.startLine ?? "?"}`;
+    await show(
+      [
+        "# PGraph change review",
+        `Compared with ${review.base.slice(0, 12)} | Index revision ${review.revision}`,
+        `${review.totalFiles} changed files. Conservative file-level impact; no checks have been executed.`,
+        ...(review.truncated
+          ? ["Some files or relationships were omitted by the review limits."]
+          : []),
+        "\n## Changed files",
+        ...review.files.map(
+          (file) =>
+            `- ${file.file} (${file.status})${file.limitation ? ` — ${file.limitation}` : ""}`,
+        ),
+        "\n## Affected code",
+        ...review.affected.map(
+          ({ node, potentialDispatch }) =>
+            `- ${at(node)}${potentialDispatch ? " (possible interface dispatch)" : ""}`,
+        ),
+        "\n## Candidate tests",
+        ...review.tests.map(
+          ({ node, potentialDispatch }) =>
+            `- ${at(node)}${potentialDispatch ? " (possible interface dispatch)" : ""}`,
+        ),
+        "\n## Suggested checks",
+        ...review.checks.map((check) => `- ${check}`),
+        "\n## Analysis limits",
+        ...review.warnings.map((warning) => `- ${warning}`),
+      ].join("\n"),
+    );
+    return review;
   });
   command("savings", async () => {
     const metrics = await (await client()).request("metrics");
@@ -525,6 +861,10 @@ export function activate(context: vscode.ExtensionContext): {
       vscode.lm.registerTool<Record<string, unknown>>(`pgraph_${tool.name}`, {
         async invoke(options, token) {
           let input = { ...options.input };
+          if (workspaceScope() && tool.name !== "context" && !input.project)
+            throw new Error(
+              "Workspace tool queries need a project ID from pgraph_context, or pin a project with PGraph: Choose Scope.",
+            );
           const modelBudget = options.tokenizationOptions?.tokenBudget;
           if (modelBudget !== undefined) {
             if (modelBudget < 128)
@@ -574,33 +914,45 @@ export function activate(context: vscode.ExtensionContext): {
         },
         prepareInvocation() {
           return {
-            invocationMessage: `PGraph: ${tool.name} (local repository)`,
+            invocationMessage: `PGraph: ${tool.name} (${scopeLabel()})`,
           };
         },
       }),
     );
   context.subscriptions.push(
     vscode.workspace.onDidChangeWorkspaceFolders((event) => {
+      discovery = undefined;
       for (const folder of event.removed) {
-        clients.get(folder.uri.fsPath)?.dispose();
-        clients.delete(folder.uri.fsPath);
-        if (selectedFolder?.uri.toString() === folder.uri.toString())
+        for (const [root, engine] of clients)
+          if (
+            containsPath(folder.uri.fsPath, root) &&
+            !vscode.workspace.getWorkspaceFolder(vscode.Uri.file(root))
+          ) {
+            engine.dispose();
+            clients.delete(root);
+          }
+        if (
+          selectedFolder &&
+          containsPath(folder.uri.fsPath, selectedFolder.uri.fsPath)
+        )
           selectedFolder = undefined;
       }
+      scopeChanged.fire();
     }),
   );
   const timers = new Map<string, ReturnType<typeof setTimeout>>();
-  const watcher = vscode.workspace.createFileSystemWatcher(
+  const watchers = [
     "**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json}",
-  );
-  context.subscriptions.push(watcher);
+    "**/{yarn.lock,pnpm-lock.yaml,bun.lock}",
+  ].map((pattern) => vscode.workspace.createFileSystemWatcher(pattern));
+  context.subscriptions.push(...watchers);
   const changed = (uri: vscode.Uri): void => {
     if (
       /\/(node_modules|\.pgraph|dist|build|\.next|coverage)\//.test(uri.path) ||
       !vscode.workspace.getConfiguration("pgraph").get<boolean>("autoIndex")
     )
       return;
-    const folder = vscode.workspace.getWorkspaceFolder(uri);
+    const folder = projectAt(uri);
     if (!folder) return;
     const engine = clients.get(folder.uri.fsPath);
     if (!engine) return;
@@ -620,14 +972,20 @@ export function activate(context: vscode.ExtensionContext): {
     );
   };
   context.subscriptions.push(
-    watcher.onDidChange(changed),
-    watcher.onDidCreate(changed),
-    watcher.onDidDelete(changed),
+    ...watchers.flatMap((watcher) => [
+      watcher.onDidChange(changed),
+      watcher.onDidCreate(changed),
+      watcher.onDidDelete(changed),
+    ]),
     {
       dispose() {
         for (const timer of timers.values()) clearTimeout(timer);
       },
     },
   );
-  return { request };
+  return {
+    request,
+    projects: () =>
+      projects().map((p) => ({ name: p.name, root: p.uri.toString() })),
+  };
 }

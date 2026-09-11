@@ -1,3 +1,4 @@
+export const EXTRACTION_VERSION = 6;
 export const nodeKinds = [
   "repository",
   "package",
@@ -59,6 +60,11 @@ export const edgeTypes = [
 ] as const;
 export type EdgeType = (typeof edgeTypes)[number];
 export type Metadata = Record<string, unknown>;
+export type EvidenceMode = "local" | "assisted";
+export interface SourceFocus {
+  file: string;
+  line: number;
+}
 export interface Provenance {
   source: string;
   confidence: number;
@@ -143,6 +149,7 @@ export interface SearchOptions {
   offset?: number;
   scope?: string;
   kind?: NodeKind;
+  kinds?: NodeKind[];
 }
 export interface SemanticFact extends Provenance {
   id: string;

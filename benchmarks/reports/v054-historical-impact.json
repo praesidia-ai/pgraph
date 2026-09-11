@@ -1,0 +1,800 @@
+{
+  "generatedAt": "2026-09-10T17:38:04.393Z",
+  "node": "v22.22.0",
+  "platform": "darwin/arm64",
+  "baselineArtifactSha256": "4cc25a4dbf4534f5c3d3fc459148be7c55de1db6bd3f8a19388906ffadb12336",
+  "currentWorkerSha256": "620c16cc24aa8eb08d47092640f49b89cf58c6c1cbe049fc36c56c4ed51fc935",
+  "compiler": "5.9.3",
+  "fixtures": {
+    ".gitignore": ".pgraph/\n",
+    "package.json": "{\"name\":\"history-probe\",\"type\":\"module\"}",
+    "tsconfig.json": "{\"compilerOptions\":{\"module\":\"NodeNext\",\"target\":\"ES2022\",\"noEmit\":true,\"strict\":true,\"types\":[]},\"include\":[\"*.ts\"]}",
+    "price.ts": "export function price(quantity: number): number { return quantity * 2; }\n",
+    "checkout.ts": "import {price} from './price.js'; export function checkout() { return price(2); }\n",
+    "checkout.test.ts": "import {checkout} from './checkout.js'; declare function test(name:string,run:()=>void):void; test('checkout works',()=>{checkout();});\n"
+  },
+  "fixtureHash": "b61c5a1da2d56b8fd2993e23f8b6ee86199332d0f117ca5fd02ba02f66fae95c",
+  "tokenizer": "cl100k_base",
+  "method": "Retained 0.5.3 and current workers index identical post-edit sources with identical committed baselines. Old current-declaration/file-review tools are compared with the new historical action. A separate TypeScript noEmit process checks each fixture before/after editing. Tests are only parsed; no application tests/scripts or model tasks run. Traffic counts JSON {name,input} plus returned text, excluding indexing, tool discovery, IPC framing, compiler execution and the explicitly recorded repeat timing check. More historical evidence may require more output; this is not paid-token savings or completed-agent-task evidence.",
+  "runs": [
+    {
+      "scenario": "deleted-api",
+      "version": "baseline",
+      "editedSource": null,
+      "before": {
+        "exitCode": 0,
+        "diagnostics": "",
+        "codes": []
+      },
+      "after": {
+        "exitCode": 2,
+        "diagnostics": "../../../..<fixture>/checkout.ts(1,21): error TS2307: Cannot find module './price.js' or its corresponding type declarations.\n",
+        "codes": [2307]
+      },
+      "indexMs": 489,
+      "queries": [
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "changes",
+              "maxTokens": 2000
+            }
+          },
+          "response": {
+            "base": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+            "head": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+            "mode": "working",
+            "revision": 1,
+            "totalFiles": 1,
+            "files": [
+              {
+                "file": "price.ts",
+                "status": "D",
+                "hunks": [],
+                "unknown": "Not indexed; source/configuration impact remains unknown"
+              }
+            ],
+            "declarations": [],
+            "unknown": [
+              {
+                "file": "price.ts",
+                "reason": "Deleted file: historical symbols and consumers require a baseline graph"
+              }
+            ],
+            "truncated": false,
+            "warnings": [
+              "Hunk-to-current-declaration mapping, not a semantic contract comparison. Renames/removals and historical consumers may be unknown."
+            ]
+          },
+          "elapsedMs": 386,
+          "requestTokens": 17,
+          "responseTokens": 159,
+          "responseHash": "6e998c78b1c2237c28719257b0d1a3c19cf6ad1a5966684488b0f045ecd22fa1"
+        },
+        {
+          "request": {
+            "name": "review_changes",
+            "input": {
+              "maxTokens": 2000
+            }
+          },
+          "response": {
+            "base": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+            "revision": 1,
+            "analysis": "current-file-dependencies",
+            "totalFiles": 1,
+            "files": [
+              {
+                "file": "price.ts",
+                "status": "D",
+                "symbols": 0,
+                "limitation": "Deleted file: previous consumers require a baseline graph"
+              }
+            ],
+            "affected": [],
+            "tests": [],
+            "checks": [
+              "Run typecheck/build for affected packages",
+              "Run the listed candidate tests and required package/CI checks",
+              "Run wider checks for files or dependencies marked unknown/omitted"
+            ],
+            "warnings": [
+              "Conservative file-level impact in this repository. Deleted/renamed symbols and previous contracts require a baseline graph. Cross-service consumers are not included.",
+              "No candidate tests found; this does not establish test coverage or safety."
+            ],
+            "truncated": false
+          },
+          "elapsedMs": 132,
+          "requestTokens": 14,
+          "responseTokens": 167,
+          "responseHash": "cb3220506fd63dd81824a9087417a532b2c4321b915c3d509477f7dfa48ef55c"
+        }
+      ],
+      "trafficTokens": 357
+    },
+    {
+      "scenario": "deleted-api",
+      "version": "current",
+      "editedSource": null,
+      "before": {
+        "exitCode": 0,
+        "diagnostics": "",
+        "codes": []
+      },
+      "after": {
+        "exitCode": 2,
+        "diagnostics": "../../../..<fixture>/checkout.ts(1,21): error TS2307: Cannot find module './price.js' or its corresponding type declarations.\n",
+        "codes": [2307]
+      },
+      "indexMs": 358,
+      "queries": [
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+            "head": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+              "identity": "740ffb66e198fefaf7bc808fc476c280a54438c1927ee3248304a0a577967793"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "e9c37e6b4ea9d77f6084d08b4868def3bda6a9d1b1a0c32dd19c53fc107a5be3"
+            },
+            "totalFiles": 1,
+            "changes": [
+              {
+                "change": "removed",
+                "before": {
+                  "id": "typescript:price.ts:price",
+                  "symbol": "price",
+                  "kind": "function",
+                  "at": "price.ts:1-1",
+                  "signature": "export function price(quantity: number): number;"
+                },
+                "reasons": [
+                  "Declaration absent at its previous path/name in the selected after snapshot"
+                ],
+                "beforeHash": "308ccda5b25a64b1d981dc78a0901f85c03aba08bc32ba537ee021976ae60473",
+                "consumers": [
+                  {
+                    "node": {
+                      "id": "typescript:checkout.ts:checkout",
+                      "symbol": "checkout",
+                      "kind": "function",
+                      "at": "checkout.ts:1-1",
+                      "signature": "export function checkout(): number;"
+                    },
+                    "path": [
+                      {
+                        "symbol": "price",
+                        "at": "price.ts:1"
+                      },
+                      {
+                        "symbol": "checkout",
+                        "at": "checkout.ts:1",
+                        "edge": "CALLS",
+                        "direction": "in"
+                      }
+                    ],
+                    "potentialDispatch": false,
+                    "snapshot": "before",
+                    "afterState": "same source"
+                  },
+                  {
+                    "node": {
+                      "id": "typescript:checkout.test.ts:checkout works",
+                      "symbol": "checkout works",
+                      "kind": "test",
+                      "at": "checkout.test.ts:1-1",
+                      "signature": "test(\"checkout works\")"
+                    },
+                    "path": [
+                      {
+                        "symbol": "price",
+                        "at": "price.ts:1"
+                      },
+                      {
+                        "symbol": "checkout",
+                        "at": "checkout.ts:1",
+                        "edge": "CALLS",
+                        "direction": "in"
+                      },
+                      {
+                        "symbol": "checkout works",
+                        "at": "checkout.test.ts:1",
+                        "edge": "CALLS",
+                        "direction": "in"
+                      }
+                    ],
+                    "potentialDispatch": false,
+                    "snapshot": "before",
+                    "afterState": "same source"
+                  }
+                ],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": false,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 688,
+          "requestTokens": 19,
+          "responseTokens": 620,
+          "responseHash": "e6dbdd2580e20e607f269b1aba2e0fc80ee89c9ccb0fa3b824bc39fdffd2b528"
+        }
+      ],
+      "repeat": {
+        "elapsedMs": 126,
+        "identicalResponse": true
+      },
+      "trafficTokens": 639
+    },
+    {
+      "scenario": "changed-parameter",
+      "version": "baseline",
+      "editedSource": "export function price(quantity: string): number { return quantity.length; }\n",
+      "before": {
+        "exitCode": 0,
+        "diagnostics": "",
+        "codes": []
+      },
+      "after": {
+        "exitCode": 2,
+        "diagnostics": "../../../..<fixture>/checkout.ts(1,77): error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.\n",
+        "codes": [2345]
+      },
+      "indexMs": 292,
+      "queries": [
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "changes",
+              "maxTokens": 2000
+            }
+          },
+          "response": {
+            "base": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+            "head": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+            "mode": "working",
+            "revision": 1,
+            "totalFiles": 1,
+            "files": [
+              {
+                "file": "price.ts",
+                "status": "M",
+                "hunks": [
+                  {
+                    "oldStart": 1,
+                    "oldCount": 1,
+                    "newStart": 1,
+                    "newCount": 1
+                  }
+                ]
+              }
+            ],
+            "declarations": [
+              {
+                "node": {
+                  "id": "typescript:price.ts:price",
+                  "symbol": "price",
+                  "kind": "function",
+                  "at": "price.ts:1-1",
+                  "signature": "export function price(quantity: string): number;"
+                },
+                "hunks": [1],
+                "change": "modified"
+              }
+            ],
+            "unknown": [],
+            "truncated": false,
+            "warnings": [
+              "Hunk-to-current-declaration mapping, not a semantic contract comparison. Renames/removals and historical consumers may be unknown."
+            ]
+          },
+          "elapsedMs": 233,
+          "requestTokens": 17,
+          "responseTokens": 198,
+          "responseHash": "ff47f057e1fdf959665277fbd5aea9ae699f28715ab67664b453ae82fb105e0a"
+        },
+        {
+          "request": {
+            "name": "review_changes",
+            "input": {
+              "maxTokens": 2000
+            }
+          },
+          "response": {
+            "base": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+            "revision": 1,
+            "analysis": "current-file-dependencies",
+            "totalFiles": 1,
+            "files": [
+              {
+                "file": "price.ts",
+                "status": "M",
+                "symbols": 1,
+                "indexedHash": "43aea005684032d5c59b477871b0a50d2000a9cf7c68478319a27992cdf6fbb1"
+              }
+            ],
+            "affected": [
+              {
+                "node": {
+                  "id": "typescript:price.ts:price",
+                  "symbol": "price",
+                  "kind": "function",
+                  "at": "price.ts:1-1",
+                  "signature": "export function price(quantity: string): number;"
+                },
+                "via": "typescript:price.ts:price",
+                "potentialDispatch": false
+              },
+              {
+                "node": {
+                  "id": "typescript:checkout.ts:<file>",
+                  "symbol": "checkout.ts",
+                  "kind": "file",
+                  "at": "checkout.ts:1-2"
+                },
+                "via": "typescript:price.ts:price",
+                "potentialDispatch": false
+              },
+              {
+                "node": {
+                  "id": "typescript:checkout.ts:checkout",
+                  "symbol": "checkout",
+                  "kind": "function",
+                  "at": "checkout.ts:1-1",
+                  "signature": "export function checkout(): number;"
+                },
+                "via": "typescript:price.ts:price",
+                "potentialDispatch": false
+              },
+              {
+                "node": {
+                  "id": "typescript:checkout.test.ts:<file>",
+                  "symbol": "checkout.test.ts",
+                  "kind": "file",
+                  "at": "checkout.test.ts:1-2"
+                },
+                "via": "typescript:price.ts:price",
+                "potentialDispatch": false
+              },
+              {
+                "node": {
+                  "id": "typescript:checkout.test.ts:checkout works",
+                  "symbol": "checkout works",
+                  "kind": "test",
+                  "at": "checkout.test.ts:1-1",
+                  "signature": "test(\"checkout works\")"
+                },
+                "via": "typescript:price.ts:price",
+                "potentialDispatch": false
+              }
+            ],
+            "tests": [
+              {
+                "node": {
+                  "id": "typescript:checkout.test.ts:checkout works",
+                  "symbol": "checkout works",
+                  "kind": "test",
+                  "at": "checkout.test.ts:1-1",
+                  "signature": "test(\"checkout works\")"
+                },
+                "via": "typescript:price.ts:price",
+                "potentialDispatch": false
+              }
+            ],
+            "checks": [
+              "Run typecheck/build for affected packages",
+              "Run the listed candidate tests and required package/CI checks"
+            ],
+            "warnings": [
+              "Conservative file-level impact in this repository. Deleted/renamed symbols and previous contracts require a baseline graph. Cross-service consumers are not included."
+            ],
+            "truncated": false
+          },
+          "elapsedMs": 108,
+          "requestTokens": 14,
+          "responseTokens": 470,
+          "responseHash": "bfc4355b4dc8cc7553ee3c194456d0e749138b3a008461c9b2cb8dcafe73559c"
+        }
+      ],
+      "trafficTokens": 699
+    },
+    {
+      "scenario": "changed-parameter",
+      "version": "current",
+      "editedSource": "export function price(quantity: string): number { return quantity.length; }\n",
+      "before": {
+        "exitCode": 0,
+        "diagnostics": "",
+        "codes": []
+      },
+      "after": {
+        "exitCode": 2,
+        "diagnostics": "../../../..<fixture>/checkout.ts(1,77): error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.\n",
+        "codes": [2345]
+      },
+      "indexMs": 468,
+      "queries": [
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+            "head": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+              "identity": "740ffb66e198fefaf7bc808fc476c280a54438c1927ee3248304a0a577967793"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "ebe2b97f35835a9eb6cada991cc5c378a379c804925a3e1fb4e05fcacedc7801"
+            },
+            "totalFiles": 1,
+            "changes": [
+              {
+                "change": "signature",
+                "before": {
+                  "id": "typescript:price.ts:price",
+                  "symbol": "price",
+                  "kind": "function",
+                  "at": "price.ts:1-1",
+                  "signature": "export function price(quantity: number): number;"
+                },
+                "after": {
+                  "id": "typescript:price.ts:price",
+                  "symbol": "price",
+                  "kind": "function",
+                  "at": "price.ts:1-1",
+                  "signature": "export function price(quantity: string): number;"
+                },
+                "reasons": [
+                  "Declared header, visibility, export flag or declaration kind changed; compatibility requires verification"
+                ],
+                "renderedSignatureChanged": true,
+                "beforeHash": "308ccda5b25a64b1d981dc78a0901f85c03aba08bc32ba537ee021976ae60473",
+                "afterHash": "43aea005684032d5c59b477871b0a50d2000a9cf7c68478319a27992cdf6fbb1",
+                "consumers": [
+                  {
+                    "node": {
+                      "id": "typescript:checkout.ts:checkout",
+                      "symbol": "checkout",
+                      "kind": "function",
+                      "at": "checkout.ts:1-1",
+                      "signature": "export function checkout(): number;"
+                    },
+                    "path": [
+                      {
+                        "symbol": "price",
+                        "at": "price.ts:1"
+                      },
+                      {
+                        "symbol": "checkout",
+                        "at": "checkout.ts:1",
+                        "edge": "CALLS",
+                        "direction": "in"
+                      }
+                    ],
+                    "potentialDispatch": false,
+                    "snapshot": "both",
+                    "afterState": "same source"
+                  },
+                  {
+                    "node": {
+                      "id": "typescript:checkout.test.ts:checkout works",
+                      "symbol": "checkout works",
+                      "kind": "test",
+                      "at": "checkout.test.ts:1-1",
+                      "signature": "test(\"checkout works\")"
+                    },
+                    "path": [
+                      {
+                        "symbol": "price",
+                        "at": "price.ts:1"
+                      },
+                      {
+                        "symbol": "checkout",
+                        "at": "checkout.ts:1",
+                        "edge": "CALLS",
+                        "direction": "in"
+                      },
+                      {
+                        "symbol": "checkout works",
+                        "at": "checkout.test.ts:1",
+                        "edge": "CALLS",
+                        "direction": "in"
+                      }
+                    ],
+                    "potentialDispatch": false,
+                    "snapshot": "both",
+                    "afterState": "same source"
+                  }
+                ],
+                "truncated": false
+              }
+            ],
+            "unknown": [],
+            "truncated": false,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 746,
+          "requestTokens": 19,
+          "responseTokens": 701,
+          "responseHash": "0653c3dffee4f9f6c4ae2ec488d5f5dcc1580b726d7649192f7995c634212290"
+        }
+      ],
+      "repeat": {
+        "elapsedMs": 121,
+        "identicalResponse": true
+      },
+      "trafficTokens": 720
+    },
+    {
+      "scenario": "comment-only",
+      "version": "baseline",
+      "editedSource": "export function price(quantity: number): number { return quantity * 2; }\n// documentation only\n",
+      "before": {
+        "exitCode": 0,
+        "diagnostics": "",
+        "codes": []
+      },
+      "after": {
+        "exitCode": 0,
+        "diagnostics": "",
+        "codes": []
+      },
+      "indexMs": 307,
+      "queries": [
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "changes",
+              "maxTokens": 2000
+            }
+          },
+          "response": {
+            "base": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+            "head": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+            "mode": "working",
+            "revision": 1,
+            "totalFiles": 1,
+            "files": [
+              {
+                "file": "price.ts",
+                "status": "M",
+                "hunks": [
+                  {
+                    "oldStart": 1,
+                    "oldCount": 0,
+                    "newStart": 2,
+                    "newCount": 1
+                  }
+                ]
+              }
+            ],
+            "declarations": [],
+            "unknown": [
+              {
+                "file": "price.ts",
+                "reason": "Hunk 1: removed or top-level text may have consumers absent from the current graph"
+              }
+            ],
+            "truncated": false,
+            "warnings": [
+              "Hunk-to-current-declaration mapping, not a semantic contract comparison. Renames/removals and historical consumers may be unknown."
+            ]
+          },
+          "elapsedMs": 263,
+          "requestTokens": 17,
+          "responseTokens": 175,
+          "responseHash": "5482ea223c17796e9fe0147219540894c96aec28f1f0de63908d1e1ed8363a1a"
+        },
+        {
+          "request": {
+            "name": "review_changes",
+            "input": {
+              "maxTokens": 2000
+            }
+          },
+          "response": {
+            "base": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+            "revision": 1,
+            "analysis": "current-file-dependencies",
+            "totalFiles": 1,
+            "files": [
+              {
+                "file": "price.ts",
+                "status": "M",
+                "symbols": 1,
+                "indexedHash": "37bdd3f62950860c4086b29654ccca1b0640d24e23848f44a6ae6475dd5634c0"
+              }
+            ],
+            "affected": [
+              {
+                "node": {
+                  "id": "typescript:price.ts:price",
+                  "symbol": "price",
+                  "kind": "function",
+                  "at": "price.ts:1-1",
+                  "signature": "export function price(quantity: number): number;"
+                },
+                "via": "typescript:price.ts:price",
+                "potentialDispatch": false
+              },
+              {
+                "node": {
+                  "id": "typescript:checkout.ts:<file>",
+                  "symbol": "checkout.ts",
+                  "kind": "file",
+                  "at": "checkout.ts:1-2"
+                },
+                "via": "typescript:price.ts:price",
+                "potentialDispatch": false
+              },
+              {
+                "node": {
+                  "id": "typescript:checkout.ts:checkout",
+                  "symbol": "checkout",
+                  "kind": "function",
+                  "at": "checkout.ts:1-1",
+                  "signature": "export function checkout(): number;"
+                },
+                "via": "typescript:price.ts:price",
+                "potentialDispatch": false
+              },
+              {
+                "node": {
+                  "id": "typescript:checkout.test.ts:<file>",
+                  "symbol": "checkout.test.ts",
+                  "kind": "file",
+                  "at": "checkout.test.ts:1-2"
+                },
+                "via": "typescript:price.ts:price",
+                "potentialDispatch": false
+              },
+              {
+                "node": {
+                  "id": "typescript:checkout.test.ts:checkout works",
+                  "symbol": "checkout works",
+                  "kind": "test",
+                  "at": "checkout.test.ts:1-1",
+                  "signature": "test(\"checkout works\")"
+                },
+                "via": "typescript:price.ts:price",
+                "potentialDispatch": false
+              }
+            ],
+            "tests": [
+              {
+                "node": {
+                  "id": "typescript:checkout.test.ts:checkout works",
+                  "symbol": "checkout works",
+                  "kind": "test",
+                  "at": "checkout.test.ts:1-1",
+                  "signature": "test(\"checkout works\")"
+                },
+                "via": "typescript:price.ts:price",
+                "potentialDispatch": false
+              }
+            ],
+            "checks": [
+              "Run typecheck/build for affected packages",
+              "Run the listed candidate tests and required package/CI checks"
+            ],
+            "warnings": [
+              "Conservative file-level impact in this repository. Deleted/renamed symbols and previous contracts require a baseline graph. Cross-service consumers are not included."
+            ],
+            "truncated": false
+          },
+          "elapsedMs": 66,
+          "requestTokens": 14,
+          "responseTokens": 471,
+          "responseHash": "b21885baf6cc271a77eb98a78259c7cdc374a051258e207c950053456b2726a1"
+        }
+      ],
+      "trafficTokens": 677
+    },
+    {
+      "scenario": "comment-only",
+      "version": "current",
+      "editedSource": "export function price(quantity: number): number { return quantity * 2; }\n// documentation only\n",
+      "before": {
+        "exitCode": 0,
+        "diagnostics": "",
+        "codes": []
+      },
+      "after": {
+        "exitCode": 0,
+        "diagnostics": "",
+        "codes": []
+      },
+      "indexMs": 345,
+      "queries": [
+        {
+          "request": {
+            "name": "workflow",
+            "input": {
+              "action": "change_impact",
+              "maxTokens": 2000
+            }
+          },
+          "response": {
+            "analysis": "git-snapshot-declarations",
+            "mode": "working",
+            "base": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+            "head": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+            "revision": 1,
+            "policyHash": "306ec865fb2bb021c8b2b71982c4f470fa0c26a793be9d842d8b61810c98006d",
+            "before": {
+              "kind": "commit",
+              "commit": "593fbf5371bdfb7d2f44f52c88201ee6fbd7cc5e",
+              "identity": "740ffb66e198fefaf7bc808fc476c280a54438c1927ee3248304a0a577967793"
+            },
+            "after": {
+              "kind": "working",
+              "revision": 1,
+              "identity": "0402065a71ffbac85c6448007012410bbeea5f02e7e966e3c2e79b075e84dc75"
+            },
+            "totalFiles": 1,
+            "changes": [],
+            "unknown": [
+              {
+                "file": "price.ts",
+                "reason": "Changed text extends outside modeled declarations; imports/module effects require wider checks"
+              }
+            ],
+            "truncated": false,
+            "warnings": [
+              "Static within-project evidence, not proof of breakage, runtime dispatch or test coverage. Signature text changes are not a type-compatibility check.",
+              "Git snapshots use supported tracked source/configuration, without installed dependencies or external project sources. Exclusions, unresolved references and dynamic consumers can hide impact."
+            ]
+          },
+          "elapsedMs": 687,
+          "requestTokens": 19,
+          "responseTokens": 328,
+          "responseHash": "2ca2531e9ab6afe50a6cec8df5ed42de483e9528e058281a4a009fe8ba690326"
+        }
+      ],
+      "repeat": {
+        "elapsedMs": 287,
+        "identicalResponse": true
+      },
+      "trafficTokens": 347
+    }
+  ]
+}

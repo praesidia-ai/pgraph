@@ -5,11 +5,40 @@ import {
   rmSync,
   writeFileSync,
 } from "node:fs";
-import type { IndexOptions } from "@praesidia/pgraph-ir";
+import { reviewChanges } from "./changes.js";
+export { workspaceImpact } from "./workspace-impact.js";
+export type {
+  WorkspaceImpactProject,
+  WorkspaceImpactResult,
+  WorkspaceImpactSymbol,
+  WorkspaceImpactStep,
+  WorkspaceImpactPath,
+} from "./workspace-impact.js";
+import { historicalChanges, type HistoricalOptions } from "./history.js";
+export type {
+  HistoricalChange,
+  HistoricalResult,
+  HistoricalOptions,
+} from "./history.js";
+import {
+  changedDeclarations,
+  changeTestGaps,
+  type DiffOptions,
+} from "./diff.js";
+import {
+  repositoryHealth,
+  repositoryChecks,
+  VerificationSession,
+} from "./daily.js";
+export type { DiffOptions } from "./diff.js";
+export type { RepositoryCheck, VerificationRecord } from "./daily.js";
+export type { ChangeReview } from "./changes.js";
+import type { IndexOptions, EvidenceMode } from "@praesidia/pgraph-ir";
 import type { GraphStore } from "@praesidia/pgraph-store";
 import { SqliteGraphStore } from "@praesidia/pgraph-store-sqlite";
 import { GraphIndexer } from "@praesidia/pgraph-indexer";
 import { GraphQuery } from "@praesidia/pgraph-query";
+import { connectionReadiness } from "@praesidia/pgraph-query";
 import {
   ContextEngine,
   type ContextRequest,
@@ -40,6 +69,33 @@ export {
 export { semanticPrompt, type SemanticInput } from "@praesidia/pgraph-semantic";
 
 export class PGraph extends GraphQuery {
+  readonly verification = new VerificationSession(this);
+  health() {
+    return repositoryHealth(this);
+  }
+  connections() {
+    const health = this.health();
+    if (!health.current)
+      throw new Error(
+        "Index this project's current source before inspecting connection mappings",
+      );
+    return {
+      ...connectionReadiness(this.topology()),
+      fingerprint: health.fingerprint,
+    };
+  }
+  checks() {
+    return repositoryChecks(this);
+  }
+  changedDeclarations(options: DiffOptions = {}) {
+    return changedDeclarations(this, options);
+  }
+  historicalChanges(options: HistoricalOptions = {}) {
+    return historicalChanges(this, options);
+  }
+  testGaps(options: DiffOptions = {}) {
+    return changeTestGaps(this, options);
+  }
   lastContextMetrics: ContextMetrics | undefined;
   readonly config: Config;
   readonly memory: SemanticMemory;
@@ -122,10 +178,14 @@ export class PGraph extends GraphQuery {
   status() {
     return this.store.stats();
   }
+  reviewChanges(maxFiles = 30) {
+    return reviewChanges(this, maxFiles);
+  }
   context(request: ContextRequest): ContextResult {
     const result = this.contexts.context({
       ...request,
       options: {
+        evidenceMode: this.config.context.evidenceMode,
         ...request.options,
         weights: {
           ...this.config.context.weights,
@@ -135,6 +195,12 @@ export class PGraph extends GraphQuery {
     });
     this.lastContextMetrics = result.metrics;
     return result;
+  }
+  override feature(
+    concept: string,
+    evidenceMode: EvidenceMode = this.config.context.evidenceMode,
+  ) {
+    return super.feature(concept, evidenceMode);
   }
   semanticInput(symbol: string): SemanticInput {
     const target = this.symbol(symbol);

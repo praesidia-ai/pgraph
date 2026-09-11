@@ -122,6 +122,7 @@ export const configSchema = z
     context: z
       .object({
         defaultTokenBudget: z.number().int().min(128).max(32_000).default(2000),
+        evidenceMode: z.enum(["local", "assisted"]).default("local"),
         weights: z
           .record(
             z.enum([
@@ -198,6 +199,12 @@ export const configSchema = z
                   .record(
                     z.string().max(100),
                     z.string().regex(/^[a-zA-Z0-9._:/-]{1,200}$/),
+                  )
+                  .default({}),
+                channels: z
+                  .record(
+                    z.string().regex(/^[a-zA-Z_][a-zA-Z0-9_]{0,99}$/),
+                    z.string().regex(/^[a-zA-Z0-9._/-]{1,200}$/),
                   )
                   .default({}),
               })

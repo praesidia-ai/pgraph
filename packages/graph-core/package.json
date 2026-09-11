@@ -1,6 +1,6 @@
 {
   "name": "@praesidia/pgraph-core",
-  "version": "0.1.0",
+  "version": "0.6.1",
   "type": "module",
   "license": "MIT",
   "engines": {
@@ -20,14 +20,16 @@
     "dist/**/*.map"
   ],
   "dependencies": {
-    "@praesidia/pgraph-ir": "0.1.0",
-    "@praesidia/pgraph-store": "0.1.0",
-    "@praesidia/pgraph-store-sqlite": "0.1.0",
-    "@praesidia/pgraph-indexer": "0.1.0",
-    "@praesidia/pgraph-query": "0.1.0",
-    "@praesidia/pgraph-context": "0.1.0",
-    "@praesidia/pgraph-semantic": "0.1.0",
-    "@praesidia/pgraph-shared": "0.1.0"
+    "@praesidia/pgraph-typescript": "0.6.1",
+    "@praesidia/pgraph-git": "0.6.1",
+    "@praesidia/pgraph-ir": "0.6.1",
+    "@praesidia/pgraph-store": "0.6.1",
+    "@praesidia/pgraph-store-sqlite": "0.6.1",
+    "@praesidia/pgraph-indexer": "0.6.1",
+    "@praesidia/pgraph-query": "0.6.1",
+    "@praesidia/pgraph-context": "0.6.1",
+    "@praesidia/pgraph-semantic": "0.6.1",
+    "@praesidia/pgraph-shared": "0.6.1"
   },
   "description": "PGraph graph core: local graph-native repository context infrastructure.",
   "publishConfig": {
