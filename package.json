@@ -33,7 +33,7 @@
     "@types/picomatch": "^4.0.2",
     "@types/vscode": "^1.100.0",
     "@vitest/coverage-v8": "^3.2.4",
-    "@vscode/test-electron": "^2.5.2",
+    "@vscode/test-electron": "^3.1.0",
     "@vscode/vsce": "^3.7.1",
     "cytoscape": "^3.34.3",
     "esbuild": "^0.25.12",
