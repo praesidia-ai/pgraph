@@ -20,7 +20,7 @@
     "dist/**/*.map"
   ],
   "dependencies": {
-    "zod": "^3.25.76"
+    "zod": "^4.5.4"
   },
   "description": "PGraph shared: local graph-native repository context infrastructure.",
   "publishConfig": {
